@@ -1,0 +1,1917 @@
+{
+  "revestimiento-exterior-metalico": {
+    "nombre": "Metal Siding",
+    "productos": [
+      {
+        "nombre": "Revestimiento Metálico De Pared Color Cedro (caja 8 un.)",
+        "precio_unitario": 98934,
+        "precio_m2": 17840.0,
+        "sku": "REM102-CEDRO",
+        "descripcion": "El revestimiento metálico es ideal para ser utilizado en zonas con climas adversos como lluvia, viento, frío, nieve, humedad, etc.",
+        "imagenes": [
+          "https://revestimientosypisos.cl/wp-content/themes/etips/assets/images/sharer/sharer_1200x630.png",
+          "https://revestimientosypisos.cl/wp-content/uploads/2024/08/revestimiento-metalico-de-pared-color-cedro-rem102-01.jpg",
+          "https://revestimientosypisos.cl/wp-content/uploads/2024/08/revestimiento-metalico-de-pared-color-cedro-rem102-02.jpg",
+          "https://revestimientosypisos.cl/wp-content/uploads/2024/08/revestimiento-metalico-de-pared-color-cedro-rem102-03.jpg",
+          "https://revestimientosypisos.cl/wp-content/uploads/2024/08/revestimiento-metalico-de-pared-color-cedro-rem102-04.jpg",
+          "https://revestimientosypisos.cl/wp-content/uploads/2024/08/revestimiento-metalico-de-pared-color-cedro-rem102-05.jpg",
+          "https://revestimientosypisos.cl/wp-content/uploads/2024/08/revestimiento-metalico-de-pared-color-cedro-rem102-06.jpg",
+          "https://revestimientosypisos.cl/wp-content/uploads/2024/08/revestimiento-metalico-de-pared-color-cedro-rem102-07.jpg"
+        ],
+        "url": "https://revestimientosypisos.cl/revestimiento-exterior-metalico/revestimiento-metalico-de-pared-color-cedro-rem102-caja-8-un-2",
+        "categoria_slug": "revestimiento-exterior-metalico"
+      },
+      {
+        "nombre": "Revestimiento Metálico de Pared Color Negro (Caja 8 un.)",
+        "precio_unitario": 98934,
+        "precio_m2": 17840.0,
+        "sku": "REM105-NEGRO",
+        "descripcion": "El revestimiento metálico es ideal para ser utilizado en zonas con climas adversos como lluvia, viento, frío, nieve, humedad, etc.",
+        "imagenes": [
+          "https://revestimientosypisos.cl/wp-content/themes/etips/assets/images/sharer/sharer_1200x630.png",
+          "https://revestimientosypisos.cl/wp-content/uploads/2025/06/revestimiento-metalico-de-pared-color-negro-caja-8-unidades-rem105-00.webp",
+          "https://revestimientosypisos.cl/wp-content/uploads/2025/06/revestimiento-metalico-de-pared-color-negro-caja-8-unidades-rem105-01.webp",
+          "https://revestimientosypisos.cl/wp-content/uploads/2025/06/revestimiento-metalico-de-pared-color-negro-caja-8-unidades-rem105-02.webp",
+          "https://revestimientosypisos.cl/wp-content/uploads/2025/06/revestimiento-metalico-de-pared-color-negro-caja-8-unidades-rem105-03.webp",
+          "https://revestimientosypisos.cl/wp-content/uploads/2025/06/revestimiento-metalico-de-pared-color-negro-caja-8-unidades-rem105-04.webp",
+          "https://revestimientosypisos.cl/wp-content/uploads/2025/06/revestimiento-metalico-de-pared-color-negro-caja-8-unidades-rem105-05.webp",
+          "https://revestimientosypisos.cl/wp-content/uploads/2025/06/revestimiento-metalico-de-pared-color-negro-caja-8-unidades-rem105-06.webp",
+          "https://revestimientosypisos.cl/wp-content/uploads/2025/06/revestimiento-metalico-de-pared-color-negro-caja-8-unidades-rem105-07.webp",
+          "https://revestimientosypisos.cl/wp-content/uploads/2025/06/revestimiento-metalico-de-pared-color-negro-caja-8-unidades-rem105-08.webp"
+        ],
+        "url": "https://revestimientosypisos.cl/revestimiento-exterior-metalico/revestimiento-metalico-de-pared-color-negro-caja-8-un-rem105",
+        "categoria_slug": "revestimiento-exterior-metalico"
+      },
+      {
+        "nombre": "Revestimiento Metálico de Pared Color Natural (Caja 8 un.)",
+        "precio_unitario": 98934,
+        "precio_m2": 17840.0,
+        "sku": "REM108-NATURAL",
+        "descripcion": "El revestimiento metálico es ideal para ser utilizado en zonas con climas adversos como lluvia, viento, frío, nieve, humedad, etc.",
+        "imagenes": [
+          "https://revestimientosypisos.cl/wp-content/themes/etips/assets/images/sharer/sharer_1200x630.png",
+          "https://revestimientosypisos.cl/wp-content/uploads/2025/07/revestimiento-metalico-de-pared-color-natural-caja-8-unidades-rem108-00.webp",
+          "https://revestimientosypisos.cl/wp-content/uploads/2025/07/revestimiento-metalico-de-pared-color-natural-caja-8-unidades-rem108-01.webp",
+          "https://revestimientosypisos.cl/wp-content/uploads/2025/07/revestimiento-metalico-de-pared-color-natural-caja-8-unidades-rem108-02.webp"
+        ],
+        "url": "https://revestimientosypisos.cl/revestimiento-exterior-metalico/revestimiento-metalico-de-pared-color-natural-caja-8-un-rem108",
+        "categoria_slug": "revestimiento-exterior-metalico"
+      },
+      {
+        "nombre": "Revestimiento Metálico de Pared Color Roble (Caja 8 un.)",
+        "precio_unitario": 98934,
+        "precio_m2": 17840.0,
+        "sku": "REM108-ROBLE",
+        "descripcion": "El revestimiento metálico es ideal para ser utilizado en zonas con climas adversos como lluvia, viento, frío, nieve, humedad, etc.",
+        "imagenes": [
+          "https://revestimientosypisos.cl/wp-content/themes/etips/assets/images/sharer/sharer_1200x630.png",
+          "https://revestimientosypisos.cl/wp-content/uploads/2025/07/revestimiento-metalico-de-pared-color-roble-caja-8-unidades-rem108-00.webp",
+          "https://revestimientosypisos.cl/wp-content/uploads/2025/07/revestimiento-metalico-de-pared-color-roble-caja-8-unidades-rem108-01.webp",
+          "https://revestimientosypisos.cl/wp-content/uploads/2025/07/revestimiento-metalico-de-pared-color-roble-caja-8-unidades-rem108-02.webp"
+        ],
+        "url": "https://revestimientosypisos.cl/revestimiento-exterior-metalico/revestimiento-metalico-de-pared-color-roble-caja-8-un-rem108",
+        "categoria_slug": "revestimiento-exterior-metalico"
+      },
+      {
+        "nombre": "Revestimiento Metálico de Pared Color Madera (Caja 8 un.)",
+        "precio_unitario": 98934,
+        "precio_m2": 17840.0,
+        "sku": "REM107-MADERA",
+        "descripcion": "El revestimiento metálico es ideal para ser utilizado en zonas con climas adversos como lluvia, viento, frío, nieve, humedad, etc.",
+        "imagenes": [
+          "https://revestimientosypisos.cl/wp-content/themes/etips/assets/images/sharer/sharer_1200x630.png",
+          "https://revestimientosypisos.cl/wp-content/uploads/2025/07/revestimiento-metalico-de-pared-color-madera-caja-8-unidades-rem107-00.webp",
+          "https://revestimientosypisos.cl/wp-content/uploads/2025/07/revestimiento-metalico-de-pared-color-madera-caja-8-unidades-rem107-01.webp",
+          "https://revestimientosypisos.cl/wp-content/uploads/2025/07/revestimiento-metalico-de-pared-color-madera-caja-8-unidades-rem107-02.webp"
+        ],
+        "url": "https://revestimientosypisos.cl/revestimiento-exterior-metalico/revestimiento-metalico-de-pared-color-madera-caja-8-un-rem107",
+        "categoria_slug": "revestimiento-exterior-metalico"
+      },
+      {
+        "nombre": "Revestimiento Metálico de Pared Color Grafito (Caja 8 un.)",
+        "precio_unitario": 98934,
+        "precio_m2": 17840.0,
+        "sku": "REM101-GRAFITO",
+        "descripcion": "El revestimiento metálico es ideal para ser utilizado en zonas con climas adversos como lluvia, viento, frío, nieve, humedad, etc.",
+        "imagenes": [
+          "https://revestimientosypisos.cl/wp-content/themes/etips/assets/images/sharer/sharer_1200x630.png",
+          "https://revestimientosypisos.cl/wp-content/uploads/2025/06/revestimiento-metalico-de-pared-color-grafito-caja-8-unidaddes-rem101-00.webp",
+          "https://revestimientosypisos.cl/wp-content/uploads/2025/06/revestimiento-metalico-de-pared-color-grafito-caja-8-unidaddes-rem101-01.webp",
+          "https://revestimientosypisos.cl/wp-content/uploads/2025/06/revestimiento-metalico-de-pared-color-grafito-caja-8-unidaddes-rem101-02.webp",
+          "https://revestimientosypisos.cl/wp-content/uploads/2025/06/revestimiento-metalico-de-pared-color-grafito-caja-8-unidaddes-rem101-03.webp",
+          "https://revestimientosypisos.cl/wp-content/uploads/2023/01/aim001-angulo-inicio-metalico-grafito-01_500x500.jpg",
+          "https://revestimientosypisos.cl/wp-content/uploads/2023/01/aim001-angulo-inicio-metalico-grafito-02_500x500.jpg",
+          "https://revestimientosypisos.cl/wp-content/uploads/2023/01/atm001-angulo-exterior-metalico-grafito-01_500x500.jpg",
+          "https://revestimientosypisos.cl/wp-content/uploads/2023/01/atm001-angulo-exterior-metalico-grafito-02_500x500.jpg",
+          "https://revestimientosypisos.cl/wp-content/uploads/2023/01/aum001-angulo-union-metalico-grafito-01_500x500.jpg",
+          "https://revestimientosypisos.cl/wp-content/uploads/2023/01/aum001-angulo-union-metalico-grafito-02_500x500.jpg"
+        ],
+        "url": "https://revestimientosypisos.cl/revestimiento-exterior-metalico/revestimiento-metalico-de-pared-color-grafito-caja-8-un-rem101",
+        "categoria_slug": "revestimiento-exterior-metalico"
+      },
+      {
+        "nombre": "Revestimiento Metálico de Pared Color Madera (Caja 8 un.)",
+        "precio_unitario": 98934,
+        "precio_m2": 17840.0,
+        "sku": "REM101-MADERA",
+        "descripcion": "El revestimiento metálico es ideal para ser utilizado en zonas con climas adversos como lluvia, viento, frío, nieve, humedad, etc.",
+        "imagenes": [
+          "https://revestimientosypisos.cl/wp-content/themes/etips/assets/images/sharer/sharer_1200x630.png",
+          "https://revestimientosypisos.cl/wp-content/uploads/2025/06/revestimiento-metalico-de-pared-color-madera-caja-8-unidades-rem101-00.webp",
+          "https://revestimientosypisos.cl/wp-content/uploads/2025/06/revestimiento-metalico-de-pared-color-madera-caja-8-unidades-rem101-01.webp",
+          "https://revestimientosypisos.cl/wp-content/uploads/2025/06/revestimiento-metalico-de-pared-color-madera-caja-8-unidades-rem101-02.webp",
+          "https://revestimientosypisos.cl/wp-content/uploads/2025/06/revestimiento-metalico-de-pared-color-madera-caja-8-unidades-rem101-03.webp",
+          "https://revestimientosypisos.cl/wp-content/uploads/2025/06/revestimiento-metalico-de-pared-color-madera-caja-8-unidades-rem101-04.webp",
+          "https://revestimientosypisos.cl/wp-content/uploads/2025/06/revestimiento-metalico-de-pared-color-madera-caja-8-unidades-rem101-05.webp",
+          "https://revestimientosypisos.cl/wp-content/uploads/2025/06/revestimiento-metalico-de-pared-color-madera-caja-8-unidades-rem101-06.webp"
+        ],
+        "url": "https://revestimientosypisos.cl/revestimiento-exterior-metalico/revestimiento-metalico-de-pared-color-madera-caja-8-un-rem101",
+        "categoria_slug": "revestimiento-exterior-metalico"
+      },
+      {
+        "nombre": "Revestimiento Metálico de Pared Color Piedra (Caja 8 un.)",
+        "precio_unitario": 98934,
+        "precio_m2": 17840.0,
+        "sku": "REM101-PIEDRA",
+        "descripcion": "El revestimiento metálico es ideal para ser utilizado en zonas con climas adversos como lluvia, viento, frío, nieve, humedad, etc.",
+        "imagenes": [
+          "https://revestimientosypisos.cl/wp-content/themes/etips/assets/images/sharer/sharer_1200x630.png",
+          "https://revestimientosypisos.cl/wp-content/uploads/2025/06/revestimiento-metalico-de-pared-color-piedra-caja-8-unidades-rem101-00.webp",
+          "https://revestimientosypisos.cl/wp-content/uploads/2025/06/revestimiento-metalico-de-pared-color-piedra-caja-8-unidades-rem101-01.webp",
+          "https://revestimientosypisos.cl/wp-content/uploads/2025/06/revestimiento-metalico-de-pared-color-piedra-caja-8-unidades-rem101-02.webp",
+          "https://revestimientosypisos.cl/wp-content/uploads/2025/06/revestimiento-metalico-de-pared-color-piedra-caja-8-unidades-rem101-03.webp",
+          "https://revestimientosypisos.cl/wp-content/uploads/2023/01/aim001-angulo-inicio-metalico-piedra-01_500x500.jpg",
+          "https://revestimientosypisos.cl/wp-content/uploads/2023/01/aim001-angulo-inicio-metalico-piedra-02_500x500.jpg",
+          "https://revestimientosypisos.cl/wp-content/uploads/2023/01/atm001-angulo-exterior-metalico-piedra-01_500x500.jpg",
+          "https://revestimientosypisos.cl/wp-content/uploads/2023/01/atm001-angulo-exterior-metalico-piedra-02_500x500.jpg",
+          "https://revestimientosypisos.cl/wp-content/uploads/2023/01/aum001-angulo-union-metalico-piedra-01_500x500.jpg",
+          "https://revestimientosypisos.cl/wp-content/uploads/2023/01/aum001-angulo-union-metalico-piedra-02_500x500.jpg"
+        ],
+        "url": "https://revestimientosypisos.cl/revestimiento-exterior-metalico/revestimiento-metalico-de-pared-color-piedra-caja-8-un",
+        "categoria_slug": "revestimiento-exterior-metalico"
+      },
+      {
+        "nombre": "Revestimiento Metálico de Pared Color Crema (Caja 8 un.)",
+        "precio_unitario": 98934,
+        "precio_m2": 17840.0,
+        "sku": "REM102-CREMA",
+        "descripcion": "El revestimiento metálico es ideal para ser utilizado en zonas con climas adversos como lluvia, viento, frío, nieve, humedad, etc.",
+        "imagenes": [
+          "https://revestimientosypisos.cl/wp-content/themes/etips/assets/images/sharer/sharer_1200x630.png",
+          "https://revestimientosypisos.cl/wp-content/uploads/2025/06/revestimiento-metalico-de-pared-color-crema-caja-8-unidades-rem102-00.webp",
+          "https://revestimientosypisos.cl/wp-content/uploads/2025/06/revestimiento-metalico-de-pared-color-crema-caja-8-unidades-rem102-01.webp",
+          "https://revestimientosypisos.cl/wp-content/uploads/2025/06/revestimiento-metalico-de-pared-color-crema-caja-8-unidades-rem102-02.webp",
+          "https://revestimientosypisos.cl/wp-content/uploads/2025/06/revestimiento-metalico-de-pared-color-crema-caja-8-unidades-rem102-03.webp",
+          "https://revestimientosypisos.cl/wp-content/uploads/2023/01/aim001-angulo-inicio-metalico-crema-01_500x500.jpg",
+          "https://revestimientosypisos.cl/wp-content/uploads/2023/01/aim001-angulo-inicio-metalico-crema-02_500x500.jpg",
+          "https://revestimientosypisos.cl/wp-content/uploads/2023/01/atm001-angulo-exterior-metalico-crema-01_500x500.jpg",
+          "https://revestimientosypisos.cl/wp-content/uploads/2023/01/atm001-angulo-exterior-metalico-crema-02_500x500.jpg",
+          "https://revestimientosypisos.cl/wp-content/uploads/2023/01/aum001-angulo-union-metalico-01_500x500.jpg",
+          "https://revestimientosypisos.cl/wp-content/uploads/2023/01/aum001-angulo-union-metalico-02_500x500.jpg"
+        ],
+        "url": "https://revestimientosypisos.cl/revestimiento-exterior-metalico/revestimiento-metalico-de-pared-color-crema-caja-8-un-rem102",
+        "categoria_slug": "revestimiento-exterior-metalico"
+      },
+      {
+        "nombre": "Revestimiento Metálico de Pared Color Blanco (Caja 8 un.)",
+        "precio_unitario": 98934,
+        "precio_m2": 17840.0,
+        "sku": "REM103-BLANCO",
+        "descripcion": "El revestimiento metálico es ideal para ser utilizado en zonas con climas adversos como lluvia, viento, frío, nieve, humedad, etc.",
+        "imagenes": [
+          "https://revestimientosypisos.cl/wp-content/themes/etips/assets/images/sharer/sharer_1200x630.png",
+          "https://revestimientosypisos.cl/wp-content/uploads/2025/06/revestimiento-metalico-de-pared-color-blanco-caja-8-unidades-rem103-00.webp",
+          "https://revestimientosypisos.cl/wp-content/uploads/2025/06/revestimiento-metalico-de-pared-color-blanco-caja-8-unidades-rem103-01.webp",
+          "https://revestimientosypisos.cl/wp-content/uploads/2025/06/revestimiento-metalico-de-pared-color-blanco-caja-8-unidades-rem103-02.webp",
+          "https://revestimientosypisos.cl/wp-content/uploads/2025/06/revestimiento-metalico-de-pared-color-blanco-caja-8-unidades-rem103-03.webp",
+          "https://revestimientosypisos.cl/wp-content/uploads/2025/06/revestimiento-metalico-de-pared-color-blanco-caja-8-unidades-rem103-04.webp",
+          "https://revestimientosypisos.cl/wp-content/uploads/2025/06/revestimiento-metalico-de-pared-color-blanco-caja-8-unidades-rem103-05.webp",
+          "https://revestimientosypisos.cl/wp-content/uploads/2025/06/revestimiento-metalico-de-pared-color-blanco-caja-8-unidades-rem103-06.webp",
+          "https://revestimientosypisos.cl/wp-content/uploads/2025/06/revestimiento-metalico-de-pared-color-blanco-caja-8-unidades-rem103-07.webp",
+          "https://revestimientosypisos.cl/wp-content/uploads/2025/06/revestimiento-metalico-de-pared-color-blanco-caja-8-unidades-rem103-08.webp"
+        ],
+        "url": "https://revestimientosypisos.cl/revestimiento-exterior-metalico/revestimiento-metalico-de-pared-color-blanco-caja-8-un-rem103",
+        "categoria_slug": "revestimiento-exterior-metalico"
+      },
+      {
+        "nombre": "Revestimiento Metálico de Pared Color Negro (Caja 8 un.)",
+        "precio_unitario": 98934,
+        "precio_m2": 17840.0,
+        "sku": "REM103-NEGRO",
+        "descripcion": "El revestimiento metálico es ideal para ser utilizado en zonas con climas adversos como lluvia, viento, frío, nieve, humedad, etc.",
+        "imagenes": [
+          "https://revestimientosypisos.cl/wp-content/themes/etips/assets/images/sharer/sharer_1200x630.png",
+          "https://revestimientosypisos.cl/wp-content/uploads/2025/06/revestimiento-metalico-de-pared-color-negro-caja-8-unidades-rem103-00.webp",
+          "https://revestimientosypisos.cl/wp-content/uploads/2025/06/revestimiento-metalico-de-pared-color-negro-caja-8-unidades-rem103-01.webp",
+          "https://revestimientosypisos.cl/wp-content/uploads/2025/06/revestimiento-metalico-de-pared-color-negro-caja-8-unidades-rem103-02.webp",
+          "https://revestimientosypisos.cl/wp-content/uploads/2025/06/revestimiento-metalico-de-pared-color-negro-caja-8-unidades-rem103-03.webp",
+          "https://revestimientosypisos.cl/wp-content/uploads/2025/06/revestimiento-metalico-de-pared-color-negro-caja-8-unidades-rem103-04.webp",
+          "https://revestimientosypisos.cl/wp-content/uploads/2025/06/revestimiento-metalico-de-pared-color-negro-caja-8-unidades-rem103-05.webp",
+          "https://revestimientosypisos.cl/wp-content/uploads/2025/06/revestimiento-metalico-de-pared-color-negro-caja-8-unidades-rem103-06.webp",
+          "https://revestimientosypisos.cl/wp-content/uploads/2025/06/revestimiento-metalico-de-pared-color-negro-caja-8-unidades-rem103-07.webp",
+          "https://revestimientosypisos.cl/wp-content/uploads/2025/06/revestimiento-metalico-de-pared-color-negro-caja-8-unidades-rem103-08.webp"
+        ],
+        "url": "https://revestimientosypisos.cl/revestimiento-exterior-metalico/revestimiento-metalico-de-pared-color-negro-caja-8-un-rem103",
+        "categoria_slug": "revestimiento-exterior-metalico"
+      },
+      {
+        "nombre": "Revestimiento Metálico de Pared Color Grafito (Caja 8 un.)",
+        "precio_unitario": 98934,
+        "precio_m2": 17840.0,
+        "sku": "REM105-GRAFITO",
+        "descripcion": "El revestimiento metálico es ideal para ser utilizado en zonas con climas adversos como lluvia, viento, frío, nieve, humedad, etc.",
+        "imagenes": [
+          "https://revestimientosypisos.cl/wp-content/themes/etips/assets/images/sharer/sharer_1200x630.png",
+          "https://revestimientosypisos.cl/wp-content/uploads/2025/06/revestimiento-metalico-de-pared-color-grafito-caja-8-unidades-rem105-00.webp",
+          "https://revestimientosypisos.cl/wp-content/uploads/2025/06/revestimiento-metalico-de-pared-color-grafito-caja-8-unidades-rem105-01.webp",
+          "https://revestimientosypisos.cl/wp-content/uploads/2025/06/revestimiento-metalico-de-pared-color-grafito-caja-8-unidades-rem105-02.webp",
+          "https://revestimientosypisos.cl/wp-content/uploads/2025/06/revestimiento-metalico-de-pared-color-grafito-caja-8-unidades-rem105-03.webp",
+          "https://revestimientosypisos.cl/wp-content/uploads/2023/01/aim001-angulo-inicio-metalico-grafito-01_500x500.jpg",
+          "https://revestimientosypisos.cl/wp-content/uploads/2023/01/aim001-angulo-inicio-metalico-grafito-02_500x500.jpg",
+          "https://revestimientosypisos.cl/wp-content/uploads/2023/01/atm001-angulo-exterior-metalico-grafito-01_500x500.jpg",
+          "https://revestimientosypisos.cl/wp-content/uploads/2023/01/atm001-angulo-exterior-metalico-grafito-02_500x500.jpg",
+          "https://revestimientosypisos.cl/wp-content/uploads/2023/01/aum001-angulo-union-metalico-grafito-01_500x500.jpg",
+          "https://revestimientosypisos.cl/wp-content/uploads/2023/01/aum001-angulo-union-metalico-grafito-02_500x500.jpg"
+        ],
+        "url": "https://revestimientosypisos.cl/revestimiento-exterior-metalico/revestimiento-metalico-de-pared-color-grafito-caja-8-un-rem105",
+        "categoria_slug": "revestimiento-exterior-metalico"
+      },
+      {
+        "nombre": "Siding Texturizado Tipo Granito Crema (Caja de 8 un.)",
+        "precio_unitario": 142560,
+        "precio_m2": 32130.0,
+        "sku": "REG001-CREMA",
+        "descripcion": "El revestimiento metálico es ideal para ser utilizado en zonas con climas adversos como lluvia, viento, frío, nieve, humedad, etc.",
+        "imagenes": [
+          "https://revestimientosypisos.cl/wp-content/themes/etips/assets/images/sharer/sharer_1200x630.png",
+          "https://revestimientosypisos.cl/wp-content/uploads/2024/09/revestimiento-exterior-texturizado-tipo-granito-color-crema-reg001-01.jpg",
+          "https://revestimientosypisos.cl/wp-content/uploads/2024/09/revestimiento-exterior-texturizado-tipo-granito-color-crema-reg001-02.jpg",
+          "https://revestimientosypisos.cl/wp-content/uploads/2024/09/revestimiento-exterior-texturizado-tipo-granito-color-crema-reg001-03.jpg",
+          "https://revestimientosypisos.cl/wp-content/uploads/2024/09/revestimiento-exterior-texturizado-tipo-granito-color-crema-reg001-04.jpg",
+          "https://revestimientosypisos.cl/wp-content/uploads/2024/09/revestimiento-exterior-texturizado-tipo-granito-color-crema-reg001-05.jpg"
+        ],
+        "url": "https://revestimientosypisos.cl/revestimiento-exterior-metalico/siding-texturizado-tipo-granito-color-crema-reg001-caja-de-8-un",
+        "categoria_slug": "revestimiento-exterior-metalico"
+      },
+      {
+        "nombre": "Revestimiento Metálico De Pared Color Negro (caja 8 un.)",
+        "precio_unitario": 98934,
+        "precio_m2": 17840.0,
+        "sku": "REM101-NEGRO",
+        "descripcion": "El revestimiento metálico es ideal para ser utilizado en zonas con climas adversos como lluvia, viento, frío, nieve, humedad, etc.",
+        "imagenes": [
+          "https://revestimientosypisos.cl/wp-content/themes/etips/assets/images/sharer/sharer_1200x630.png",
+          "https://revestimientosypisos.cl/wp-content/uploads/2024/08/revestimiento-metalico-de-pared-color-negro-rem101-01.jpg",
+          "https://revestimientosypisos.cl/wp-content/uploads/2024/08/revestimiento-metalico-de-pared-color-negro-rem101-02.jpg",
+          "https://revestimientosypisos.cl/wp-content/uploads/2024/08/revestimiento-metalico-de-pared-color-negro-rem101-03.jpg",
+          "https://revestimientosypisos.cl/wp-content/uploads/2024/08/revestimiento-metalico-de-pared-color-negro-rem101-04.jpg"
+        ],
+        "url": "https://revestimientosypisos.cl/revestimiento-exterior-metalico/revestimiento-metalico-de-pared-color-negro-rem101-caja-8-un",
+        "categoria_slug": "revestimiento-exterior-metalico"
+      },
+      {
+        "nombre": "Revestimiento Metálico De Pared Color Madera (caja 8 un.)",
+        "precio_unitario": 98934,
+        "precio_m2": 17840.0,
+        "sku": "REM102-MADERA",
+        "descripcion": "El revestimiento metálico es ideal para ser utilizado en zonas con climas adversos como lluvia, viento, frío, nieve, humedad, etc.",
+        "imagenes": [
+          "https://revestimientosypisos.cl/wp-content/themes/etips/assets/images/sharer/sharer_1200x630.png",
+          "https://revestimientosypisos.cl/wp-content/uploads/2024/08/revestimiento-metalico-de-pared-color-madera-rem101-01.jpg",
+          "https://revestimientosypisos.cl/wp-content/uploads/2024/08/revestimiento-metalico-de-pared-color-madera-rem101-02.jpg",
+          "https://revestimientosypisos.cl/wp-content/uploads/2024/08/revestimiento-metalico-de-pared-color-madera-rem101-03.jpg",
+          "https://revestimientosypisos.cl/wp-content/uploads/2024/08/revestimiento-metalico-de-pared-color-madera-rem101-04.jpg"
+        ],
+        "url": "https://revestimientosypisos.cl/revestimiento-exterior-metalico/revestimiento-metalico-de-pared-color-madera-rem102-caja-8-un",
+        "categoria_slug": "revestimiento-exterior-metalico"
+      },
+      {
+        "nombre": "Siding Texturizado Tipo Granito Negro (Caja de 8 un.)",
+        "precio_unitario": 142560,
+        "precio_m2": 32130.0,
+        "sku": "REG001-NEGRO",
+        "descripcion": "El revestimiento metálico es ideal para ser utilizado en zonas con climas adversos como lluvia, viento, frío, nieve, humedad, etc.",
+        "imagenes": [
+          "https://revestimientosypisos.cl/wp-content/themes/etips/assets/images/sharer/sharer_1200x630.png",
+          "https://revestimientosypisos.cl/wp-content/uploads/2024/09/revestimiento-exterior-texturizado-tipo-granito-color-negro-reg001-01.jpg",
+          "https://revestimientosypisos.cl/wp-content/uploads/2024/09/revestimiento-exterior-texturizado-tipo-granito-color-negro-reg001-02.jpg",
+          "https://revestimientosypisos.cl/wp-content/uploads/2024/09/revestimiento-exterior-texturizado-tipo-granito-color-negro-reg001-03.jpg",
+          "https://revestimientosypisos.cl/wp-content/uploads/2024/09/revestimiento-exterior-texturizado-tipo-granito-color-negro-reg001-04.jpg",
+          "https://revestimientosypisos.cl/wp-content/uploads/2024/09/revestimiento-exterior-texturizado-tipo-granito-color-negro-reg001-05.jpg"
+        ],
+        "url": "https://revestimientosypisos.cl/revestimiento-exterior-metalico/siding-texturizado-tipo-granito-color-negro-reg001-caja-de-8-un",
+        "categoria_slug": "revestimiento-exterior-metalico"
+      },
+      {
+        "nombre": "Siding Texturizado Tipo Granito Piedra (Caja de 8 un.)",
+        "precio_unitario": 142560,
+        "precio_m2": 32130.0,
+        "sku": "REG001-PIEDRA",
+        "descripcion": "El revestimiento metálico es ideal para ser utilizado en zonas con climas adversos como lluvia, viento, frío, nieve, humedad, etc.",
+        "imagenes": [
+          "https://revestimientosypisos.cl/wp-content/themes/etips/assets/images/sharer/sharer_1200x630.png",
+          "https://revestimientosypisos.cl/wp-content/uploads/2024/09/revestimiento-exterior-texturizado-tipo-granito-color-piedra-reg001-01.jpg",
+          "https://revestimientosypisos.cl/wp-content/uploads/2024/09/revestimiento-exterior-texturizado-tipo-granito-color-piedra-reg001-02.jpg",
+          "https://revestimientosypisos.cl/wp-content/uploads/2024/09/revestimiento-exterior-texturizado-tipo-granito-color-piedra-reg001-04.jpg",
+          "https://revestimientosypisos.cl/wp-content/uploads/2024/09/revestimiento-exterior-texturizado-tipo-granito-color-piedra-reg001-05.jpg"
+        ],
+        "url": "https://revestimientosypisos.cl/revestimiento-exterior-metalico/siding-texturizado-tipo-granito-color-piedra-reg001-caja-de-8-un",
+        "categoria_slug": "revestimiento-exterior-metalico"
+      },
+      {
+        "nombre": "Siding Texturizado Tipo Granito Café (Caja de 8 un.)",
+        "descripcion": "El revestimiento metálico es ideal para ser utilizado en zonas con climas adversos como lluvia, viento, frío, nieve, humedad, etc.",
+        "imagenes": [
+          "https://revestimientosypisos.cl/wp-content/themes/etips/assets/images/sharer/sharer_1200x630.png",
+          "https://revestimientosypisos.cl/wp-content/uploads/2024/09/revestimiento-exterior-texturizado-tipo-granito-color-cafe-reg001-01.jpg",
+          "https://revestimientosypisos.cl/wp-content/uploads/2024/09/revestimiento-exterior-texturizado-tipo-granito-color-cafe-reg001-02.jpg",
+          "https://revestimientosypisos.cl/wp-content/uploads/2024/09/revestimiento-exterior-texturizado-tipo-granito-color-cafe-reg001-03.jpg",
+          "https://revestimientosypisos.cl/wp-content/uploads/2024/09/revestimiento-exterior-texturizado-tipo-granito-color-cafe-reg001-04.jpg",
+          "https://revestimientosypisos.cl/wp-content/uploads/2024/09/revestimiento-exterior-texturizado-tipo-granito-color-cafe-reg001-05.jpg"
+        ],
+        "url": "https://revestimientosypisos.cl/revestimiento-exterior-metalico/siding-texturizado-tipo-granito-color-cafe-reg001-caja-de-8-un",
+        "categoria_slug": "revestimiento-exterior-metalico"
+      }
+    ]
+  },
+  "pisos-spc": {
+    "nombre": "Piso Vinilico",
+    "productos": [
+      {
+        "nombre": "Piso Vinílico SPC De Interior Color Grafito (Caja 12 un.)",
+        "precio_unitario": 33237,
+        "precio_m2": 18730.0,
+        "sku": "SPC101-GRAFITO",
+        "descripcion": "Los piso de SPC, son un tipo de piso vinílico de última generación, que están compuestos por diferentes capas, de las cuales destacan su aleación de Piedra Caliza y PVC, lo cual genera un producto altamente resistente, duradero y práctico tanto para climas húmedos, como para climas cálidos con altas temperaturas.",
+        "imagenes": [
+          "https://revestimientosypisos.cl/wp-content/themes/etips/assets/images/sharer/sharer_1200x630.png",
+          "https://revestimientosypisos.cl/wp-content/uploads/2024/09/piso-vinilico-spc-de-interior-color-grafito-caja-12-un-spc101-01.jpg",
+          "https://revestimientosypisos.cl/wp-content/uploads/2024/09/piso-vinilico-spc-de-interior-color-grafito-caja-12-un-spc101-02.jpg",
+          "https://revestimientosypisos.cl/wp-content/uploads/2024/09/piso-vinilico-spc-de-interior-color-grafito-caja-12-un-spc101-03.jpg",
+          "https://revestimientosypisos.cl/wp-content/uploads/2024/09/piso-vinilico-spc-de-interior-color-grafito-caja-12-un-spc101-04.jpg"
+        ],
+        "url": "https://revestimientosypisos.cl/pisos-spc/piso-vinilico-spc-de-interior-color-grafito-caja-12-un-spc101",
+        "categoria_slug": "pisos-spc"
+      },
+      {
+        "nombre": "Piso Vinílico SPC De Interior Color Gris Piedra (Caja 12 un.)",
+        "precio_unitario": 33237,
+        "precio_m2": 18730.0,
+        "sku": "SPC101-GRISPIEDRA",
+        "descripcion": "Los piso de SPC, son un tipo de piso vinílico de última generación, que están compuestos por diferentes capas, de las cuales destacan su aleación de Piedra Caliza y PVC, lo cual genera un producto altamente resistente, duradero y práctico tanto para climas húmedos, como para climas cálidos con altas temperaturas.",
+        "imagenes": [
+          "https://revestimientosypisos.cl/wp-content/themes/etips/assets/images/sharer/sharer_1200x630.png",
+          "https://revestimientosypisos.cl/wp-content/uploads/2025/06/piso-vinilico-spc-de-interior-color-gris-piedra-caja-12-unidades-spc101-00.webp",
+          "https://revestimientosypisos.cl/wp-content/uploads/2025/06/piso-vinilico-spc-de-interior-color-gris-piedra-caja-12-unidades-spc101-01.webp",
+          "https://revestimientosypisos.cl/wp-content/uploads/2025/06/piso-vinilico-spc-de-interior-color-gris-piedra-caja-12-unidades-spc101-02.webp",
+          "https://revestimientosypisos.cl/wp-content/uploads/2025/06/piso-vinilico-spc-de-interior-color-gris-piedra-caja-12-unidades-spc101-03.webp",
+          "https://revestimientosypisos.cl/wp-content/uploads/2025/06/piso-vinilico-spc-de-interior-color-gris-piedra-caja-12-unidades-spc101-04.webp",
+          "https://revestimientosypisos.cl/wp-content/uploads/2025/06/piso-vinilico-spc-de-interior-color-gris-piedra-caja-12-unidades-spc101-05.webp",
+          "https://revestimientosypisos.cl/wp-content/uploads/2025/06/piso-vinilico-spc-de-interior-color-gris-piedra-caja-12-unidades-spc101-06.webp",
+          "https://revestimientosypisos.cl/wp-content/uploads/2025/06/piso-vinilico-spc-de-interior-color-gris-piedra-caja-12-unidades-spc101-07.webp"
+        ],
+        "url": "https://revestimientosypisos.cl/pisos-spc/piso-vinilico-spc-de-interior-color-piedra-caja-12-un-spc101",
+        "categoria_slug": "pisos-spc"
+      },
+      {
+        "nombre": "Piso Vinílico SPC de Interior Color Carbón (Caja 12 un.)",
+        "precio_unitario": 33237,
+        "precio_m2": 18730.0,
+        "sku": "SPC101-CARBON",
+        "descripcion": "Los piso de SPC, son un tipo de piso vinílico de última generación, que están compuestos por diferentes capas, de las cuales destacan su aleación de Piedra Caliza y PVC, lo cual genera un producto altamente resistente, duradero y práctico tanto para climas húmedos, como para climas cálidos con altas temperaturas.",
+        "imagenes": [
+          "https://revestimientosypisos.cl/wp-content/themes/etips/assets/images/sharer/sharer_1200x630.png",
+          "https://revestimientosypisos.cl/wp-content/uploads/2025/06/piso-vinilico-spc-de-interior-color-carbon-caja-12-unidades-spc101-00.webp",
+          "https://revestimientosypisos.cl/wp-content/uploads/2025/06/piso-vinilico-spc-de-interior-color-carbon-caja-12-unidades-spc101-01.webp",
+          "https://revestimientosypisos.cl/wp-content/uploads/2025/06/piso-vinilico-spc-de-interior-color-carbon-caja-12-unidades-spc101-02.webp",
+          "https://revestimientosypisos.cl/wp-content/uploads/2025/06/piso-vinilico-spc-de-interior-color-carbon-caja-12-unidades-spc101-03.webp",
+          "https://revestimientosypisos.cl/wp-content/uploads/2025/06/piso-vinilico-spc-de-interior-color-carbon-caja-12-unidades-spc101-04.webp",
+          "https://revestimientosypisos.cl/wp-content/uploads/2025/06/piso-vinilico-spc-de-interior-color-carbon-caja-12-unidades-spc101-05.webp",
+          "https://revestimientosypisos.cl/wp-content/uploads/2025/06/piso-vinilico-spc-de-interior-color-carbon-caja-12-unidades-spc101-06.webp",
+          "https://revestimientosypisos.cl/wp-content/uploads/2025/06/piso-vinilico-spc-de-interior-color-carbon-caja-12-unidades-spc101-07.webp",
+          "https://revestimientosypisos.cl/wp-content/uploads/2025/06/piso-vinilico-spc-de-interior-color-carbon-caja-12-unidades-spc101-08.webp",
+          "https://revestimientosypisos.cl/wp-content/uploads/2025/06/piso-vinilico-spc-de-interior-color-carbon-caja-12-unidades-spc101-09.webp"
+        ],
+        "url": "https://revestimientosypisos.cl/pisos-spc/piso-vinilico-spc-de-interior-color-carbon-spc101",
+        "categoria_slug": "pisos-spc"
+      },
+      {
+        "nombre": "Piso Vinílico SPC de Interior Color Nogal (Caja 12 un.)",
+        "precio_unitario": 33237,
+        "precio_m2": 18730.0,
+        "sku": "SPC101-NOGAL",
+        "descripcion": "Los piso de SPC, son un tipo de piso vinílico de última generación, que están compuestos por diferentes capas, de las cuales destacan su aleación de Piedra Caliza y PVC, lo cual genera un producto altamente resistente, duradero y práctico tanto para climas húmedos, como para climas cálidos con altas temperaturas.",
+        "imagenes": [
+          "https://revestimientosypisos.cl/wp-content/themes/etips/assets/images/sharer/sharer_1200x630.png",
+          "https://revestimientosypisos.cl/wp-content/uploads/2025/06/piso-vinilico-spc-de-interior-color-nogal-caja-12-unidades-spc101-00.webp",
+          "https://revestimientosypisos.cl/wp-content/uploads/2025/06/piso-vinilico-spc-de-interior-color-nogal-caja-12-unidades-spc101-01.webp",
+          "https://revestimientosypisos.cl/wp-content/uploads/2025/06/piso-vinilico-spc-de-interior-color-nogal-caja-12-unidades-spc101-02.webp",
+          "https://revestimientosypisos.cl/wp-content/uploads/2025/06/piso-vinilico-spc-de-interior-color-nogal-caja-12-unidades-spc101-03.webp",
+          "https://revestimientosypisos.cl/wp-content/uploads/2025/06/piso-vinilico-spc-de-interior-color-nogal-caja-12-unidades-spc101-04.webp",
+          "https://revestimientosypisos.cl/wp-content/uploads/2025/06/piso-vinilico-spc-de-interior-color-nogal-caja-12-unidades-spc101-05.webp",
+          "https://revestimientosypisos.cl/wp-content/uploads/2025/06/piso-vinilico-spc-de-interior-color-nogal-caja-12-unidades-spc101-06.webp"
+        ],
+        "url": "https://revestimientosypisos.cl/pisos-spc/piso-vinilico-spc-de-interior-color-nogal-caja-12-un-spc101",
+        "categoria_slug": "pisos-spc"
+      },
+      {
+        "nombre": "Piso Vinílico SPC de Interior Color Natural (Caja 12 un.)",
+        "precio_unitario": 33237,
+        "precio_m2": 18730.0,
+        "sku": "SPC101-NATURAL",
+        "descripcion": "Los piso de SPC, son un tipo de piso vinílico de última generación, que están compuestos por diferentes capas, de las cuales destacan su aleación de Piedra Caliza y PVC, lo cual genera un producto altamente resistente, duradero y práctico tanto para climas húmedos, como para climas cálidos con altas temperaturas.",
+        "imagenes": [
+          "https://revestimientosypisos.cl/wp-content/themes/etips/assets/images/sharer/sharer_1200x630.png",
+          "https://revestimientosypisos.cl/wp-content/uploads/2025/06/piso-vinilico-spc-de-interior-color-natural-caja-12-unidades-spc101-00.webp",
+          "https://revestimientosypisos.cl/wp-content/uploads/2025/06/piso-vinilico-spc-de-interior-color-natural-caja-12-unidades-spc101-01.webp",
+          "https://revestimientosypisos.cl/wp-content/uploads/2025/06/piso-vinilico-spc-de-interior-color-natural-caja-12-unidades-spc101-02.webp",
+          "https://revestimientosypisos.cl/wp-content/uploads/2025/06/piso-vinilico-spc-de-interior-color-natural-caja-12-unidades-spc101-03.webp",
+          "https://revestimientosypisos.cl/wp-content/uploads/2025/06/piso-vinilico-spc-de-interior-color-natural-caja-12-unidades-spc101-04.webp",
+          "https://revestimientosypisos.cl/wp-content/uploads/2025/06/piso-vinilico-spc-de-interior-color-natural-caja-12-unidades-spc101-05.webp",
+          "https://revestimientosypisos.cl/wp-content/uploads/2025/06/piso-vinilico-spc-de-interior-color-natural-caja-12-unidades-spc101-06.webp",
+          "https://revestimientosypisos.cl/wp-content/uploads/2025/06/piso-vinilico-spc-de-interior-color-natural-caja-12-unidades-spc101-07.webp"
+        ],
+        "url": "https://revestimientosypisos.cl/pisos-spc/piso-vinilico-spc-de-interior-color-natural-caja-12-un-spc101",
+        "categoria_slug": "pisos-spc"
+      },
+      {
+        "nombre": "Piso Vinílico SPC De Interior Mármol Piedra (caja 12 un.)",
+        "precio_unitario": 33237,
+        "precio_m2": 18730.0,
+        "sku": "SPC103-MARMOLPIEDRA",
+        "descripcion": "Los piso de SPC, son un tipo de piso vinílico de última generación, que están compuestos por diferentes capas, de las cuales destacan su aleación de Piedra Caliza y PVC, lo cual genera un producto altamente resistente, duradero y práctico tanto para climas húmedos, como para climas cálidos con altas temperaturas.",
+        "imagenes": [
+          "https://revestimientosypisos.cl/wp-content/themes/etips/assets/images/sharer/sharer_1200x630.png",
+          "https://revestimientosypisos.cl/wp-content/uploads/2025/06/piso-vinilico-spc-de-interior-marmol-piedra-caja-12-unidades-spc103-00.webp",
+          "https://revestimientosypisos.cl/wp-content/uploads/2025/06/piso-vinilico-spc-de-interior-marmol-piedra-caja-12-unidades-spc103-01.webp",
+          "https://revestimientosypisos.cl/wp-content/uploads/2025/06/piso-vinilico-spc-de-interior-marmol-piedra-caja-12-unidades-spc103-03.webp",
+          "https://revestimientosypisos.cl/wp-content/uploads/2025/06/piso-vinilico-spc-de-interior-marmol-piedra-caja-12-unidades-spc103-02.webp"
+        ],
+        "url": "https://revestimientosypisos.cl/pisos-spc/piso-vinilico-spc-de-interior-marmol-piedra-caja-12-un-spc103",
+        "categoria_slug": "pisos-spc"
+      },
+      {
+        "nombre": "Piso Vinílico SPC De Interior Mármol Crema (caja 12 un.)",
+        "precio_unitario": 33237,
+        "precio_m2": 18730.0,
+        "sku": "SPC103-MARMOLCREMA",
+        "descripcion": "Los piso de SPC, son un tipo de piso vinílico de última generación, que están compuestos por diferentes capas, de las cuales destacan su aleación de Piedra Caliza y PVC, lo cual genera un producto altamente resistente, duradero y práctico tanto para climas húmedos, como para climas cálidos con altas temperaturas.",
+        "imagenes": [
+          "https://revestimientosypisos.cl/wp-content/themes/etips/assets/images/sharer/sharer_1200x630.png",
+          "https://revestimientosypisos.cl/wp-content/uploads/2025/06/piso-vinilico-spc-de-interior-marmol-crema-caja-12-unidades-spc103-00.webp",
+          "https://revestimientosypisos.cl/wp-content/uploads/2025/06/piso-vinilico-spc-de-interior-marmol-crema-caja-12-unidades-spc103-01.webp",
+          "https://revestimientosypisos.cl/wp-content/uploads/2025/06/piso-vinilico-spc-de-interior-marmol-crema-caja-12-unidades-spc103-02.webp",
+          "https://revestimientosypisos.cl/wp-content/uploads/2025/06/piso-vinilico-spc-de-interior-marmol-crema-caja-12-unidades-spc103-03.webp"
+        ],
+        "url": "https://revestimientosypisos.cl/pisos-spc/piso-vinilico-spc-de-interior-marmol-crema-caja-12-un-spc103",
+        "categoria_slug": "pisos-spc"
+      },
+      {
+        "nombre": "Piso Vinílico SPC De Interior Mármol Carbón (caja 12 un.)",
+        "precio_unitario": 33237,
+        "precio_m2": 18730.0,
+        "sku": "SPC103-MARMOLCARBON",
+        "descripcion": "Los piso de SPC, son un tipo de piso vinílico de última generación, que están compuestos por diferentes capas, de las cuales destacan su aleación de Piedra Caliza y PVC, lo cual genera un producto altamente resistente, duradero y práctico tanto para climas húmedos, como para climas cálidos con altas temperaturas.",
+        "imagenes": [
+          "https://revestimientosypisos.cl/wp-content/themes/etips/assets/images/sharer/sharer_1200x630.png",
+          "https://revestimientosypisos.cl/wp-content/uploads/2025/06/piso-vinilico-spc-de-interior-marmol-carbon-caja-12-unidades-spc103-00.webp",
+          "https://revestimientosypisos.cl/wp-content/uploads/2025/06/piso-vinilico-spc-de-interior-marmol-carbon-caja-12-unidades-spc103-01.webp",
+          "https://revestimientosypisos.cl/wp-content/uploads/2025/06/piso-vinilico-spc-de-interior-marmol-carbon-caja-12-unidades-spc103-02.webp",
+          "https://revestimientosypisos.cl/wp-content/uploads/2025/06/piso-vinilico-spc-de-interior-marmol-carbon-caja-12-unidades-spc103-03.webp"
+        ],
+        "url": "https://revestimientosypisos.cl/pisos-spc/piso-vinilico-spc-de-interior-marmol-carbon-caja-12-un-spc103",
+        "categoria_slug": "pisos-spc"
+      },
+      {
+        "nombre": "Piso Vinílico SPC De Interior Color Crema (Caja 12 un.)",
+        "precio_unitario": 33237,
+        "precio_m2": 18730.0,
+        "sku": "SPC101-CREMA",
+        "descripcion": "Los piso de SPC, son un tipo de piso vinílico de última generación, que están compuestos por diferentes capas, de las cuales destacan su aleación de Piedra Caliza y PVC, lo cual genera un producto altamente resistente, duradero y práctico tanto para climas húmedos, como para climas cálidos con altas temperaturas.",
+        "imagenes": [
+          "https://revestimientosypisos.cl/wp-content/themes/etips/assets/images/sharer/sharer_1200x630.png",
+          "https://revestimientosypisos.cl/wp-content/uploads/2025/06/piso-vinilico-spc-de-interior-color-crema-caja-12-unidades-spc101-00.webp",
+          "https://revestimientosypisos.cl/wp-content/uploads/2025/06/piso-vinilico-spc-de-interior-color-crema-caja-12-unidades-spc101-01.webp",
+          "https://revestimientosypisos.cl/wp-content/uploads/2025/06/piso-vinilico-spc-de-interior-color-crema-caja-12-unidades-spc101-02.webp",
+          "https://revestimientosypisos.cl/wp-content/uploads/2025/06/piso-vinilico-spc-de-interior-color-crema-caja-12-unidades-spc101-03.webp",
+          "https://revestimientosypisos.cl/wp-content/uploads/2025/06/piso-vinilico-spc-de-interior-color-crema-caja-12-unidades-spc101-04.webp",
+          "https://revestimientosypisos.cl/wp-content/uploads/2025/06/piso-vinilico-spc-de-interior-color-crema-caja-12-unidades-spc101-05.webp"
+        ],
+        "url": "https://revestimientosypisos.cl/pisos-spc/piso-vinilico-spc-de-interior-color-crema-caja-12-un-spc101",
+        "categoria_slug": "pisos-spc"
+      },
+      {
+        "nombre": "Piso Vinílico SPC De Interior Parquet Nogal (Caja 12 un.)",
+        "precio_unitario": 33237,
+        "precio_m2": 18730.0,
+        "sku": "SPC102-PARQUETNOGAL",
+        "descripcion": "Los piso de SPC, son un tipo de piso vinílico de última generación, que están compuestos por diferentes capas, de las cuales destacan su aleación de Piedra Caliza y PVC, lo cual genera un producto altamente resistente, duradero y práctico tanto para climas húmedos, como para climas cálidos con altas temperaturas.",
+        "imagenes": [
+          "https://revestimientosypisos.cl/wp-content/themes/etips/assets/images/sharer/sharer_1200x630.png",
+          "https://revestimientosypisos.cl/wp-content/uploads/2024/09/piso-vinilico-spc-de-interior-parquet-nogal-scp102-caja-12-un-spc102-01.jpg",
+          "https://revestimientosypisos.cl/wp-content/uploads/2024/09/piso-vinilico-spc-de-interior-parquet-nogal-scp102-caja-12-un-spc102-02.jpg",
+          "https://revestimientosypisos.cl/wp-content/uploads/2024/09/piso-vinilico-spc-de-interior-parquet-nogal-scp102-caja-12-un-spc102-03.jpg",
+          "https://revestimientosypisos.cl/wp-content/uploads/2024/09/piso-vinilico-spc-de-interior-parquet-nogal-scp102-caja-12-un-spc102-04.jpg",
+          "https://revestimientosypisos.cl/wp-content/uploads/2024/09/piso-vinilico-spc-de-interior-parquet-nogal-scp102-caja-12-un-spc102-05.jpg"
+        ],
+        "url": "https://revestimientosypisos.cl/pisos-spc/piso-vinilico-spc-de-interior-parquet-nogal-caja-12-un-spc102",
+        "categoria_slug": "pisos-spc"
+      },
+      {
+        "nombre": "Piso Vinílico SPC De Interior Parquet Grafito (Caja 12 un.)",
+        "precio_unitario": 33237,
+        "precio_m2": 18730.0,
+        "sku": "SPC102-PARQUETGRAFITO",
+        "descripcion": "Los piso de SPC, son un tipo de piso vinílico de última generación, que están compuestos por diferentes capas, de las cuales destacan su aleación de Piedra Caliza y PVC, lo cual genera un producto altamente resistente, duradero y práctico tanto para climas húmedos, como para climas cálidos con altas temperaturas.",
+        "imagenes": [
+          "https://revestimientosypisos.cl/wp-content/themes/etips/assets/images/sharer/sharer_1200x630.png",
+          "https://revestimientosypisos.cl/wp-content/uploads/2024/08/piso-vinilico-spc-de-interior-parquet-grafito-scp102-caja-12-un-01.jpg",
+          "https://revestimientosypisos.cl/wp-content/uploads/2024/08/piso-vinilico-spc-de-interior-parquet-grafito-scp102-caja-12-un-02.jpg",
+          "https://revestimientosypisos.cl/wp-content/uploads/2024/08/piso-vinilico-spc-de-interior-parquet-grafito-scp102-caja-12-un-03.jpg",
+          "https://revestimientosypisos.cl/wp-content/uploads/2024/08/piso-vinilico-spc-de-interior-parquet-grafito-scp102-caja-12-un-04.jpg"
+        ],
+        "url": "https://revestimientosypisos.cl/pisos-spc/piso-vinilico-spc-de-interior-color-parquet-grafito-spc102-caja-12-un",
+        "categoria_slug": "pisos-spc"
+      },
+      {
+        "nombre": "Piso Vinílico SPC De Interior Parquet Natural (Caja 12 un.)",
+        "precio_unitario": 33237,
+        "precio_m2": 18730.0,
+        "sku": "SPC102-PARQUETNATURAL",
+        "descripcion": "Los piso de SPC, son un tipo de piso vinílico de última generación, que están compuestos por diferentes capas, de las cuales destacan su aleación de Piedra Caliza y PVC, lo cual genera un producto altamente resistente, duradero y práctico tanto para climas húmedos, como para climas cálidos con altas temperaturas.",
+        "imagenes": [
+          "https://revestimientosypisos.cl/wp-content/themes/etips/assets/images/sharer/sharer_1200x630.png",
+          "https://revestimientosypisos.cl/wp-content/uploads/2024/08/piso-vinilico-spc-de-interior-parquet-natural-scp102-caja-12-un-01.jpg",
+          "https://revestimientosypisos.cl/wp-content/uploads/2024/08/piso-vinilico-spc-de-interior-parquet-natural-scp102-caja-12-un-02.jpg",
+          "https://revestimientosypisos.cl/wp-content/uploads/2024/08/piso-vinilico-spc-de-interior-parquet-natural-scp102-caja-12-un-03.jpg",
+          "https://revestimientosypisos.cl/wp-content/uploads/2024/08/piso-vinilico-spc-de-interior-parquet-natural-scp102-caja-12-un-04.jpg",
+          "https://revestimientosypisos.cl/wp-content/uploads/2024/08/piso-vinilico-spc-de-interior-parquet-natural-scp102-caja-12-un-05.jpg",
+          "https://revestimientosypisos.cl/wp-content/uploads/2024/08/piso-vinilico-spc-de-interior-parquet-natural-scp102-caja-12-un-06.jpg",
+          "https://revestimientosypisos.cl/wp-content/uploads/2024/08/piso-vinilico-spc-de-interior-parquet-natural-scp102-caja-12-un-07.jpg"
+        ],
+        "url": "https://revestimientosypisos.cl/pisos-spc/piso-vinilico-spc-de-interior-color-parquet-natural-spc102-caja-12-un",
+        "categoria_slug": "pisos-spc"
+      },
+      {
+        "nombre": "Piso Vinílico SPC De Interior Mármol Grafito (Caja 12 un.)",
+        "precio_unitario": 33237,
+        "precio_m2": 18730.0,
+        "sku": "SPC103-MARMOLGRAFITO",
+        "descripcion": "Los piso de SPC, son un tipo de piso vinílico de última generación, que están compuestos por diferentes capas, de las cuales destacan su aleación de Piedra Caliza y PVC, lo cual genera un producto altamente resistente, duradero y práctico tanto para climas húmedos, como para climas cálidos con altas temperaturas.",
+        "imagenes": [
+          "https://revestimientosypisos.cl/wp-content/themes/etips/assets/images/sharer/sharer_1200x630.png",
+          "https://revestimientosypisos.cl/wp-content/uploads/2024/08/piso-vinilico-spc-de-interior-marmol-grafito-scp103-caja-12-un-01.jpg",
+          "https://revestimientosypisos.cl/wp-content/uploads/2024/08/piso-vinilico-spc-de-interior-marmol-grafito-scp103-caja-12-un-02.jpg",
+          "https://revestimientosypisos.cl/wp-content/uploads/2024/08/piso-vinilico-spc-de-interior-marmol-grafito-scp103-caja-12-un-03.jpg",
+          "https://revestimientosypisos.cl/wp-content/uploads/2024/08/piso-vinilico-spc-de-interior-marmol-grafito-scp103-caja-12-un-04.jpg"
+        ],
+        "url": "https://revestimientosypisos.cl/pisos-spc/piso-vinilico-spc-de-interior-color-marmol-grafito-spc103-caja-12-un",
+        "categoria_slug": "pisos-spc"
+      }
+    ]
+  },
+  "piso-flotante": {
+    "nombre": "Piso Flotante",
+    "productos": [
+      {
+        "nombre": "Piso Flotante Interior Color Nogal (Caja 10 un.)",
+        "precio_unitario": 17290,
+        "precio_m2": 12790.0,
+        "sku": "PIM101-NOGAL",
+        "descripcion": "Piso flotante de color Nogal.",
+        "imagenes": [
+          "https://revestimientosypisos.cl/wp-content/themes/etips/assets/images/sharer/sharer_1200x630.png",
+          "https://revestimientosypisos.cl/wp-content/uploads/2025/10/piso-flotante-interior-color-nogal-caja-10-unidades-pimp101-00.webp",
+          "https://revestimientosypisos.cl/wp-content/uploads/2025/10/piso-flotante-interior-color-nogal-caja-10-unidades-pimp101-01.webp",
+          "https://revestimientosypisos.cl/wp-content/uploads/2025/10/piso-flotante-interior-color-nogal-caja-10-unidades-pimp101-02.webp",
+          "https://revestimientosypisos.cl/wp-content/uploads/2025/10/piso-flotante-interior-color-nogal-caja-10-unidades-pimp101-03.webp"
+        ],
+        "url": "https://revestimientosypisos.cl/piso-flotante/piso-flotante-interior-color-nogal-caja-10-un-pimp101",
+        "categoria_slug": "piso-flotante"
+      },
+      {
+        "nombre": "Piso Flotante Interior Color Natural (Caja 10 un.)",
+        "precio_unitario": 17290,
+        "precio_m2": 12790.0,
+        "sku": "PIM101-NATURAL",
+        "descripcion": "P",
+        "imagenes": [
+          "https://revestimientosypisos.cl/wp-content/themes/etips/assets/images/sharer/sharer_1200x630.png",
+          "https://revestimientosypisos.cl/wp-content/uploads/2025/10/piso-flotante-interior-color-natural-caja-10-unidades-pimp101-00.webp",
+          "https://revestimientosypisos.cl/wp-content/uploads/2025/10/piso-flotante-interior-color-natural-caja-10-unidades-pimp101-01.webp",
+          "https://revestimientosypisos.cl/wp-content/uploads/2025/10/piso-flotante-interior-color-natural-caja-10-unidades-pimp101-02.webp",
+          "https://revestimientosypisos.cl/wp-content/uploads/2025/10/piso-flotante-interior-color-natural-caja-10-unidades-pimp101-03.webp"
+        ],
+        "url": "https://revestimientosypisos.cl/piso-flotante/piso-flotante-interior-color-natural-caja-10-un-pimp101",
+        "categoria_slug": "piso-flotante"
+      },
+      {
+        "nombre": "Piso Flotante Interior Color Piedra (Caja 10 un.)",
+        "precio_unitario": 17290,
+        "precio_m2": 12790.0,
+        "sku": "PIM101-PIEDRA",
+        "descripcion": "P",
+        "imagenes": [
+          "https://revestimientosypisos.cl/wp-content/themes/etips/assets/images/sharer/sharer_1200x630.png",
+          "https://revestimientosypisos.cl/wp-content/uploads/2025/10/piso-flotante-interior-color-piedra-caja-10-unidades-pimp101-00.webp",
+          "https://revestimientosypisos.cl/wp-content/uploads/2025/10/piso-flotante-interior-color-piedra-caja-10-unidades-pimp101-01.webp",
+          "https://revestimientosypisos.cl/wp-content/uploads/2025/10/piso-flotante-interior-color-piedra-caja-10-unidades-pimp101-02.webp",
+          "https://revestimientosypisos.cl/wp-content/uploads/2025/10/piso-flotante-interior-color-piedra-caja-10-unidades-pimp101-03.webp"
+        ],
+        "url": "https://revestimientosypisos.cl/piso-flotante/piso-flotante-interior-color-piedra-caja-10-un-pimp101",
+        "categoria_slug": "piso-flotante"
+      },
+      {
+        "nombre": "Piso Flotante Interior Color Grafito (Caja 10 un.)",
+        "precio_unitario": 17290,
+        "precio_m2": 12790.0,
+        "sku": "PIM101-GRAFITO",
+        "descripcion": "P",
+        "imagenes": [
+          "https://revestimientosypisos.cl/wp-content/themes/etips/assets/images/sharer/sharer_1200x630.png",
+          "https://revestimientosypisos.cl/wp-content/uploads/2025/10/piso-flotante-interior-color-grafito-caja-10-unidades-pimp101-00.webp",
+          "https://revestimientosypisos.cl/wp-content/uploads/2025/10/piso-flotante-interior-color-grafito-caja-10-unidades-pimp101-01.webp",
+          "https://revestimientosypisos.cl/wp-content/uploads/2025/10/piso-flotante-interior-color-grafito-caja-10-unidades-pimp101-02.webp",
+          "https://revestimientosypisos.cl/wp-content/uploads/2025/10/piso-flotante-interior-color-grafito-caja-10-unidades-pimp101-03.webp"
+        ],
+        "url": "https://revestimientosypisos.cl/piso-flotante/piso-flotante-interior-color-grafito-caja-10-un-pimp101",
+        "categoria_slug": "piso-flotante"
+      },
+      {
+        "nombre": "Piso Flotante Interior Color Madera (Caja 10 un.)",
+        "precio_unitario": 17290,
+        "precio_m2": 12790.0,
+        "sku": "PIM101-MADERA",
+        "descripcion": "P",
+        "imagenes": [
+          "https://revestimientosypisos.cl/wp-content/themes/etips/assets/images/sharer/sharer_1200x630.png",
+          "https://revestimientosypisos.cl/wp-content/uploads/2025/10/piso-flotante-interior-color-madera-caja-10-unidades-pimp101-00.webp",
+          "https://revestimientosypisos.cl/wp-content/uploads/2025/10/piso-flotante-interior-color-madera-caja-10-unidades-pimp101-01.webp",
+          "https://revestimientosypisos.cl/wp-content/uploads/2025/10/piso-flotante-interior-color-madera-caja-10-unidades-pimp101-02.webp",
+          "https://revestimientosypisos.cl/wp-content/uploads/2025/10/piso-flotante-interior-color-madera-caja-10-unidades-pimp101-03.webp"
+        ],
+        "url": "https://revestimientosypisos.cl/piso-flotante/piso-flotante-interior-color-madera-caja-10-un-pimp101",
+        "categoria_slug": "piso-flotante"
+      },
+      {
+        "nombre": "Piso Flotante Interior Color Crema (Caja 10 un.)",
+        "precio_unitario": 17290,
+        "precio_m2": 12790.0,
+        "sku": "PIM101-CREMA",
+        "descripcion": "P",
+        "imagenes": [
+          "https://revestimientosypisos.cl/wp-content/themes/etips/assets/images/sharer/sharer_1200x630.png",
+          "https://revestimientosypisos.cl/wp-content/uploads/2025/10/piso-flotante-interior-color-crema-caja-10-unidades-pimp101-00.webp",
+          "https://revestimientosypisos.cl/wp-content/uploads/2025/10/piso-flotante-interior-color-crema-caja-10-unidades-pimp101-01.webp",
+          "https://revestimientosypisos.cl/wp-content/uploads/2025/10/piso-flotante-interior-color-crema-caja-10-unidades-pimp101-02.webp",
+          "https://revestimientosypisos.cl/wp-content/uploads/2025/10/piso-flotante-interior-color-crema-caja-10-unidades-pimp101-03.webp"
+        ],
+        "url": "https://revestimientosypisos.cl/piso-flotante/piso-flotante-interior-color-crema-caja-10-un-pimp101",
+        "categoria_slug": "piso-flotante"
+      },
+      {
+        "nombre": "Piso Flotante Interior Color Cerezo (Caja 10 un.)",
+        "precio_unitario": 17290,
+        "precio_m2": 12790.0,
+        "sku": "PIM101-CEREZO",
+        "descripcion": "P",
+        "imagenes": [
+          "https://revestimientosypisos.cl/wp-content/themes/etips/assets/images/sharer/sharer_1200x630.png",
+          "https://revestimientosypisos.cl/wp-content/uploads/2025/10/piso-flotante-interior-color-cerezo-caja-10-unidades-pimp101-00.webp",
+          "https://revestimientosypisos.cl/wp-content/uploads/2025/10/piso-flotante-interior-color-cerezo-caja-10-unidades-pimp101-01.webp",
+          "https://revestimientosypisos.cl/wp-content/uploads/2025/10/piso-flotante-interior-color-cerezo-caja-10-unidades-pimp101-02.webp",
+          "https://revestimientosypisos.cl/wp-content/uploads/2025/10/piso-flotante-interior-color-cerezo-caja-10-unidades-pimp101-03.webp"
+        ],
+        "url": "https://revestimientosypisos.cl/piso-flotante/piso-flotante-interior-color-cerezo-caja-10-un-pimp101",
+        "categoria_slug": "piso-flotante"
+      },
+      {
+        "nombre": "Piso Flotante Interior Color Parquet Roble (Caja 10 un.)",
+        "precio_unitario": 17290,
+        "precio_m2": 12790.0,
+        "sku": "PIM101-PARQUETROBLE",
+        "descripcion": "P",
+        "imagenes": [
+          "https://revestimientosypisos.cl/wp-content/themes/etips/assets/images/sharer/sharer_1200x630.png",
+          "https://revestimientosypisos.cl/wp-content/uploads/2025/10/piso-flotante-interior-color-parquet-roble-caja-10-unidades-pimp101-00.webp",
+          "https://revestimientosypisos.cl/wp-content/uploads/2025/10/piso-flotante-interior-color-parquet-roble-caja-10-unidades-pimp101-01.webp",
+          "https://revestimientosypisos.cl/wp-content/uploads/2025/10/piso-flotante-interior-color-parquet-roble-caja-10-unidades-pimp101-02.webp",
+          "https://revestimientosypisos.cl/wp-content/uploads/2025/10/piso-flotante-interior-color-parquet-roble-caja-10-unidades-pimp101-03.webp"
+        ],
+        "url": "https://revestimientosypisos.cl/piso-flotante/piso-flotante-interior-color-parquet-roble-caja-10-un-pimp101",
+        "categoria_slug": "piso-flotante"
+      }
+    ]
+  },
+  "pisos-deck-wpc": {
+    "nombre": "Piso Deck",
+    "productos": [
+      {
+        "nombre": "Deck WPC Premium Bicolor Café Madera PEW102",
+        "precio_unitario": 9801,
+        "sku": "PEW102-CAFEMADERA",
+        "descripcion": "El Piso Deck de WPC es en esencia, un material que está hecho de una mezcla de madera natural (60%), normalmente fibras de madera reciclada y productos de madera a los que se agregan materiales reciclados, como los plásticos reciclados (35%).",
+        "imagenes": [
+          "https://revestimientosypisos.cl/wp-content/themes/etips/assets/images/sharer/sharer_1200x630.png",
+          "https://revestimientosypisos.cl/wp-content/uploads/2025/08/piso-deck-wpc-premium-bicolor-cafe-madera-pew102-00.webp",
+          "https://revestimientosypisos.cl/wp-content/uploads/2025/08/piso-deck-wpc-premium-bicolor-cafe-madera-pew102-01.webp",
+          "https://revestimientosypisos.cl/wp-content/uploads/2025/08/piso-deck-wpc-premium-bicolor-cafe-madera-pew102-02.webp",
+          "https://revestimientosypisos.cl/wp-content/uploads/2025/08/piso-deck-wpc-premium-bicolor-cafe-madera-pew102-03.webp"
+        ],
+        "url": "https://revestimientosypisos.cl/pisos-deck-wpc/deck-wpc-premium-bicolor-cafe-madera-pew102",
+        "categoria_slug": "pisos-deck-wpc"
+      },
+      {
+        "nombre": "Deck WPC Premium Bicolor Café Chocolate",
+        "precio_unitario": 9801,
+        "sku": "PEW102-CAFECHOCOLATE",
+        "descripcion": "El Piso Deck de WPC es en esencia, un material que está hecho de una mezcla de madera natural (60%), normalmente fibras de madera reciclada y productos de madera a los que se agregan materiales reciclados, como los plásticos reciclados (35%).",
+        "imagenes": [
+          "https://revestimientosypisos.cl/wp-content/themes/etips/assets/images/sharer/sharer_1200x630.png",
+          "https://revestimientosypisos.cl/wp-content/uploads/2025/08/piso-deck-wpc-premium-bicolor-cafe-chocolate-pew102-00.webp",
+          "https://revestimientosypisos.cl/wp-content/uploads/2025/08/piso-deck-wpc-premium-bicolor-cafe-chocolate-pew102-01.webp",
+          "https://revestimientosypisos.cl/wp-content/uploads/2025/08/piso-deck-wpc-premium-bicolor-cafe-chocolate-pew102-02.webp",
+          "https://revestimientosypisos.cl/wp-content/uploads/2025/08/piso-deck-wpc-premium-bicolor-cafe-chocolate-pew102-03.webp"
+        ],
+        "url": "https://revestimientosypisos.cl/pisos-deck-wpc/deck-wpc-premium-bicolor-cafe-chocolate-pew102",
+        "categoria_slug": "pisos-deck-wpc"
+      },
+      {
+        "nombre": "Deck WPC Premium Bicolor Gris Grafito",
+        "precio_unitario": 9801,
+        "sku": "PEW102-GRISGRAFITO",
+        "descripcion": "El Piso Deck de WPC es en esencia, un material que está hecho de una mezcla de madera natural (60%), normalmente fibras de madera reciclada y productos de madera a los que se agregan materiales reciclados, como los plásticos reciclados (35%).",
+        "imagenes": [
+          "https://revestimientosypisos.cl/wp-content/themes/etips/assets/images/sharer/sharer_1200x630.png",
+          "https://revestimientosypisos.cl/wp-content/uploads/2025/08/piso-deck-wpc-premium-bicolor-gris-grafito-pew102-00.webp",
+          "https://revestimientosypisos.cl/wp-content/uploads/2025/08/piso-deck-wpc-premium-bicolor-gris-grafito-pew102-01.webp",
+          "https://revestimientosypisos.cl/wp-content/uploads/2025/08/piso-deck-wpc-premium-bicolor-gris-grafito-pew102-02.webp",
+          "https://revestimientosypisos.cl/wp-content/uploads/2025/08/piso-deck-wpc-premium-bicolor-gris-grafito-pew102-03.webp"
+        ],
+        "url": "https://revestimientosypisos.cl/pisos-deck-wpc/deck-wpc-premium-bicolor-gris-grafito-pew102",
+        "categoria_slug": "pisos-deck-wpc"
+      },
+      {
+        "nombre": "Deck WPC Premium Bicolor Negro",
+        "precio_unitario": 9801,
+        "sku": "PEW102-NEGRO",
+        "descripcion": "El Piso Deck de WPC es en esencia, un material que está hecho de una mezcla de madera natural (60%), normalmente fibras de madera reciclada y productos de madera a los que se agregan materiales reciclados, como los plásticos reciclados (35%).",
+        "imagenes": [
+          "https://revestimientosypisos.cl/wp-content/themes/etips/assets/images/sharer/sharer_1200x630.png",
+          "https://revestimientosypisos.cl/wp-content/uploads/2025/08/piso-deck-wpc-premium-bicolor-negro-pew102-00.webp",
+          "https://revestimientosypisos.cl/wp-content/uploads/2025/08/piso-deck-wpc-premium-bicolor-negro-pew102-01.webp",
+          "https://revestimientosypisos.cl/wp-content/uploads/2025/08/piso-deck-wpc-premium-bicolor-negro-pew102-02.webp",
+          "https://revestimientosypisos.cl/wp-content/uploads/2025/08/piso-deck-wpc-premium-bicolor-negro-pew102-03.webp"
+        ],
+        "url": "https://revestimientosypisos.cl/pisos-deck-wpc/deck-wpc-premium-bicolor-negro-pew102",
+        "categoria_slug": "pisos-deck-wpc"
+      },
+      {
+        "nombre": "Deck WPC Premium Bicolor Café Chocolate",
+        "precio_unitario": 9801,
+        "sku": "PEW101-CAFECHOCOLATE",
+        "descripcion": "El Piso Deck de WPC es en esencia, un material que está hecho de una mezcla de madera natural (60%), normalmente fibras de madera reciclada y productos de madera a los que se agregan materiales reciclados, como los plásticos reciclados (35%).",
+        "imagenes": [
+          "https://revestimientosypisos.cl/wp-content/themes/etips/assets/images/sharer/sharer_1200x630.png",
+          "https://revestimientosypisos.cl/wp-content/uploads/2025/01/deck-wpc-premium-bicolor-cafe-chocolate-pew101-01.webp",
+          "https://revestimientosypisos.cl/wp-content/uploads/2024/08/deck-wpc-premium-bicolor-cafe-chocolate-pew101-02.jpg",
+          "https://revestimientosypisos.cl/wp-content/uploads/2024/08/deck-wpc-premium-bicolor-cafe-chocolate-pew101-03.jpg",
+          "https://revestimientosypisos.cl/wp-content/uploads/2024/08/deck-wpc-premium-bicolor-cafe-chocolate-pew101-04.jpg",
+          "https://revestimientosypisos.cl/wp-content/uploads/2024/08/deck-wpc-premium-bicolor-cafe-chocolate-pew101-05.jpg",
+          "https://revestimientosypisos.cl/wp-content/uploads/2024/08/deck-wpc-premium-bicolor-cafe-chocolate-pew101-06.jpg",
+          "https://revestimientosypisos.cl/wp-content/uploads/2024/08/angulo-exterior-coextruido-wpc-cafe-chocolate-atw102-01.jpg",
+          "https://revestimientosypisos.cl/wp-content/uploads/2024/08/angulo-exterior-coextruido-wpc-cafe-chocolate-atw102-02.jpg"
+        ],
+        "url": "https://revestimientosypisos.cl/pisos-deck-wpc/deck-wpc-premium-bicolor-cafe-chocolate-pew101",
+        "categoria_slug": "pisos-deck-wpc"
+      },
+      {
+        "nombre": "Deck WPC Premium Bicolor Café Madera",
+        "precio_unitario": 9801,
+        "sku": "PEW101-CAFEMADERA",
+        "descripcion": "El Piso Deck de WPC es en esencia, un material que está hecho de una mezcla de madera natural (60%), normalmente fibras de madera reciclada y productos de madera a los que se agregan materiales reciclados, como los plásticos reciclados (35%).",
+        "imagenes": [
+          "https://revestimientosypisos.cl/wp-content/themes/etips/assets/images/sharer/sharer_1200x630.png",
+          "https://revestimientosypisos.cl/wp-content/uploads/2025/01/deck-wpc-premium-bicolor-cafe-madera-pew101-01.webp",
+          "https://revestimientosypisos.cl/wp-content/uploads/2024/08/deck-wpc-premium-bicolor-cafe-madera-pew101-02.jpg",
+          "https://revestimientosypisos.cl/wp-content/uploads/2024/08/deck-wpc-premium-bicolor-cafe-madera-pew101-03.jpg",
+          "https://revestimientosypisos.cl/wp-content/uploads/2024/08/deck-wpc-premium-bicolor-cafe-madera-pew101-04.jpg",
+          "https://revestimientosypisos.cl/wp-content/uploads/2024/08/deck-wpc-premium-bicolor-cafe-madera-pew101-05.jpg",
+          "https://revestimientosypisos.cl/wp-content/uploads/2024/08/deck-wpc-premium-bicolor-cafe-madera-pew101-06.jpg",
+          "https://revestimientosypisos.cl/wp-content/uploads/2024/08/angulo-exterior-coextruido-wpc-cafe-madera-atw102-01.jpg",
+          "https://revestimientosypisos.cl/wp-content/uploads/2024/08/angulo-exterior-coextruido-wpc-cafe-madera-atw102-02.jpg"
+        ],
+        "url": "https://revestimientosypisos.cl/pisos-deck-wpc/deck-wpc-premium-bicolor-cafe-madera-pew101",
+        "categoria_slug": "pisos-deck-wpc"
+      },
+      {
+        "nombre": "Deck WPC Premium Bicolor Negro",
+        "precio_unitario": 9801,
+        "sku": "PEW101-NEGRO",
+        "descripcion": "El Piso Deck de WPC está fabricado con una mezcla de madera natural (60%), normalmente fibras de madera reciclada y productos de madera a los que se agregan materiales reciclados, como los plásticos reciclados (35%).",
+        "imagenes": [
+          "https://revestimientosypisos.cl/wp-content/themes/etips/assets/images/sharer/sharer_1200x630.png",
+          "https://revestimientosypisos.cl/wp-content/uploads/2025/01/deck-wpc-para-terraza-premium-bicolor-negro-pew101-01.webp",
+          "https://revestimientosypisos.cl/wp-content/uploads/2024/10/deck-wpc-para-terraza-premium-bicolor-negro-pew101-02.jpg",
+          "https://revestimientosypisos.cl/wp-content/uploads/2024/10/deck-wpc-para-terraza-premium-bicolor-negro-pew101-03.jpg",
+          "https://revestimientosypisos.cl/wp-content/uploads/2024/10/deck-wpc-para-terraza-premium-bicolor-negro-pew101-04.jpg",
+          "https://revestimientosypisos.cl/wp-content/uploads/2024/10/deck-wpc-para-terraza-premium-bicolor-negro-pew101-05.jpg",
+          "https://revestimientosypisos.cl/wp-content/uploads/2024/10/angulo-exterior-para-deck-para-terraza-coextruido-wpc-negro-atw102-01.jpg",
+          "https://revestimientosypisos.cl/wp-content/uploads/2024/10/angulo-exterior-para-deck-para-terraza-coextruido-wpc-negro-atw102-02.jpg",
+          "https://revestimientosypisos.cl/wp-content/uploads/2024/10/clip-de-inicio-y-termino-para-deck-para-terraza-wpc-negro-aew101-01.jpg",
+          "https://revestimientosypisos.cl/wp-content/uploads/2024/10/clip-de-union-para-deck-para-terraza-wpc-negro-aew102-01.jpg",
+          "https://revestimientosypisos.cl/wp-content/uploads/2024/10/clip-de-union-para-deck-para-terraza-wpc-negro-aew102-02.jpg"
+        ],
+        "url": "https://revestimientosypisos.cl/pisos-deck-wpc/deck-wpc-premium-bicolor-negro-pew101",
+        "categoria_slug": "pisos-deck-wpc"
+      },
+      {
+        "nombre": "Deck WPC Premium Bicolor Gris Grafito",
+        "precio_unitario": 9801,
+        "sku": "PEW101-GRISGRAFITO",
+        "descripcion": "El Piso Deck de WPC es en esencia, un material que está hecho de una mezcla de madera natural (60%), normalmente fibras de madera reciclada y productos de madera a los que se agregan materiales reciclados, como los plásticos reciclados (35%).",
+        "imagenes": [
+          "https://revestimientosypisos.cl/wp-content/themes/etips/assets/images/sharer/sharer_1200x630.png",
+          "https://revestimientosypisos.cl/wp-content/uploads/2025/01/deck-wpc-premium-bicolor-gris-grafito-pew101-01.webp",
+          "https://revestimientosypisos.cl/wp-content/uploads/2024/08/deck-wpc-premium-bicolor-gris-grafito-pew101-02.jpg",
+          "https://revestimientosypisos.cl/wp-content/uploads/2024/08/deck-wpc-premium-bicolor-gris-grafito-pew101-03.jpg",
+          "https://revestimientosypisos.cl/wp-content/uploads/2024/08/deck-wpc-premium-bicolor-gris-grafito-pew101-04.jpg",
+          "https://revestimientosypisos.cl/wp-content/uploads/2024/08/deck-wpc-premium-bicolor-gris-grafito-pew101-05.jpg",
+          "https://revestimientosypisos.cl/wp-content/uploads/2024/08/angulo-exterior-coextruido-wpc-gris-grafito-atw102-01.jpg",
+          "https://revestimientosypisos.cl/wp-content/uploads/2024/08/angulo-exterior-coextruido-wpc-gris-grafito-atw102-02.jpg"
+        ],
+        "url": "https://revestimientosypisos.cl/pisos-deck-wpc/deck-wpc-premium-bicolor-gris-grafito-pew101",
+        "categoria_slug": "pisos-deck-wpc"
+      },
+      {
+        "nombre": "Deck WPC Premium Bicolor Gris Piedra",
+        "precio_unitario": 9801,
+        "sku": "PEW101-GRISPIEDRA",
+        "descripcion": "El Piso Deck de WPC es en esencia, un material que está hecho de una mezcla de madera natural (60%), normalmente fibras de madera reciclada y productos de madera a los que se agregan materiales reciclados, como los plásticos reciclados (35%).",
+        "imagenes": [
+          "https://revestimientosypisos.cl/wp-content/themes/etips/assets/images/sharer/sharer_1200x630.png",
+          "https://revestimientosypisos.cl/wp-content/uploads/2025/01/deck-wpc-premium-bicolor-gris-piedra-pew101-01.webp",
+          "https://revestimientosypisos.cl/wp-content/uploads/2024/08/deck-wpc-premium-bicolor-gris-piedra-pew101-02.jpg",
+          "https://revestimientosypisos.cl/wp-content/uploads/2024/08/deck-wpc-premium-bicolor-gris-piedra-pew101-03.jpg",
+          "https://revestimientosypisos.cl/wp-content/uploads/2024/08/deck-wpc-premium-bicolor-gris-piedra-pew101-04.jpg",
+          "https://revestimientosypisos.cl/wp-content/uploads/2024/08/deck-wpc-premium-bicolor-gris-piedra-pew101-05.jpg",
+          "https://revestimientosypisos.cl/wp-content/uploads/2024/08/deck-wpc-premium-bicolor-gris-piedra-pew101-06.jpg",
+          "https://revestimientosypisos.cl/wp-content/uploads/2024/08/angulo-exterior-coextruido-wpc-gris-piedra-atw102-01.jpg",
+          "https://revestimientosypisos.cl/wp-content/uploads/2024/08/angulo-exterior-coextruido-wpc-gris-piedra-atw102-02.jpg"
+        ],
+        "url": "https://revestimientosypisos.cl/pisos-deck-wpc/deck-wpc-premium-bicolor-gris-piedra-pew101",
+        "categoria_slug": "pisos-deck-wpc"
+      },
+      {
+        "nombre": "Deck WPC Premium Bicolor Café Antique",
+        "precio_unitario": 9801,
+        "sku": "PEW101-CAFEANTIQUE",
+        "descripcion": "El Piso Deck de WPC es en esencia, un material que está hecho de una mezcla de madera natural (60%), normalmente fibras de madera reciclada y productos de madera a los que se agregan materiales reciclados, como los plásticos reciclados (35%).",
+        "imagenes": [
+          "https://revestimientosypisos.cl/wp-content/themes/etips/assets/images/sharer/sharer_1200x630.png",
+          "https://revestimientosypisos.cl/wp-content/uploads/2025/01/deck-wpc-premium-bicolor-cafe-antique-pew101-01.webp",
+          "https://revestimientosypisos.cl/wp-content/uploads/2024/08/deck-wpc-premium-bicolor-cafe-antique-pew101-02.jpg",
+          "https://revestimientosypisos.cl/wp-content/uploads/2024/08/deck-wpc-premium-bicolor-cafe-antique-pew101-03.jpg",
+          "https://revestimientosypisos.cl/wp-content/uploads/2024/08/deck-wpc-premium-bicolor-cafe-antique-pew101-04.jpg",
+          "https://revestimientosypisos.cl/wp-content/uploads/2024/08/deck-wpc-premium-bicolor-cafe-antique-pew101-05.jpg",
+          "https://revestimientosypisos.cl/wp-content/uploads/2024/08/deck-wpc-premium-bicolor-cafe-antique-pew101-06.jpg",
+          "https://revestimientosypisos.cl/wp-content/uploads/2024/08/angulo-exterior-coextruido-wpc-cafe-antique-atw102-01.jpg",
+          "https://revestimientosypisos.cl/wp-content/uploads/2024/08/angulo-exterior-coextruido-wpc-cafe-antique-atw102-02.jpg"
+        ],
+        "url": "https://revestimientosypisos.cl/pisos-deck-wpc/deck-wpc-premium-bicolor-cafe-antique",
+        "categoria_slug": "pisos-deck-wpc"
+      }
+    ]
+  },
+  "siding-tipo-granito": {
+    "nombre": "Siding Granito",
+    "productos": [
+      {
+        "nombre": "Siding Texturizado Tipo Granito Crema (Caja de 8 un.)",
+        "precio_unitario": 142560,
+        "precio_m2": 32130.0,
+        "sku": "REG001-CREMA",
+        "descripcion": "El revestimiento metálico es ideal para ser utilizado en zonas con climas adversos como lluvia, viento, frío, nieve, humedad, etc.",
+        "imagenes": [
+          "https://revestimientosypisos.cl/wp-content/themes/etips/assets/images/sharer/sharer_1200x630.png",
+          "https://revestimientosypisos.cl/wp-content/uploads/2024/09/revestimiento-exterior-texturizado-tipo-granito-color-crema-reg001-01.jpg",
+          "https://revestimientosypisos.cl/wp-content/uploads/2024/09/revestimiento-exterior-texturizado-tipo-granito-color-crema-reg001-02.jpg",
+          "https://revestimientosypisos.cl/wp-content/uploads/2024/09/revestimiento-exterior-texturizado-tipo-granito-color-crema-reg001-03.jpg",
+          "https://revestimientosypisos.cl/wp-content/uploads/2024/09/revestimiento-exterior-texturizado-tipo-granito-color-crema-reg001-04.jpg",
+          "https://revestimientosypisos.cl/wp-content/uploads/2024/09/revestimiento-exterior-texturizado-tipo-granito-color-crema-reg001-05.jpg"
+        ],
+        "url": "https://revestimientosypisos.cl/siding-tipo-granito/siding-texturizado-tipo-granito-color-crema-reg001-caja-de-8-un",
+        "categoria_slug": "siding-tipo-granito"
+      },
+      {
+        "nombre": "Siding Texturizado Tipo Granito Negro (Caja de 8 un.)",
+        "precio_unitario": 142560,
+        "precio_m2": 32130.0,
+        "sku": "REG001-NEGRO",
+        "descripcion": "El revestimiento metálico es ideal para ser utilizado en zonas con climas adversos como lluvia, viento, frío, nieve, humedad, etc.",
+        "imagenes": [
+          "https://revestimientosypisos.cl/wp-content/themes/etips/assets/images/sharer/sharer_1200x630.png",
+          "https://revestimientosypisos.cl/wp-content/uploads/2024/09/revestimiento-exterior-texturizado-tipo-granito-color-negro-reg001-01.jpg",
+          "https://revestimientosypisos.cl/wp-content/uploads/2024/09/revestimiento-exterior-texturizado-tipo-granito-color-negro-reg001-02.jpg",
+          "https://revestimientosypisos.cl/wp-content/uploads/2024/09/revestimiento-exterior-texturizado-tipo-granito-color-negro-reg001-03.jpg",
+          "https://revestimientosypisos.cl/wp-content/uploads/2024/09/revestimiento-exterior-texturizado-tipo-granito-color-negro-reg001-04.jpg",
+          "https://revestimientosypisos.cl/wp-content/uploads/2024/09/revestimiento-exterior-texturizado-tipo-granito-color-negro-reg001-05.jpg"
+        ],
+        "url": "https://revestimientosypisos.cl/siding-tipo-granito/siding-texturizado-tipo-granito-color-negro-reg001-caja-de-8-un",
+        "categoria_slug": "siding-tipo-granito"
+      },
+      {
+        "nombre": "Siding Texturizado Tipo Granito Piedra (Caja de 8 un.)",
+        "precio_unitario": 142560,
+        "precio_m2": 32130.0,
+        "sku": "REG001-PIEDRA",
+        "descripcion": "El revestimiento metálico es ideal para ser utilizado en zonas con climas adversos como lluvia, viento, frío, nieve, humedad, etc.",
+        "imagenes": [
+          "https://revestimientosypisos.cl/wp-content/themes/etips/assets/images/sharer/sharer_1200x630.png",
+          "https://revestimientosypisos.cl/wp-content/uploads/2024/09/revestimiento-exterior-texturizado-tipo-granito-color-piedra-reg001-01.jpg",
+          "https://revestimientosypisos.cl/wp-content/uploads/2024/09/revestimiento-exterior-texturizado-tipo-granito-color-piedra-reg001-02.jpg",
+          "https://revestimientosypisos.cl/wp-content/uploads/2024/09/revestimiento-exterior-texturizado-tipo-granito-color-piedra-reg001-04.jpg",
+          "https://revestimientosypisos.cl/wp-content/uploads/2024/09/revestimiento-exterior-texturizado-tipo-granito-color-piedra-reg001-05.jpg"
+        ],
+        "url": "https://revestimientosypisos.cl/siding-tipo-granito/siding-texturizado-tipo-granito-color-piedra-reg001-caja-de-8-un",
+        "categoria_slug": "siding-tipo-granito"
+      },
+      {
+        "nombre": "Siding Texturizado Tipo Granito Café (Caja de 8 un.)",
+        "descripcion": "El revestimiento metálico es ideal para ser utilizado en zonas con climas adversos como lluvia, viento, frío, nieve, humedad, etc.",
+        "imagenes": [
+          "https://revestimientosypisos.cl/wp-content/themes/etips/assets/images/sharer/sharer_1200x630.png",
+          "https://revestimientosypisos.cl/wp-content/uploads/2024/09/revestimiento-exterior-texturizado-tipo-granito-color-cafe-reg001-01.jpg",
+          "https://revestimientosypisos.cl/wp-content/uploads/2024/09/revestimiento-exterior-texturizado-tipo-granito-color-cafe-reg001-02.jpg",
+          "https://revestimientosypisos.cl/wp-content/uploads/2024/09/revestimiento-exterior-texturizado-tipo-granito-color-cafe-reg001-03.jpg",
+          "https://revestimientosypisos.cl/wp-content/uploads/2024/09/revestimiento-exterior-texturizado-tipo-granito-color-cafe-reg001-04.jpg",
+          "https://revestimientosypisos.cl/wp-content/uploads/2024/09/revestimiento-exterior-texturizado-tipo-granito-color-cafe-reg001-05.jpg"
+        ],
+        "url": "https://revestimientosypisos.cl/siding-tipo-granito/siding-texturizado-tipo-granito-color-cafe-reg001-caja-de-8-un",
+        "categoria_slug": "siding-tipo-granito"
+      }
+    ]
+  },
+  "porcelanatos": {
+    "nombre": "Piso Porcelanato",
+    "productos": [
+      {
+        "nombre": "Porcelanato Tipo Concrete Color Gris Ceniza 60x60 (caja 4 un.)",
+        "precio_unitario": 12948,
+        "precio_m2": 11890.0,
+        "sku": "PIP002-GRISCENIZA",
+        "descripcion": "¿Qué es el Porcelanato?Arcilla, arena de sílice y feldespatoEl porcelanato es un mezcla de arcilla, arena de sílice y feldespato, fusionados a temperaturas superiores a los 1300º Celsius.",
+        "imagenes": [
+          "https://revestimientosypisos.cl/wp-content/themes/etips/assets/images/sharer/sharer_1200x630.png",
+          "https://revestimientosypisos.cl/wp-content/uploads/2025/07/porcelanato-tipo-concrete-color-gris-ceniza-60x60-caja-4-unidades-pip002-00.webp",
+          "https://revestimientosypisos.cl/wp-content/uploads/2025/07/porcelanato-tipo-concrete-color-gris-ceniza-60x60-caja-4-unidades-pip002-01.webp",
+          "https://revestimientosypisos.cl/wp-content/uploads/2025/07/porcelanato-tipo-concrete-color-gris-ceniza-60x60-caja-4-unidades-pip002-02.webp"
+        ],
+        "url": "https://revestimientosypisos.cl/porcelanatos/porcelanato-tipo-concrete-color-gris-ceniza-60x60-caja-4-un-pip002",
+        "categoria_slug": "porcelanatos"
+      },
+      {
+        "nombre": "Porcelanato Tipo Concrete Color Crema 60x60 (caja 4 un.)",
+        "precio_unitario": 12948,
+        "precio_m2": 11890.0,
+        "sku": "PIP002-CREMA",
+        "descripcion": "¿Qué es el Porcelanato?Arcilla, arena de sílice y feldespatoEl porcelanato es un mezcla de arcilla, arena de sílice y feldespato, fusionados a temperaturas superiores a los 1300º Celsius.",
+        "imagenes": [
+          "https://revestimientosypisos.cl/wp-content/themes/etips/assets/images/sharer/sharer_1200x630.png",
+          "https://revestimientosypisos.cl/wp-content/uploads/2025/07/porcelanato-tipo-concrete-color-crema-60x60-caja-4-unidades-pip002-00.webp",
+          "https://revestimientosypisos.cl/wp-content/uploads/2025/07/porcelanato-tipo-concrete-color-crema-60x60-caja-4-unidades-pip002-01.webp",
+          "https://revestimientosypisos.cl/wp-content/uploads/2025/07/porcelanato-tipo-concrete-color-crema-60x60-caja-4-unidades-pip002-02.webp"
+        ],
+        "url": "https://revestimientosypisos.cl/porcelanatos/porcelanato-tipo-concrete-color-crema-60x60-caja-4-un-pip002",
+        "categoria_slug": "porcelanatos"
+      },
+      {
+        "nombre": "Piso Porcelanato 60x60 Brillante Gris Ártico (caja 4 un.)",
+        "precio_unitario": 18961,
+        "precio_m2": 18440.0,
+        "sku": "PIP003-GRISARTICO",
+        "descripcion": "¿Qué es el Porcelanato?Arcilla, arena de sílice y feldespatoEl porcelanato es un mezcla de arcilla, arena de sílice y feldespato, fusionados a temperaturas superiores a los 1300º Celsius.",
+        "imagenes": [
+          "https://revestimientosypisos.cl/wp-content/themes/etips/assets/images/sharer/sharer_1200x630.png",
+          "https://revestimientosypisos.cl/wp-content/uploads/2025/01/piso-porcelanto-tipo-brillante-60x60-gris-artico-pip003-01.webp",
+          "https://revestimientosypisos.cl/wp-content/uploads/2024/09/piso-porcelanto-tipo-brillante-60x60-gris-artico-pip003-02.jpg",
+          "https://revestimientosypisos.cl/wp-content/uploads/2024/09/piso-porcelanto-tipo-brillante-60x60-gris-artico-pip003-03.jpg"
+        ],
+        "url": "https://revestimientosypisos.cl/porcelanatos/piso-de-porcelanato-gris-artico-caja-de-4-unidades",
+        "categoria_slug": "porcelanatos"
+      },
+      {
+        "nombre": "Piso Porcelanato 60x60 Concrete Grafito (caja 4 un.)",
+        "precio_unitario": 12948,
+        "precio_m2": 11890.0,
+        "sku": "PIP102-GRAFITO",
+        "descripcion": "¿Qué es el Porcelanato?Arcilla, arena de sílice y feldespatoEl porcelanato es un mezcla de arcilla, arena de sílice y feldespato, fusionados a temperaturas superiores a los 1300º Celsius.",
+        "imagenes": [
+          "https://revestimientosypisos.cl/wp-content/themes/etips/assets/images/sharer/sharer_1200x630.png",
+          "https://revestimientosypisos.cl/wp-content/uploads/2024/12/piso-porcelanato-concrete-color-grafito-caja-4-unidades-pip102-00.webp",
+          "https://revestimientosypisos.cl/wp-content/uploads/2024/12/piso-porcelanato-concrete-color-grafito-caja-4-unidades-pip102-01.webp",
+          "https://revestimientosypisos.cl/wp-content/uploads/2024/12/piso-porcelanato-concrete-color-grafito-caja-4-unidades-pip102-02.webp"
+        ],
+        "url": "https://revestimientosypisos.cl/porcelanatos/piso-porcelanato-concrete-color-grafito-caja-4-un-pip102",
+        "categoria_slug": "porcelanatos"
+      },
+      {
+        "nombre": "Piso Porcelanato 60x60 Concrete Carbón (caja 4 un.)",
+        "precio_unitario": 12948,
+        "precio_m2": 11890.0,
+        "sku": "PIP102-CARBON",
+        "descripcion": "¿Qué es el Porcelanato?Arcilla, arena de sílice y feldespatoEl porcelanato es un mezcla de arcilla, arena de sílice y feldespato, fusionados a temperaturas superiores a los 1300º Celsius.",
+        "imagenes": [
+          "https://revestimientosypisos.cl/wp-content/themes/etips/assets/images/sharer/sharer_1200x630.png",
+          "https://revestimientosypisos.cl/wp-content/uploads/2025/01/piso-porcelanato-concrete-color-carbon-caja-4-unidades-pip102-00.webp",
+          "https://revestimientosypisos.cl/wp-content/uploads/2024/12/piso-porcelanato-concrete-color-carbon-caja-4-unidades-pip102-01.jpg",
+          "https://revestimientosypisos.cl/wp-content/uploads/2024/12/piso-porcelanato-concrete-color-carbon-caja-4-unidades-pip102-03.jpg"
+        ],
+        "url": "https://revestimientosypisos.cl/porcelanatos/piso-porcelanato-concrete-color-carbon-caja-4-un-pip102",
+        "categoria_slug": "porcelanatos"
+      },
+      {
+        "nombre": "Piso Porcelanato 60x60 Concrete Piedra (caja 4 un.)",
+        "precio_unitario": 12948,
+        "precio_m2": 11890.0,
+        "sku": "PIP102-PIEDRA",
+        "descripcion": "¿Qué es el Porcelanato?Arcilla, arena de sílice y feldespatoEl porcelanato es un mezcla de arcilla, arena de sílice y feldespato, fusionados a temperaturas superiores a los 1300º Celsius.",
+        "imagenes": [
+          "https://revestimientosypisos.cl/wp-content/themes/etips/assets/images/sharer/sharer_1200x630.png",
+          "https://revestimientosypisos.cl/wp-content/uploads/2024/12/piso-porcelanato-concrete-color-piedra-caja-4-unidades-pip102-00.webp",
+          "https://revestimientosypisos.cl/wp-content/uploads/2024/12/piso-porcelanato-concrete-color-piedra-caja-4-unidades-pip102-01.webp",
+          "https://revestimientosypisos.cl/wp-content/uploads/2024/12/piso-porcelanato-concrete-color-piedra-caja-4-unidades-pip102-02.webp"
+        ],
+        "url": "https://revestimientosypisos.cl/porcelanatos/piso-porcelanato-concrete-color-piedra-caja-4-un-pip102",
+        "categoria_slug": "porcelanatos"
+      },
+      {
+        "nombre": "Piso Porcelanato Madera 90x14,6 Gris Piedra (caja 10 un.)",
+        "precio_unitario": 20094,
+        "precio_m2": 21410.0,
+        "sku": "PIP001-PIEDRA",
+        "descripcion": "¿Qué es el Porcelanato?Arcilla, arena de sílice y feldespatoEl porcelanato es un mezcla de arcilla, arena de sílice y feldespato, fusionados a temperaturas superiores a los 1300º Celsius.",
+        "imagenes": [
+          "https://revestimientosypisos.cl/wp-content/themes/etips/assets/images/sharer/sharer_1200x630.png",
+          "https://revestimientosypisos.cl/wp-content/uploads/2025/06/piso-porcelanato-madera-90x14-gris-piedra-caja-12-unidades-pip001-00.webp",
+          "https://revestimientosypisos.cl/wp-content/uploads/2025/06/piso-porcelanato-madera-90x14-gris-piedra-caja-12-unidades-pip001-01.webp",
+          "https://revestimientosypisos.cl/wp-content/uploads/2025/06/piso-porcelanato-madera-90x14-gris-piedra-caja-12-unidades-pip001-02.webp",
+          "https://revestimientosypisos.cl/wp-content/uploads/2025/06/piso-porcelanato-madera-90x14-gris-piedra-caja-12-unidades-pip001-03.webp"
+        ],
+        "url": "https://revestimientosypisos.cl/porcelanatos/piso-de-porcelanato-gris-piedra-caja-de-12-unidades",
+        "categoria_slug": "porcelanatos"
+      },
+      {
+        "nombre": "Piso Porcelanato 120x20 Forest Madera (caja 6 un.)",
+        "precio_unitario": 15540,
+        "precio_m2": 14270.0,
+        "sku": "PIP101-MADERA",
+        "descripcion": "¿Qué es el Porcelanato?Arcilla, arena de sílice y feldespatoEl porcelanato es un mezcla de arcilla, arena de sílice y feldespato, fusionados a temperaturas superiores a los 1300º Celsius.",
+        "imagenes": [
+          "https://revestimientosypisos.cl/wp-content/themes/etips/assets/images/sharer/sharer_1200x630.png",
+          "https://revestimientosypisos.cl/wp-content/uploads/2024/12/piso-porcelanato-forest-color-madera-caja-6-unidades-pip101-00.webp",
+          "https://revestimientosypisos.cl/wp-content/uploads/2024/12/piso-porcelanato-forest-color-madera-caja-6-unidades-pip101-01.webp",
+          "https://revestimientosypisos.cl/wp-content/uploads/2024/12/piso-porcelanato-forest-color-madera-caja-6-unidades-pip101-02.webp"
+        ],
+        "url": "https://revestimientosypisos.cl/porcelanatos/piso-porcelanato-forest-color-madera-caja-6-un-pip101",
+        "categoria_slug": "porcelanatos"
+      },
+      {
+        "nombre": "Piso Porcelanato 120x20 Forest Nogal (caja 6 un.)",
+        "precio_unitario": 15540,
+        "precio_m2": 14270.0,
+        "sku": "PIP101-NOGAL",
+        "descripcion": "¿Qué es el Porcelanato?Arcilla, arena de sílice y feldespatoEl porcelanato es un mezcla de arcilla, arena de sílice y feldespato, fusionados a temperaturas superiores a los 1300º Celsius.",
+        "imagenes": [
+          "https://revestimientosypisos.cl/wp-content/themes/etips/assets/images/sharer/sharer_1200x630.png",
+          "https://revestimientosypisos.cl/wp-content/uploads/2024/12/piso-porcelanato-forest-color-nogal-caja-6-unidades-pip101-00.webp",
+          "https://revestimientosypisos.cl/wp-content/uploads/2024/12/piso-porcelanato-forest-color-nogal-caja-6-unidades-pip101-01.webp",
+          "https://revestimientosypisos.cl/wp-content/uploads/2024/12/piso-porcelanato-forest-color-nogal-caja-6-unidades-pip101-02.webp"
+        ],
+        "url": "https://revestimientosypisos.cl/porcelanatos/piso-porcelanato-forest-color-nogal-caja-6-un-pip101",
+        "categoria_slug": "porcelanatos"
+      },
+      {
+        "nombre": "Piso Porcelanato 120x20 Forest Roble (caja 6 un.)",
+        "precio_unitario": 15540,
+        "precio_m2": 14270.0,
+        "sku": "PIP101-ROBLE",
+        "descripcion": "¿Qué es el Porcelanato?Arcilla, arena de sílice y feldespatoEl porcelanato es un mezcla de arcilla, arena de sílice y feldespato, fusionados a temperaturas superiores a los 1300º Celsius.",
+        "imagenes": [
+          "https://revestimientosypisos.cl/wp-content/themes/etips/assets/images/sharer/sharer_1200x630.png",
+          "https://revestimientosypisos.cl/wp-content/uploads/2024/12/piso-porcelanato-forest-color-roble-caja-6-unidades-pip101-00.webp",
+          "https://revestimientosypisos.cl/wp-content/uploads/2024/12/piso-porcelanato-forest-color-roble-caja-6-unidades-pip101-01.webp",
+          "https://revestimientosypisos.cl/wp-content/uploads/2024/12/piso-porcelanato-forest-color-roble-caja-6-unidades-pip101-02.webp"
+        ],
+        "url": "https://revestimientosypisos.cl/porcelanatos/piso-porcelanato-forest-color-roble-caja-6-un-pip101",
+        "categoria_slug": "porcelanatos"
+      },
+      {
+        "nombre": "Piso Porcelanato Forest Color Antique (caja 6 un.)",
+        "precio_unitario": 15540,
+        "precio_m2": 14270.0,
+        "sku": "PIP101-CAFEANTIQUE",
+        "descripcion": "¿Qué es el Porcelanato?Arcilla, arena de sílice y feldespatoEl porcelanato es un mezcla de arcilla, arena de sílice y feldespato, fusionados a temperaturas superiores a los 1300º Celsius.",
+        "imagenes": [
+          "https://revestimientosypisos.cl/wp-content/themes/etips/assets/images/sharer/sharer_1200x630.png",
+          "https://revestimientosypisos.cl/wp-content/uploads/2025/10/piso-porcelanato-forest-color-antique-caja-6-unidades-pip101-00.webp",
+          "https://revestimientosypisos.cl/wp-content/uploads/2025/10/piso-porcelanato-forest-color-antique-caja-6-unidades-pip101-01.webp",
+          "https://revestimientosypisos.cl/wp-content/uploads/2025/10/piso-porcelanato-forest-color-antique-caja-6-unidades-pip101-02.webp",
+          "https://revestimientosypisos.cl/wp-content/uploads/2025/10/piso-porcelanato-forest-color-antique-caja-6-unidades-pip101-03.webp"
+        ],
+        "url": "https://revestimientosypisos.cl/porcelanatos/piso-porcelanato-forest-color-antique-caja-6-un-pip101",
+        "categoria_slug": "porcelanatos"
+      },
+      {
+        "nombre": "Piso Porcelanato 60x60 Mate Gris Carbón (Caja 4 un.)",
+        "descripcion": "¿Qué es el Porcelanato?Arcilla, arena de sílice y feldespatoEl porcelanato es un mezcla de arcilla, arena de sílice y feldespato, fusionados a temperaturas superiores a los 1300º Celsius.",
+        "imagenes": [
+          "https://revestimientosypisos.cl/wp-content/themes/etips/assets/images/sharer/sharer_1200x630.png",
+          "https://revestimientosypisos.cl/wp-content/uploads/2025/06/piso-porcelanato-60x60-mate-gris-carbon-caja-4-unidades-pip002-00.webp",
+          "https://revestimientosypisos.cl/wp-content/uploads/2025/06/piso-porcelanato-60x60-mate-gris-carbon-caja-4-unidades-pip002-01.webp",
+          "https://revestimientosypisos.cl/wp-content/uploads/2025/06/piso-porcelanato-60x60-mate-gris-carbon-caja-4-unidades-pip002-02.webp"
+        ],
+        "url": "https://revestimientosypisos.cl/porcelanatos/piso-de-porcelanato-gris-carbon-caja-de-4-unidades",
+        "categoria_slug": "porcelanatos"
+      },
+      {
+        "nombre": "Piso Porcelanato 60x60 Brillante Gris Piedra (caja 4 un.)",
+        "descripcion": "¿Qué es el Porcelanato?Arcilla, arena de sílice y feldespatoEl porcelanato es un mezcla de arcilla, arena de sílice y feldespato, fusionados a temperaturas superiores a los 1300º Celsius.",
+        "imagenes": [
+          "https://revestimientosypisos.cl/wp-content/themes/etips/assets/images/sharer/sharer_1200x630.png",
+          "https://revestimientosypisos.cl/wp-content/uploads/2025/01/piso-porcelanto-60x60-tipo-brillante-gris-piedra-pip003-01.webp",
+          "https://revestimientosypisos.cl/wp-content/uploads/2024/09/piso-porcelanto-60x60-tipo-brillante-gris-piedra-pip003-02.jpg",
+          "https://revestimientosypisos.cl/wp-content/uploads/2024/09/piso-porcelanto-60x60-tipo-brillante-gris-piedra-pip003-03.jpg"
+        ],
+        "url": "https://revestimientosypisos.cl/porcelanatos/piso-de-porcelanato-gris-piedra-caja-de-4-unidades",
+        "categoria_slug": "porcelanatos"
+      }
+    ]
+  },
+  "revestimiento-exterior-wpc": {
+    "nombre": "Siding WPC",
+    "productos": [
+      {
+        "nombre": "Revestimiento De Pared WPC Extruido Color Negro REW202",
+        "precio_unitario": 13491,
+        "sku": "REW202-NEGRO",
+        "descripcion": "El Revestimiento Exterior de WPC o también llamado Siding Exterior de WPC, para recubrir paredes o fachadas, es un material que está hecho de una mezcla de madera natural (60%), normalmente fibras de madera reciclada y productos de madera a los que se agregan materiales reciclados, como los plásticos reciclados (35%).",
+        "imagenes": [
+          "https://revestimientosypisos.cl/wp-content/themes/etips/assets/images/sharer/sharer_1200x630.png",
+          "https://revestimientosypisos.cl/wp-content/uploads/2026/01/revestimiento-de-wpc-extruido-para-pared-color-negro-rew202-00.webp",
+          "https://revestimientosypisos.cl/wp-content/uploads/2026/01/revestimiento-de-wpc-extruido-para-pared-color-negro-rew202-01.webp",
+          "https://revestimientosypisos.cl/wp-content/uploads/2026/01/revestimiento-de-wpc-extruido-para-pared-color-negro-rew202-02.webp"
+        ],
+        "url": "https://revestimientosypisos.cl/revestimiento-exterior-wpc/revestimiento-de-pared-wpc-extruido-color-negro-rew202",
+        "categoria_slug": "revestimiento-exterior-wpc"
+      },
+      {
+        "nombre": "Revestimiento De Pared WPC Extruido Color Café Chocolate REW202",
+        "precio_unitario": 13491,
+        "sku": "REW202-CAFECHOCOLATE",
+        "descripcion": "El Revestimiento Exterior de WPC o también llamado Siding Exterior de WPC, para recubrir paredes o fachadas, es un material que está hecho de una mezcla de madera natural (60%), normalmente fibras de madera reciclada y productos de madera a los que se agregan materiales reciclados, como los plásticos reciclados (35%).",
+        "imagenes": [
+          "https://revestimientosypisos.cl/wp-content/themes/etips/assets/images/sharer/sharer_1200x630.png",
+          "https://revestimientosypisos.cl/wp-content/uploads/2026/01/revestimiento-de-wpc-extruido-para-pared-color-cafe-chocolate-rew202-00.webp",
+          "https://revestimientosypisos.cl/wp-content/uploads/2026/01/revestimiento-de-wpc-extruido-para-pared-color-cafe-chocolate-rew202-01.webp",
+          "https://revestimientosypisos.cl/wp-content/uploads/2026/01/revestimiento-de-wpc-extruido-para-pared-color-cafe-chocolate-rew202-02.webp"
+        ],
+        "url": "https://revestimientosypisos.cl/revestimiento-exterior-wpc/revestimiento-de-pared-wpc-extruido-color-cafe-chocolate-rew202",
+        "categoria_slug": "revestimiento-exterior-wpc"
+      },
+      {
+        "nombre": "Revestimiento De Pared WPC Extruido Color Café Chocolate REW201",
+        "precio_unitario": 7191,
+        "sku": "REW201-CAFECHOCOLATE",
+        "descripcion": "El Revestimiento Exterior de WPC o también llamado Siding Exterior de WPC, para recubrir paredes o fachadas, es un material que está hecho de una mezcla de madera natural (60%), normalmente fibras de madera reciclada y productos de madera a los que se agregan materiales reciclados, como los plásticos reciclados (35%).",
+        "imagenes": [
+          "https://revestimientosypisos.cl/wp-content/themes/etips/assets/images/sharer/sharer_1200x630.png",
+          "https://revestimientosypisos.cl/wp-content/uploads/2026/01/revestimiento-de-wpc-extruido-para-pared-color-cafe-chocolate-rew201-00.webp",
+          "https://revestimientosypisos.cl/wp-content/uploads/2026/01/revestimiento-de-wpc-extruido-para-pared-color-cafe-chocolate-rew201-01.webp",
+          "https://revestimientosypisos.cl/wp-content/uploads/2026/01/revestimiento-de-wpc-extruido-para-pared-color-cafe-chocolate-rew201-02.webp"
+        ],
+        "url": "https://revestimientosypisos.cl/revestimiento-exterior-wpc/revestimiento-de-pared-de-wpc-extruido-color-cafe-chocolate-rew201",
+        "categoria_slug": "revestimiento-exterior-wpc"
+      },
+      {
+        "nombre": "Revestimiento De Pared WPC Extruido Color Negro REW201",
+        "precio_unitario": 7191,
+        "sku": "REW201-NEGRO",
+        "descripcion": "El Revestimiento Exterior de WPC o también llamado Siding Exterior de WPC, para recubrir paredes o fachadas, es un material que está hecho de una mezcla de madera natural (60%), normalmente fibras de madera reciclada y productos de madera a los que se agregan materiales reciclados, como los plásticos reciclados (35%).",
+        "imagenes": [
+          "https://revestimientosypisos.cl/wp-content/themes/etips/assets/images/sharer/sharer_1200x630.png",
+          "https://revestimientosypisos.cl/wp-content/uploads/2026/01/revestimiento-de-wpc-extruido-para-pared-color-negro-rew201-00.webp",
+          "https://revestimientosypisos.cl/wp-content/uploads/2026/01/revestimiento-de-wpc-extruido-para-pared-color-negro-rew201-01.webp",
+          "https://revestimientosypisos.cl/wp-content/uploads/2026/01/revestimiento-de-wpc-extruido-para-pared-color-negro-rew201-02.webp"
+        ],
+        "url": "https://revestimientosypisos.cl/revestimiento-exterior-wpc/revestimiento-de-pared-wpc-extruido-color-negro-rew201",
+        "categoria_slug": "revestimiento-exterior-wpc"
+      },
+      {
+        "nombre": "Revestimiento exterior coextruido color grafito negro",
+        "precio_unitario": 15300,
+        "sku": "REW103-GRAFITONEGRO",
+        "descripcion": "El Revestimiento Exterior de WPC o también llamado Siding Exterior de WPC, para recubrir paredes o fachadas, es un material que está hecho de una mezcla de madera natural (60%), normalmente fibras de madera reciclada y productos de madera a los que se agregan materiales reciclados, como los plásticos reciclados (35%) y aditivos (5%).",
+        "imagenes": [
+          "https://revestimientosypisos.cl/wp-content/themes/etips/assets/images/sharer/sharer_1200x630.png",
+          "https://revestimientosypisos.cl/wp-content/uploads/2025/07/revestimiento-exterior-coextruido-color-grafito-negro-rew103-00.webp",
+          "https://revestimientosypisos.cl/wp-content/uploads/2025/07/revestimiento-exterior-coextruido-color-grafito-negro-rew103-01.webp",
+          "https://revestimientosypisos.cl/wp-content/uploads/2025/07/revestimiento-exterior-coextruido-color-grafito-negro-rew103-02.webp"
+        ],
+        "url": "https://revestimientosypisos.cl/revestimiento-exterior-wpc/revestimiento-exterior-coextruido-color-grafito-negro-rew103",
+        "categoria_slug": "revestimiento-exterior-wpc"
+      },
+      {
+        "nombre": "Revestimiento exterior coextruido color madera negro",
+        "precio_unitario": 15300,
+        "sku": "REW103-MADERANEGRO",
+        "descripcion": "El Revestimiento Exterior de WPC o también llamado Siding Exterior de WPC, para recubrir paredes o fachadas, es un material que está hecho de una mezcla de madera natural (60%), normalmente fibras de madera reciclada y productos de madera a los que se agregan materiales reciclados, como los plásticos reciclados (35%) y aditivos (5%).",
+        "imagenes": [
+          "https://revestimientosypisos.cl/wp-content/themes/etips/assets/images/sharer/sharer_1200x630.png",
+          "https://revestimientosypisos.cl/wp-content/uploads/2025/07/revestimiento-exterior-coextruido-color-madera-negro-rew103-00.webp",
+          "https://revestimientosypisos.cl/wp-content/uploads/2025/07/revestimiento-exterior-coextruido-color-madera-negro-rew103-01.webp",
+          "https://revestimientosypisos.cl/wp-content/uploads/2025/07/revestimiento-exterior-coextruido-color-madera-negro-rew103-02.webp"
+        ],
+        "url": "https://revestimientosypisos.cl/revestimiento-exterior-wpc/revestimiento-exterior-coextruido-color-madera-negro",
+        "categoria_slug": "revestimiento-exterior-wpc"
+      },
+      {
+        "nombre": "Revestimiento exterior coextruido color antique negro",
+        "precio_unitario": 15300,
+        "sku": "REW103-ANTIQUENEGRO",
+        "descripcion": "El Revestimiento Exterior de WPC o también llamado Siding Exterior de WPC, para recubrir paredes o fachadas, es un material que está hecho de una mezcla de madera natural (60%), normalmente fibras de madera reciclada y productos de madera a los que se agregan materiales reciclados, como los plásticos reciclados (35%) y aditivos (5%).",
+        "imagenes": [
+          "https://revestimientosypisos.cl/wp-content/themes/etips/assets/images/sharer/sharer_1200x630.png",
+          "https://revestimientosypisos.cl/wp-content/uploads/2025/07/revestimiento-exterior-coextruido-color-antique-negro-rew103-00.webp",
+          "https://revestimientosypisos.cl/wp-content/uploads/2025/07/revestimiento-exterior-coextruido-color-antique-negro-rew103-01.webp",
+          "https://revestimientosypisos.cl/wp-content/uploads/2025/07/revestimiento-exterior-coextruido-color-antique-negro-rew103-02.webp"
+        ],
+        "url": "https://revestimientosypisos.cl/revestimiento-exterior-wpc/revestimiento-exterior-coextruido-color-antique-negro-rew103",
+        "categoria_slug": "revestimiento-exterior-wpc"
+      },
+      {
+        "nombre": "Revestimiento exterior coextruido color chocolate negro",
+        "precio_unitario": 15300,
+        "sku": "REW103-CHOCOLATENEGRO",
+        "descripcion": "El Revestimiento Exterior de WPC o también llamado Siding Exterior de WPC, para recubrir paredes o fachadas, es un material que está hecho de una mezcla de madera natural (60%), normalmente fibras de madera reciclada y productos de madera a los que se agregan materiales reciclados, como los plásticos reciclados (35%) y aditivos (5%).",
+        "imagenes": [
+          "https://revestimientosypisos.cl/wp-content/themes/etips/assets/images/sharer/sharer_1200x630.png",
+          "https://revestimientosypisos.cl/wp-content/uploads/2025/07/revestimiento-exterior-coextruido-color-chocolate-negro-rew103-00.webp",
+          "https://revestimientosypisos.cl/wp-content/uploads/2025/07/revestimiento-exterior-coextruido-color-chocolate-negro-rew103-01.webp",
+          "https://revestimientosypisos.cl/wp-content/uploads/2025/07/revestimiento-exterior-coextruido-color-chocolate-negro-rew103-02.webp"
+        ],
+        "url": "https://revestimientosypisos.cl/revestimiento-exterior-wpc/revestimiento-exterior-coextruido-color-cafe-chocolate-rew103",
+        "categoria_slug": "revestimiento-exterior-wpc"
+      },
+      {
+        "nombre": "Revestimiento exterior coextruido color piedra negro",
+        "descripcion": "El Revestimiento Exterior de WPC o también llamado Siding Exterior de WPC, para recubrir paredes o fachadas, es un material que está hecho de una mezcla de madera natural (60%), normalmente fibras de madera reciclada y productos de madera a los que se agregan materiales reciclados, como los plásticos reciclados (35%) y aditivos (5%).",
+        "imagenes": [
+          "https://revestimientosypisos.cl/wp-content/themes/etips/assets/images/sharer/sharer_1200x630.png",
+          "https://revestimientosypisos.cl/wp-content/uploads/2025/07/revestimiento-exterior-coextruido-color-piedra-negro-rew103-00.webp",
+          "https://revestimientosypisos.cl/wp-content/uploads/2025/07/revestimiento-exterior-coextruido-color-piedra-negro-rew103-01.webp",
+          "https://revestimientosypisos.cl/wp-content/uploads/2025/07/revestimiento-exterior-coextruido-color-piedra-negro-rew103-02.webp"
+        ],
+        "url": "https://revestimientosypisos.cl/revestimiento-exterior-wpc/revestimiento-exterior-coextruido-color-piedra-negro-rew103",
+        "categoria_slug": "revestimiento-exterior-wpc"
+      }
+    ]
+  },
+  "revestimientos-de-interior": {
+    "nombre": "Siding Interior",
+    "productos": [
+      {
+        "nombre": "Revestimiento de Interior Color Natural RIW301",
+        "precio_unitario": 6792,
+        "sku": "RIW301-NATURAL",
+        "descripcion": "Revestimiento o recubrimiento para muros interiores en color natural.",
+        "imagenes": [
+          "https://revestimientosypisos.cl/wp-content/themes/etips/assets/images/sharer/sharer_1200x630.png",
+          "https://revestimientosypisos.cl/wp-content/uploads/2026/06/revestimiento-de-interior-color-natural-riw301-00.webp"
+        ],
+        "url": "https://revestimientosypisos.cl/revestimientos-de-interior/revestimiento-de-interior-color-natural-riw301",
+        "categoria_slug": "revestimientos-de-interior"
+      },
+      {
+        "nombre": "Revestimiento de Interior Color Madera RIW301",
+        "precio_unitario": 6792,
+        "sku": "RIW301-MADERA",
+        "descripcion": "Revestimiento o recubrimiento para muros interiores en color madera.",
+        "imagenes": [
+          "https://revestimientosypisos.cl/wp-content/themes/etips/assets/images/sharer/sharer_1200x630.png",
+          "https://revestimientosypisos.cl/wp-content/uploads/2026/06/revestimiento-de-interior-color-madera-riw301-00.webp"
+        ],
+        "url": "https://revestimientosypisos.cl/revestimientos-de-interior/revestimiento-de-interior-color-madera-riw301",
+        "categoria_slug": "revestimientos-de-interior"
+      },
+      {
+        "nombre": "Revestimiento de Interior Color Chocolate",
+        "precio_unitario": 4792,
+        "sku": "RIW201-CHOCOLATE",
+        "descripcion": "Revestimiento o recubrimiento para muros interiores en color chocolate.",
+        "imagenes": [
+          "https://revestimientosypisos.cl/wp-content/themes/etips/assets/images/sharer/sharer_1200x630.png",
+          "https://revestimientosypisos.cl/wp-content/uploads/2025/09/revestimiento-de-interior-color-chocolate-riw201-00.webp",
+          "https://revestimientosypisos.cl/wp-content/uploads/2025/09/revestimiento-de-interior-color-chocolate-riw201-01.webp",
+          "https://revestimientosypisos.cl/wp-content/uploads/2025/09/revestimiento-de-interior-color-chocolate-riw201-02.webp"
+        ],
+        "url": "https://revestimientosypisos.cl/revestimientos-de-interior/revestimiento-de-interior-color-chocolate-riw201",
+        "categoria_slug": "revestimientos-de-interior"
+      },
+      {
+        "nombre": "Revestimiento de Interior Color Madera RIW201",
+        "precio_unitario": 4792,
+        "sku": "RIW201-MADERA",
+        "descripcion": "Revestimiento o recubrimiento para muros interiores en color madera.",
+        "imagenes": [
+          "https://revestimientosypisos.cl/wp-content/themes/etips/assets/images/sharer/sharer_1200x630.png",
+          "https://revestimientosypisos.cl/wp-content/uploads/2025/09/revestimiento-de-interior-de-wpc-color-madera-riw201-00.webp",
+          "https://revestimientosypisos.cl/wp-content/uploads/2025/09/revestimiento-de-interior-de-wpc-color-madera-riw201-01.webp",
+          "https://revestimientosypisos.cl/wp-content/uploads/2025/09/revestimiento-de-interior-de-wpc-color-madera-riw201-02.webp"
+        ],
+        "url": "https://revestimientosypisos.cl/revestimientos-de-interior/revestimiento-de-interior-color-madera-riw201",
+        "categoria_slug": "revestimientos-de-interior"
+      },
+      {
+        "nombre": "Revestimiento de Interior Color Crema",
+        "precio_unitario": 4792,
+        "sku": "RIW201-CREMA",
+        "descripcion": "Revestimiento o recubrimiento para muros interiores en color crema.",
+        "imagenes": [
+          "https://revestimientosypisos.cl/wp-content/themes/etips/assets/images/sharer/sharer_1200x630.png",
+          "https://revestimientosypisos.cl/wp-content/uploads/2025/08/revestimiento-de-interior-color-crema-riw201-00.webp",
+          "https://revestimientosypisos.cl/wp-content/uploads/2025/08/revestimiento-de-interior-color-crema-riw201-01.webp",
+          "https://revestimientosypisos.cl/wp-content/uploads/2025/08/revestimiento-de-interior-color-crema-riw201-02.webp"
+        ],
+        "url": "https://revestimientosypisos.cl/revestimientos-de-interior/revestimiento-de-interior-color-crema-riw201",
+        "categoria_slug": "revestimientos-de-interior"
+      },
+      {
+        "nombre": "Revestimiento de Interior Color Blanco",
+        "precio_unitario": 6792,
+        "sku": "RIW301-BLANCO",
+        "descripcion": "Revestimiento o recubrimiento para muros interiores en color crema.",
+        "imagenes": [
+          "https://revestimientosypisos.cl/wp-content/themes/etips/assets/images/sharer/sharer_1200x630.png",
+          "https://revestimientosypisos.cl/wp-content/uploads/2025/09/revestimiento-de-interior-color-blanco-riw301-00.webp",
+          "https://revestimientosypisos.cl/wp-content/uploads/2025/09/revestimiento-de-interior-color-blanco-riw301-01.webp",
+          "https://revestimientosypisos.cl/wp-content/uploads/2025/09/revestimiento-de-interior-color-blanco-riw301-02.webp"
+        ],
+        "url": "https://revestimientosypisos.cl/revestimientos-de-interior/revestimiento-de-interior-wall-panel-color-blanco-riw301",
+        "categoria_slug": "revestimientos-de-interior"
+      },
+      {
+        "nombre": "Revestimiento de Interior Color Gris Plata",
+        "precio_unitario": 6792,
+        "sku": "RIW301-GRISPLATA",
+        "descripcion": "Revestimiento o recubrimiento para muros interiores en color gris plata.",
+        "imagenes": [
+          "https://revestimientosypisos.cl/wp-content/themes/etips/assets/images/sharer/sharer_1200x630.png",
+          "https://revestimientosypisos.cl/wp-content/uploads/2025/08/revestimiento-de-interior-color-gris-plata-riw301-00.webp",
+          "https://revestimientosypisos.cl/wp-content/uploads/2025/08/revestimiento-de-interior-color-gris-plata-riw301-01.webp",
+          "https://revestimientosypisos.cl/wp-content/uploads/2025/08/revestimiento-de-interior-color-gris-plata-riw301-02.webp"
+        ],
+        "url": "https://revestimientosypisos.cl/revestimientos-de-interior/revestimiento-de-interior-color-gris-plata-riw301",
+        "categoria_slug": "revestimientos-de-interior"
+      },
+      {
+        "nombre": "Revestimiento de Interior Color Cedro Negro",
+        "precio_unitario": 4242,
+        "sku": "RIW101-CEDRONEGRO",
+        "descripcion": "Revestimiento o recubrimiento para muros interiores, con un mix de colores cedro y negro.",
+        "imagenes": [
+          "https://revestimientosypisos.cl/wp-content/themes/etips/assets/images/sharer/sharer_1200x630.png",
+          "https://revestimientosypisos.cl/wp-content/uploads/2025/06/revestimiento-de-interior-color-cedro-negro-riw101-00.webp",
+          "https://revestimientosypisos.cl/wp-content/uploads/2025/06/revestimiento-de-interior-color-cedro-negro-riw101-01.webp",
+          "https://revestimientosypisos.cl/wp-content/uploads/2025/06/revestimiento-de-interior-color-cedro-negro-riw101-02.webp"
+        ],
+        "url": "https://revestimientosypisos.cl/revestimientos-de-interior/revestimiento-de-interior-color-cedro-negro-riw101",
+        "categoria_slug": "revestimientos-de-interior"
+      },
+      {
+        "nombre": "Revestimiento de Interior Color Gris Grafito",
+        "precio_unitario": 6792,
+        "sku": "RIW301-GRISGRAFITO",
+        "descripcion": "Revestimiento o recubrimiento para muros interiores en color gris grafito.",
+        "imagenes": [
+          "https://revestimientosypisos.cl/wp-content/themes/etips/assets/images/sharer/sharer_1200x630.png",
+          "https://revestimientosypisos.cl/wp-content/uploads/2025/08/revestimiento-de-interior-color-gris-grafito-riw301-00.webp",
+          "https://revestimientosypisos.cl/wp-content/uploads/2025/08/revestimiento-de-interior-color-gris-grafito-riw301-01.webp",
+          "https://revestimientosypisos.cl/wp-content/uploads/2025/08/revestimiento-de-interior-color-gris-grafito-riw301-02.webp"
+        ],
+        "url": "https://revestimientosypisos.cl/revestimientos-de-interior/revestimiento-de-interior-color-gris-grafito-riw301",
+        "categoria_slug": "revestimientos-de-interior"
+      },
+      {
+        "nombre": "Revestimiento de Interior Color Chocolate Negro",
+        "precio_unitario": 4242,
+        "sku": "RIW101-CHOCOLATENEGRO",
+        "descripcion": "Revestimiento o recubrimiento para muros interiores, con un mix de colores chocolate y negro.",
+        "imagenes": [
+          "https://revestimientosypisos.cl/wp-content/themes/etips/assets/images/sharer/sharer_1200x630.png",
+          "https://revestimientosypisos.cl/wp-content/uploads/2025/06/revestimiento-de-interior-color-chocolate-negro-riw101-00.webp",
+          "https://revestimientosypisos.cl/wp-content/uploads/2025/06/revestimiento-de-interior-color-chocolate-negro-riw101-01.webp",
+          "https://revestimientosypisos.cl/wp-content/uploads/2025/06/revestimiento-de-interior-color-chocolate-negro-riw101-02.webp"
+        ],
+        "url": "https://revestimientosypisos.cl/revestimientos-de-interior/revestimiento-de-interior-color-chocolate-negro-riw101",
+        "categoria_slug": "revestimientos-de-interior"
+      },
+      {
+        "nombre": "Revestimiento de Interior Color Crema Negro",
+        "precio_unitario": 4242,
+        "sku": "RIW101-CREMANEGRO",
+        "descripcion": "Revestimiento o recubrimiento para muros interiores, con un mix de colores crema y negro.",
+        "imagenes": [
+          "https://revestimientosypisos.cl/wp-content/themes/etips/assets/images/sharer/sharer_1200x630.png",
+          "https://revestimientosypisos.cl/wp-content/uploads/2025/06/revestimiento-de-interior-color-crema-negro-riw101-00.webp",
+          "https://revestimientosypisos.cl/wp-content/uploads/2025/06/revestimiento-de-interior-color-crema-negro-riw101-01.webp",
+          "https://revestimientosypisos.cl/wp-content/uploads/2025/06/revestimiento-de-interior-color-crema-negro-riw101-02.webp"
+        ],
+        "url": "https://revestimientosypisos.cl/revestimientos-de-interior/revestimiento-de-interior-color-crema-negro-riw101",
+        "categoria_slug": "revestimientos-de-interior"
+      },
+      {
+        "nombre": "Revestimiento de Interior Color Madera Negro",
+        "precio_unitario": 4242,
+        "sku": "RIW101-MADERANEGRO",
+        "descripcion": "Revestimiento o recubrimiento para muros interiores, con un mix de colores madera y negro.",
+        "imagenes": [
+          "https://revestimientosypisos.cl/wp-content/themes/etips/assets/images/sharer/sharer_1200x630.png",
+          "https://revestimientosypisos.cl/wp-content/uploads/2025/06/revestimiento-de-interior-color-madera-negro-riw101-00.webp",
+          "https://revestimientosypisos.cl/wp-content/uploads/2025/06/revestimiento-de-interior-color-madera-negro-riw101-01.webp",
+          "https://revestimientosypisos.cl/wp-content/uploads/2025/06/revestimiento-de-interior-color-madera-negro-riw101-02.webp"
+        ],
+        "url": "https://revestimientosypisos.cl/revestimientos-de-interior/revestimiento-de-interior-color-madera-negro-riw101",
+        "categoria_slug": "revestimientos-de-interior"
+      },
+      {
+        "nombre": "Revestimiento de Interior Color Negro",
+        "precio_unitario": 5942,
+        "sku": "RIW102-NEGRO",
+        "descripcion": "Revestimiento o recubrimiento para muros interiores en color negro.",
+        "imagenes": [
+          "https://revestimientosypisos.cl/wp-content/themes/etips/assets/images/sharer/sharer_1200x630.png",
+          "https://revestimientosypisos.cl/wp-content/uploads/2025/06/revestimiento-de-interior-color-negro-riw102-00.webp",
+          "https://revestimientosypisos.cl/wp-content/uploads/2025/06/revestimiento-de-interior-color-negro-riw102-01.webp",
+          "https://revestimientosypisos.cl/wp-content/uploads/2025/06/revestimiento-de-interior-color-negro-riw102-02.webp"
+        ],
+        "url": "https://revestimientosypisos.cl/revestimientos-de-interior/revestimiento-de-interior-color-negro-riw102",
+        "categoria_slug": "revestimientos-de-interior"
+      },
+      {
+        "nombre": "Revestimiento de Interior Color Cedro",
+        "precio_unitario": 5942,
+        "sku": "RIW102-CEDRO",
+        "descripcion": "Revestimiento o recubrimiento para muros interiores en color cedro.",
+        "imagenes": [
+          "https://revestimientosypisos.cl/wp-content/themes/etips/assets/images/sharer/sharer_1200x630.png",
+          "https://revestimientosypisos.cl/wp-content/uploads/2025/06/revestimiento-de-interior-color-cedro-riw102-00.webp",
+          "https://revestimientosypisos.cl/wp-content/uploads/2025/06/revestimiento-de-interior-color-cedro-riw102-01.webp",
+          "https://revestimientosypisos.cl/wp-content/uploads/2025/06/revestimiento-de-interior-color-cedro-riw102-02.webp"
+        ],
+        "url": "https://revestimientosypisos.cl/revestimientos-de-interior/revestimiento-de-interior-color-cedro-riw102",
+        "categoria_slug": "revestimientos-de-interior"
+      },
+      {
+        "nombre": "Revestimiento de Interior Color Cedro",
+        "precio_unitario": 4242,
+        "sku": "RIW103-CEDRO",
+        "descripcion": "Revestimiento o recubrimiento para muros interiores en color cedro.",
+        "imagenes": [
+          "https://revestimientosypisos.cl/wp-content/themes/etips/assets/images/sharer/sharer_1200x630.png",
+          "https://revestimientosypisos.cl/wp-content/uploads/2025/06/revestimiento-de-interior-color-cedro-riw103-00.webp",
+          "https://revestimientosypisos.cl/wp-content/uploads/2025/06/revestimiento-de-interior-color-cedro-riw103-01.webp",
+          "https://revestimientosypisos.cl/wp-content/uploads/2025/06/revestimiento-de-interior-color-cedro-riw103-02.webp"
+        ],
+        "url": "https://revestimientosypisos.cl/revestimientos-de-interior/revestimiento-de-interior-color-cedro-riw103",
+        "categoria_slug": "revestimientos-de-interior"
+      },
+      {
+        "nombre": "Revestimiento de Interior Color Madera",
+        "precio_unitario": 4242,
+        "sku": "RIW103-MADERA",
+        "descripcion": "Revestimiento o recubrimiento para muros interiores en color madera.",
+        "imagenes": [
+          "https://revestimientosypisos.cl/wp-content/themes/etips/assets/images/sharer/sharer_1200x630.png",
+          "https://revestimientosypisos.cl/wp-content/uploads/2025/06/revestimiento-de-interior-color-madera-riw103-00.webp",
+          "https://revestimientosypisos.cl/wp-content/uploads/2025/06/revestimiento-de-interior-color-madera-riw103-01.webp",
+          "https://revestimientosypisos.cl/wp-content/uploads/2025/06/revestimiento-de-interior-color-madera-riw103-02.webp"
+        ],
+        "url": "https://revestimientosypisos.cl/revestimientos-de-interior/revestimiento-de-interior-color-madera-riw103",
+        "categoria_slug": "revestimientos-de-interior"
+      },
+      {
+        "nombre": "Revestimiento de Interior Color Chocolate",
+        "precio_unitario": 4242,
+        "sku": "RIW103-CHOCOLATE",
+        "descripcion": "Revestimiento o recubrimiento para muros interiores en color chocolate.",
+        "imagenes": [
+          "https://revestimientosypisos.cl/wp-content/themes/etips/assets/images/sharer/sharer_1200x630.png",
+          "https://revestimientosypisos.cl/wp-content/uploads/2025/06/revestimiento-de-interior-color-chocolate-riw103-00.webp",
+          "https://revestimientosypisos.cl/wp-content/uploads/2025/06/revestimiento-de-interior-color-chocolate-riw103-01.webp",
+          "https://revestimientosypisos.cl/wp-content/uploads/2025/06/revestimiento-de-interior-color-chocolate-riw103-02.webp"
+        ],
+        "url": "https://revestimientosypisos.cl/revestimientos-de-interior/revestimiento-de-interior-color-chocolate-riw103",
+        "categoria_slug": "revestimientos-de-interior"
+      },
+      {
+        "nombre": "Revestimiento de Interior Color Crema",
+        "precio_unitario": 4242,
+        "sku": "RIW103-CREMA",
+        "descripcion": "Revestimiento o recubrimiento para muros interiores en color crema.",
+        "imagenes": [
+          "https://revestimientosypisos.cl/wp-content/themes/etips/assets/images/sharer/sharer_1200x630.png",
+          "https://revestimientosypisos.cl/wp-content/uploads/2025/06/revestimiento-de-interior-color-crema-riw103-00.webp",
+          "https://revestimientosypisos.cl/wp-content/uploads/2025/06/revestimiento-de-interior-color-crema-riw103-01.webp",
+          "https://revestimientosypisos.cl/wp-content/uploads/2025/06/revestimiento-de-interior-color-crema-riw103-02.webp"
+        ],
+        "url": "https://revestimientosypisos.cl/revestimientos-de-interior/revestimiento-de-interior-color-crema-riw103",
+        "categoria_slug": "revestimientos-de-interior"
+      },
+      {
+        "nombre": "Revestimiento de Interior Color Negro",
+        "precio_unitario": 4242,
+        "sku": "RIW103-NEGRO",
+        "descripcion": "Revestimiento o recubrimiento para muros interiores en color negro.",
+        "imagenes": [
+          "https://revestimientosypisos.cl/wp-content/themes/etips/assets/images/sharer/sharer_1200x630.png",
+          "https://revestimientosypisos.cl/wp-content/uploads/2025/06/revestimiento-de-interior-color-negro-riw103-00.webp",
+          "https://revestimientosypisos.cl/wp-content/uploads/2025/06/revestimiento-de-interior-color-negro-riw103-01.webp",
+          "https://revestimientosypisos.cl/wp-content/uploads/2025/06/revestimiento-de-interior-color-negro-riw103-02.webp"
+        ],
+        "url": "https://revestimientosypisos.cl/revestimientos-de-interior/revestimiento-de-interior-color-negro-riw103",
+        "categoria_slug": "revestimientos-de-interior"
+      }
+    ]
+  },
+  "cortavista": {
+    "nombre": "Tabla WPC Cortavista",
+    "productos": [
+      {
+        "nombre": "Corta Vista Extruido de WPC Color Café Chocolate",
+        "precio_unitario": 5691,
+        "sku": "CVW201-CAFECHOCOLATE",
+        "descripcion": "Los Cortavista, Corta Vista, Treillage o Quiebra Vista de WPC, son estructuras enrejadas muy versátiles y duraderos.",
+        "imagenes": [
+          "https://revestimientosypisos.cl/wp-content/themes/etips/assets/images/sharer/sharer_1200x630.png",
+          "https://revestimientosypisos.cl/wp-content/uploads/2026/01/cortavista-extruido-de-wpc-color-cafe-chocolate-cvw201-00.webp",
+          "https://revestimientosypisos.cl/wp-content/uploads/2026/01/cortavista-extruido-de-wpc-color-cafe-chocolate-cvw201-01.webp",
+          "https://revestimientosypisos.cl/wp-content/uploads/2026/01/cortavista-extruido-de-wpc-color-cafe-chocolate-cvw201-02.webp"
+        ],
+        "url": "https://revestimientosypisos.cl/cortavista/corta-vista-extruido-de-wpc-color-cafe-chocolate-cvw201",
+        "categoria_slug": "cortavista"
+      },
+      {
+        "nombre": "Corta Vista Extruido de WPC Color Negro",
+        "precio_unitario": 5691,
+        "sku": "CVW201-NEGRO",
+        "descripcion": "Los Cortavista, Corta Vista, Treillage o Quiebra Vista de WPC, son estructuras enrejadas muy versátiles y duraderos.",
+        "imagenes": [
+          "https://revestimientosypisos.cl/wp-content/themes/etips/assets/images/sharer/sharer_1200x630.png",
+          "https://revestimientosypisos.cl/wp-content/uploads/2026/01/cortavista-extruido-de-wpc-color-negro-cvw201-00.webp",
+          "https://revestimientosypisos.cl/wp-content/uploads/2026/01/cortavista-extruido-de-wpc-color-negro-cvw201-01.webp",
+          "https://revestimientosypisos.cl/wp-content/uploads/2026/01/cortavista-extruido-de-wpc-color-negro-cvw201-02.webp"
+        ],
+        "url": "https://revestimientosypisos.cl/cortavista/corta-vista-extruido-de-wpc-color-negro-cvw201",
+        "categoria_slug": "cortavista"
+      },
+      {
+        "nombre": "Corta Vista Coextruido WPC Color Café Madera",
+        "precio_unitario": 6792,
+        "sku": "CVW101-CAFEMADERA",
+        "descripcion": "Los Cortavista, Corta Vista, Treillage o Quiebra Vista de WPC, son estructuras enrejadas muy versátiles y duraderos.",
+        "imagenes": [
+          "https://revestimientosypisos.cl/wp-content/themes/etips/assets/images/sharer/sharer_1200x630.png",
+          "https://revestimientosypisos.cl/wp-content/uploads/2025/02/cortavista-coextruido-wpc-color-cafe-madera-cvw101-01.webp",
+          "https://revestimientosypisos.cl/wp-content/uploads/2025/02/cortavista-coextruido-wpc-color-cafe-madera-cvw101-02.webp",
+          "https://revestimientosypisos.cl/wp-content/uploads/2025/02/cortavista-coextruido-wpc-color-cafe-madera-cvw101-03.webp"
+        ],
+        "url": "https://revestimientosypisos.cl/cortavista/cortavista-coextruido-wpc-color-cafe-madera-cvw101",
+        "categoria_slug": "cortavista"
+      },
+      {
+        "nombre": "Corta Vista Coextruido WPC Color Gris Grafito",
+        "precio_unitario": 6792,
+        "sku": "CVW101-GRISGRAFITO",
+        "descripcion": "Los Cortavista, Corta Vista, Treillage o Quiebra Vista de WPC, son estructuras enrejadas muy versátiles y duraderos.",
+        "imagenes": [
+          "https://revestimientosypisos.cl/wp-content/themes/etips/assets/images/sharer/sharer_1200x630.png",
+          "https://revestimientosypisos.cl/wp-content/uploads/2025/01/cortavista-coextruido-wpc-color-gris-grafito-cvw101-01.webp",
+          "https://revestimientosypisos.cl/wp-content/uploads/2025/01/cortavista-coextruido-wpc-color-gris-grafito-cvw101-02.webp",
+          "https://revestimientosypisos.cl/wp-content/uploads/2025/01/cortavista-coextruido-wpc-color-gris-grafito-cvw101-03.webp"
+        ],
+        "url": "https://revestimientosypisos.cl/cortavista/cortavista-coextruido-wpc-color-gris-grafito-cvw101",
+        "categoria_slug": "cortavista"
+      },
+      {
+        "nombre": "Corta Vista Coextruido WPC Color Gris Piedra",
+        "precio_unitario": 6792,
+        "sku": "CVW101-GRISPIEDRA",
+        "descripcion": "Los Cortavista, Corta Vista, Treillage o Quiebra Vista de WPC, son estructuras enrejadas muy versátiles y duraderos.",
+        "imagenes": [
+          "https://revestimientosypisos.cl/wp-content/themes/etips/assets/images/sharer/sharer_1200x630.png",
+          "https://revestimientosypisos.cl/wp-content/uploads/2025/01/cortavista-coextruido-wpc-color-gris-piedra-cvw101-01.webp",
+          "https://revestimientosypisos.cl/wp-content/uploads/2025/01/cortavista-coextruido-wpc-color-gris-piedra-cvw101-02.webp",
+          "https://revestimientosypisos.cl/wp-content/uploads/2025/01/cortavista-coextruido-wpc-color-gris-piedra-cvw101-03.webp"
+        ],
+        "url": "https://revestimientosypisos.cl/cortavista/cortavista-coextruido-wpc-color-gris-piedra-cvw101",
+        "categoria_slug": "cortavista"
+      },
+      {
+        "nombre": "Corta Vista Coextruido WPC Color Café Antique",
+        "precio_unitario": 6792,
+        "sku": "CVW101-CAFEANTIQUE",
+        "descripcion": "Los Cortavista, Corta Vista, Treillage o Quiebra Vista de WPC, son estructuras enrejadas muy versátiles y duraderos.",
+        "imagenes": [
+          "https://revestimientosypisos.cl/wp-content/themes/etips/assets/images/sharer/sharer_1200x630.png",
+          "https://revestimientosypisos.cl/wp-content/uploads/2025/01/cortavista-coextruido-wpc-color-cafe-antique-cvw101-01.webp",
+          "https://revestimientosypisos.cl/wp-content/uploads/2025/01/cortavista-coextruido-wpc-color-cafe-antique-cvw101-02.webp",
+          "https://revestimientosypisos.cl/wp-content/uploads/2025/01/cortavista-coextruido-wpc-color-cafe-antique-cvw101-03.webp"
+        ],
+        "url": "https://revestimientosypisos.cl/cortavista/cortavista-coextruido-wpc-color-cafe-antique-cvw101",
+        "categoria_slug": "cortavista"
+      },
+      {
+        "nombre": "Corta Vista Coextruido WPC Color Café Chocolate",
+        "precio_unitario": 6792,
+        "sku": "CVW101-CAFECHOCOLATE",
+        "descripcion": "Los Cortavista, Corta Vista, Treillage o Quiebra Vista de WPC, son estructuras enrejadas muy versátiles y duraderos.",
+        "imagenes": [
+          "https://revestimientosypisos.cl/wp-content/themes/etips/assets/images/sharer/sharer_1200x630.png",
+          "https://revestimientosypisos.cl/wp-content/uploads/2025/01/cortavista-coextruido-wpc-color-cafe-chocolate-cvw101-01.webp",
+          "https://revestimientosypisos.cl/wp-content/uploads/2025/01/cortavista-coextruido-wpc-color-cafe-chocolate-cvw101-02.webp",
+          "https://revestimientosypisos.cl/wp-content/uploads/2025/01/cortavista-coextruido-wpc-color-cafe-chocolate-cvw101-03.webp"
+        ],
+        "url": "https://revestimientosypisos.cl/cortavista/cortavista-coextruido-wpc-color-cafe-chocolate-cvw101",
+        "categoria_slug": "cortavista"
+      },
+      {
+        "nombre": "Corta Vista Coextruido WPC Color Negro",
+        "precio_unitario": 6792,
+        "sku": "CVW101-NEGRO",
+        "descripcion": "Los Cortavista, Corta Vista, Treillage o Quiebra Vista de WPC, son estructuras enrejadas muy versátiles y duraderos.",
+        "imagenes": [
+          "https://revestimientosypisos.cl/wp-content/themes/etips/assets/images/sharer/sharer_1200x630.png",
+          "https://revestimientosypisos.cl/wp-content/uploads/2025/01/cortavista-coextruido-wpc-color-negro-cvw101-01.webp",
+          "https://revestimientosypisos.cl/wp-content/uploads/2025/01/cortavista-coextruido-wpc-color-negro-cvw101-02.webp",
+          "https://revestimientosypisos.cl/wp-content/uploads/2025/01/cortavista-coextruido-wpc-color-negro-cvw101-03.webp"
+        ],
+        "url": "https://revestimientosypisos.cl/cortavista/cortavista-coextruido-wpc-color-negro-cvw101",
+        "categoria_slug": "cortavista"
+      }
+    ]
+  },
+  "revestimiento-exterior-de-pvc": {
+    "nombre": "Siding PVC",
+    "productos": [
+      {
+        "nombre": "Revestimiento exterior de PVC Color Blanco",
+        "precio_unitario": 4392,
+        "sku": "REP101-BLANCO",
+        "descripcion": "\r\n      \r\n        \r\n          ¿Qué es el revestimiento PVC?Policloruro de Vinilo\r\n          \r\n            El revestimiento exterior de PVC color Blanco es una excelente opción para renovar tus espacios con facilidad, durabilidad y a un buen precio.",
+        "imagenes": [
+          "https://revestimientosypisos.cl/wp-content/themes/etips/assets/images/sharer/sharer_1200x630.png",
+          "https://revestimientosypisos.cl/wp-content/uploads/2025/09/revestimiento-exterior-de-pvc-color-blanco-rep101-00.webp",
+          "https://revestimientosypisos.cl/wp-content/uploads/2025/09/revestimiento-exterior-de-pvc-color-blanco-rep101-01.webp",
+          "https://revestimientosypisos.cl/wp-content/uploads/2025/09/revestimiento-exterior-de-pvc-color-blanco-rep101-02.webp",
+          "https://revestimientosypisos.cl/wp-content/uploads/2025/09/revestimiento-exterior-de-pvc-color-blanco-rep101-03.webp"
+        ],
+        "url": "https://revestimientosypisos.cl/revestimiento-exterior-de-pvc/revestimiento-exterior-de-pvc-color-blanco-rep101-2",
+        "categoria_slug": "revestimiento-exterior-de-pvc"
+      },
+      {
+        "nombre": "Revestimiento exterior de PVC Color Beige",
+        "precio_unitario": 4392,
+        "sku": "REP101-BEIGE",
+        "descripcion": "\r\n      \r\n        \r\n          ¿Qué es el revestimiento PVC?Policloruro de Vinilo\r\n          \r\n            El revestimiento exterior de PVC color Beige es una excelente opción para renovar tus espacios con facilidad, durabilidad y a un buen precio.",
+        "imagenes": [
+          "https://revestimientosypisos.cl/wp-content/themes/etips/assets/images/sharer/sharer_1200x630.png",
+          "https://revestimientosypisos.cl/wp-content/uploads/2025/09/revestimiento-exterior-de-pvc-color-beige-rep101-00.webp",
+          "https://revestimientosypisos.cl/wp-content/uploads/2025/09/revestimiento-exterior-de-pvc-color-beige-rep101-01.webp",
+          "https://revestimientosypisos.cl/wp-content/uploads/2025/09/revestimiento-exterior-de-pvc-color-beige-rep101-02.webp",
+          "https://revestimientosypisos.cl/wp-content/uploads/2025/09/revestimiento-exterior-de-pvc-color-beige-rep101-03.webp"
+        ],
+        "url": "https://revestimientosypisos.cl/revestimiento-exterior-de-pvc/revestimiento-exterior-de-pvc-color-beige-rep101",
+        "categoria_slug": "revestimiento-exterior-de-pvc"
+      },
+      {
+        "nombre": "Revestimiento exterior de PVC Color Gris Piedra",
+        "precio_unitario": 4392,
+        "sku": "REP101-GRISPIEDRA",
+        "descripcion": "\r\n      \r\n        \r\n          ¿Qué es el revestimiento PVC?Policloruro de Vinilo\r\n          \r\n            El revestimiento exterior de PVC color Gris Piedra es una excelente opción para renovar tus espacios con facilidad, durabilidad y a un buen precio.",
+        "imagenes": [
+          "https://revestimientosypisos.cl/wp-content/themes/etips/assets/images/sharer/sharer_1200x630.png",
+          "https://revestimientosypisos.cl/wp-content/uploads/2025/09/revestimiento-exterior-de-pvc-color-gris-piedra-rep101-00.webp",
+          "https://revestimientosypisos.cl/wp-content/uploads/2025/09/revestimiento-exterior-de-pvc-color-gris-piedra-rep101-01.webp",
+          "https://revestimientosypisos.cl/wp-content/uploads/2025/09/revestimiento-exterior-de-pvc-color-gris-piedra-rep101-02.webp",
+          "https://revestimientosypisos.cl/wp-content/uploads/2025/09/revestimiento-exterior-de-pvc-color-gris-piedra-rep101-03.webp"
+        ],
+        "url": "https://revestimientosypisos.cl/revestimiento-exterior-de-pvc/revestimiento-exterior-de-pvc-color-gris-piedra-rep101",
+        "categoria_slug": "revestimiento-exterior-de-pvc"
+      },
+      {
+        "nombre": "Revestimiento exterior de PVC Color Café",
+        "precio_unitario": 4392,
+        "sku": "REP101-CAFE",
+        "descripcion": "\r\n      \r\n        \r\n          ¿Qué es el revestimiento PVC?Policloruro de Vinilo\r\n          \r\n            El revestimiento exterior de PVC color Café es una excelente opción para renovar tus espacios con facilidad, durabilidad y a un buen precio.",
+        "imagenes": [
+          "https://revestimientosypisos.cl/wp-content/themes/etips/assets/images/sharer/sharer_1200x630.png",
+          "https://revestimientosypisos.cl/wp-content/uploads/2025/09/revestimiento-exterior-de-pvc-color-cafe-rep101-00.webp",
+          "https://revestimientosypisos.cl/wp-content/uploads/2025/09/revestimiento-exterior-de-pvc-color-cafe-rep101-01.webp",
+          "https://revestimientosypisos.cl/wp-content/uploads/2025/09/revestimiento-exterior-de-pvc-color-cafe-rep101-02.webp",
+          "https://revestimientosypisos.cl/wp-content/uploads/2025/09/revestimiento-exterior-de-pvc-color-cafe-rep101-03.webp"
+        ],
+        "url": "https://revestimientosypisos.cl/revestimiento-exterior-de-pvc/revestimiento-exterior-de-pvc-color-cafe-rep101",
+        "categoria_slug": "revestimiento-exterior-de-pvc"
+      }
+    ]
+  },
+  "siding-piedras-pu": {
+    "nombre": "Piedras PU",
+    "productos": [
+      {
+        "nombre": "Siding Piedra PU Color Cobre RPU101",
+        "precio_unitario": 62991,
+        "precio_m2": 74130.0,
+        "sku": "RPU101-COBRE",
+        "descripcion": "Revestimiento de Piedra de Poliuretano para pared o muro.",
+        "imagenes": [
+          "https://revestimientosypisos.cl/wp-content/themes/etips/assets/images/sharer/sharer_1200x630.png",
+          "https://revestimientosypisos.cl/wp-content/uploads/2026/02/revestimiento-siding-piedra-pu-color-cobre-rpu101-00.webp",
+          "https://revestimientosypisos.cl/wp-content/uploads/2026/02/revestimiento-siding-piedra-pu-color-cobre-rpu101-01.webp"
+        ],
+        "url": "https://revestimientosypisos.cl/siding-piedras-pu/siding-piedra-pu-color-cobre-rpu101",
+        "categoria_slug": "siding-piedras-pu"
+      },
+      {
+        "nombre": "Siding Piedra PU Color Grafito RPU101",
+        "precio_unitario": 62991,
+        "precio_m2": 74130.0,
+        "sku": "RPU101-GRAFITO",
+        "descripcion": "Revestimiento de Piedra de Poliuretano para pared o muro.",
+        "imagenes": [
+          "https://revestimientosypisos.cl/wp-content/themes/etips/assets/images/sharer/sharer_1200x630.png",
+          "https://revestimientosypisos.cl/wp-content/uploads/2026/02/revestimiento-siding-piedra-pu-color-grafito-rpu101-00.webp",
+          "https://revestimientosypisos.cl/wp-content/uploads/2026/02/revestimiento-siding-piedra-pu-color-grafito-rpu101-01.webp"
+        ],
+        "url": "https://revestimientosypisos.cl/siding-piedras-pu/siding-piedra-pu-color-grafito-rpu101",
+        "categoria_slug": "siding-piedras-pu"
+      },
+      {
+        "nombre": "Siding Piedra PU Color Café Madera RPU101",
+        "precio_unitario": 62991,
+        "precio_m2": 74130.0,
+        "sku": "RPU101-CAFEMADERA",
+        "descripcion": "Revestimiento de Piedra de Poliuretano para pared o muro.",
+        "imagenes": [
+          "https://revestimientosypisos.cl/wp-content/themes/etips/assets/images/sharer/sharer_1200x630.png",
+          "https://revestimientosypisos.cl/wp-content/uploads/2026/02/revestimiento-siding-piedra-pu-color-cafe-madera-rpu101-00.webp",
+          "https://revestimientosypisos.cl/wp-content/uploads/2026/02/revestimiento-siding-piedra-pu-color-cafe-madera-rpu101-01.webp"
+        ],
+        "url": "https://revestimientosypisos.cl/siding-piedras-pu/siding-piedra-pu-color-cafe-madera-rpu101",
+        "categoria_slug": "siding-piedras-pu"
+      },
+      {
+        "nombre": "Siding Piedra PU Color Piedra Volcánica RPU101",
+        "precio_unitario": 62991,
+        "precio_m2": 74130.0,
+        "sku": "RPU101-PIEDRAVOLCANICA",
+        "descripcion": "Revestimiento de Piedra de Poliuretano para pared o muro.",
+        "imagenes": [
+          "https://revestimientosypisos.cl/wp-content/themes/etips/assets/images/sharer/sharer_1200x630.png",
+          "https://revestimientosypisos.cl/wp-content/uploads/2026/02/revestimiento-siding-piedra-pu-color-piedra-volcanica-rpu101-00.webp",
+          "https://revestimientosypisos.cl/wp-content/uploads/2026/02/revestimiento-siding-piedra-pu-color-piedra-volcanica-rpu101-01.webp"
+        ],
+        "url": "https://revestimientosypisos.cl/siding-piedras-pu/siding-piedra-pu-color-piedra-volcanica-rpu101",
+        "categoria_slug": "siding-piedras-pu"
+      },
+      {
+        "nombre": "Siding Piedra PU Color Piedra RPU101",
+        "precio_unitario": 62991,
+        "precio_m2": 74130.0,
+        "sku": "RPU101-PIEDRA",
+        "descripcion": "Revestimiento de Piedra de Poliuretano para pared o muro.",
+        "imagenes": [
+          "https://revestimientosypisos.cl/wp-content/themes/etips/assets/images/sharer/sharer_1200x630.png",
+          "https://revestimientosypisos.cl/wp-content/uploads/2026/02/revestimiento-siding-piedra-pu-color-piedra-rpu101-00.webp",
+          "https://revestimientosypisos.cl/wp-content/uploads/2026/02/revestimiento-siding-piedra-pu-color-piedra-rpu101-01.webp"
+        ],
+        "url": "https://revestimientosypisos.cl/siding-piedras-pu/siding-piedra-pu-color-piedra-rpu101",
+        "categoria_slug": "siding-piedras-pu"
+      },
+      {
+        "nombre": "Siding Piedra PU Color Fachaleta RPU101",
+        "precio_unitario": 23391,
+        "sku": "RPU101-FACHALETA",
+        "descripcion": "Revestimiento de Piedra de Poliuretano para pared o muro.",
+        "imagenes": [
+          "https://revestimientosypisos.cl/wp-content/themes/etips/assets/images/sharer/sharer_1200x630.png",
+          "https://revestimientosypisos.cl/wp-content/uploads/2026/02/revestimiento-siding-piedra-pu-color-fachaleta-rpu101-00.webp"
+        ],
+        "url": "https://revestimientosypisos.cl/siding-piedras-pu/siding-piedra-pu-color-fachaleta-rpu101",
+        "categoria_slug": "siding-piedras-pu"
+      },
+      {
+        "nombre": "Viga de Piedra PU Color Café APU102",
+        "precio_unitario": 125991,
+        "sku": "APU102-CAFE",
+        "descripcion": "Revestimiento piedra de Poliuretano que logra una apariencia de muro piedra real.",
+        "imagenes": [
+          "https://revestimientosypisos.cl/wp-content/themes/etips/assets/images/sharer/sharer_1200x630.png",
+          "https://revestimientosypisos.cl/wp-content/uploads/2026/03/viga-de-piedra-pu-color-cafe-apu102.webp"
+        ],
+        "url": "https://revestimientosypisos.cl/siding-piedras-pu/viga-de-piedra-pu-color-cafe-apu102",
+        "categoria_slug": "siding-piedras-pu"
+      },
+      {
+        "nombre": "Viga de Piedra PU Color Nogal APU102",
+        "precio_unitario": 125991,
+        "sku": "APU102-NOGAL",
+        "descripcion": "Revestimiento piedra de Poliuretano que logra una apariencia de muro piedra real.",
+        "imagenes": [
+          "https://revestimientosypisos.cl/wp-content/themes/etips/assets/images/sharer/sharer_1200x630.png",
+          "https://revestimientosypisos.cl/wp-content/uploads/2026/03/viga-de-piedra-pu-color-nogal-apu102-1.webp"
+        ],
+        "url": "https://revestimientosypisos.cl/siding-piedras-pu/viga-de-piedra-pu-color-nogal-apu102",
+        "categoria_slug": "siding-piedras-pu"
+      }
+    ]
+  },
+  "cercos-wpc": {
+    "nombre": "Cercos WPC",
+    "productos": [
+      {
+        "nombre": "Cerco Exterior WPC Color Café CEW01-180",
+        "precio_unitario": 245000,
+        "sku": "CEW01-180-CAFE",
+        "descripcion": "\r\n        \r\n          .",
+        "imagenes": [
+          "https://revestimientosypisos.cl/wp-content/themes/etips/assets/images/sharer/sharer_1200x630.png",
+          "https://revestimientosypisos.cl/wp-content/uploads/2026/05/cerco-exterior-wpc-color-cafe-cew01-180-00.webp"
+        ],
+        "url": "https://revestimientosypisos.cl/cercos-wpc/cerco-exterior-wpc-color-cafe-cew01-180",
+        "categoria_slug": "cercos-wpc"
+      },
+      {
+        "nombre": "Cerco Exterior WPC Color Negro CEW01-180",
+        "precio_unitario": 245000,
+        "sku": "CEW01-180-NEGRO",
+        "descripcion": "\r\n        \r\n          .",
+        "imagenes": [
+          "https://revestimientosypisos.cl/wp-content/themes/etips/assets/images/sharer/sharer_1200x630.png",
+          "https://revestimientosypisos.cl/wp-content/uploads/2026/05/cerco-exterior-wpc-color-negro-cew01-180-00.webp"
+        ],
+        "url": "https://revestimientosypisos.cl/cercos-wpc/cerco-exterior-wpc-color-negro-cew01-180",
+        "categoria_slug": "cercos-wpc"
+      },
+      {
+        "nombre": "Cerco Exterior WPC Color Café CEW02-180",
+        "precio_unitario": 245000,
+        "sku": "CEW02-180-CAFE",
+        "descripcion": "\r\n        \r\n          .",
+        "imagenes": [
+          "https://revestimientosypisos.cl/wp-content/themes/etips/assets/images/sharer/sharer_1200x630.png",
+          "https://revestimientosypisos.cl/wp-content/uploads/2026/05/cerco-exterior-wpc-color-cafe-cew02-180-00.webp"
+        ],
+        "url": "https://revestimientosypisos.cl/cercos-wpc/cerco-exterior-wpc-color-cafe-cew02-180",
+        "categoria_slug": "cercos-wpc"
+      },
+      {
+        "nombre": "Cerco Exterior WPC Color Negro CEW02-180",
+        "precio_unitario": 245000,
+        "sku": "CEW02-180-NEGRO",
+        "descripcion": "\r\n        \r\n          .",
+        "imagenes": [
+          "https://revestimientosypisos.cl/wp-content/themes/etips/assets/images/sharer/sharer_1200x630.png",
+          "https://revestimientosypisos.cl/wp-content/uploads/2026/05/cerco-exterior-wpc-color-negro-cew02-180-00.webp"
+        ],
+        "url": "https://revestimientosypisos.cl/cercos-wpc/cerco-exterior-wpc-color-negro-cew02-180",
+        "categoria_slug": "cercos-wpc"
+      },
+      {
+        "nombre": "Cerco Exterior WPC Color Café CEW03-180",
+        "precio_unitario": 245000,
+        "sku": "CEW03-180-CAFE",
+        "descripcion": "\r\n        \r\n          .",
+        "imagenes": [
+          "https://revestimientosypisos.cl/wp-content/themes/etips/assets/images/sharer/sharer_1200x630.png",
+          "https://revestimientosypisos.cl/wp-content/uploads/2026/05/cerco-exterior-wpc-color-cafe-cew03-180-00.webp"
+        ],
+        "url": "https://revestimientosypisos.cl/cercos-wpc/cerco-exterior-wpc-color-cafe-cew03-180",
+        "categoria_slug": "cercos-wpc"
+      },
+      {
+        "nombre": "Cerco Exterior WPC Color Negro CEW03-180",
+        "precio_unitario": 245000,
+        "sku": "CEW03-180-NEGRO",
+        "descripcion": "\r\n        \r\n          .",
+        "imagenes": [
+          "https://revestimientosypisos.cl/wp-content/themes/etips/assets/images/sharer/sharer_1200x630.png",
+          "https://revestimientosypisos.cl/wp-content/uploads/2026/05/cerco-exterior-wpc-color-negro-cew03-180-00.webp"
+        ],
+        "url": "https://revestimientosypisos.cl/cercos-wpc/cerco-exterior-wpc-color-negro-cew03-180",
+        "categoria_slug": "cercos-wpc"
+      }
+    ]
+  }
+}

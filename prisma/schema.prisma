@@ -1,0 +1,89 @@
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider = "sqlite"
+  url      = "file:./dev.db"
+}
+
+model Categoria {
+  id          Int       @id @default(autoincrement())
+  nombre      String
+  slug        String    @unique
+  descripcion String?
+  imagen      String?
+  orden       Int       @default(0)
+  activo      Boolean   @default(true)
+  productos   Producto[]
+}
+
+model Producto {
+  id          Int       @id @default(autoincrement())
+  nombre      String
+  slug        String    @unique
+  sku         String    @unique
+  descripcion String?
+  dimensiones String?
+  unidad      String    @default("m2")
+  precio      Float
+  precioAntes Float?
+  descuento   Int?
+  marca       String    @default("Marca Propia")
+  imagenes    String    @default("[]")
+  destacado   Boolean   @default(false)
+  activo      Boolean   @default(true)
+  orden       Int       @default(0)
+  categoriaId Int
+  categoria   Categoria @relation(fields: [categoriaId], references: [id])
+  createdAt   DateTime  @default(now())
+}
+
+model Banner {
+  id         Int     @id @default(autoincrement())
+  titulo     String
+  subtitulo  String?
+  badge      String?
+  imagen     String
+  imagenMovil String?
+  url        String?
+  orden      Int     @default(0)
+  activo     Boolean @default(true)
+}
+
+model Sucursal {
+  id              Int     @id @default(autoincrement())
+  nombre          String
+  zona            String
+  direccion       String
+  region          String
+  esCasaMatriz    Boolean @default(false)
+  horarioAtencion String
+  horarioEntrega  String?
+  whatsapp        String
+  telefono        String?
+  emailPostventa  String?
+  urlMaps         String?
+  activo          Boolean @default(true)
+  orden           Int     @default(0)
+}
+
+model Configuracion {
+  id              Int    @id @default(1)
+  nombreEmpresa   String @default("Mi Empresa")
+  logo            String?
+  whatsappGlobal  String?
+  facebook        String?
+  instagram       String?
+  tiktok          String?
+  youtube         String?
+  emailContacto   String?
+  metaTitle       String?
+  metaDescription String?
+}
+
+model Admin {
+  id       Int    @id @default(autoincrement())
+  email    String @unique
+  password String
+}
