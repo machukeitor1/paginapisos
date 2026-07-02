@@ -19,7 +19,6 @@ interface Config {
 export default function Navbar() {
   const [categorias, setCategorias] = useState<Categoria[]>([]);
   const [config, setConfig] = useState<Config | null>(null);
-  const [cotizadorCount, setCotizadorCount] = useState(0);
   const [menuOpen, setMenuOpen] = useState(false);
   const pathname = usePathname();
 
@@ -30,22 +29,6 @@ export default function Navbar() {
     fetch('/api/configuracion').then(r => r.json()).then(data => {
       if (data) setConfig(data);
     }).catch(() => {});
-  }, []);
-
-  useEffect(() => {
-    const actualizar = () => {
-      try {
-        const items = JSON.parse(localStorage.getItem('cotizador') || '[]');
-        setCotizadorCount(items.reduce((sum: number, item: any) => sum + (item.cantidad || 0), 0));
-      } catch { setCotizadorCount(0); }
-    };
-    actualizar();
-    window.addEventListener('storage', actualizar);
-    window.addEventListener('cotizador-update', actualizar);
-    return () => {
-      window.removeEventListener('storage', actualizar);
-      window.removeEventListener('cotizador-update', actualizar);
-    };
   }, []);
 
   return (
@@ -75,21 +58,10 @@ export default function Navbar() {
               </Link>
             ))}
             <Link
-              href="/cotizador"
-              className={`px-3 py-2 text-sm font-medium rounded-lg transition-colors flex items-center gap-1 ${
-                pathname === '/cotizador'
-                  ? 'text-accent bg-white/10'
-                  : 'text-gray-300 hover:text-white hover:bg-white/10'
-              }`}
+              href="/vendedor/login"
+              className="px-3 py-2 text-sm font-medium rounded-lg transition-colors text-gray-300 hover:text-white hover:bg-white/10"
             >
-              <svg className="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M3 3h2l.4 2M7 13h10l4-8H5.4M7 13L5.4 5M7 13l-2.293 2.293c-.63.63-.184 1.707.707 1.707H17m0 0a2 2 0 100 4 2 2 0 000-4zm-8 2a2 2 0 100 4 2 2 0 000-4z" />
-              </svg>
-              {cotizadorCount > 0 && (
-                <span className="bg-accent text-white text-xs rounded-full w-5 h-5 flex items-center justify-center font-bold">
-                  {cotizadorCount}
-                </span>
-              )}
+              Acceso Vendedores
             </Link>
             <Link
               href="/contacto"
@@ -104,16 +76,6 @@ export default function Navbar() {
           </nav>
 
           <div className="flex items-center gap-3 lg:hidden">
-            <Link href="/cotizador" className="relative text-white">
-              <svg className="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M3 3h2l.4 2M7 13h10l4-8H5.4M7 13L5.4 5M7 13l-2.293 2.293c-.63.63-.184 1.707.707 1.707H17m0 0a2 2 0 100 4 2 2 0 000-4zm-8 2a2 2 0 100 4 2 2 0 000-4z" />
-              </svg>
-              {cotizadorCount > 0 && (
-                <span className="absolute -top-2 -right-2 bg-accent text-white text-xs rounded-full w-5 h-5 flex items-center justify-center font-bold">
-                  {cotizadorCount}
-                </span>
-              )}
-            </Link>
             <button onClick={() => setMenuOpen(!menuOpen)} className="text-white p-2">
               <svg className="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                 {menuOpen ? (
@@ -140,7 +102,7 @@ export default function Navbar() {
                 {cat.nombre}
               </Link>
             ))}
-            <Link href="/cotizador" onClick={() => setMenuOpen(false)} className="block px-3 py-2 text-sm text-gray-300 hover:text-white">Cotizador</Link>
+            <Link href="/vendedor/login" onClick={() => setMenuOpen(false)} className="block px-3 py-2 text-sm text-gray-300 hover:text-white">Acceso Vendedores</Link>
             <Link href="/contacto" onClick={() => setMenuOpen(false)} className="block px-3 py-2 text-sm text-gray-300 hover:text-white">Contacto</Link>
           </div>
         )}

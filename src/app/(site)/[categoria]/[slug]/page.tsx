@@ -1,6 +1,6 @@
 'use client';
 
-import { useState, useEffect } from 'react';
+import { useState, useEffect, useRef } from 'react';
 import { useParams } from 'next/navigation';
 import Link from 'next/link';
 
@@ -24,29 +24,49 @@ interface Producto {
 export default function ProductoPage() {
   const params = useParams();
   const [producto, setProducto] = useState<Producto | null>(null);
-  const [cantidad, setCantidad] = useState(1);
   const [imagenActual, setImagenActual] = useState(0);
-  const [agregado, setAgregado] = useState(false);
+  const [whatsapp, setWhatsapp] = useState('56958110962');
+  const intervaloRef = useRef<ReturnType<typeof setInterval> | null>(null);
 
   useEffect(() => {
     fetch(`/api/productos?slug=${params.slug}`)
       .then(r => r.json())
-      .then(data => {
-        if (data) {
-          setProducto(data);
-          setAgregado(false);
-        }
-      })
+      .then(data => { if (data) setProducto(data); })
+      .catch(() => {});
+    fetch('/api/configuracion')
+      .then(r => r.json())
+      .then(data => { if (data?.whatsappGlobal) setWhatsapp(data.whatsappGlobal); })
       .catch(() => {});
   }, [params.slug]);
 
   useEffect(() => {
     if (!producto) return;
-    try {
-      const items = JSON.parse(localStorage.getItem('cotizador') || '[]');
-      setAgregado(items.some((i: any) => i.id === producto.id));
-    } catch {}
+    let imagenes: string[] = [];
+    try { imagenes = JSON.parse(producto.imagenes); } catch {}
+    if (imagenes.length <= 1) return;
+
+    intervaloRef.current = setInterval(() => {
+      setImagenActual((prev) => (prev + 1) % imagenes.length);
+    }, 4000);
+
+    return () => {
+      if (intervaloRef.current) clearInterval(intervaloRef.current);
+    };
   }, [producto]);
+
+  const irAImagen = (i: number) => {
+    setImagenActual(i);
+    if (intervaloRef.current) {
+      clearInterval(intervaloRef.current);
+      intervaloRef.current = setInterval(() => {
+        setImagenActual((prev) => {
+          let imgs: string[] = [];
+          if (producto) { try { imgs = JSON.parse(producto.imagenes); } catch {} }
+          return (prev + 1) % (imgs.length || 1);
+        });
+      }, 4000);
+    }
+  };
 
   if (!producto) {
     return (
@@ -61,29 +81,10 @@ export default function ProductoPage() {
 
   const formatearPrecio = (p: number) => `$${Math.round(p).toLocaleString('es-CL')}`;
 
-  const agregarAlCotizador = () => {
-    try {
-      const items = JSON.parse(localStorage.getItem('cotizador') || '[]');
-      const existente = items.findIndex((i: any) => i.id === producto.id);
-      if (existente >= 0) {
-        items[existente].cantidad += cantidad;
-      } else {
-        items.push({
-          id: producto.id,
-          nombre: producto.nombre,
-          slug: producto.slug,
-          precio: producto.precio,
-          imagen: imagenes[0] || '',
-          cantidad,
-          unidad: producto.unidad,
-          categoriaSlug: producto.categoria.slug,
-        });
-      }
-      localStorage.setItem('cotizador', JSON.stringify(items));
-      setAgregado(true);
-      window.dispatchEvent(new Event('cotizador-update'));
-    } catch {}
-  };
+  const whatsappMsg = encodeURIComponent(
+    `Hola, me interesa el producto ${producto.nombre} (SKU: ${producto.sku}). ¿Podrían darme más información?`
+  );
+  const whatsappLink = `https://api.whatsapp.com/send?phone=${whatsapp.replace(/\D/g, '')}&text=${whatsappMsg}`;
 
   return (
     <div className="max-w-7xl mx-auto px-4 py-12">
@@ -99,7 +100,7 @@ export default function ProductoPage() {
         <div>
           <div className="relative bg-gray-100 rounded-xl overflow-hidden h-80 md:h-96 mb-4">
             {imagenes.length > 0 ? (
-              <img src={imagenes[imagenActual]} alt={producto.nombre} className="w-full h-full object-cover" />
+              <img src={imagenes[imagenActual]} alt={producto.nombre} className="w-full h-full object-cover transition-opacity duration-500" />
             ) : (
               <div className="w-full h-full flex items-center justify-center text-muted">
                 <svg className="w-20 h-20" fill="none" stroke="currentColor" viewBox="0 0 24 24">
@@ -112,14 +113,25 @@ export default function ProductoPage() {
                 -{producto.descuento}%
               </span>
             )}
+            {imagenes.length > 1 && (
+              <div className="absolute bottom-3 left-1/2 -translate-x-1/2 flex gap-1.5">
+                {imagenes.map((_, i) => (
+                  <button
+                    key={i}
+                    onClick={() => irAImagen(i)}
+                    className={`w-2 h-2 rounded-full transition-colors ${i === imagenActual ? 'bg-white' : 'bg-white/50'}`}
+                  />
+                ))}
+              </div>
+            )}
           </div>
           {imagenes.length > 1 && (
             <div className="flex gap-2">
               {imagenes.map((img, i) => (
                 <button
                   key={i}
-                  onClick={() => setImagenActual(i)}
-                  className={`w-16 h-16 rounded-lg overflow-hidden border-2 transition-colors ${i === imagenActual ? 'border-accent' : 'border-transparent'}`}
+                  onClick={() => irAImagen(i)}
+                  className={`w-16 h-16 rounded-lg overflow-hidden border-2 transition-colors shrink-0 ${i === imagenActual ? 'border-accent' : 'border-transparent'}`}
                 >
                   <img src={img} alt="" className="w-full h-full object-cover" />
                 </button>
@@ -141,7 +153,7 @@ export default function ProductoPage() {
             <p className="text-text mb-6 leading-relaxed">{producto.descripcion}</p>
           )}
 
-          <div className="bg-gray-50 rounded-xl p-6 mb-8">
+          <div className="bg-gray-50 rounded-xl p-6 mb-4">
             <div className="flex items-baseline gap-3 mb-4">
               <span className="text-3xl font-bold text-accent">{formatearPrecio(producto.precio)}</span>
               <span className="text-sm text-muted">/ {producto.unidad}</span>
@@ -150,27 +162,17 @@ export default function ProductoPage() {
               )}
             </div>
 
-            <div className="flex items-center gap-3 mb-4">
-              <label className="text-sm font-medium text-text">Cantidad ({producto.unidad}):</label>
-              <input
-                type="number"
-                min={0.1}
-                step={0.1}
-                value={cantidad}
-                onChange={(e) => setCantidad(Math.max(0.1, parseFloat(e.target.value) || 1))}
-                className="w-20 border border-gray-300 rounded-lg px-3 py-2 text-center text-sm"
-              />
-            </div>
-
-            {agregado ? (
-              <Link href="/cotizador" className="block w-full bg-green-600 hover:bg-green-700 text-white font-semibold text-center py-3 rounded-lg transition-colors">
-                Ver cotización
-              </Link>
-            ) : (
-              <button onClick={agregarAlCotizador} className="w-full bg-accent hover:bg-accent/90 text-white font-semibold py-3 rounded-lg transition-colors">
-                Agregar a cotización
-              </button>
-            )}
+            <a
+              href={whatsappLink}
+              target="_blank"
+              rel="noopener noreferrer"
+              className="flex items-center justify-center gap-2 w-full bg-green-600 hover:bg-green-700 text-white font-semibold py-3 rounded-lg transition-colors"
+            >
+              <svg className="w-5 h-5" fill="currentColor" viewBox="0 0 24 24">
+                <path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z" />
+              </svg>
+              Consultar por WhatsApp
+            </a>
           </div>
 
           <div className="bg-blue-50 border border-blue-100 rounded-xl p-4 text-sm text-blue-800">

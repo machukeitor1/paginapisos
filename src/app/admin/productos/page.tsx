@@ -1,6 +1,7 @@
 'use client';
 
 import { useState, useEffect, useMemo } from 'react';
+import ImageUploader from '@/components/admin/ImageUploader';
 
 export default function ProductosPage() {
   const [productos, setProductos] = useState<any[]>([]);
@@ -124,7 +125,8 @@ export default function ProductosPage() {
     e.preventDefault();
     const method = editando ? 'PUT' : 'POST';
     const url = editando ? `/api/productos/${editando.id}` : '/api/productos';
-    const body = { ...form };
+    const tieneDescuento = form.descuento > 0;
+    const body = { ...form, precioAntes: tieneDescuento ? form.precioAntes : null, descuento: tieneDescuento ? form.descuento : null };
     if (!editando) delete (body as any).id;
 
     const res = await fetch(url, {
@@ -142,8 +144,9 @@ export default function ProductosPage() {
 
   const editar = (prod: any) => {
     setEditando(prod);
+    const base = prod.precioAntes || prod.precio;
     setForm({
-      nombre: prod.nombre, slug: prod.slug, sku: prod.sku, descripcion: prod.descripcion || '', dimensiones: prod.dimensiones || '', unidad: prod.unidad, precio: prod.precio, precioAntes: prod.precioAntes || 0, descuento: prod.descuento || 0, marca: prod.marca, imagenes: prod.imagenes, destacado: prod.destacado, activo: prod.activo, orden: prod.orden, categoriaId: prod.categoriaId,
+      nombre: prod.nombre, slug: prod.slug, sku: prod.sku, descripcion: prod.descripcion || '', dimensiones: prod.dimensiones || '', unidad: prod.unidad, precio: prod.precio, precioAntes: base, descuento: prod.descuento || 0, marca: prod.marca, imagenes: prod.imagenes, destacado: prod.destacado, activo: prod.activo, orden: prod.orden, categoriaId: prod.categoriaId,
     });
   };
 
@@ -181,8 +184,24 @@ export default function ProductosPage() {
             </select>
           </div>
           <div>
-            <label className="block text-sm font-medium text-text mb-1">Precio</label>
-            <input type="number" step="0.01" required value={form.precio} onChange={(e) => setForm({ ...form, precio: parseFloat(e.target.value) })} className="w-full border border-gray-300 rounded-lg px-4 py-2 text-sm" />
+            <label className="block text-sm font-medium text-text mb-1">Precio Base</label>
+            <input type="number" step="0.01" required value={form.precioAntes || form.precio} onChange={(e) => {
+              const base = parseFloat(e.target.value) || 0;
+              const d = form.descuento || 0;
+              setForm({ ...form, precioAntes: base, precio: d > 0 ? Math.round(base * (1 - d / 100)) : base });
+            }} className="w-full border border-gray-300 rounded-lg px-4 py-2 text-sm" />
+          </div>
+          <div>
+            <label className="block text-sm font-medium text-text mb-1">Descuento %</label>
+            <input type="number" min="0" max="99" value={form.descuento || ''} onChange={(e) => {
+              const d = parseInt(e.target.value) || 0;
+              const base = form.precioAntes || form.precio;
+              setForm({ ...form, descuento: d > 0 ? d : null as any, precio: d > 0 ? Math.round(base * (1 - d / 100)) : base });
+            }} className="w-full border border-gray-300 rounded-lg px-4 py-2 text-sm" />
+          </div>
+          <div>
+            <label className="block text-sm font-medium text-text mb-1">Precio Final</label>
+            <input type="number" step="0.01" value={form.precio} readOnly className="w-full border border-gray-200 bg-gray-50 rounded-lg px-4 py-2 text-sm text-gray-500" />
           </div>
           <div>
             <label className="block text-sm font-medium text-text mb-1">Marca</label>
@@ -206,6 +225,43 @@ export default function ProductosPage() {
         <div>
           <label className="block text-sm font-medium text-text mb-1">Descripcion</label>
           <textarea rows={3} value={form.descripcion} onChange={(e) => setForm({ ...form, descripcion: e.target.value })} className="w-full border border-gray-300 rounded-lg px-4 py-2 text-sm" />
+        </div>
+        <div>
+          <label className="block text-sm font-medium text-text mb-2">Imágenes del producto</label>
+          <div className="flex flex-wrap gap-3">
+            {(() => {
+              const imagenes: string[] = (() => {
+                try { return JSON.parse(form.imagenes); } catch { return []; }
+              })();
+              return imagenes.map((url, i) => (
+                <div key={i} className="relative inline-block">
+                  <img src={url} alt="" className="h-20 w-20 object-cover rounded-lg border border-gray-200" />
+                  <button
+                    type="button"
+                    onClick={() => {
+                      const arr = [...imagenes];
+                      arr.splice(i, 1);
+                      setForm({ ...form, imagenes: JSON.stringify(arr) });
+                    }}
+                    className="absolute -top-2 -right-2 bg-red-500 text-white rounded-full w-5 h-5 text-xs flex items-center justify-center hover:bg-red-600"
+                  >
+                    ×
+                  </button>
+                </div>
+              ));
+            })()}
+            <ImageUploader
+              folder="uploads"
+              label=""
+              onUpload={(url) => {
+                if (!url) return;
+                const imagenes: string[] = (() => {
+                  try { return JSON.parse(form.imagenes); } catch { return []; }
+                })();
+                setForm({ ...form, imagenes: JSON.stringify([...imagenes, url]) });
+              }}
+            />
+          </div>
         </div>
         <div className="flex gap-3">
           <button type="submit" className="bg-accent hover:bg-accent/90 text-white font-semibold py-2 px-4 rounded-lg transition-colors text-sm">

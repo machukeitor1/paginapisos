@@ -93,69 +93,23 @@ async function main() {
   }
   console.log("✅ Productos creados");
 
-  // Banners
+  // Banners (limpiar y recrear)
+  await prisma.banner.deleteMany();
   const banners = [
     { titulo: "Revestimientos de Primera Calidad", subtitulo: "Transforma tus espacios con nuestros materiales", badge: "Hasta 40% Off", imagen: "", imagenMovil: null, url: "/revestimiento-exterior-metalico", orden: 1 },
     { titulo: "Pisos que Inspiran", subtitulo: "Descubre nuestra colección de pisos vinílicos SPC", badge: "Nuevos Ingresos", imagen: "", imagenMovil: null, url: "/pisos-spc", orden: 2 },
   ];
-
-  for (const banner of banners) {
-    await prisma.banner.create({ data: banner });
-  }
+  await prisma.banner.createMany({ data: banners });
   console.log("✅ Banners creados");
 
-  // Sucursales
+  // Sucursales (limpiar y recrear)
+  await prisma.sucursal.deleteMany();
   const sucursales = [
-    {
-      nombre: "Santiago",
-      zona: "Zona Centro - RM",
-      direccion: "Av. Libertador Bernardo O'Higgins 1234, Santiago Centro",
-      region: "Región Metropolitana",
-      esCasaMatriz: true,
-      horarioAtencion: "Lun a Vie: 08:30 - 18:30 | Sáb: 09:00 - 14:00",
-      horarioEntrega: "Lun a Vie: 08:30 - 17:00 | Sáb: 09:00 - 13:00",
-      whatsapp: "56958110962",
-      telefono: "226001234",
-      emailPostventa: "postventa.santiago@empresa.cl",
-      urlMaps: "https://maps.google.com/?q=Av+Libertador+Bernardo+O'Higgins+1234+Santiago",
-      activo: true,
-      orden: 1,
-    },
-    {
-      nombre: "Chillán",
-      zona: "Zona Sur - Ñuble",
-      direccion: "Av. O'Higgins 567, Chillán Centro",
-      region: "Región de Ñuble",
-      esCasaMatriz: false,
-      horarioAtencion: "Lun a Vie: 09:00 - 18:00 | Sáb: 09:00 - 13:30",
-      horarioEntrega: "Lun a Vie: 09:00 - 17:00 | Sáb: 09:00 - 13:00",
-      whatsapp: "56958110962",
-      telefono: "422201234",
-      emailPostventa: "postventa.chillan@empresa.cl",
-      urlMaps: "https://maps.google.com/?q=Av+O'Higgins+567+Chillan",
-      activo: true,
-      orden: 2,
-    },
-    {
-      nombre: "Concepción",
-      zona: "Zona Sur - Biobío",
-      direccion: "Av. Paicaví 890, Concepción",
-      region: "Región del Biobío",
-      esCasaMatriz: false,
-      horarioAtencion: "Lun a Vie: 09:00 - 18:30 | Sáb: 09:00 - 14:00",
-      horarioEntrega: "Lun a Vie: 09:00 - 17:30 | Sáb: 09:00 - 13:00",
-      whatsapp: "56958110962",
-      telefono: "412201234",
-      emailPostventa: "postventa.concepcion@empresa.cl",
-      urlMaps: "https://maps.google.com/?q=Av+Paicaví+890+Concepcion",
-      activo: true,
-      orden: 3,
-    },
+    { nombre: "Santiago", zona: "Zona Centro - RM", direccion: "Av. Libertador Bernardo O'Higgins 1234, Santiago Centro", region: "Región Metropolitana", esCasaMatriz: true, horarioAtencion: "Lun a Vie: 08:30 - 18:30 | Sáb: 09:00 - 14:00", horarioEntrega: "Lun a Vie: 08:30 - 17:00 | Sáb: 09:00 - 13:00", whatsapp: "56958110962", telefono: "226001234", emailPostventa: "postventa.santiago@empresa.cl", urlMaps: "https://maps.google.com/?q=Av+Libertador+Bernardo+O'Higgins+1234+Santiago", activo: true, orden: 1 },
+    { nombre: "Chillán", zona: "Zona Sur - Ñuble", direccion: "Av. O'Higgins 567, Chillán Centro", region: "Región de Ñuble", esCasaMatriz: false, horarioAtencion: "Lun a Vie: 09:00 - 18:00 | Sáb: 09:00 - 13:30", horarioEntrega: "Lun a Vie: 09:00 - 17:00 | Sáb: 09:00 - 13:00", whatsapp: "56958110962", telefono: "422201234", emailPostventa: "postventa.chillan@empresa.cl", urlMaps: "https://maps.google.com/?q=Av+O'Higgins+567+Chillan", activo: true, orden: 2 },
+    { nombre: "Concepción", zona: "Zona Sur - Biobío", direccion: "Av. Paicaví 890, Concepción", region: "Región del Biobío", esCasaMatriz: false, horarioAtencion: "Lun a Vie: 09:00 - 18:30 | Sáb: 09:00 - 14:00", horarioEntrega: "Lun a Vie: 09:00 - 17:30 | Sáb: 09:00 - 13:00", whatsapp: "56958110962", telefono: "412201234", emailPostventa: "postventa.concepcion@empresa.cl", urlMaps: "https://maps.google.com/?q=Av+Paicaví+890+Concepcion", activo: true, orden: 3 },
   ];
-
-  for (const suc of sucursales) {
-    await prisma.sucursal.create({ data: suc });
-  }
+  await prisma.sucursal.createMany({ data: sucursales });
   console.log("✅ Sucursales creadas");
 
   // Configuracion
@@ -164,19 +118,86 @@ async function main() {
     update: {},
     create: {
       id: 1,
-      nombreEmpresa: "Revestimientos y Pisos",
+      nombreEmpresa: "Revestimientos Chillán",
       logo: null,
-      whatsappGlobal: "56958110962",
-      facebook: "https://facebook.com/revestimientosypisos",
-      instagram: "https://instagram.com/revestimientosypisos",
-      tiktok: "https://tiktok.com/@revestimientosypisos",
-      youtube: "https://youtube.com/@revestimientosypisos",
-      emailContacto: "contacto@empresa.cl",
-      metaTitle: "Revestimientos y Pisos - Materiales de Construcción",
+      whatsappGlobal: "56994316620",
+      facebook: "https://facebook.com/revestimientoschillan",
+      instagram: "https://instagram.com/revestimientoschillan",
+      tiktok: "https://tiktok.com/@revestimientoschillan",
+      youtube: "https://youtube.com/@revestimientoschillan",
+      emailContacto: "ventas@revestimienteschillan.cl",
+      metaTitle: "Revestimientos Chillán - Materiales de Construcción",
       metaDescription: "Venta de revestimientos metálicos, WPC, pisos vinílicos SPC, deck y siding granito. Despacho a todo Chile.",
     },
   });
   console.log("✅ Configuración creada");
+
+  // Vendedores
+  const passwordHashV = await bcrypt.hash("vendedor123", 10);
+  const vendedores = [
+    { nombre: "Carlos Muñoz", rut: "12.345.678-9", telefono: "56994316620", email: "carlos@revestimienteschillan.cl", password: passwordHashV },
+    { nombre: "María González", rut: "23.456.789-0", telefono: "56981289079", email: "maria@revestimienteschillan.cl", password: passwordHashV },
+    { nombre: "Pedro Soto", rut: "34.567.890-1", telefono: "56994316620", email: "pedro@revestimienteschillan.cl", password: passwordHashV },
+    { nombre: "Felipe Muñoz", rut: "45.678.901-2", telefono: "56981289079", email: "felipe@revestimientoschillan.cl", password: passwordHashV },
+  ];
+
+  for (const v of vendedores) {
+    await prisma.vendedor.upsert({
+      where: { rut: v.rut },
+      update: {},
+      create: v,
+    });
+  }
+  console.log("✅ Vendedores creados (contraseña: vendedor123)");
+
+  // Actualizar rendimientos y unidades de venta específicos de productos según su categoría
+  console.log("⚙️ Actualizando rendimientos y unidades de venta...");
+  
+  // 1. Revestimientos Exteriores Metálicos (Metal Siding) -> 8.8 m2 por caja
+  const catMetal = await prisma.categoria.findUnique({ where: { slug: "revestimiento-exterior-metalico" } });
+  if (catMetal) {
+    await prisma.producto.updateMany({
+      where: { categoriaId: catMetal.id },
+      data: { rendimiento: 8.8, unidadVenta: "caja" }
+    });
+  }
+
+  // 2. Piso Vinílico SPC -> 2.64 m2 por caja
+  const catSPC = await prisma.categoria.findUnique({ where: { slug: "pisos-spc" } });
+  if (catSPC) {
+    await prisma.producto.updateMany({
+      where: { categoriaId: catSPC.id },
+      data: { rendimiento: 2.64, unidadVenta: "caja" }
+    });
+  }
+
+  // 3. Piso Flotante -> 2.3 m2 por caja
+  const catFlotante = await prisma.categoria.findUnique({ where: { slug: "piso-flotante" } });
+  if (catFlotante) {
+    await prisma.producto.updateMany({
+      where: { categoriaId: catFlotante.id },
+      data: { rendimiento: 2.3, unidadVenta: "caja" }
+    });
+  }
+
+  // 4. Piso Deck -> 0.3124 m2 por unidad
+  const catDeck = await prisma.categoria.findUnique({ where: { slug: "pisos-deck-wpc" } });
+  if (catDeck) {
+    await prisma.producto.updateMany({
+      where: { categoriaId: catDeck.id },
+      data: { rendimiento: 0.3124, unidadVenta: "un" }
+    });
+  }
+
+  // 5. Revestimientos de Interior -> 0.3333 m2 por unidad
+  const catInterior = await prisma.categoria.findUnique({ where: { slug: "revestimientos-de-interior" } });
+  if (catInterior) {
+    await prisma.producto.updateMany({
+      where: { categoriaId: catInterior.id },
+      data: { rendimiento: 0.3333, unidadVenta: "un" }
+    });
+  }
+  console.log("✅ Rendimientos y unidades de venta actualizados en todos los productos");
 
   console.log("🌱 ¡Datos semilla insertados correctamente!");
 }

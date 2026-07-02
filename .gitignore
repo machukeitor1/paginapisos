@@ -35,3 +35,11 @@ yarn-error.log*
 # typescript
 *.tsbuildinfo
 next-env.d.ts
+
+# python
+__pycache__/
+*.pyc
+
+# sqlite (local only)
+prisma/dev.db
+prisma/dev.db-journal

@@ -36,6 +36,8 @@ model Producto {
   orden       Int       @default(0)
   categoriaId Int
   categoria   Categoria @relation(fields: [categoriaId], references: [id])
+  rendimiento Float?     // m2 covered by 1 box/unit (e.g. 2.3)
+  unidadVenta String    @default("un") // "caja" or "un"
   createdAt   DateTime  @default(now())
 }
 
@@ -86,4 +88,57 @@ model Admin {
   id       Int    @id @default(autoincrement())
   email    String @unique
   password String
+}
+
+model Vendedor {
+  id        Int         @id @default(autoincrement())
+  nombre    String
+  rut       String      @unique
+  telefono  String?
+  email     String?
+  password  String
+  activo    Boolean     @default(true)
+  cotizaciones Cotizacion[]
+}
+
+model Cliente {
+  id          Int         @id @default(autoincrement())
+  nombre      String
+  rut         String      @unique
+  direccion   String?
+  comuna      String?
+  telefono    String?
+  email       String?
+  createdAt   DateTime    @default(now())
+  cotizaciones Cotizacion[]
+}
+
+model Cotizacion {
+  id          Int             @id @default(autoincrement())
+  numero      String          @unique
+  createdAt   DateTime        @default(now())
+  vencimiento DateTime
+  subtotal    Float
+  iva         Float
+  total       Float
+  notas       String?
+  estado      String          @default("Pendiente") // "Pendiente" or "Vendida"
+  clienteId   Int
+  vendedorId  Int
+  cliente     Cliente         @relation(fields: [clienteId], references: [id])
+  vendedor    Vendedor        @relation(fields: [vendedorId], references: [id])
+  items       CotizacionItem[]
+}
+
+model CotizacionItem {
+  id             Int        @id @default(autoincrement())
+  cotizacionId   Int
+  productoId     Int?
+  descripcion    String
+  cantidad       Float
+  precioUnitario Float
+  descuentoPorc  Float      @default(0)
+  importe        Float
+  proyectoM2     Float?     // original m2 project area
+  cotizacion     Cotizacion @relation(fields: [cotizacionId], references: [id], onDelete: Cascade)
 }

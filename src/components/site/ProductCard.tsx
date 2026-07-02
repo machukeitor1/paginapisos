@@ -1,6 +1,3 @@
-'use client';
-
-import { useState, useEffect } from 'react';
 import Link from 'next/link';
 
 interface Producto {
@@ -20,46 +17,10 @@ interface Producto {
 }
 
 export default function ProductCard({ producto }: { producto: Producto }) {
-  const [cantidad, setCantidad] = useState(1);
-  const [agregado, setAgregado] = useState(false);
-
   let imagenes: string[] = [];
   try { imagenes = JSON.parse(producto.imagenes); } catch {}
 
   const formatearPrecio = (p: number) => `$${Math.round(p).toLocaleString('es-CL')}`;
-
-  useEffect(() => {
-    try {
-      const items = JSON.parse(localStorage.getItem('cotizador') || '[]');
-      const existe = items.some((i: any) => i.id === producto.id);
-      setAgregado(existe);
-    } catch {}
-  }, [producto.id]);
-
-  const agregarAlCotizador = () => {
-    try {
-      const items = JSON.parse(localStorage.getItem('cotizador') || '[]');
-      const existente = items.findIndex((i: any) => i.id === producto.id);
-      if (existente >= 0) {
-        items[existente].cantidad += cantidad;
-      } else {
-        items.push({
-          id: producto.id,
-          nombre: producto.nombre,
-          slug: producto.slug,
-          precio: producto.precio,
-          imagen: imagenes[0] || '',
-          cantidad,
-          unidad: producto.unidad,
-          categoriaSlug: producto.categoria.slug,
-        });
-      }
-      localStorage.setItem('cotizador', JSON.stringify(items));
-      setAgregado(true);
-      window.dispatchEvent(new Event('cotizador-update'));
-    } catch {}
-  };
-
   const linkProps = { href: `/${producto.categoria.slug}/${producto.slug}` };
 
   return (
@@ -99,26 +60,12 @@ export default function ProductCard({ producto }: { producto: Producto }) {
           )}
         </div>
 
-        <div className="flex items-center gap-2">
-          <input
-            type="number"
-            min={0.1}
-            step={0.1}
-            value={cantidad}
-            onChange={(e) => setCantidad(Math.max(0.1, parseFloat(e.target.value) || 1))}
-            className="w-16 text-center border border-gray-300 rounded-lg text-sm py-2"
-          />
-          <span className="text-xs text-muted">{producto.unidad}</span>
-          {agregado ? (
-            <Link href="/cotizador" className="flex-1 text-center bg-green-600 hover:bg-green-700 text-white text-sm font-medium py-2 rounded-lg transition-colors">
-              Ver cotización
-            </Link>
-          ) : (
-            <button onClick={agregarAlCotizador} className="flex-1 bg-accent hover:bg-accent/90 text-white text-sm font-medium py-2 rounded-lg transition-colors">
-              Cotizar
-            </button>
-          )}
-        </div>
+        <Link
+          {...linkProps}
+          className="block w-full text-center bg-accent hover:bg-accent/90 text-white text-sm font-medium py-2 rounded-lg transition-colors"
+        >
+          Ver detalle
+        </Link>
       </div>
     </div>
   );
