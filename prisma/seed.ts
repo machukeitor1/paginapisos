@@ -116,6 +116,31 @@ async function main() {
     console.log(`⏭️ ${productCount} productos ya existen, se conservan`);
   }
 
+  // Escanear imagenes para productos que aun no tienen
+  const sinImagenes = await prisma.producto.findMany({
+    where: { imagenes: "[]" },
+  });
+  if (sinImagenes.length > 0) {
+    console.log(`🖼️ Buscando imagenes para ${sinImagenes.length} productos...`);
+    let actualizados = 0;
+    for (const prod of sinImagenes) {
+      const imgRegex = new RegExp(`^${prod.slug}-\\d+\\.`);
+      let imgFiles: string[];
+      try { imgFiles = readdirSync(UPLOAD_DIR).filter(f => imgRegex.test(f)).sort(); } catch { imgFiles = []; }
+      if (imgFiles.length > 0) {
+        const paths = imgFiles.map(f => `/uploads/${f}`);
+        await prisma.producto.update({
+          where: { id: prod.id },
+          data: { imagenes: JSON.stringify(paths) },
+        });
+        actualizados++;
+      }
+    }
+    console.log(`✅ ${actualizados} productos actualizados con imagenes`);
+  } else {
+    console.log("⏭️ Todos los productos ya tienen imagenes");
+  }
+
   // Banners (solo si no existen)
   const bannerCount = await prisma.banner.count();
   if (bannerCount === 0) {
