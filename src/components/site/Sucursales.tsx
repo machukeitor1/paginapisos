@@ -57,7 +57,7 @@ export default function Sucursales() {
 
                 <div className="flex flex-wrap gap-2">
                   <a
-                    href={`https://api.whatsapp.com/send?phone=${suc.whatsapp}`}
+                    href={`https://api.whatsapp.com/send?phone=${suc.whatsapp}&text=${encodeURIComponent('Hola, me gustaría recibir información sobre sus productos y servicios.')}`}
                     target="_blank"
                     rel="noopener noreferrer"
                     className="flex-1 bg-green-600 hover:bg-green-700 text-white text-xs font-semibold py-2 px-3 rounded-lg transition-colors text-center"

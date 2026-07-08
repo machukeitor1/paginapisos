@@ -161,31 +161,27 @@ async function main() {
   if (catsActualizadas > 0) console.log(`✅ ${catsActualizadas} categorias actualizadas con imagen`);
   else console.log("⏭️ Categorias ya tienen imagen o no hay productos");
 
-  // Banners (solo si no existen)
-  const bannerCount = await prisma.banner.count();
-  if (bannerCount === 0) {
-    let bannerFiles: string[] = [];
-    try { bannerFiles = readdirSync(BANNER_DIR).sort(); } catch {}
+  // Banners (siempre actualizar)
+  let bannerFiles: string[] = [];
+  try { bannerFiles = readdirSync(BANNER_DIR).sort(); } catch {}
 
-    const makeBannerImg = (idx: number) =>
-      bannerFiles[idx] ? `/banner/${bannerFiles[idx]}` : (bannerFiles[0] ? `/banner/${bannerFiles[0]}` : "");
+  const makeBannerImg = (idx: number) =>
+    bannerFiles[idx] ? `/banner/${bannerFiles[idx]}` : (bannerFiles[0] ? `/banner/${bannerFiles[0]}` : "");
 
-    const banners = [
-      { titulo: "Revestimientos de Primera Calidad", subtitulo: "Transforma tus espacios con nuestros materiales", badge: "Hasta 40% Off", imagen: makeBannerImg(0), imagenMovil: null, url: "/revestimiento-exterior-metalico", orden: 1 },
-      { titulo: "", subtitulo: null, badge: null, imagen: makeBannerImg(1), imagenMovil: null, url: null, orden: 2 },
-    ];
-    await prisma.banner.createMany({ data: banners });
-    const imgInfo = bannerFiles.length > 0 ? `(img1: ${makeBannerImg(0)}, img2: ${makeBannerImg(1)})` : "(sin imagen)";
-    console.log(`✅ Banners creados por defecto ${imgInfo}`);
-  } else {
-    console.log("⏭️ Banners ya existen, se conservan");
-  }
+  await prisma.banner.deleteMany();
+  const banners = [
+    { titulo: "", subtitulo: null, badge: null, imagen: makeBannerImg(0), imagenMovil: null, url: null, orden: 1 },
+    { titulo: "", subtitulo: null, badge: null, imagen: makeBannerImg(1), imagenMovil: null, url: null, orden: 2 },
+  ];
+  await prisma.banner.createMany({ data: banners });
+  const imgInfo = bannerFiles.length > 0 ? `(img1: ${makeBannerImg(0)}, img2: ${makeBannerImg(1)})` : "(sin imagen)";
+  console.log(`✅ Banners actualizados ${imgInfo}`);
 
   // Sucursales (solo si no existen)
   const sucursalCount = await prisma.sucursal.count();
   if (sucursalCount === 0) {
     const sucursales = [
-      { nombre: "Chillán", zona: "Zona Sur - Ñuble", direccion: "Av. O'Higgins 567, Chillán Centro", region: "Región de Ñuble", esCasaMatriz: true, horarioAtencion: "Lun a Vie: 09:00 - 18:00 | Sáb: 09:00 - 13:30", horarioEntrega: "Lun a Vie: 09:00 - 17:00 | Sáb: 09:00 - 13:00", whatsapp: "56958110962", telefono: "422201234", emailPostventa: "postventa@revestimienteschillan.cl", urlMaps: "https://maps.google.com/?q=Av+O'Higgins+567+Chillan", activo: true, orden: 1 },
+      { nombre: "Chillán", zona: "Zona Sur - Ñuble", direccion: "Alcántara 1080, Villa Barcelona, Chillán", region: "Región de Ñuble", esCasaMatriz: true, horarioAtencion: "Lun a Vie: 09:00 - 18:00 | Sáb: 09:00 - 13:30", horarioEntrega: "Lun a Vie: 09:00 - 17:00 | Sáb: 09:00 - 13:00", whatsapp: "56994316620", telefono: "422201234", emailPostventa: "postventa@revestimienteschillan.cl", urlMaps: "https://maps.google.com/?q=Alcantara+1080+Villa+Barcelona+Chillan", activo: true, orden: 1 },
     ];
     await prisma.sucursal.createMany({ data: sucursales });
     console.log("✅ Sucursales creadas por defecto");
@@ -196,7 +192,12 @@ async function main() {
   // Configuracion
   await prisma.configuracion.upsert({
     where: { id: 1 },
-    update: {},
+    update: {
+      nombreEmpresa: "Revestimientos Chillán",
+      whatsappGlobal: "56994316620",
+      metaTitle: "Revestimientos Chillán - Materiales de Construcción",
+      metaDescription: "Venta de revestimientos y pisos de primera calidad.",
+    },
     create: {
       id: 1,
       nombreEmpresa: "Revestimientos Chillán",
@@ -208,7 +209,7 @@ async function main() {
       youtube: "https://youtube.com/@revestimientoschillan",
       emailContacto: "ventas@revestimienteschillan.cl",
       metaTitle: "Revestimientos Chillán - Materiales de Construcción",
-      metaDescription: "Venta de revestimientos metálicos, WPC, pisos vinílicos SPC, deck y siding granito. Despacho a todo Chile.",
+      metaDescription: "Venta de revestimientos y pisos de primera calidad.",
       urlMapa: "https://maps.app.goo.gl/AThwa7H4twEtSbfC6",
     },
   });

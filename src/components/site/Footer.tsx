@@ -29,9 +29,9 @@ export default async function Footer() {
       <div className="max-w-7xl mx-auto px-4 py-12">
         <div className="grid md:grid-cols-4 gap-8">
           <div>
-            <h3 className="text-white font-bold text-lg mb-4">{config?.nombreEmpresa || 'Mi Empresa'}</h3>
+            <h3 className="text-white font-bold text-lg mb-4">Revestimientos Chillán</h3>
             <p className="text-sm text-gray-400">
-              Venta de materiales de construcción, revestimientos y pisos de primera calidad. Despacho a todo Chile.
+              Venta de revestimientos y pisos de primera calidad.
             </p>
           </div>
           <div>
@@ -50,7 +50,7 @@ export default async function Footer() {
               {config?.emailContacto && <li>{config.emailContacto}</li>}
               <li>
                 <a
-                  href={`https://api.whatsapp.com/send?phone=${config?.whatsappGlobal || ''}`}
+                  href={`https://api.whatsapp.com/send?phone=${config?.whatsappGlobal || ''}&text=${encodeURIComponent('Hola, me gustaría recibir información sobre sus productos y servicios.')}`}
                   target="_blank"
                   rel="noopener noreferrer"
                   className="hover:text-accent transition-colors"
@@ -88,7 +88,7 @@ export default async function Footer() {
         </div>
       </div>
       <div className="border-t border-white/10 py-4 text-center text-sm text-gray-500">
-        &copy; {new Date().getFullYear()} {config?.nombreEmpresa || 'Mi Empresa'}. Todos los derechos reservados.
+        &copy; 2026 Revestimientos Chillán. Todos los derechos reservados.
       </div>
     </footer>
   );

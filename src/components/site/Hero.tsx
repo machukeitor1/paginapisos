@@ -1,7 +1,6 @@
 'use client';
 
 import { useState, useEffect, useCallback } from 'react';
-import Link from 'next/link';
 
 interface Banner {
   id: number;
@@ -58,7 +57,7 @@ export default function Hero() {
           {(b.imagen || b.imagenMovil) ? (
             <img
               src={b.imagen || b.imagenMovil!}
-              alt={b.titulo}
+              alt=""
               className="w-full h-full object-cover"
               onError={(e) => { (e.target as HTMLImageElement).style.display = 'none'; }}
             />
@@ -70,27 +69,6 @@ export default function Hero() {
               </div>
             </div>
           )}
-          <div className="absolute inset-0 bg-gradient-to-r from-primary/80 via-primary/50 to-transparent" />
-          <div className="absolute inset-0 flex items-center">
-            <div className="max-w-7xl mx-auto px-4 w-full">
-              <div className="max-w-xl">
-                {b.badge && (
-                  <span className="inline-block bg-accent text-white text-sm font-bold px-4 py-1 rounded-full mb-4">
-                    {b.badge}
-                  </span>
-                )}
-                {b.titulo?.trim() && <h2 className="text-3xl md:text-5xl font-bold text-white mb-4">{b.titulo}</h2>}
-                {b.subtitulo && (
-                  <p className="text-base md:text-xl text-gray-200 mb-6">{b.subtitulo}</p>
-                )}
-                {b.url && (
-                  <Link href={b.url} className="inline-block bg-accent hover:bg-accent/90 text-white font-semibold px-6 py-3 rounded-lg transition-colors">
-                    Ver más
-                  </Link>
-                )}
-              </div>
-            </div>
-          </div>
         </div>
       ))}
 
