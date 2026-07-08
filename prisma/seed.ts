@@ -1,9 +1,11 @@
 import { PrismaClient } from "@prisma/client";
 import bcrypt from "bcryptjs";
-import { readFileSync, existsSync } from "fs";
+import { readFileSync, existsSync, readdirSync } from "fs";
 import path from "path";
 
 const prisma = new PrismaClient();
+const UPLOAD_DIR = path.join(process.cwd(), "public", "uploads");
+const BANNER_DIR = path.join(process.cwd(), "public", "banner");
 
 async function main() {
   console.log("🌱 Insertando datos semilla...");
@@ -87,6 +89,19 @@ async function main() {
                 categoriaId: categoria.id,
               },
             });
+
+            // escanear imagenes locales que coincidan con el slug
+            const imgRegex = new RegExp(`^${productSlug}-\\d+\\.`);
+            let imgFiles: string[];
+            try { imgFiles = readdirSync(UPLOAD_DIR).filter(f => imgRegex.test(f)).sort(); } catch { imgFiles = []; }
+            if (imgFiles.length > 0) {
+              const paths = imgFiles.map(f => `/uploads/${f}`);
+              await prisma.producto.update({
+                where: { sku: prod.sku },
+                data: { imagenes: JSON.stringify(paths) },
+              });
+            }
+
             inserted++;
           } catch (e: any) {
             console.log(`  [ERROR] ${prod.sku}: ${e.message}`);
@@ -104,12 +119,18 @@ async function main() {
   // Banners (solo si no existen)
   const bannerCount = await prisma.banner.count();
   if (bannerCount === 0) {
+    let bannerImg = "";
+    try {
+      const bannerFiles = readdirSync(BANNER_DIR).sort();
+      if (bannerFiles.length > 0) bannerImg = `/banner/${bannerFiles[0]}`;
+    } catch {}
+
     const banners = [
-      { titulo: "Revestimientos de Primera Calidad", subtitulo: "Transforma tus espacios con nuestros materiales", badge: "Hasta 40% Off", imagen: "", imagenMovil: null, url: "/revestimiento-exterior-metalico", orden: 1 },
-      { titulo: "Pisos que Inspiran", subtitulo: "Descubre nuestra colección de pisos vinílicos SPC", badge: "Nuevos Ingresos", imagen: "", imagenMovil: null, url: "/pisos-spc", orden: 2 },
+      { titulo: "Revestimientos de Primera Calidad", subtitulo: "Transforma tus espacios con nuestros materiales", badge: "Hasta 40% Off", imagen: bannerImg, imagenMovil: null, url: "/revestimiento-exterior-metalico", orden: 1 },
+      { titulo: "Pisos que Inspiran", subtitulo: "Descubre nuestra colección de pisos vinílicos SPC", badge: "Nuevos Ingresos", imagen: bannerImg, imagenMovil: null, url: "/pisos-spc", orden: 2 },
     ];
     await prisma.banner.createMany({ data: banners });
-    console.log("✅ Banners creados por defecto");
+    console.log("✅ Banners creados por defecto" + (bannerImg ? ` (imagen: ${bannerImg})` : " (sin imagen)"));
   } else {
     console.log("⏭️ Banners ya existen, se conservan");
   }
