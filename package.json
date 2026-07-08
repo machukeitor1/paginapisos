@@ -2,11 +2,15 @@
   "name": "tienda-revestimientos",
   "version": "1.0.0",
   "private": true,
+  "engines": {
+    "node": ">=18.0.0"
+  },
   "scripts": {
     "dev": "next dev",
     "build": "npx prisma generate && next build",
-    "start": "npx prisma db push && next start",
-    "lint": "next lint"
+    "start": "npx prisma db push && npx prisma db seed && next start",
+    "lint": "next lint",
+    "postinstall": "npx prisma generate"
   },
   "dependencies": {
     "@prisma/client": "^5.22.0",

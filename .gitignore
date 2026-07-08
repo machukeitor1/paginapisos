@@ -51,7 +51,6 @@ Plantilla_Cotizacion.docx
 
 # project scripts
 iniciar.bat
-scraped_data.json
 scripts/
 wm_sample.jpg
 restore_images.ts

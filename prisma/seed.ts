@@ -1,5 +1,7 @@
 import { PrismaClient } from "@prisma/client";
 import bcrypt from "bcryptjs";
+import { readFileSync, existsSync } from "fs";
+import path from "path";
 
 const prisma = new PrismaClient();
 
@@ -42,6 +44,62 @@ async function main() {
     });
   }
   console.log("✅ Categorías creadas");
+
+  // Productos desde scraped_data.json (solo si no existen productos)
+  const productCount = await prisma.producto.count();
+  if (productCount === 0) {
+    const jsonPath = path.join(process.cwd(), "scraped_data.json");
+    if (existsSync(jsonPath)) {
+      console.log("📦 Importando productos desde scraped_data.json...");
+      const raw = readFileSync(jsonPath, "utf-8");
+      const data = JSON.parse(raw);
+      let inserted = 0;
+
+      for (const [slugCat, info] of Object.entries(data) as any[]) {
+        const categoria = await prisma.categoria.findUnique({ where: { slug: slugCat } });
+        if (!categoria) continue;
+
+        for (const prod of info.productos) {
+          if (!prod.sku) continue;
+
+          const slugify = (t: string) => t.toLowerCase().normalize("NFD").replace(/[\u0300-\u036f]/g, "").replace(/[^a-z0-9]+/g, "-").replace(/^-|-$/g, "");
+          const baseSlug = slugify(prod.nombre || `prod-${inserted}`);
+          const productSlug = `${baseSlug}-${slugify(prod.sku)}`;
+
+          const existing = await prisma.producto.findUnique({ where: { sku: prod.sku } });
+          if (existing) continue;
+
+          try {
+            await prisma.producto.create({
+              data: {
+                nombre: prod.nombre,
+                slug: productSlug,
+                sku: prod.sku,
+                descripcion: prod.descripcion || "",
+                dimensiones: prod.dimensiones || null,
+                unidad: "m2",
+                precio: prod.precio_m2 || prod.precio_unitario || 0,
+                marca: "",
+                imagenes: "[]",
+                destacado: false,
+                activo: true,
+                orden: 0,
+                categoriaId: categoria.id,
+              },
+            });
+            inserted++;
+          } catch (e: any) {
+            console.log(`  [ERROR] ${prod.sku}: ${e.message}`);
+          }
+        }
+      }
+      console.log(`✅ ${inserted} productos importados desde scraped_data.json`);
+    } else {
+      console.log("⏭️ scraped_data.json no encontrado, no se importaron productos");
+    }
+  } else {
+    console.log(`⏭️ ${productCount} productos ya existen, se conservan`);
+  }
 
   // Banners (solo si no existen)
   const bannerCount = await prisma.banner.count();
