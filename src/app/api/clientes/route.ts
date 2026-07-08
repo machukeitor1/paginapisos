@@ -10,7 +10,7 @@ export async function GET(request: Request) {
     if (q.length >= 2) {
       where.OR = [
         { rut: { contains: q } },
-        { nombre: { contains: q } },
+        { nombre: { contains: q, mode: "insensitive" } },
       ];
     }
 

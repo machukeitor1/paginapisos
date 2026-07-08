@@ -141,21 +141,42 @@ async function main() {
     console.log("⏭️ Todos los productos ya tienen imagenes");
   }
 
+  // Asignar imagen a categorias desde el primer producto
+  const catsSinImg = await prisma.categoria.findMany({
+    where: { imagen: null },
+    include: { productos: { take: 1, orderBy: { orden: "asc" } } },
+  });
+  let catsActualizadas = 0;
+  for (const cat of catsSinImg) {
+    if (cat.productos.length === 0) continue;
+    const imgs = JSON.parse(cat.productos[0].imagenes || "[]");
+    if (imgs.length > 0) {
+      await prisma.categoria.update({
+        where: { id: cat.id },
+        data: { imagen: imgs[0] },
+      });
+      catsActualizadas++;
+    }
+  }
+  if (catsActualizadas > 0) console.log(`✅ ${catsActualizadas} categorias actualizadas con imagen`);
+  else console.log("⏭️ Categorias ya tienen imagen o no hay productos");
+
   // Banners (solo si no existen)
   const bannerCount = await prisma.banner.count();
   if (bannerCount === 0) {
-    let bannerImg = "";
-    try {
-      const bannerFiles = readdirSync(BANNER_DIR).sort();
-      if (bannerFiles.length > 0) bannerImg = `/banner/${bannerFiles[0]}`;
-    } catch {}
+    let bannerFiles: string[] = [];
+    try { bannerFiles = readdirSync(BANNER_DIR).sort(); } catch {}
+
+    const makeBannerImg = (idx: number) =>
+      bannerFiles[idx] ? `/banner/${bannerFiles[idx]}` : (bannerFiles[0] ? `/banner/${bannerFiles[0]}` : "");
 
     const banners = [
-      { titulo: "Revestimientos de Primera Calidad", subtitulo: "Transforma tus espacios con nuestros materiales", badge: "Hasta 40% Off", imagen: bannerImg, imagenMovil: null, url: "/revestimiento-exterior-metalico", orden: 1 },
-      { titulo: "Pisos que Inspiran", subtitulo: "Descubre nuestra colección de pisos vinílicos SPC", badge: "Nuevos Ingresos", imagen: bannerImg, imagenMovil: null, url: "/pisos-spc", orden: 2 },
+      { titulo: "Revestimientos de Primera Calidad", subtitulo: "Transforma tus espacios con nuestros materiales", badge: "Hasta 40% Off", imagen: makeBannerImg(0), imagenMovil: null, url: "/revestimiento-exterior-metalico", orden: 1 },
+      { titulo: "", subtitulo: null, badge: null, imagen: makeBannerImg(1), imagenMovil: null, url: null, orden: 2 },
     ];
     await prisma.banner.createMany({ data: banners });
-    console.log("✅ Banners creados por defecto" + (bannerImg ? ` (imagen: ${bannerImg})` : " (sin imagen)"));
+    const imgInfo = bannerFiles.length > 0 ? `(img1: ${makeBannerImg(0)}, img2: ${makeBannerImg(1)})` : "(sin imagen)";
+    console.log(`✅ Banners creados por defecto ${imgInfo}`);
   } else {
     console.log("⏭️ Banners ya existen, se conservan");
   }
@@ -164,9 +185,7 @@ async function main() {
   const sucursalCount = await prisma.sucursal.count();
   if (sucursalCount === 0) {
     const sucursales = [
-      { nombre: "Santiago", zona: "Zona Centro - RM", direccion: "Av. Libertador Bernardo O'Higgins 1234, Santiago Centro", region: "Región Metropolitana", esCasaMatriz: true, horarioAtencion: "Lun a Vie: 08:30 - 18:30 | Sáb: 09:00 - 14:00", horarioEntrega: "Lun a Vie: 08:30 - 17:00 | Sáb: 09:00 - 13:00", whatsapp: "56958110962", telefono: "226001234", emailPostventa: "postventa.santiago@empresa.cl", urlMaps: "https://maps.google.com/?q=Av+Libertador+Bernardo+O'Higgins+1234+Santiago", activo: true, orden: 1 },
-      { nombre: "Chillán", zona: "Zona Sur - Ñuble", direccion: "Av. O'Higgins 567, Chillán Centro", region: "Región de Ñuble", esCasaMatriz: false, horarioAtencion: "Lun a Vie: 09:00 - 18:00 | Sáb: 09:00 - 13:30", horarioEntrega: "Lun a Vie: 09:00 - 17:00 | Sáb: 09:00 - 13:00", whatsapp: "56958110962", telefono: "422201234", emailPostventa: "postventa.chillan@empresa.cl", urlMaps: "https://maps.google.com/?q=Av+O'Higgins+567+Chillan", activo: true, orden: 2 },
-      { nombre: "Concepción", zona: "Zona Sur - Biobío", direccion: "Av. Paicaví 890, Concepción", region: "Región del Biobío", esCasaMatriz: false, horarioAtencion: "Lun a Vie: 09:00 - 18:30 | Sáb: 09:00 - 14:00", horarioEntrega: "Lun a Vie: 09:00 - 17:30 | Sáb: 09:00 - 13:00", whatsapp: "56958110962", telefono: "412201234", emailPostventa: "postventa.concepcion@empresa.cl", urlMaps: "https://maps.google.com/?q=Av+Paicaví+890+Concepcion", activo: true, orden: 3 },
+      { nombre: "Chillán", zona: "Zona Sur - Ñuble", direccion: "Av. O'Higgins 567, Chillán Centro", region: "Región de Ñuble", esCasaMatriz: true, horarioAtencion: "Lun a Vie: 09:00 - 18:00 | Sáb: 09:00 - 13:30", horarioEntrega: "Lun a Vie: 09:00 - 17:00 | Sáb: 09:00 - 13:00", whatsapp: "56958110962", telefono: "422201234", emailPostventa: "postventa@revestimienteschillan.cl", urlMaps: "https://maps.google.com/?q=Av+O'Higgins+567+Chillan", activo: true, orden: 1 },
     ];
     await prisma.sucursal.createMany({ data: sucursales });
     console.log("✅ Sucursales creadas por defecto");

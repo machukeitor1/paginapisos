@@ -32,7 +32,7 @@ export async function GET(request: Request) {
     if (q) {
       where.cliente = {
         OR: [
-          { nombre: { contains: q } },
+          { nombre: { contains: q, mode: "insensitive" } },
           { rut: { contains: q } },
         ],
       };
@@ -148,6 +148,7 @@ export async function POST(request: Request) {
     const cotizacion = await prisma.cotizacion.create({
       data: {
         numero,
+        estado: "PENDIENTE",
         vencimiento,
         subtotal,
         iva,
