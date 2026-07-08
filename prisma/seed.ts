@@ -129,6 +129,31 @@ async function main() {
     console.log(`⏭️ ${productCount} productos ya existen, se conservan`);
   }
 
+  // Actualizar rendimiento/precioUnitario/unidadVenta desde scraped_data.json (para productos existentes que tengan null)
+  const jsonPath = path.join(process.cwd(), "scraped_data.json");
+  if (existsSync(jsonPath)) {
+    const raw = readFileSync(jsonPath, "utf-8");
+    const data = JSON.parse(raw);
+    let actualizadosRend = 0;
+    for (const [, info] of Object.entries(data) as any[]) {
+      for (const prod of info.productos) {
+        if (!prod.sku) continue;
+        const pu = prod.precio_unitario || 0;
+        const pm2 = prod.precio_m2 || 0;
+        const rend = (pu > 0 && pm2 > 0 && pu !== pm2) ? Math.round((pu / pm2) * 1000) / 1000 : 1.0;
+        const unidadVenta = (prod.nombre || '').toLowerCase().includes('caja') ? 'caja' : 'un';
+        const precioUnitario = pu > 0 ? Math.round(pu) : Math.round(pm2 * rend);
+        const res = await prisma.producto.updateMany({
+          where: { sku: prod.sku, rendimiento: null },
+          data: { rendimiento: rend, precioUnitario, unidadVenta },
+        });
+        if (res.count > 0) actualizadosRend++;
+      }
+    }
+    if (actualizadosRend > 0) console.log(`✅ ${actualizadosRend} productos actualizados con rendimiento/precioUnitario/unidadVenta`);
+    else console.log("⏭️ Productos ya tienen rendimiento, no se actualizaron");
+  }
+
   // Escanear imagenes de todos los productos (asegura orden correcto siempre)
   const todosProductos = await prisma.producto.findMany({ select: { id: true, slug: true } });
   console.log(`🖼️ Escaneando imagenes para ${todosProductos.length} productos...`);
