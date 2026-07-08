@@ -1,0 +1,582 @@
+{
+  "REM102-CEDRO": {
+    "rendimiento": 8.8,
+    "precioUnitario": 156992,
+    "unidadVenta": "caja"
+  },
+  "REM105-NEGRO": {
+    "rendimiento": 8.8,
+    "precioUnitario": 156992,
+    "unidadVenta": "caja"
+  },
+  "REM108-NATURAL": {
+    "rendimiento": 8.8,
+    "precioUnitario": 156992,
+    "unidadVenta": "caja"
+  },
+  "REM108-ROBLE": {
+    "rendimiento": 8.8,
+    "precioUnitario": 156992,
+    "unidadVenta": "caja"
+  },
+  "REM107-MADERA": {
+    "rendimiento": 8.8,
+    "precioUnitario": 156992,
+    "unidadVenta": "caja"
+  },
+  "REM101-GRAFITO": {
+    "rendimiento": 8.8,
+    "precioUnitario": 156992,
+    "unidadVenta": "caja"
+  },
+  "REM101-MADERA": {
+    "rendimiento": 8.8,
+    "precioUnitario": 156992,
+    "unidadVenta": "caja"
+  },
+  "REM101-PIEDRA": {
+    "rendimiento": 8.8,
+    "precioUnitario": 156992,
+    "unidadVenta": "caja"
+  },
+  "REM102-CREMA": {
+    "rendimiento": 8.8,
+    "precioUnitario": 156992,
+    "unidadVenta": "caja"
+  },
+  "REM103-BLANCO": {
+    "rendimiento": 8.8,
+    "precioUnitario": 156992,
+    "unidadVenta": "caja"
+  },
+  "REM103-NEGRO": {
+    "rendimiento": 8.8,
+    "precioUnitario": 156992,
+    "unidadVenta": "caja"
+  },
+  "REM105-GRAFITO": {
+    "rendimiento": 8.8,
+    "precioUnitario": 156992,
+    "unidadVenta": "caja"
+  },
+  "REG001-CREMA": {
+    "rendimiento": 1.1107,
+    "precioUnitario": 35687,
+    "unidadVenta": "un"
+  },
+  "REM101-NEGRO": {
+    "rendimiento": 8.8,
+    "precioUnitario": 156992,
+    "unidadVenta": "caja"
+  },
+  "REM102-MADERA": {
+    "rendimiento": 8.8,
+    "precioUnitario": 156992,
+    "unidadVenta": "caja"
+  },
+  "REG001-NEGRO": {
+    "rendimiento": 1.1107,
+    "precioUnitario": 35687,
+    "unidadVenta": "un"
+  },
+  "REG001-PIEDRA": {
+    "rendimiento": 1.1107,
+    "precioUnitario": 35687,
+    "unidadVenta": "un"
+  },
+  "SPC101-GRAFITO": {
+    "rendimiento": 2.64,
+    "precioUnitario": 49447,
+    "unidadVenta": "caja"
+  },
+  "SPC101-GRISPIEDRA": {
+    "rendimiento": 2.64,
+    "precioUnitario": 49447,
+    "unidadVenta": "caja"
+  },
+  "SPC101-CARBON": {
+    "rendimiento": 2.64,
+    "precioUnitario": 49447,
+    "unidadVenta": "caja"
+  },
+  "SPC101-NOGAL": {
+    "rendimiento": 2.64,
+    "precioUnitario": 49447,
+    "unidadVenta": "caja"
+  },
+  "SPC101-NATURAL": {
+    "rendimiento": 2.64,
+    "precioUnitario": 49447,
+    "unidadVenta": "caja"
+  },
+  "SPC103-MARMOLPIEDRA": {
+    "rendimiento": 2.64,
+    "precioUnitario": 49447,
+    "unidadVenta": "caja"
+  },
+  "SPC103-MARMOLCREMA": {
+    "rendimiento": 2.64,
+    "precioUnitario": 49447,
+    "unidadVenta": "caja"
+  },
+  "SPC103-MARMOLCARBON": {
+    "rendimiento": 2.64,
+    "precioUnitario": 49447,
+    "unidadVenta": "caja"
+  },
+  "SPC101-CREMA": {
+    "rendimiento": 2.64,
+    "precioUnitario": 49447,
+    "unidadVenta": "caja"
+  },
+  "SPC102-PARQUETNOGAL": {
+    "rendimiento": 2.64,
+    "precioUnitario": 49447,
+    "unidadVenta": "caja"
+  },
+  "SPC102-PARQUETGRAFITO": {
+    "rendimiento": 2.64,
+    "precioUnitario": 49447,
+    "unidadVenta": "caja"
+  },
+  "SPC102-PARQUETNATURAL": {
+    "rendimiento": 2.64,
+    "precioUnitario": 49447,
+    "unidadVenta": "caja"
+  },
+  "SPC103-MARMOLGRAFITO": {
+    "rendimiento": 2.64,
+    "precioUnitario": 49447,
+    "unidadVenta": "caja"
+  },
+  "PIM101-NOGAL": {
+    "rendimiento": 2.3,
+    "precioUnitario": 29417,
+    "unidadVenta": "caja"
+  },
+  "PIM101-NATURAL": {
+    "rendimiento": 2.3,
+    "precioUnitario": 29417,
+    "unidadVenta": "caja"
+  },
+  "PIM101-PIEDRA": {
+    "rendimiento": 2.3,
+    "precioUnitario": 29417,
+    "unidadVenta": "caja"
+  },
+  "PIM101-GRAFITO": {
+    "rendimiento": 2.3,
+    "precioUnitario": 29417,
+    "unidadVenta": "caja"
+  },
+  "PIM101-MADERA": {
+    "rendimiento": 2.3,
+    "precioUnitario": 29417,
+    "unidadVenta": "caja"
+  },
+  "PIM101-CREMA": {
+    "rendimiento": 2.3,
+    "precioUnitario": 29417,
+    "unidadVenta": "caja"
+  },
+  "PIM101-CEREZO": {
+    "rendimiento": 2.3,
+    "precioUnitario": 29417,
+    "unidadVenta": "caja"
+  },
+  "PIM101-PARQUETROBLE": {
+    "rendimiento": 2.3,
+    "precioUnitario": 29417,
+    "unidadVenta": "caja"
+  },
+  "PEW102-CAFEMADERA": {
+    "rendimiento": 0.3124,
+    "precioUnitario": 4049,
+    "unidadVenta": "un"
+  },
+  "PEW102-CAFECHOCOLATE": {
+    "rendimiento": 0.3124,
+    "precioUnitario": 4049,
+    "unidadVenta": "un"
+  },
+  "PEW102-GRISGRAFITO": {
+    "rendimiento": 0.3124,
+    "precioUnitario": 4049,
+    "unidadVenta": "un"
+  },
+  "PEW102-NEGRO": {
+    "rendimiento": 0.3124,
+    "precioUnitario": 4049,
+    "unidadVenta": "un"
+  },
+  "PEW101-CAFECHOCOLATE": {
+    "rendimiento": 0.3124,
+    "precioUnitario": 4049,
+    "unidadVenta": "un"
+  },
+  "PEW101-CAFEMADERA": {
+    "rendimiento": 0.3124,
+    "precioUnitario": 4049,
+    "unidadVenta": "un"
+  },
+  "PEW101-NEGRO": {
+    "rendimiento": 0.3124,
+    "precioUnitario": 4049,
+    "unidadVenta": "un"
+  },
+  "PEW101-GRISGRAFITO": {
+    "rendimiento": 0.3124,
+    "precioUnitario": 4049,
+    "unidadVenta": "un"
+  },
+  "PEW101-GRISPIEDRA": {
+    "rendimiento": 0.3124,
+    "precioUnitario": 4049,
+    "unidadVenta": "un"
+  },
+  "PEW101-CAFEANTIQUE": {
+    "rendimiento": 0.3124,
+    "precioUnitario": 4049,
+    "unidadVenta": "un"
+  },
+  "PIP002-GRISCENIZA": {
+    "rendimiento": 0.36,
+    "precioUnitario": 4280,
+    "unidadVenta": "un"
+  },
+  "PIP002-CREMA": {
+    "rendimiento": 0.36,
+    "precioUnitario": 4280,
+    "unidadVenta": "un"
+  },
+  "PIP003-GRISARTICO": {
+    "rendimiento": 0.36,
+    "precioUnitario": 6638,
+    "unidadVenta": "un"
+  },
+  "PIP102-GRAFITO": {
+    "rendimiento": 0.36,
+    "precioUnitario": 4280,
+    "unidadVenta": "un"
+  },
+  "PIP102-CARBON": {
+    "rendimiento": 0.36,
+    "precioUnitario": 4280,
+    "unidadVenta": "un"
+  },
+  "PIP102-PIEDRA": {
+    "rendimiento": 0.36,
+    "precioUnitario": 4280,
+    "unidadVenta": "un"
+  },
+  "PIP001-PIEDRA": {
+    "rendimiento": 0.1314,
+    "precioUnitario": 2813,
+    "unidadVenta": "un"
+  },
+  "PIP101-MADERA": {
+    "rendimiento": 0.24,
+    "precioUnitario": 3425,
+    "unidadVenta": "un"
+  },
+  "PIP101-NOGAL": {
+    "rendimiento": 0.24,
+    "precioUnitario": 3425,
+    "unidadVenta": "un"
+  },
+  "PIP101-ROBLE": {
+    "rendimiento": 0.24,
+    "precioUnitario": 3425,
+    "unidadVenta": "un"
+  },
+  "PIP101-CAFEANTIQUE": {
+    "rendimiento": 0.24,
+    "precioUnitario": 3425,
+    "unidadVenta": "un"
+  },
+  "REW202-NEGRO": {
+    "rendimiento": 0.6351,
+    "precioUnitario": 11330,
+    "unidadVenta": "un"
+  },
+  "REW202-CAFECHOCOLATE": {
+    "rendimiento": 0.6351,
+    "precioUnitario": 11330,
+    "unidadVenta": "un"
+  },
+  "REW201-CAFECHOCOLATE": {
+    "rendimiento": 0.4234,
+    "precioUnitario": 4027,
+    "unidadVenta": "un"
+  },
+  "REW201-NEGRO": {
+    "rendimiento": 0.4234,
+    "precioUnitario": 4027,
+    "unidadVenta": "un"
+  },
+  "REW103-GRAFITONEGRO": {
+    "rendimiento": 0.5771,
+    "precioUnitario": 11675,
+    "unidadVenta": "un"
+  },
+  "REW103-MADERANEGRO": {
+    "rendimiento": 0.5771,
+    "precioUnitario": 11675,
+    "unidadVenta": "un"
+  },
+  "REW103-ANTIQUENEGRO": {
+    "rendimiento": 0.5771,
+    "precioUnitario": 11675,
+    "unidadVenta": "un"
+  },
+  "REW103-CHOCOLATENEGRO": {
+    "rendimiento": 0.5771,
+    "precioUnitario": 11675,
+    "unidadVenta": "un"
+  },
+  "RIW301-NATURAL": {
+    "rendimiento": 0.96,
+    "precioUnitario": 9130,
+    "unidadVenta": "un"
+  },
+  "RIW301-MADERA": {
+    "rendimiento": 0.96,
+    "precioUnitario": 9130,
+    "unidadVenta": "un"
+  },
+  "RIW201-CHOCOLATE": {
+    "rendimiento": 0.48,
+    "precioUnitario": 3422,
+    "unidadVenta": "un"
+  },
+  "RIW201-MADERA": {
+    "rendimiento": 0.48,
+    "precioUnitario": 3422,
+    "unidadVenta": "un"
+  },
+  "RIW201-CREMA": {
+    "rendimiento": 0.48,
+    "precioUnitario": 3422,
+    "unidadVenta": "un"
+  },
+  "RIW301-BLANCO": {
+    "rendimiento": 0.96,
+    "precioUnitario": 9130,
+    "unidadVenta": "un"
+  },
+  "RIW301-GRISPLATA": {
+    "rendimiento": 0.96,
+    "precioUnitario": 9130,
+    "unidadVenta": "un"
+  },
+  "RIW101-CEDRONEGRO": {
+    "rendimiento": 0.372,
+    "precioUnitario": 2210,
+    "unidadVenta": "un"
+  },
+  "RIW301-GRISGRAFITO": {
+    "rendimiento": 0.96,
+    "precioUnitario": 9130,
+    "unidadVenta": "un"
+  },
+  "RIW101-CHOCOLATENEGRO": {
+    "rendimiento": 0.372,
+    "precioUnitario": 2210,
+    "unidadVenta": "un"
+  },
+  "RIW101-CREMANEGRO": {
+    "rendimiento": 0.372,
+    "precioUnitario": 2210,
+    "unidadVenta": "un"
+  },
+  "RIW101-MADERANEGRO": {
+    "rendimiento": 0.372,
+    "precioUnitario": 2210,
+    "unidadVenta": "un"
+  },
+  "RIW102-NEGRO": {
+    "rendimiento": 0.468,
+    "precioUnitario": 3894,
+    "unidadVenta": "un"
+  },
+  "RIW102-CEDRO": {
+    "rendimiento": 0.468,
+    "precioUnitario": 3894,
+    "unidadVenta": "un"
+  },
+  "RIW103-CEDRO": {
+    "rendimiento": 0.372,
+    "precioUnitario": 2210,
+    "unidadVenta": "un"
+  },
+  "RIW103-MADERA": {
+    "rendimiento": 0.372,
+    "precioUnitario": 2210,
+    "unidadVenta": "un"
+  },
+  "RIW103-CHOCOLATE": {
+    "rendimiento": 0.372,
+    "precioUnitario": 2210,
+    "unidadVenta": "un"
+  },
+  "RIW103-CREMA": {
+    "rendimiento": 0.372,
+    "precioUnitario": 2210,
+    "unidadVenta": "un"
+  },
+  "RIW103-NEGRO": {
+    "rendimiento": 0.372,
+    "precioUnitario": 2210,
+    "unidadVenta": "un"
+  },
+  "CVW201-CAFECHOCOLATE": {
+    "rendimiento": 0.2088,
+    "precioUnitario": 1489,
+    "unidadVenta": "un"
+  },
+  "CVW201-NEGRO": {
+    "rendimiento": 0.2088,
+    "precioUnitario": 1489,
+    "unidadVenta": "un"
+  },
+  "CVW101-CAFEMADERA": {
+    "rendimiento": 0.203,
+    "precioUnitario": 1931,
+    "unidadVenta": "un"
+  },
+  "CVW101-GRISGRAFITO": {
+    "rendimiento": 0.203,
+    "precioUnitario": 1931,
+    "unidadVenta": "un"
+  },
+  "CVW101-GRISPIEDRA": {
+    "rendimiento": 0.203,
+    "precioUnitario": 1931,
+    "unidadVenta": "un"
+  },
+  "CVW101-CAFEANTIQUE": {
+    "rendimiento": 0.203,
+    "precioUnitario": 1931,
+    "unidadVenta": "un"
+  },
+  "CVW101-CAFECHOCOLATE": {
+    "rendimiento": 0.203,
+    "precioUnitario": 1931,
+    "unidadVenta": "un"
+  },
+  "CVW101-NEGRO": {
+    "rendimiento": 0.203,
+    "precioUnitario": 1931,
+    "unidadVenta": "un"
+  },
+  "REP101-BLANCO": {
+    "rendimiento": 0.58,
+    "precioUnitario": 3793,
+    "unidadVenta": "un"
+  },
+  "REP101-BEIGE": {
+    "rendimiento": 0.58,
+    "precioUnitario": 3793,
+    "unidadVenta": "un"
+  },
+  "REP101-GRISPIEDRA": {
+    "rendimiento": 0.58,
+    "precioUnitario": 3793,
+    "unidadVenta": "un"
+  },
+  "REP101-CAFE": {
+    "rendimiento": 0.58,
+    "precioUnitario": 3793,
+    "unidadVenta": "un"
+  },
+  "RPU101-COBRE": {
+    "rendimiento": 1.125,
+    "precioUnitario": 83396,
+    "unidadVenta": "un"
+  },
+  "RPU101-GRAFITO": {
+    "rendimiento": 1.125,
+    "precioUnitario": 83396,
+    "unidadVenta": "un"
+  },
+  "RPU101-CAFEMADERA": {
+    "rendimiento": 1.125,
+    "precioUnitario": 83396,
+    "unidadVenta": "un"
+  },
+  "RPU101-PIEDRAVOLCANICA": {
+    "rendimiento": 1.125,
+    "precioUnitario": 83396,
+    "unidadVenta": "un"
+  },
+  "RPU101-PIEDRA": {
+    "rendimiento": 1.125,
+    "precioUnitario": 83396,
+    "unidadVenta": "un"
+  },
+  "RPU101-FACHALETA": {
+    "rendimiento": 0.72,
+    "precioUnitario": 22270,
+    "unidadVenta": "un"
+  },
+  "APU102-CAFE": {
+    "rendimiento": 0.58,
+    "precioUnitario": 96622,
+    "unidadVenta": "un"
+  },
+  "APU102-NOGAL": {
+    "rendimiento": 0.58,
+    "precioUnitario": 96622,
+    "unidadVenta": "un"
+  },
+  "CEW01-180-CAFE": {
+    "rendimiento": 3.3852,
+    "precioUnitario": 986955,
+    "unidadVenta": "un"
+  },
+  "CEW01-180-NEGRO": {
+    "rendimiento": 3.3852,
+    "precioUnitario": 986955,
+    "unidadVenta": "un"
+  },
+  "CEW02-180-CAFE": {
+    "rendimiento": 3.3852,
+    "precioUnitario": 986955,
+    "unidadVenta": "un"
+  },
+  "CEW02-180-NEGRO": {
+    "rendimiento": 3.3852,
+    "precioUnitario": 986955,
+    "unidadVenta": "un"
+  },
+  "CEW03-180-CAFE": {
+    "rendimiento": 3.3852,
+    "precioUnitario": 986955,
+    "unidadVenta": "un"
+  },
+  "CEW03-180-NEGRO": {
+    "rendimiento": 3.3852,
+    "precioUnitario": 986955,
+    "unidadVenta": "un"
+  },
+  "REG001-CAFE": {
+    "rendimiento": 1.1107,
+    "precioUnitario": 35687,
+    "unidadVenta": "un"
+  },
+  "PIP002-GRISCARBON": {
+    "rendimiento": 0.36,
+    "precioUnitario": 6649,
+    "unidadVenta": "un"
+  },
+  "PIP003-GRISPIEDRA": {
+    "rendimiento": 0.36,
+    "precioUnitario": 6638,
+    "unidadVenta": "un"
+  },
+  "REW103-PIEDRANEGRO": {
+    "rendimiento": 0.5771,
+    "precioUnitario": 11675,
+    "unidadVenta": "un"
+  }
+}

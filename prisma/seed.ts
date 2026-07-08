@@ -124,28 +124,20 @@ async function main() {
     console.log("⏭️ scraped_data.json no encontrado, no se importaron productos");
   }
 
-  // Actualizar rendimiento/precioUnitario/unidadVenta desde scraped_data.json (para productos existentes que tengan null)
-  if (existsSync(jsonPath)) {
-    const raw = readFileSync(jsonPath, "utf-8");
-    const data = JSON.parse(raw);
-    let actualizadosRend = 0;
-    for (const [, info] of Object.entries(data) as any[]) {
-      for (const prod of info.productos) {
-        if (!prod.sku) continue;
-        const pu = prod.precio_unitario || 0;
-        const pm2 = prod.precio_m2 || 0;
-        const rend = (pu > 0 && pm2 > 0 && pu !== pm2) ? Math.round((pu / pm2) * 1000) / 1000 : 1.0;
-        const unidadVenta = (prod.nombre || '').toLowerCase().includes('caja') ? 'caja' : 'un';
-        const precioUnitario = pu > 0 ? Math.round(pu) : Math.round(pm2 * rend);
-        const res = await prisma.producto.updateMany({
-          where: { sku: prod.sku, rendimiento: null },
-          data: { rendimiento: rend, precioUnitario, unidadVenta },
-        });
-        if (res.count > 0) actualizadosRend++;
-      }
+  // Sobrescribir rendimiento/precioUnitario/unidadVenta con valores exactos desde productos_overrides.json
+  const overridesPath = path.join(process.cwd(), "productos_overrides.json");
+  if (existsSync(overridesPath)) {
+    const raw = readFileSync(overridesPath, "utf-8");
+    const overrides = JSON.parse(raw) as Record<string, { rendimiento: number; precioUnitario: number; unidadVenta: string }>;
+    let actualizados = 0;
+    for (const [sku, ov] of Object.entries(overrides)) {
+      const res = await prisma.producto.updateMany({
+        where: { sku },
+        data: { rendimiento: ov.rendimiento, precioUnitario: ov.precioUnitario, unidadVenta: ov.unidadVenta },
+      });
+      if (res.count > 0) actualizados++;
     }
-    if (actualizadosRend > 0) console.log(`✅ ${actualizadosRend} productos actualizados con rendimiento/precioUnitario/unidadVenta`);
-    else console.log("⏭️ Productos ya tienen rendimiento, no se actualizaron");
+    console.log(`✅ ${actualizados} productos actualizados con rendimiento/precioUnitario/unidadVenta desde productos_overrides.json`);
   }
 
   // Escanear imagenes de todos los productos (asegura orden correcto siempre)
