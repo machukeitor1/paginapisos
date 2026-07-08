@@ -5,7 +5,7 @@
       {
         "nombre": "Revestimiento Metálico De Pared Color Cedro (caja 8 un.)",
         "precio_unitario": 98934,
-        "precio_m2": 17840.0,
+        "precio_m2": 17840,
         "sku": "REM102-CEDRO",
         "descripcion": "El revestimiento metálico es ideal para ser utilizado en zonas con climas adversos como lluvia, viento, frío, nieve, humedad, etc.",
         "imagenes": [
@@ -24,7 +24,7 @@
       {
         "nombre": "Revestimiento Metálico de Pared Color Negro (Caja 8 un.)",
         "precio_unitario": 98934,
-        "precio_m2": 17840.0,
+        "precio_m2": 17840,
         "sku": "REM105-NEGRO",
         "descripcion": "El revestimiento metálico es ideal para ser utilizado en zonas con climas adversos como lluvia, viento, frío, nieve, humedad, etc.",
         "imagenes": [
@@ -45,7 +45,7 @@
       {
         "nombre": "Revestimiento Metálico de Pared Color Natural (Caja 8 un.)",
         "precio_unitario": 98934,
-        "precio_m2": 17840.0,
+        "precio_m2": 17840,
         "sku": "REM108-NATURAL",
         "descripcion": "El revestimiento metálico es ideal para ser utilizado en zonas con climas adversos como lluvia, viento, frío, nieve, humedad, etc.",
         "imagenes": [
@@ -60,7 +60,7 @@
       {
         "nombre": "Revestimiento Metálico de Pared Color Roble (Caja 8 un.)",
         "precio_unitario": 98934,
-        "precio_m2": 17840.0,
+        "precio_m2": 17840,
         "sku": "REM108-ROBLE",
         "descripcion": "El revestimiento metálico es ideal para ser utilizado en zonas con climas adversos como lluvia, viento, frío, nieve, humedad, etc.",
         "imagenes": [
@@ -75,7 +75,7 @@
       {
         "nombre": "Revestimiento Metálico de Pared Color Madera (Caja 8 un.)",
         "precio_unitario": 98934,
-        "precio_m2": 17840.0,
+        "precio_m2": 17840,
         "sku": "REM107-MADERA",
         "descripcion": "El revestimiento metálico es ideal para ser utilizado en zonas con climas adversos como lluvia, viento, frío, nieve, humedad, etc.",
         "imagenes": [
@@ -90,7 +90,7 @@
       {
         "nombre": "Revestimiento Metálico de Pared Color Grafito (Caja 8 un.)",
         "precio_unitario": 98934,
-        "precio_m2": 17840.0,
+        "precio_m2": 17840,
         "sku": "REM101-GRAFITO",
         "descripcion": "El revestimiento metálico es ideal para ser utilizado en zonas con climas adversos como lluvia, viento, frío, nieve, humedad, etc.",
         "imagenes": [
@@ -112,7 +112,7 @@
       {
         "nombre": "Revestimiento Metálico de Pared Color Madera (Caja 8 un.)",
         "precio_unitario": 98934,
-        "precio_m2": 17840.0,
+        "precio_m2": 17840,
         "sku": "REM101-MADERA",
         "descripcion": "El revestimiento metálico es ideal para ser utilizado en zonas con climas adversos como lluvia, viento, frío, nieve, humedad, etc.",
         "imagenes": [
@@ -131,7 +131,7 @@
       {
         "nombre": "Revestimiento Metálico de Pared Color Piedra (Caja 8 un.)",
         "precio_unitario": 98934,
-        "precio_m2": 17840.0,
+        "precio_m2": 17840,
         "sku": "REM101-PIEDRA",
         "descripcion": "El revestimiento metálico es ideal para ser utilizado en zonas con climas adversos como lluvia, viento, frío, nieve, humedad, etc.",
         "imagenes": [
@@ -153,7 +153,7 @@
       {
         "nombre": "Revestimiento Metálico de Pared Color Crema (Caja 8 un.)",
         "precio_unitario": 98934,
-        "precio_m2": 17840.0,
+        "precio_m2": 17840,
         "sku": "REM102-CREMA",
         "descripcion": "El revestimiento metálico es ideal para ser utilizado en zonas con climas adversos como lluvia, viento, frío, nieve, humedad, etc.",
         "imagenes": [
@@ -175,7 +175,7 @@
       {
         "nombre": "Revestimiento Metálico de Pared Color Blanco (Caja 8 un.)",
         "precio_unitario": 98934,
-        "precio_m2": 17840.0,
+        "precio_m2": 17840,
         "sku": "REM103-BLANCO",
         "descripcion": "El revestimiento metálico es ideal para ser utilizado en zonas con climas adversos como lluvia, viento, frío, nieve, humedad, etc.",
         "imagenes": [
@@ -196,7 +196,7 @@
       {
         "nombre": "Revestimiento Metálico de Pared Color Negro (Caja 8 un.)",
         "precio_unitario": 98934,
-        "precio_m2": 17840.0,
+        "precio_m2": 17840,
         "sku": "REM103-NEGRO",
         "descripcion": "El revestimiento metálico es ideal para ser utilizado en zonas con climas adversos como lluvia, viento, frío, nieve, humedad, etc.",
         "imagenes": [
@@ -217,7 +217,7 @@
       {
         "nombre": "Revestimiento Metálico de Pared Color Grafito (Caja 8 un.)",
         "precio_unitario": 98934,
-        "precio_m2": 17840.0,
+        "precio_m2": 17840,
         "sku": "REM105-GRAFITO",
         "descripcion": "El revestimiento metálico es ideal para ser utilizado en zonas con climas adversos como lluvia, viento, frío, nieve, humedad, etc.",
         "imagenes": [
@@ -237,26 +237,9 @@
         "categoria_slug": "revestimiento-exterior-metalico"
       },
       {
-        "nombre": "Siding Texturizado Tipo Granito Crema (Caja de 8 un.)",
-        "precio_unitario": 142560,
-        "precio_m2": 32130.0,
-        "sku": "REG001-CREMA",
-        "descripcion": "El revestimiento metálico es ideal para ser utilizado en zonas con climas adversos como lluvia, viento, frío, nieve, humedad, etc.",
-        "imagenes": [
-          "https://revestimientosypisos.cl/wp-content/themes/etips/assets/images/sharer/sharer_1200x630.png",
-          "https://revestimientosypisos.cl/wp-content/uploads/2024/09/revestimiento-exterior-texturizado-tipo-granito-color-crema-reg001-01.jpg",
-          "https://revestimientosypisos.cl/wp-content/uploads/2024/09/revestimiento-exterior-texturizado-tipo-granito-color-crema-reg001-02.jpg",
-          "https://revestimientosypisos.cl/wp-content/uploads/2024/09/revestimiento-exterior-texturizado-tipo-granito-color-crema-reg001-03.jpg",
-          "https://revestimientosypisos.cl/wp-content/uploads/2024/09/revestimiento-exterior-texturizado-tipo-granito-color-crema-reg001-04.jpg",
-          "https://revestimientosypisos.cl/wp-content/uploads/2024/09/revestimiento-exterior-texturizado-tipo-granito-color-crema-reg001-05.jpg"
-        ],
-        "url": "https://revestimientosypisos.cl/revestimiento-exterior-metalico/siding-texturizado-tipo-granito-color-crema-reg001-caja-de-8-un",
-        "categoria_slug": "revestimiento-exterior-metalico"
-      },
-      {
         "nombre": "Revestimiento Metálico De Pared Color Negro (caja 8 un.)",
         "precio_unitario": 98934,
-        "precio_m2": 17840.0,
+        "precio_m2": 17840,
         "sku": "REM101-NEGRO",
         "descripcion": "El revestimiento metálico es ideal para ser utilizado en zonas con climas adversos como lluvia, viento, frío, nieve, humedad, etc.",
         "imagenes": [
@@ -272,7 +255,7 @@
       {
         "nombre": "Revestimiento Metálico De Pared Color Madera (caja 8 un.)",
         "precio_unitario": 98934,
-        "precio_m2": 17840.0,
+        "precio_m2": 17840,
         "sku": "REM102-MADERA",
         "descripcion": "El revestimiento metálico es ideal para ser utilizado en zonas con climas adversos como lluvia, viento, frío, nieve, humedad, etc.",
         "imagenes": [
@@ -284,53 +267,6 @@
         ],
         "url": "https://revestimientosypisos.cl/revestimiento-exterior-metalico/revestimiento-metalico-de-pared-color-madera-rem102-caja-8-un",
         "categoria_slug": "revestimiento-exterior-metalico"
-      },
-      {
-        "nombre": "Siding Texturizado Tipo Granito Negro (Caja de 8 un.)",
-        "precio_unitario": 142560,
-        "precio_m2": 32130.0,
-        "sku": "REG001-NEGRO",
-        "descripcion": "El revestimiento metálico es ideal para ser utilizado en zonas con climas adversos como lluvia, viento, frío, nieve, humedad, etc.",
-        "imagenes": [
-          "https://revestimientosypisos.cl/wp-content/themes/etips/assets/images/sharer/sharer_1200x630.png",
-          "https://revestimientosypisos.cl/wp-content/uploads/2024/09/revestimiento-exterior-texturizado-tipo-granito-color-negro-reg001-01.jpg",
-          "https://revestimientosypisos.cl/wp-content/uploads/2024/09/revestimiento-exterior-texturizado-tipo-granito-color-negro-reg001-02.jpg",
-          "https://revestimientosypisos.cl/wp-content/uploads/2024/09/revestimiento-exterior-texturizado-tipo-granito-color-negro-reg001-03.jpg",
-          "https://revestimientosypisos.cl/wp-content/uploads/2024/09/revestimiento-exterior-texturizado-tipo-granito-color-negro-reg001-04.jpg",
-          "https://revestimientosypisos.cl/wp-content/uploads/2024/09/revestimiento-exterior-texturizado-tipo-granito-color-negro-reg001-05.jpg"
-        ],
-        "url": "https://revestimientosypisos.cl/revestimiento-exterior-metalico/siding-texturizado-tipo-granito-color-negro-reg001-caja-de-8-un",
-        "categoria_slug": "revestimiento-exterior-metalico"
-      },
-      {
-        "nombre": "Siding Texturizado Tipo Granito Piedra (Caja de 8 un.)",
-        "precio_unitario": 142560,
-        "precio_m2": 32130.0,
-        "sku": "REG001-PIEDRA",
-        "descripcion": "El revestimiento metálico es ideal para ser utilizado en zonas con climas adversos como lluvia, viento, frío, nieve, humedad, etc.",
-        "imagenes": [
-          "https://revestimientosypisos.cl/wp-content/themes/etips/assets/images/sharer/sharer_1200x630.png",
-          "https://revestimientosypisos.cl/wp-content/uploads/2024/09/revestimiento-exterior-texturizado-tipo-granito-color-piedra-reg001-01.jpg",
-          "https://revestimientosypisos.cl/wp-content/uploads/2024/09/revestimiento-exterior-texturizado-tipo-granito-color-piedra-reg001-02.jpg",
-          "https://revestimientosypisos.cl/wp-content/uploads/2024/09/revestimiento-exterior-texturizado-tipo-granito-color-piedra-reg001-04.jpg",
-          "https://revestimientosypisos.cl/wp-content/uploads/2024/09/revestimiento-exterior-texturizado-tipo-granito-color-piedra-reg001-05.jpg"
-        ],
-        "url": "https://revestimientosypisos.cl/revestimiento-exterior-metalico/siding-texturizado-tipo-granito-color-piedra-reg001-caja-de-8-un",
-        "categoria_slug": "revestimiento-exterior-metalico"
-      },
-      {
-        "nombre": "Siding Texturizado Tipo Granito Café (Caja de 8 un.)",
-        "descripcion": "El revestimiento metálico es ideal para ser utilizado en zonas con climas adversos como lluvia, viento, frío, nieve, humedad, etc.",
-        "imagenes": [
-          "https://revestimientosypisos.cl/wp-content/themes/etips/assets/images/sharer/sharer_1200x630.png",
-          "https://revestimientosypisos.cl/wp-content/uploads/2024/09/revestimiento-exterior-texturizado-tipo-granito-color-cafe-reg001-01.jpg",
-          "https://revestimientosypisos.cl/wp-content/uploads/2024/09/revestimiento-exterior-texturizado-tipo-granito-color-cafe-reg001-02.jpg",
-          "https://revestimientosypisos.cl/wp-content/uploads/2024/09/revestimiento-exterior-texturizado-tipo-granito-color-cafe-reg001-03.jpg",
-          "https://revestimientosypisos.cl/wp-content/uploads/2024/09/revestimiento-exterior-texturizado-tipo-granito-color-cafe-reg001-04.jpg",
-          "https://revestimientosypisos.cl/wp-content/uploads/2024/09/revestimiento-exterior-texturizado-tipo-granito-color-cafe-reg001-05.jpg"
-        ],
-        "url": "https://revestimientosypisos.cl/revestimiento-exterior-metalico/siding-texturizado-tipo-granito-color-cafe-reg001-caja-de-8-un",
-        "categoria_slug": "revestimiento-exterior-metalico"
       }
     ]
   },
@@ -340,7 +276,7 @@
       {
         "nombre": "Piso Vinílico SPC De Interior Color Grafito (Caja 12 un.)",
         "precio_unitario": 33237,
-        "precio_m2": 18730.0,
+        "precio_m2": 18730,
         "sku": "SPC101-GRAFITO",
         "descripcion": "Los piso de SPC, son un tipo de piso vinílico de última generación, que están compuestos por diferentes capas, de las cuales destacan su aleación de Piedra Caliza y PVC, lo cual genera un producto altamente resistente, duradero y práctico tanto para climas húmedos, como para climas cálidos con altas temperaturas.",
         "imagenes": [
@@ -356,7 +292,7 @@
       {
         "nombre": "Piso Vinílico SPC De Interior Color Gris Piedra (Caja 12 un.)",
         "precio_unitario": 33237,
-        "precio_m2": 18730.0,
+        "precio_m2": 18730,
         "sku": "SPC101-GRISPIEDRA",
         "descripcion": "Los piso de SPC, son un tipo de piso vinílico de última generación, que están compuestos por diferentes capas, de las cuales destacan su aleación de Piedra Caliza y PVC, lo cual genera un producto altamente resistente, duradero y práctico tanto para climas húmedos, como para climas cálidos con altas temperaturas.",
         "imagenes": [
@@ -376,7 +312,7 @@
       {
         "nombre": "Piso Vinílico SPC de Interior Color Carbón (Caja 12 un.)",
         "precio_unitario": 33237,
-        "precio_m2": 18730.0,
+        "precio_m2": 18730,
         "sku": "SPC101-CARBON",
         "descripcion": "Los piso de SPC, son un tipo de piso vinílico de última generación, que están compuestos por diferentes capas, de las cuales destacan su aleación de Piedra Caliza y PVC, lo cual genera un producto altamente resistente, duradero y práctico tanto para climas húmedos, como para climas cálidos con altas temperaturas.",
         "imagenes": [
@@ -398,7 +334,7 @@
       {
         "nombre": "Piso Vinílico SPC de Interior Color Nogal (Caja 12 un.)",
         "precio_unitario": 33237,
-        "precio_m2": 18730.0,
+        "precio_m2": 18730,
         "sku": "SPC101-NOGAL",
         "descripcion": "Los piso de SPC, son un tipo de piso vinílico de última generación, que están compuestos por diferentes capas, de las cuales destacan su aleación de Piedra Caliza y PVC, lo cual genera un producto altamente resistente, duradero y práctico tanto para climas húmedos, como para climas cálidos con altas temperaturas.",
         "imagenes": [
@@ -417,7 +353,7 @@
       {
         "nombre": "Piso Vinílico SPC de Interior Color Natural (Caja 12 un.)",
         "precio_unitario": 33237,
-        "precio_m2": 18730.0,
+        "precio_m2": 18730,
         "sku": "SPC101-NATURAL",
         "descripcion": "Los piso de SPC, son un tipo de piso vinílico de última generación, que están compuestos por diferentes capas, de las cuales destacan su aleación de Piedra Caliza y PVC, lo cual genera un producto altamente resistente, duradero y práctico tanto para climas húmedos, como para climas cálidos con altas temperaturas.",
         "imagenes": [
@@ -437,7 +373,7 @@
       {
         "nombre": "Piso Vinílico SPC De Interior Mármol Piedra (caja 12 un.)",
         "precio_unitario": 33237,
-        "precio_m2": 18730.0,
+        "precio_m2": 18730,
         "sku": "SPC103-MARMOLPIEDRA",
         "descripcion": "Los piso de SPC, son un tipo de piso vinílico de última generación, que están compuestos por diferentes capas, de las cuales destacan su aleación de Piedra Caliza y PVC, lo cual genera un producto altamente resistente, duradero y práctico tanto para climas húmedos, como para climas cálidos con altas temperaturas.",
         "imagenes": [
@@ -453,7 +389,7 @@
       {
         "nombre": "Piso Vinílico SPC De Interior Mármol Crema (caja 12 un.)",
         "precio_unitario": 33237,
-        "precio_m2": 18730.0,
+        "precio_m2": 18730,
         "sku": "SPC103-MARMOLCREMA",
         "descripcion": "Los piso de SPC, son un tipo de piso vinílico de última generación, que están compuestos por diferentes capas, de las cuales destacan su aleación de Piedra Caliza y PVC, lo cual genera un producto altamente resistente, duradero y práctico tanto para climas húmedos, como para climas cálidos con altas temperaturas.",
         "imagenes": [
@@ -469,7 +405,7 @@
       {
         "nombre": "Piso Vinílico SPC De Interior Mármol Carbón (caja 12 un.)",
         "precio_unitario": 33237,
-        "precio_m2": 18730.0,
+        "precio_m2": 18730,
         "sku": "SPC103-MARMOLCARBON",
         "descripcion": "Los piso de SPC, son un tipo de piso vinílico de última generación, que están compuestos por diferentes capas, de las cuales destacan su aleación de Piedra Caliza y PVC, lo cual genera un producto altamente resistente, duradero y práctico tanto para climas húmedos, como para climas cálidos con altas temperaturas.",
         "imagenes": [
@@ -485,7 +421,7 @@
       {
         "nombre": "Piso Vinílico SPC De Interior Color Crema (Caja 12 un.)",
         "precio_unitario": 33237,
-        "precio_m2": 18730.0,
+        "precio_m2": 18730,
         "sku": "SPC101-CREMA",
         "descripcion": "Los piso de SPC, son un tipo de piso vinílico de última generación, que están compuestos por diferentes capas, de las cuales destacan su aleación de Piedra Caliza y PVC, lo cual genera un producto altamente resistente, duradero y práctico tanto para climas húmedos, como para climas cálidos con altas temperaturas.",
         "imagenes": [
@@ -503,7 +439,7 @@
       {
         "nombre": "Piso Vinílico SPC De Interior Parquet Nogal (Caja 12 un.)",
         "precio_unitario": 33237,
-        "precio_m2": 18730.0,
+        "precio_m2": 18730,
         "sku": "SPC102-PARQUETNOGAL",
         "descripcion": "Los piso de SPC, son un tipo de piso vinílico de última generación, que están compuestos por diferentes capas, de las cuales destacan su aleación de Piedra Caliza y PVC, lo cual genera un producto altamente resistente, duradero y práctico tanto para climas húmedos, como para climas cálidos con altas temperaturas.",
         "imagenes": [
@@ -520,7 +456,7 @@
       {
         "nombre": "Piso Vinílico SPC De Interior Parquet Grafito (Caja 12 un.)",
         "precio_unitario": 33237,
-        "precio_m2": 18730.0,
+        "precio_m2": 18730,
         "sku": "SPC102-PARQUETGRAFITO",
         "descripcion": "Los piso de SPC, son un tipo de piso vinílico de última generación, que están compuestos por diferentes capas, de las cuales destacan su aleación de Piedra Caliza y PVC, lo cual genera un producto altamente resistente, duradero y práctico tanto para climas húmedos, como para climas cálidos con altas temperaturas.",
         "imagenes": [
@@ -536,7 +472,7 @@
       {
         "nombre": "Piso Vinílico SPC De Interior Parquet Natural (Caja 12 un.)",
         "precio_unitario": 33237,
-        "precio_m2": 18730.0,
+        "precio_m2": 18730,
         "sku": "SPC102-PARQUETNATURAL",
         "descripcion": "Los piso de SPC, son un tipo de piso vinílico de última generación, que están compuestos por diferentes capas, de las cuales destacan su aleación de Piedra Caliza y PVC, lo cual genera un producto altamente resistente, duradero y práctico tanto para climas húmedos, como para climas cálidos con altas temperaturas.",
         "imagenes": [
@@ -555,7 +491,7 @@
       {
         "nombre": "Piso Vinílico SPC De Interior Mármol Grafito (Caja 12 un.)",
         "precio_unitario": 33237,
-        "precio_m2": 18730.0,
+        "precio_m2": 18730,
         "sku": "SPC103-MARMOLGRAFITO",
         "descripcion": "Los piso de SPC, son un tipo de piso vinílico de última generación, que están compuestos por diferentes capas, de las cuales destacan su aleación de Piedra Caliza y PVC, lo cual genera un producto altamente resistente, duradero y práctico tanto para climas húmedos, como para climas cálidos con altas temperaturas.",
         "imagenes": [
@@ -576,7 +512,7 @@
       {
         "nombre": "Piso Flotante Interior Color Nogal (Caja 10 un.)",
         "precio_unitario": 17290,
-        "precio_m2": 12790.0,
+        "precio_m2": 12790,
         "sku": "PIM101-NOGAL",
         "descripcion": "Piso flotante de color Nogal.",
         "imagenes": [
@@ -592,7 +528,7 @@
       {
         "nombre": "Piso Flotante Interior Color Natural (Caja 10 un.)",
         "precio_unitario": 17290,
-        "precio_m2": 12790.0,
+        "precio_m2": 12790,
         "sku": "PIM101-NATURAL",
         "descripcion": "P",
         "imagenes": [
@@ -608,7 +544,7 @@
       {
         "nombre": "Piso Flotante Interior Color Piedra (Caja 10 un.)",
         "precio_unitario": 17290,
-        "precio_m2": 12790.0,
+        "precio_m2": 12790,
         "sku": "PIM101-PIEDRA",
         "descripcion": "P",
         "imagenes": [
@@ -624,7 +560,7 @@
       {
         "nombre": "Piso Flotante Interior Color Grafito (Caja 10 un.)",
         "precio_unitario": 17290,
-        "precio_m2": 12790.0,
+        "precio_m2": 12790,
         "sku": "PIM101-GRAFITO",
         "descripcion": "P",
         "imagenes": [
@@ -640,7 +576,7 @@
       {
         "nombre": "Piso Flotante Interior Color Madera (Caja 10 un.)",
         "precio_unitario": 17290,
-        "precio_m2": 12790.0,
+        "precio_m2": 12790,
         "sku": "PIM101-MADERA",
         "descripcion": "P",
         "imagenes": [
@@ -656,7 +592,7 @@
       {
         "nombre": "Piso Flotante Interior Color Crema (Caja 10 un.)",
         "precio_unitario": 17290,
-        "precio_m2": 12790.0,
+        "precio_m2": 12790,
         "sku": "PIM101-CREMA",
         "descripcion": "P",
         "imagenes": [
@@ -672,7 +608,7 @@
       {
         "nombre": "Piso Flotante Interior Color Cerezo (Caja 10 un.)",
         "precio_unitario": 17290,
-        "precio_m2": 12790.0,
+        "precio_m2": 12790,
         "sku": "PIM101-CEREZO",
         "descripcion": "P",
         "imagenes": [
@@ -688,7 +624,7 @@
       {
         "nombre": "Piso Flotante Interior Color Parquet Roble (Caja 10 un.)",
         "precio_unitario": 17290,
-        "precio_m2": 12790.0,
+        "precio_m2": 12790,
         "sku": "PIM101-PARQUETROBLE",
         "descripcion": "P",
         "imagenes": [
@@ -889,7 +825,7 @@
       {
         "nombre": "Siding Texturizado Tipo Granito Crema (Caja de 8 un.)",
         "precio_unitario": 142560,
-        "precio_m2": 32130.0,
+        "precio_m2": 32130,
         "sku": "REG001-CREMA",
         "descripcion": "El revestimiento metálico es ideal para ser utilizado en zonas con climas adversos como lluvia, viento, frío, nieve, humedad, etc.",
         "imagenes": [
@@ -906,7 +842,7 @@
       {
         "nombre": "Siding Texturizado Tipo Granito Negro (Caja de 8 un.)",
         "precio_unitario": 142560,
-        "precio_m2": 32130.0,
+        "precio_m2": 32130,
         "sku": "REG001-NEGRO",
         "descripcion": "El revestimiento metálico es ideal para ser utilizado en zonas con climas adversos como lluvia, viento, frío, nieve, humedad, etc.",
         "imagenes": [
@@ -923,7 +859,7 @@
       {
         "nombre": "Siding Texturizado Tipo Granito Piedra (Caja de 8 un.)",
         "precio_unitario": 142560,
-        "precio_m2": 32130.0,
+        "precio_m2": 32130,
         "sku": "REG001-PIEDRA",
         "descripcion": "El revestimiento metálico es ideal para ser utilizado en zonas con climas adversos como lluvia, viento, frío, nieve, humedad, etc.",
         "imagenes": [
@@ -948,7 +884,8 @@
           "https://revestimientosypisos.cl/wp-content/uploads/2024/09/revestimiento-exterior-texturizado-tipo-granito-color-cafe-reg001-05.jpg"
         ],
         "url": "https://revestimientosypisos.cl/siding-tipo-granito/siding-texturizado-tipo-granito-color-cafe-reg001-caja-de-8-un",
-        "categoria_slug": "siding-tipo-granito"
+        "categoria_slug": "siding-tipo-granito",
+        "sku": "REG001-CAFE"
       }
     ]
   },
@@ -958,7 +895,7 @@
       {
         "nombre": "Porcelanato Tipo Concrete Color Gris Ceniza 60x60 (caja 4 un.)",
         "precio_unitario": 12948,
-        "precio_m2": 11890.0,
+        "precio_m2": 11890,
         "sku": "PIP002-GRISCENIZA",
         "descripcion": "¿Qué es el Porcelanato?Arcilla, arena de sílice y feldespatoEl porcelanato es un mezcla de arcilla, arena de sílice y feldespato, fusionados a temperaturas superiores a los 1300º Celsius.",
         "imagenes": [
@@ -973,7 +910,7 @@
       {
         "nombre": "Porcelanato Tipo Concrete Color Crema 60x60 (caja 4 un.)",
         "precio_unitario": 12948,
-        "precio_m2": 11890.0,
+        "precio_m2": 11890,
         "sku": "PIP002-CREMA",
         "descripcion": "¿Qué es el Porcelanato?Arcilla, arena de sílice y feldespatoEl porcelanato es un mezcla de arcilla, arena de sílice y feldespato, fusionados a temperaturas superiores a los 1300º Celsius.",
         "imagenes": [
@@ -988,7 +925,7 @@
       {
         "nombre": "Piso Porcelanato 60x60 Brillante Gris Ártico (caja 4 un.)",
         "precio_unitario": 18961,
-        "precio_m2": 18440.0,
+        "precio_m2": 18440,
         "sku": "PIP003-GRISARTICO",
         "descripcion": "¿Qué es el Porcelanato?Arcilla, arena de sílice y feldespatoEl porcelanato es un mezcla de arcilla, arena de sílice y feldespato, fusionados a temperaturas superiores a los 1300º Celsius.",
         "imagenes": [
@@ -1003,7 +940,7 @@
       {
         "nombre": "Piso Porcelanato 60x60 Concrete Grafito (caja 4 un.)",
         "precio_unitario": 12948,
-        "precio_m2": 11890.0,
+        "precio_m2": 11890,
         "sku": "PIP102-GRAFITO",
         "descripcion": "¿Qué es el Porcelanato?Arcilla, arena de sílice y feldespatoEl porcelanato es un mezcla de arcilla, arena de sílice y feldespato, fusionados a temperaturas superiores a los 1300º Celsius.",
         "imagenes": [
@@ -1018,7 +955,7 @@
       {
         "nombre": "Piso Porcelanato 60x60 Concrete Carbón (caja 4 un.)",
         "precio_unitario": 12948,
-        "precio_m2": 11890.0,
+        "precio_m2": 11890,
         "sku": "PIP102-CARBON",
         "descripcion": "¿Qué es el Porcelanato?Arcilla, arena de sílice y feldespatoEl porcelanato es un mezcla de arcilla, arena de sílice y feldespato, fusionados a temperaturas superiores a los 1300º Celsius.",
         "imagenes": [
@@ -1033,7 +970,7 @@
       {
         "nombre": "Piso Porcelanato 60x60 Concrete Piedra (caja 4 un.)",
         "precio_unitario": 12948,
-        "precio_m2": 11890.0,
+        "precio_m2": 11890,
         "sku": "PIP102-PIEDRA",
         "descripcion": "¿Qué es el Porcelanato?Arcilla, arena de sílice y feldespatoEl porcelanato es un mezcla de arcilla, arena de sílice y feldespato, fusionados a temperaturas superiores a los 1300º Celsius.",
         "imagenes": [
@@ -1048,7 +985,7 @@
       {
         "nombre": "Piso Porcelanato Madera 90x14,6 Gris Piedra (caja 10 un.)",
         "precio_unitario": 20094,
-        "precio_m2": 21410.0,
+        "precio_m2": 21410,
         "sku": "PIP001-PIEDRA",
         "descripcion": "¿Qué es el Porcelanato?Arcilla, arena de sílice y feldespatoEl porcelanato es un mezcla de arcilla, arena de sílice y feldespato, fusionados a temperaturas superiores a los 1300º Celsius.",
         "imagenes": [
@@ -1064,7 +1001,7 @@
       {
         "nombre": "Piso Porcelanato 120x20 Forest Madera (caja 6 un.)",
         "precio_unitario": 15540,
-        "precio_m2": 14270.0,
+        "precio_m2": 14270,
         "sku": "PIP101-MADERA",
         "descripcion": "¿Qué es el Porcelanato?Arcilla, arena de sílice y feldespatoEl porcelanato es un mezcla de arcilla, arena de sílice y feldespato, fusionados a temperaturas superiores a los 1300º Celsius.",
         "imagenes": [
@@ -1079,7 +1016,7 @@
       {
         "nombre": "Piso Porcelanato 120x20 Forest Nogal (caja 6 un.)",
         "precio_unitario": 15540,
-        "precio_m2": 14270.0,
+        "precio_m2": 14270,
         "sku": "PIP101-NOGAL",
         "descripcion": "¿Qué es el Porcelanato?Arcilla, arena de sílice y feldespatoEl porcelanato es un mezcla de arcilla, arena de sílice y feldespato, fusionados a temperaturas superiores a los 1300º Celsius.",
         "imagenes": [
@@ -1094,7 +1031,7 @@
       {
         "nombre": "Piso Porcelanato 120x20 Forest Roble (caja 6 un.)",
         "precio_unitario": 15540,
-        "precio_m2": 14270.0,
+        "precio_m2": 14270,
         "sku": "PIP101-ROBLE",
         "descripcion": "¿Qué es el Porcelanato?Arcilla, arena de sílice y feldespatoEl porcelanato es un mezcla de arcilla, arena de sílice y feldespato, fusionados a temperaturas superiores a los 1300º Celsius.",
         "imagenes": [
@@ -1109,7 +1046,7 @@
       {
         "nombre": "Piso Porcelanato Forest Color Antique (caja 6 un.)",
         "precio_unitario": 15540,
-        "precio_m2": 14270.0,
+        "precio_m2": 14270,
         "sku": "PIP101-CAFEANTIQUE",
         "descripcion": "¿Qué es el Porcelanato?Arcilla, arena de sílice y feldespatoEl porcelanato es un mezcla de arcilla, arena de sílice y feldespato, fusionados a temperaturas superiores a los 1300º Celsius.",
         "imagenes": [
@@ -1132,7 +1069,8 @@
           "https://revestimientosypisos.cl/wp-content/uploads/2025/06/piso-porcelanato-60x60-mate-gris-carbon-caja-4-unidades-pip002-02.webp"
         ],
         "url": "https://revestimientosypisos.cl/porcelanatos/piso-de-porcelanato-gris-carbon-caja-de-4-unidades",
-        "categoria_slug": "porcelanatos"
+        "categoria_slug": "porcelanatos",
+        "sku": "PIP002-GRISCARBON"
       },
       {
         "nombre": "Piso Porcelanato 60x60 Brillante Gris Piedra (caja 4 un.)",
@@ -1144,7 +1082,8 @@
           "https://revestimientosypisos.cl/wp-content/uploads/2024/09/piso-porcelanto-60x60-tipo-brillante-gris-piedra-pip003-03.jpg"
         ],
         "url": "https://revestimientosypisos.cl/porcelanatos/piso-de-porcelanato-gris-piedra-caja-de-4-unidades",
-        "categoria_slug": "porcelanatos"
+        "categoria_slug": "porcelanatos",
+        "sku": "PIP003-GRISPIE"
       }
     ]
   },
@@ -1273,7 +1212,8 @@
           "https://revestimientosypisos.cl/wp-content/uploads/2025/07/revestimiento-exterior-coextruido-color-piedra-negro-rew103-02.webp"
         ],
         "url": "https://revestimientosypisos.cl/revestimiento-exterior-wpc/revestimiento-exterior-coextruido-color-piedra-negro-rew103",
-        "categoria_slug": "revestimiento-exterior-wpc"
+        "categoria_slug": "revestimiento-exterior-wpc",
+        "sku": "REW103-PIEDRANEGRO"
       }
     ]
   },
@@ -1732,7 +1672,7 @@
       {
         "nombre": "Siding Piedra PU Color Cobre RPU101",
         "precio_unitario": 62991,
-        "precio_m2": 74130.0,
+        "precio_m2": 74130,
         "sku": "RPU101-COBRE",
         "descripcion": "Revestimiento de Piedra de Poliuretano para pared o muro.",
         "imagenes": [
@@ -1746,7 +1686,7 @@
       {
         "nombre": "Siding Piedra PU Color Grafito RPU101",
         "precio_unitario": 62991,
-        "precio_m2": 74130.0,
+        "precio_m2": 74130,
         "sku": "RPU101-GRAFITO",
         "descripcion": "Revestimiento de Piedra de Poliuretano para pared o muro.",
         "imagenes": [
@@ -1760,7 +1700,7 @@
       {
         "nombre": "Siding Piedra PU Color Café Madera RPU101",
         "precio_unitario": 62991,
-        "precio_m2": 74130.0,
+        "precio_m2": 74130,
         "sku": "RPU101-CAFEMADERA",
         "descripcion": "Revestimiento de Piedra de Poliuretano para pared o muro.",
         "imagenes": [
@@ -1774,7 +1714,7 @@
       {
         "nombre": "Siding Piedra PU Color Piedra Volcánica RPU101",
         "precio_unitario": 62991,
-        "precio_m2": 74130.0,
+        "precio_m2": 74130,
         "sku": "RPU101-PIEDRAVOLCANICA",
         "descripcion": "Revestimiento de Piedra de Poliuretano para pared o muro.",
         "imagenes": [
@@ -1788,7 +1728,7 @@
       {
         "nombre": "Siding Piedra PU Color Piedra RPU101",
         "precio_unitario": 62991,
-        "precio_m2": 74130.0,
+        "precio_m2": 74130,
         "sku": "RPU101-PIEDRA",
         "descripcion": "Revestimiento de Piedra de Poliuretano para pared o muro.",
         "imagenes": [

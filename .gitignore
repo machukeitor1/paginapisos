@@ -51,3 +51,4 @@ iniciar.bat
 scripts/
 wm_sample.jpg
 restore_images.ts
+check_rend.js

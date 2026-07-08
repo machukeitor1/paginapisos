@@ -7,6 +7,12 @@ const prisma = new PrismaClient();
 const UPLOAD_DIR = path.join(process.cwd(), "public", "uploads");
 const BANNER_DIR = path.join(process.cwd(), "public", "banner");
 
+const sortNumerico = (a: string, b: string) => {
+  const nA = parseInt(a.match(/-(\d+)\.\w+$/)?.[1] || "0");
+  const nB = parseInt(b.match(/-(\d+)\.\w+$/)?.[1] || "0");
+  return nA - nB;
+};
+
 async function main() {
   console.log("🌱 Insertando datos semilla...");
 
@@ -72,6 +78,10 @@ async function main() {
           if (existing) continue;
 
           try {
+            const pu = prod.precio_unitario || 0;
+            const pm2 = prod.precio_m2 || 0;
+            const rend = (pu > 0 && pm2 > 0 && pu !== pm2) ? Math.round((pu / pm2) * 1000) / 1000 : 1.0;
+            const unidadVenta = (prod.nombre || '').toLowerCase().includes('caja') ? 'caja' : 'un';
             await prisma.producto.create({
               data: {
                 nombre: prod.nombre,
@@ -80,12 +90,15 @@ async function main() {
                 descripcion: prod.descripcion || "",
                 dimensiones: prod.dimensiones || null,
                 unidad: "m2",
-                precio: prod.precio_m2 || prod.precio_unitario || 0,
+                precio: pm2 || pu || 0,
                 marca: "",
                 imagenes: "[]",
                 destacado: false,
                 activo: true,
                 orden: 0,
+                rendimiento: rend,
+                precioUnitario: pu > 0 ? Math.round(pu) : Math.round(pm2 * rend),
+                unidadVenta,
                 categoriaId: categoria.id,
               },
             });
@@ -93,7 +106,7 @@ async function main() {
             // escanear imagenes locales que coincidan con el slug
             const imgRegex = new RegExp(`^${productSlug}-\\d+\\.`);
             let imgFiles: string[];
-            try { imgFiles = readdirSync(UPLOAD_DIR).filter(f => imgRegex.test(f)).sort(); } catch { imgFiles = []; }
+            try { imgFiles = readdirSync(UPLOAD_DIR).filter(f => imgRegex.test(f)).sort(sortNumerico); } catch { imgFiles = []; }
             if (imgFiles.length > 0) {
               const paths = imgFiles.map(f => `/uploads/${f}`);
               await prisma.producto.update({
@@ -116,30 +129,24 @@ async function main() {
     console.log(`⏭️ ${productCount} productos ya existen, se conservan`);
   }
 
-  // Escanear imagenes para productos que aun no tienen
-  const sinImagenes = await prisma.producto.findMany({
-    where: { imagenes: "[]" },
-  });
-  if (sinImagenes.length > 0) {
-    console.log(`🖼️ Buscando imagenes para ${sinImagenes.length} productos...`);
-    let actualizados = 0;
-    for (const prod of sinImagenes) {
-      const imgRegex = new RegExp(`^${prod.slug}-\\d+\\.`);
-      let imgFiles: string[];
-      try { imgFiles = readdirSync(UPLOAD_DIR).filter(f => imgRegex.test(f)).sort(); } catch { imgFiles = []; }
-      if (imgFiles.length > 0) {
-        const paths = imgFiles.map(f => `/uploads/${f}`);
-        await prisma.producto.update({
-          where: { id: prod.id },
-          data: { imagenes: JSON.stringify(paths) },
-        });
-        actualizados++;
-      }
+  // Escanear imagenes de todos los productos (asegura orden correcto siempre)
+  const todosProductos = await prisma.producto.findMany({ select: { id: true, slug: true } });
+  console.log(`🖼️ Escaneando imagenes para ${todosProductos.length} productos...`);
+  let actualizados = 0;
+  for (const prod of todosProductos) {
+    const imgRegex = new RegExp(`^${prod.slug}-\\d+\\.`);
+    let imgFiles: string[];
+    try { imgFiles = readdirSync(UPLOAD_DIR).filter(f => imgRegex.test(f)).sort(sortNumerico); } catch { imgFiles = []; }
+    if (imgFiles.length > 0) {
+      const paths = imgFiles.map(f => `/uploads/${f}`);
+      await prisma.producto.update({
+        where: { id: prod.id },
+        data: { imagenes: JSON.stringify(paths) },
+      });
+      actualizados++;
     }
-    console.log(`✅ ${actualizados} productos actualizados con imagenes`);
-  } else {
-    console.log("⏭️ Todos los productos ya tienen imagenes");
   }
+  console.log(`✅ ${actualizados} productos actualizados con imagenes`);
 
   // Asignar imagen a categorias desde el primer producto
   const catsSinImg = await prisma.categoria.findMany({
