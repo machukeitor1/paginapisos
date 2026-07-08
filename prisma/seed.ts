@@ -53,84 +53,78 @@ async function main() {
   }
   console.log("✅ Categorías creadas");
 
-  // Productos desde scraped_data.json (solo si no existen productos)
-  const productCount = await prisma.producto.count();
-  if (productCount === 0) {
-    const jsonPath = path.join(process.cwd(), "scraped_data.json");
-    if (existsSync(jsonPath)) {
-      console.log("📦 Importando productos desde scraped_data.json...");
-      const raw = readFileSync(jsonPath, "utf-8");
-      const data = JSON.parse(raw);
-      let inserted = 0;
+  // Productos desde scraped_data.json (siempre corre, salta los que ya existen)
+  const jsonPath = path.join(process.cwd(), "scraped_data.json");
+  if (existsSync(jsonPath)) {
+    console.log("📦 Importando productos desde scraped_data.json...");
+    const raw = readFileSync(jsonPath, "utf-8");
+    const data = JSON.parse(raw);
+    let inserted = 0;
 
-      for (const [slugCat, info] of Object.entries(data) as any[]) {
-        const categoria = await prisma.categoria.findUnique({ where: { slug: slugCat } });
-        if (!categoria) continue;
+    for (const [slugCat, info] of Object.entries(data) as any[]) {
+      const categoria = await prisma.categoria.findUnique({ where: { slug: slugCat } });
+      if (!categoria) continue;
 
-        for (const prod of info.productos) {
-          if (!prod.sku) continue;
+      for (const prod of info.productos) {
+        if (!prod.sku) continue;
 
-          const slugify = (t: string) => t.toLowerCase().normalize("NFD").replace(/[\u0300-\u036f]/g, "").replace(/[^a-z0-9]+/g, "-").replace(/^-|-$/g, "");
-          const baseSlug = slugify(prod.nombre || `prod-${inserted}`);
-          const productSlug = `${baseSlug}-${slugify(prod.sku)}`;
+        const slugify = (t: string) => t.toLowerCase().normalize("NFD").replace(/[\u0300-\u036f]/g, "").replace(/[^a-z0-9]+/g, "-").replace(/^-|-$/g, "");
+        const baseSlug = slugify(prod.nombre || `prod-${inserted}`);
+        const productSlug = `${baseSlug}-${slugify(prod.sku)}`;
 
-          const existing = await prisma.producto.findUnique({ where: { sku: prod.sku } });
-          if (existing) continue;
+        const existing = await prisma.producto.findUnique({ where: { sku: prod.sku } });
+        if (existing) continue;
 
-          try {
-            const pu = prod.precio_unitario || 0;
-            const pm2 = prod.precio_m2 || 0;
-            const rend = (pu > 0 && pm2 > 0 && pu !== pm2) ? Math.round((pu / pm2) * 1000) / 1000 : 1.0;
-            const unidadVenta = (prod.nombre || '').toLowerCase().includes('caja') ? 'caja' : 'un';
-            await prisma.producto.create({
-              data: {
-                nombre: prod.nombre,
-                slug: productSlug,
-                sku: prod.sku,
-                descripcion: prod.descripcion || "",
-                dimensiones: prod.dimensiones || null,
-                unidad: "m2",
-                precio: pm2 || pu || 0,
-                marca: "",
-                imagenes: "[]",
-                destacado: false,
-                activo: true,
-                orden: 0,
-                rendimiento: rend,
-                precioUnitario: pu > 0 ? Math.round(pu) : Math.round(pm2 * rend),
-                unidadVenta,
-                categoriaId: categoria.id,
-              },
+        try {
+          const pu = prod.precio_unitario || 0;
+          const pm2 = prod.precio_m2 || 0;
+          const rend = (pu > 0 && pm2 > 0 && pu !== pm2) ? Math.round((pu / pm2) * 1000) / 1000 : 1.0;
+          const unidadVenta = (prod.nombre || '').toLowerCase().includes('caja') ? 'caja' : 'un';
+          await prisma.producto.create({
+            data: {
+              nombre: prod.nombre,
+              slug: productSlug,
+              sku: prod.sku,
+              descripcion: prod.descripcion || "",
+              dimensiones: prod.dimensiones || null,
+              unidad: "m2",
+              precio: pm2 || pu || 0,
+              marca: "",
+              imagenes: "[]",
+              destacado: false,
+              activo: true,
+              orden: 0,
+              rendimiento: rend,
+              precioUnitario: pu > 0 ? Math.round(pu) : Math.round(pm2 * rend),
+              unidadVenta,
+              categoriaId: categoria.id,
+            },
+          });
+
+          // escanear imagenes locales que coincidan con el slug
+          const imgRegex = new RegExp(`^${productSlug}-\\d+\\.`);
+          let imgFiles: string[];
+          try { imgFiles = readdirSync(UPLOAD_DIR).filter(f => imgRegex.test(f)).sort(sortNumerico); } catch { imgFiles = []; }
+          if (imgFiles.length > 0) {
+            const paths = imgFiles.map(f => `/uploads/${f}`);
+            await prisma.producto.update({
+              where: { sku: prod.sku },
+              data: { imagenes: JSON.stringify(paths) },
             });
-
-            // escanear imagenes locales que coincidan con el slug
-            const imgRegex = new RegExp(`^${productSlug}-\\d+\\.`);
-            let imgFiles: string[];
-            try { imgFiles = readdirSync(UPLOAD_DIR).filter(f => imgRegex.test(f)).sort(sortNumerico); } catch { imgFiles = []; }
-            if (imgFiles.length > 0) {
-              const paths = imgFiles.map(f => `/uploads/${f}`);
-              await prisma.producto.update({
-                where: { sku: prod.sku },
-                data: { imagenes: JSON.stringify(paths) },
-              });
-            }
-
-            inserted++;
-          } catch (e: any) {
-            console.log(`  [ERROR] ${prod.sku}: ${e.message}`);
           }
+
+          inserted++;
+        } catch (e: any) {
+          console.log(`  [ERROR] ${prod.sku}: ${e.message}`);
         }
       }
-      console.log(`✅ ${inserted} productos importados desde scraped_data.json`);
-    } else {
-      console.log("⏭️ scraped_data.json no encontrado, no se importaron productos");
     }
+    console.log(`✅ ${inserted} productos importados desde scraped_data.json`);
   } else {
-    console.log(`⏭️ ${productCount} productos ya existen, se conservan`);
+    console.log("⏭️ scraped_data.json no encontrado, no se importaron productos");
   }
 
   // Actualizar rendimiento/precioUnitario/unidadVenta desde scraped_data.json (para productos existentes que tengan null)
-  const jsonPath = path.join(process.cwd(), "scraped_data.json");
   if (existsSync(jsonPath)) {
     const raw = readFileSync(jsonPath, "utf-8");
     const data = JSON.parse(raw);
