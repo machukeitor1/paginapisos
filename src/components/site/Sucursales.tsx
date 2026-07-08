@@ -32,7 +32,7 @@ export default function Sucursales() {
     <section className="py-16">
       <div className="max-w-7xl mx-auto px-4">
         <h2 className="text-3xl font-bold text-primary mb-8 text-center">Nuestras Sucursales</h2>
-        <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
+        <div className="flex flex-wrap justify-center gap-6">
           {sucursales.map((suc) => (
             <div key={suc.id} className={`bg-card rounded-xl shadow-md overflow-hidden ${suc.esCasaMatriz ? 'ring-2 ring-accent' : ''}`}>
               {suc.esCasaMatriz && (

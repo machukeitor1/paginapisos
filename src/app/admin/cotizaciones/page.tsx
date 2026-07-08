@@ -9,9 +9,16 @@ interface CotizacionAdmin {
   createdAt: string;
   vencimiento: string;
   total: number;
+  estado: string;
   cliente: { nombre: string; rut: string };
   vendedor: { nombre: string };
 }
+
+const ESTILOS_ESTADO: Record<string, string> = {
+  PENDIENTE: 'bg-yellow-100 text-yellow-800',
+  VENDIDO: 'bg-green-100 text-green-800',
+  PERDIDO: 'bg-red-100 text-red-800',
+};
 
 export default function AdminCotizacionesPage() {
   const [items, setItems] = useState<CotizacionAdmin[]>([]);
@@ -46,6 +53,7 @@ export default function AdminCotizacionesPage() {
                 <th className="text-left py-3 px-4">Cliente</th>
                 <th className="text-left py-3 px-4">RUT</th>
                 <th className="text-left py-3 px-4">Vendedor</th>
+                <th className="text-center py-3 px-4">Estado</th>
                 <th className="text-center py-3 px-4">Fecha</th>
                 <th className="text-center py-3 px-4">Vence</th>
                 <th className="text-right py-3 px-4">Total</th>
@@ -59,6 +67,9 @@ export default function AdminCotizacionesPage() {
                   <td className="py-3 px-4 text-gray-700">{c.cliente.nombre}</td>
                   <td className="py-3 px-4 text-gray-500">{c.cliente.rut}</td>
                   <td className="py-3 px-4 text-gray-500">{c.vendedor.nombre}</td>
+                  <td className="py-3 px-4 text-center">
+                    <span className={`text-xs font-semibold px-2 py-0.5 rounded-full ${ESTILOS_ESTADO[c.estado] || 'bg-gray-100 text-gray-600'}`}>{c.estado}</span>
+                  </td>
                   <td className="py-3 px-4 text-center text-gray-500">{new Date(c.createdAt).toLocaleDateString('es-CL')}</td>
                   <td className="py-3 px-4 text-center text-gray-500">{c.vencimiento ? new Date(c.vencimiento).toLocaleDateString('es-CL') : '-'}</td>
                   <td className="py-3 px-4 text-right font-medium">${c.total.toLocaleString('es-CL', { minimumFractionDigits: 0 })}</td>

@@ -43,74 +43,32 @@ async function main() {
   }
   console.log("✅ Categorías creadas");
 
-  // Productos
-  const productos = [
-    // Metal Siding
-    { nombre: "Metal Siding Liso 290cm", slug: "metal-siding-liso-290cm", sku: "MSL-001", descripcion: "Revestimiento metálico liso de 290 cm de largo.", dimensiones: "290 cm x 38.3 cm x 1.6 cm", unidad: "m2", precio: 13380, precioAntes: 17840, descuento: 25, marca: "Marca Propia", categoriaSlug: "revestimiento-exterior-metalico", destacado: true },
-    { nombre: "Metal Siding Térmico", slug: "metal-siding-termico", sku: "MST-002", descripcion: "Revestimiento metálico con aislamiento térmico incorporado.", dimensiones: "290 cm x 40 cm x 2.5 cm", unidad: "m2", precio: 18900, precioAntes: 25200, descuento: 25, marca: "Marca Propia", categoriaSlug: "revestimiento-exterior-metalico", destacado: true },
-    { nombre: "Metal Siding Texturado", slug: "metal-siding-texturado", sku: "MSTX-003", descripcion: "Revestimiento metálico con textura similar a la madera.", dimensiones: "290 cm x 38.3 cm x 1.6 cm", unidad: "m2", precio: 15400, precioAntes: null, descuento: null, marca: "Marca Propia", categoriaSlug: "revestimiento-exterior-metalico", destacado: false },
-    // Siding WPC
-    { nombre: "Siding WPC Marrón", slug: "siding-wpc-marron", sku: "SWPC-001", descripcion: "Revestimiento WPC color marrón, ideal para fachadas.", dimensiones: "300 cm x 20 cm x 2.2 cm", unidad: "m2", precio: 22500, precioAntes: 30000, descuento: 25, marca: "Marca Propia", categoriaSlug: "revestimiento-exterior-wpc", destacado: true },
-    { nombre: "Siding WPC Gris", slug: "siding-wpc-gris", sku: "SWPC-002", descripcion: "Revestimiento WPC color gris moderno.", dimensiones: "300 cm x 20 cm x 2.2 cm", unidad: "m2", precio: 22500, precioAntes: null, descuento: null, marca: "Marca Propia", categoriaSlug: "revestimiento-exterior-wpc", destacado: false },
-    { nombre: "Siding WPC Blanco", slug: "siding-wpc-blanco", sku: "SWPC-003", descripcion: "Revestimiento WPC color blanco para fachadas luminosas.", dimensiones: "300 cm x 20 cm x 2.2 cm", unidad: "m2", precio: 23500, precioAntes: 31300, descuento: 25, marca: "Marca Propia", categoriaSlug: "revestimiento-exterior-wpc", destacado: true },
-    // Piso Vinilico SPC
-    { nombre: "Piso SPC Roble Natural", slug: "piso-spc-roble-natural", sku: "SPC-001", descripcion: "Piso vinílico SPC con terminación roble natural.", dimensiones: "122 cm x 18 cm x 0.4 cm", unidad: "m2", precio: 18900, precioAntes: 25200, descuento: 25, marca: "Marca Propia", categoriaSlug: "pisos-spc", destacado: true },
-    { nombre: "Piso SPC Concreto", slug: "piso-spc-concreto", sku: "SPC-002", descripcion: "Piso vinílico SPC con apariencia de concreto pulido.", dimensiones: "122 cm x 18 cm x 0.4 cm", unidad: "m2", precio: 19900, precioAntes: null, descuento: null, marca: "Marca Propia", categoriaSlug: "pisos-spc", destacado: false },
-    { nombre: "Piso SPC Madera Oscura", slug: "piso-spc-madera-oscura", sku: "SPC-003", descripcion: "Piso vinílico SPC en tono madera oscura.", dimensiones: "122 cm x 18 cm x 0.4 cm", unidad: "m2", precio: 20900, precioAntes: 27800, descuento: 25, marca: "Marca Propia", categoriaSlug: "pisos-spc", destacado: false },
-    // Piso Deck WPC
-    { nombre: "Deck WPC Marrón Oscuro", slug: "deck-wpc-marron-oscuro", sku: "DWPC-001", descripcion: "Deck WPC color marrón oscuro para terrazas.", dimensiones: "300 cm x 14 cm x 2.5 cm", unidad: "m2", precio: 28500, precioAntes: 38000, descuento: 25, marca: "Marca Propia", categoriaSlug: "pisos-deck-wpc", destacado: true },
-    { nombre: "Deck WPC Gris Claro", slug: "deck-wpc-gris-claro", sku: "DWPC-002", descripcion: "Deck WPC color gris claro para exteriores modernos.", dimensiones: "300 cm x 14 cm x 2.5 cm", unidad: "m2", precio: 27500, precioAntes: null, descuento: null, marca: "Marca Propia", categoriaSlug: "pisos-deck-wpc", destacado: false },
-    { nombre: "Deck WPC Roble", slug: "deck-wpc-roble", sku: "DWPC-003", descripcion: "Deck WPC con terminación roble.", dimensiones: "300 cm x 14 cm x 2.5 cm", unidad: "m2", precio: 29500, precioAntes: 39300, descuento: 25, marca: "Marca Propia", categoriaSlug: "pisos-deck-wpc", destacado: false },
-    // Siding Granito
-    { nombre: "Siding Granito Clásico", slug: "siding-granito-clasico", sku: "SGR-001", descripcion: "Revestimiento con apariencia de granito clásico.", dimensiones: "300 cm x 20 cm x 2.5 cm", unidad: "m2", precio: 16800, precioAntes: 22400, descuento: 25, marca: "Marca Propia", categoriaSlug: "siding-tipo-granito", destacado: true },
-    { nombre: "Siding Granito Blanco", slug: "siding-granito-blanco", sku: "SGR-002", descripcion: "Revestimiento granito en tono blanco.", dimensiones: "300 cm x 20 cm x 2.5 cm", unidad: "m2", precio: 17800, precioAntes: null, descuento: null, marca: "Marca Propia", categoriaSlug: "siding-tipo-granito", destacado: false },
-    { nombre: "Siding Granito Gris", slug: "siding-granito-gris", sku: "SGR-003", descripcion: "Revestimiento granito color gris.", dimensiones: "300 cm x 20 cm x 2.5 cm", unidad: "m2", precio: 17300, precioAntes: 23000, descuento: 25, marca: "Marca Propia", categoriaSlug: "siding-tipo-granito", destacado: false },
-  ];
-
-  for (const prod of productos) {
-    const categoria = await prisma.categoria.findUnique({ where: { slug: prod.categoriaSlug } });
-    if (!categoria) continue;
-
-    await prisma.producto.upsert({
-      where: { slug: prod.slug },
-      update: {},
-      create: {
-        nombre: prod.nombre,
-        slug: prod.slug,
-        sku: prod.sku,
-        descripcion: prod.descripcion,
-        dimensiones: prod.dimensiones,
-        unidad: prod.unidad,
-        precio: prod.precio,
-        precioAntes: prod.precioAntes,
-        descuento: prod.descuento,
-        marca: prod.marca,
-        imagenes: "[]",
-        destacado: prod.destacado,
-        categoriaId: categoria.id,
-      },
-    });
+  // Banners (solo si no existen)
+  const bannerCount = await prisma.banner.count();
+  if (bannerCount === 0) {
+    const banners = [
+      { titulo: "Revestimientos de Primera Calidad", subtitulo: "Transforma tus espacios con nuestros materiales", badge: "Hasta 40% Off", imagen: "", imagenMovil: null, url: "/revestimiento-exterior-metalico", orden: 1 },
+      { titulo: "Pisos que Inspiran", subtitulo: "Descubre nuestra colección de pisos vinílicos SPC", badge: "Nuevos Ingresos", imagen: "", imagenMovil: null, url: "/pisos-spc", orden: 2 },
+    ];
+    await prisma.banner.createMany({ data: banners });
+    console.log("✅ Banners creados por defecto");
+  } else {
+    console.log("⏭️ Banners ya existen, se conservan");
   }
-  console.log("✅ Productos creados");
 
-  // Banners (limpiar y recrear)
-  await prisma.banner.deleteMany();
-  const banners = [
-    { titulo: "Revestimientos de Primera Calidad", subtitulo: "Transforma tus espacios con nuestros materiales", badge: "Hasta 40% Off", imagen: "", imagenMovil: null, url: "/revestimiento-exterior-metalico", orden: 1 },
-    { titulo: "Pisos que Inspiran", subtitulo: "Descubre nuestra colección de pisos vinílicos SPC", badge: "Nuevos Ingresos", imagen: "", imagenMovil: null, url: "/pisos-spc", orden: 2 },
-  ];
-  await prisma.banner.createMany({ data: banners });
-  console.log("✅ Banners creados");
-
-  // Sucursales (limpiar y recrear)
-  await prisma.sucursal.deleteMany();
-  const sucursales = [
-    { nombre: "Santiago", zona: "Zona Centro - RM", direccion: "Av. Libertador Bernardo O'Higgins 1234, Santiago Centro", region: "Región Metropolitana", esCasaMatriz: true, horarioAtencion: "Lun a Vie: 08:30 - 18:30 | Sáb: 09:00 - 14:00", horarioEntrega: "Lun a Vie: 08:30 - 17:00 | Sáb: 09:00 - 13:00", whatsapp: "56958110962", telefono: "226001234", emailPostventa: "postventa.santiago@empresa.cl", urlMaps: "https://maps.google.com/?q=Av+Libertador+Bernardo+O'Higgins+1234+Santiago", activo: true, orden: 1 },
-    { nombre: "Chillán", zona: "Zona Sur - Ñuble", direccion: "Av. O'Higgins 567, Chillán Centro", region: "Región de Ñuble", esCasaMatriz: false, horarioAtencion: "Lun a Vie: 09:00 - 18:00 | Sáb: 09:00 - 13:30", horarioEntrega: "Lun a Vie: 09:00 - 17:00 | Sáb: 09:00 - 13:00", whatsapp: "56958110962", telefono: "422201234", emailPostventa: "postventa.chillan@empresa.cl", urlMaps: "https://maps.google.com/?q=Av+O'Higgins+567+Chillan", activo: true, orden: 2 },
-    { nombre: "Concepción", zona: "Zona Sur - Biobío", direccion: "Av. Paicaví 890, Concepción", region: "Región del Biobío", esCasaMatriz: false, horarioAtencion: "Lun a Vie: 09:00 - 18:30 | Sáb: 09:00 - 14:00", horarioEntrega: "Lun a Vie: 09:00 - 17:30 | Sáb: 09:00 - 13:00", whatsapp: "56958110962", telefono: "412201234", emailPostventa: "postventa.concepcion@empresa.cl", urlMaps: "https://maps.google.com/?q=Av+Paicaví+890+Concepcion", activo: true, orden: 3 },
-  ];
-  await prisma.sucursal.createMany({ data: sucursales });
-  console.log("✅ Sucursales creadas");
+  // Sucursales (solo si no existen)
+  const sucursalCount = await prisma.sucursal.count();
+  if (sucursalCount === 0) {
+    const sucursales = [
+      { nombre: "Santiago", zona: "Zona Centro - RM", direccion: "Av. Libertador Bernardo O'Higgins 1234, Santiago Centro", region: "Región Metropolitana", esCasaMatriz: true, horarioAtencion: "Lun a Vie: 08:30 - 18:30 | Sáb: 09:00 - 14:00", horarioEntrega: "Lun a Vie: 08:30 - 17:00 | Sáb: 09:00 - 13:00", whatsapp: "56958110962", telefono: "226001234", emailPostventa: "postventa.santiago@empresa.cl", urlMaps: "https://maps.google.com/?q=Av+Libertador+Bernardo+O'Higgins+1234+Santiago", activo: true, orden: 1 },
+      { nombre: "Chillán", zona: "Zona Sur - Ñuble", direccion: "Av. O'Higgins 567, Chillán Centro", region: "Región de Ñuble", esCasaMatriz: false, horarioAtencion: "Lun a Vie: 09:00 - 18:00 | Sáb: 09:00 - 13:30", horarioEntrega: "Lun a Vie: 09:00 - 17:00 | Sáb: 09:00 - 13:00", whatsapp: "56958110962", telefono: "422201234", emailPostventa: "postventa.chillan@empresa.cl", urlMaps: "https://maps.google.com/?q=Av+O'Higgins+567+Chillan", activo: true, orden: 2 },
+      { nombre: "Concepción", zona: "Zona Sur - Biobío", direccion: "Av. Paicaví 890, Concepción", region: "Región del Biobío", esCasaMatriz: false, horarioAtencion: "Lun a Vie: 09:00 - 18:30 | Sáb: 09:00 - 14:00", horarioEntrega: "Lun a Vie: 09:00 - 17:30 | Sáb: 09:00 - 13:00", whatsapp: "56958110962", telefono: "412201234", emailPostventa: "postventa.concepcion@empresa.cl", urlMaps: "https://maps.google.com/?q=Av+Paicaví+890+Concepcion", activo: true, orden: 3 },
+    ];
+    await prisma.sucursal.createMany({ data: sucursales });
+    console.log("✅ Sucursales creadas por defecto");
+  } else {
+    console.log("⏭️ Sucursales ya existen, se conservan");
+  }
 
   // Configuracion
   await prisma.configuracion.upsert({
@@ -128,6 +86,7 @@ async function main() {
       emailContacto: "ventas@revestimienteschillan.cl",
       metaTitle: "Revestimientos Chillán - Materiales de Construcción",
       metaDescription: "Venta de revestimientos metálicos, WPC, pisos vinílicos SPC, deck y siding granito. Despacho a todo Chile.",
+      urlMapa: "https://maps.app.goo.gl/AThwa7H4twEtSbfC6",
     },
   });
   console.log("✅ Configuración creada");
@@ -135,10 +94,7 @@ async function main() {
   // Vendedores
   const passwordHashV = await bcrypt.hash("vendedor123", 10);
   const vendedores = [
-    { nombre: "Carlos Muñoz", rut: "12.345.678-9", telefono: "56994316620", email: "carlos@revestimienteschillan.cl", password: passwordHashV },
-    { nombre: "María González", rut: "23.456.789-0", telefono: "56981289079", email: "maria@revestimienteschillan.cl", password: passwordHashV },
-    { nombre: "Pedro Soto", rut: "34.567.890-1", telefono: "56994316620", email: "pedro@revestimienteschillan.cl", password: passwordHashV },
-    { nombre: "Felipe Muñoz", rut: "45.678.901-2", telefono: "56981289079", email: "felipe@revestimientoschillan.cl", password: passwordHashV },
+    { nombre: "Felipe Alberico", rut: "45.678.901-2", telefono: "+56 9 5811 0962", email: "felipe@revestimientoschillan.cl", password: passwordHashV },
   ];
 
   for (const v of vendedores) {
@@ -148,56 +104,7 @@ async function main() {
       create: v,
     });
   }
-  console.log("✅ Vendedores creados (contraseña: vendedor123)");
-
-  // Actualizar rendimientos y unidades de venta específicos de productos según su categoría
-  console.log("⚙️ Actualizando rendimientos y unidades de venta...");
-  
-  // 1. Revestimientos Exteriores Metálicos (Metal Siding) -> 8.8 m2 por caja
-  const catMetal = await prisma.categoria.findUnique({ where: { slug: "revestimiento-exterior-metalico" } });
-  if (catMetal) {
-    await prisma.producto.updateMany({
-      where: { categoriaId: catMetal.id },
-      data: { rendimiento: 8.8, unidadVenta: "caja" }
-    });
-  }
-
-  // 2. Piso Vinílico SPC -> 2.64 m2 por caja
-  const catSPC = await prisma.categoria.findUnique({ where: { slug: "pisos-spc" } });
-  if (catSPC) {
-    await prisma.producto.updateMany({
-      where: { categoriaId: catSPC.id },
-      data: { rendimiento: 2.64, unidadVenta: "caja" }
-    });
-  }
-
-  // 3. Piso Flotante -> 2.3 m2 por caja
-  const catFlotante = await prisma.categoria.findUnique({ where: { slug: "piso-flotante" } });
-  if (catFlotante) {
-    await prisma.producto.updateMany({
-      where: { categoriaId: catFlotante.id },
-      data: { rendimiento: 2.3, unidadVenta: "caja" }
-    });
-  }
-
-  // 4. Piso Deck -> 0.3124 m2 por unidad
-  const catDeck = await prisma.categoria.findUnique({ where: { slug: "pisos-deck-wpc" } });
-  if (catDeck) {
-    await prisma.producto.updateMany({
-      where: { categoriaId: catDeck.id },
-      data: { rendimiento: 0.3124, unidadVenta: "un" }
-    });
-  }
-
-  // 5. Revestimientos de Interior -> 0.3333 m2 por unidad
-  const catInterior = await prisma.categoria.findUnique({ where: { slug: "revestimientos-de-interior" } });
-  if (catInterior) {
-    await prisma.producto.updateMany({
-      where: { categoriaId: catInterior.id },
-      data: { rendimiento: 0.3333, unidadVenta: "un" }
-    });
-  }
-  console.log("✅ Rendimientos y unidades de venta actualizados en todos los productos");
+  console.log("✅ Vendedor creado (contraseña: vendedor123)");
 
   console.log("🌱 ¡Datos semilla insertados correctamente!");
 }

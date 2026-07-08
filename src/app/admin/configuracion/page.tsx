@@ -14,6 +14,7 @@ export default function ConfiguracionPage() {
     emailContacto: '',
     metaTitle: '',
     metaDescription: '',
+    urlMapa: '',
   });
   const [guardando, setGuardando] = useState(false);
   const [mensaje, setMensaje] = useState('');
@@ -88,6 +89,10 @@ export default function ConfiguracionPage() {
             <label className="block text-sm font-medium text-text mb-1">YouTube URL</label>
             <input type="text" value={form.youtube} onChange={(e) => setForm({ ...form, youtube: e.target.value })} className="w-full border border-gray-300 rounded-lg px-4 py-3 text-sm focus:outline-none focus:ring-2 focus:ring-accent/50" />
           </div>
+        </div>
+        <div>
+          <label className="block text-sm font-medium text-text mb-1">URL Mapa (Google Maps)</label>
+          <input type="text" value={form.urlMapa} onChange={(e) => setForm({ ...form, urlMapa: e.target.value })} className="w-full border border-gray-300 rounded-lg px-4 py-3 text-sm focus:outline-none focus:ring-2 focus:ring-accent/50" />
         </div>
         <div>
           <label className="block text-sm font-medium text-text mb-1">Meta Title (SEO)</label>

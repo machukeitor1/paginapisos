@@ -12,7 +12,7 @@ export default function ProductosPage() {
   const [busqueda, setBusqueda] = useState('');
   const [guardando, setGuardando] = useState(false);
   const [form, setForm] = useState({
-    nombre: '', slug: '', sku: '', descripcion: '', dimensiones: '', unidad: 'm2', precio: 0, precioAntes: 0, descuento: 0, marca: 'Marca Propia', imagenes: '[]', destacado: false, activo: true, orden: 0, categoriaId: 0,
+    nombre: '', slug: '', sku: '', descripcion: '', dimensiones: '', unidad: 'm2', precio: 0, precioAntes: 0, descuento: 0, rendimiento: 1, unidadVenta: 'un', precioUnitario: 0, imagenes: '[]', destacado: false, activo: true, orden: 0, categoriaId: 0,
   });
 
   const cargar = () => {
@@ -73,13 +73,15 @@ export default function ProductosPage() {
     if (seleccionados.size === 0) return;
     setGuardando(true);
     const ids = Array.from(seleccionados);
-    await Promise.all(ids.map(id =>
-      fetch(`/api/productos/${id}`, {
+    await Promise.all(ids.map(async (id) => {
+      const prod = productos.find(p => p.id === id);
+      const rend = prod?.rendimiento || 1;
+      await fetch(`/api/productos/${id}`, {
         method: 'PUT',
         headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify({ precio: nuevoPrecio }),
-      })
-    ));
+        body: JSON.stringify({ precio: nuevoPrecio, precioUnitario: Math.round(nuevoPrecio * rend) }),
+      });
+    }));
     setGuardando(false);
     cargar();
   };
@@ -91,12 +93,13 @@ export default function ProductosPage() {
     await Promise.all(ids.map(async (id) => {
       const prod = productos.find(p => p.id === id);
       if (!prod) return;
+      const rend = prod.rendimiento || 1;
       const precioOriginal = prod.precioAntes || prod.precio;
       const precioConDescuento = Math.round(precioOriginal * (1 - porcentaje / 100));
       await fetch(`/api/productos/${id}`, {
         method: 'PUT',
         headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify({ precio: precioConDescuento, precioAntes: precioOriginal, descuento: porcentaje }),
+        body: JSON.stringify({ precio: precioConDescuento, precioAntes: precioOriginal, descuento: porcentaje, precioUnitario: Math.round(precioConDescuento * rend) }),
       });
     }));
     setGuardando(false);
@@ -110,11 +113,12 @@ export default function ProductosPage() {
     await Promise.all(ids.map(async (id) => {
       const prod = productos.find(p => p.id === id);
       if (!prod) return;
+      const rend = prod.rendimiento || 1;
       const precioOriginal = prod.precioAntes || prod.precio;
       await fetch(`/api/productos/${id}`, {
         method: 'PUT',
         headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify({ precio: precioOriginal, precioAntes: null, descuento: null }),
+        body: JSON.stringify({ precio: precioOriginal, precioAntes: null, descuento: null, precioUnitario: Math.round(precioOriginal * rend) }),
       });
     }));
     setGuardando(false);
@@ -126,7 +130,7 @@ export default function ProductosPage() {
     const method = editando ? 'PUT' : 'POST';
     const url = editando ? `/api/productos/${editando.id}` : '/api/productos';
     const tieneDescuento = form.descuento > 0;
-    const body = { ...form, precioAntes: tieneDescuento ? form.precioAntes : null, descuento: tieneDescuento ? form.descuento : null };
+    const body = { ...form, precioAntes: tieneDescuento ? form.precioAntes : null, descuento: tieneDescuento ? form.descuento : null, precioUnitario: Math.round(form.precio * form.rendimiento) };
     if (!editando) delete (body as any).id;
 
     const res = await fetch(url, {
@@ -137,7 +141,7 @@ export default function ProductosPage() {
 
     if (res.ok) {
       setEditando(null);
-      setForm({ nombre: '', slug: '', sku: '', descripcion: '', dimensiones: '', unidad: 'm2', precio: 0, precioAntes: 0, descuento: 0, marca: 'Marca Propia', imagenes: '[]', destacado: false, activo: true, orden: 0, categoriaId: 0 });
+      setForm({ nombre: '', slug: '', sku: '', descripcion: '', dimensiones: '', unidad: 'm2', precio: 0, precioAntes: 0, descuento: 0, rendimiento: 1, unidadVenta: 'un', precioUnitario: 0, imagenes: '[]', destacado: false, activo: true, orden: 0, categoriaId: 0 });
       cargar();
     }
   };
@@ -146,7 +150,7 @@ export default function ProductosPage() {
     setEditando(prod);
     const base = prod.precioAntes || prod.precio;
     setForm({
-      nombre: prod.nombre, slug: prod.slug, sku: prod.sku, descripcion: prod.descripcion || '', dimensiones: prod.dimensiones || '', unidad: prod.unidad, precio: prod.precio, precioAntes: base, descuento: prod.descuento || 0, marca: prod.marca, imagenes: prod.imagenes, destacado: prod.destacado, activo: prod.activo, orden: prod.orden, categoriaId: prod.categoriaId,
+      nombre: prod.nombre, slug: prod.slug, sku: prod.sku, descripcion: prod.descripcion || '', dimensiones: prod.dimensiones || '', unidad: prod.unidad, precio: prod.precio, precioAntes: base, descuento: prod.descuento || 0, rendimiento: prod.rendimiento || 1, unidadVenta: prod.unidadVenta || 'un', precioUnitario: prod.precioUnitario || 0, imagenes: prod.imagenes, destacado: prod.destacado, activo: prod.activo, orden: prod.orden, categoriaId: prod.categoriaId,
     });
   };
 
@@ -188,7 +192,8 @@ export default function ProductosPage() {
             <input type="number" step="0.01" required value={form.precioAntes || form.precio} onChange={(e) => {
               const base = parseFloat(e.target.value) || 0;
               const d = form.descuento || 0;
-              setForm({ ...form, precioAntes: base, precio: d > 0 ? Math.round(base * (1 - d / 100)) : base });
+              const p = d > 0 ? Math.round(base * (1 - d / 100)) : base;
+              setForm({ ...form, precioAntes: base, precio: p, precioUnitario: Math.round(p * form.rendimiento) });
             }} className="w-full border border-gray-300 rounded-lg px-4 py-2 text-sm" />
           </div>
           <div>
@@ -196,7 +201,8 @@ export default function ProductosPage() {
             <input type="number" min="0" max="99" value={form.descuento || ''} onChange={(e) => {
               const d = parseInt(e.target.value) || 0;
               const base = form.precioAntes || form.precio;
-              setForm({ ...form, descuento: d > 0 ? d : null as any, precio: d > 0 ? Math.round(base * (1 - d / 100)) : base });
+              const p = d > 0 ? Math.round(base * (1 - d / 100)) : base;
+              setForm({ ...form, descuento: d > 0 ? d : null as any, precio: p, precioUnitario: Math.round(p * form.rendimiento) });
             }} className="w-full border border-gray-300 rounded-lg px-4 py-2 text-sm" />
           </div>
           <div>
@@ -204,8 +210,22 @@ export default function ProductosPage() {
             <input type="number" step="0.01" value={form.precio} readOnly className="w-full border border-gray-200 bg-gray-50 rounded-lg px-4 py-2 text-sm text-gray-500" />
           </div>
           <div>
-            <label className="block text-sm font-medium text-text mb-1">Marca</label>
-            <input type="text" value={form.marca} onChange={(e) => setForm({ ...form, marca: e.target.value })} className="w-full border border-gray-300 rounded-lg px-4 py-2 text-sm" />
+            <label className="block text-sm font-medium text-text mb-1">Unidad de Venta</label>
+            <select value={form.unidadVenta} onChange={(e) => setForm({ ...form, unidadVenta: e.target.value })} className="w-full border border-gray-300 rounded-lg px-4 py-2 text-sm">
+              <option value="un">Unidad (un)</option>
+              <option value="caja">Caja</option>
+            </select>
+          </div>
+          <div>
+            <label className="block text-sm font-medium text-text mb-1">Rendimiento (m²/unidad)</label>
+            <input type="number" step="0.0001" min="0.0001" value={form.rendimiento} onChange={(e) => {
+              const r = parseFloat(e.target.value) || 1;
+              setForm({ ...form, rendimiento: r, precioUnitario: Math.round(form.precio * r) });
+            }} className="w-full border border-gray-300 rounded-lg px-4 py-2 text-sm" />
+          </div>
+          <div>
+            <label className="block text-sm font-medium text-text mb-1">Precio Unitario (por venta)</label>
+            <input type="number" step="1" min="0" value={form.precioUnitario} readOnly className="w-full border border-gray-200 bg-gray-50 rounded-lg px-4 py-2 text-sm text-gray-500" />
           </div>
           <div className="flex items-end gap-4">
             <label className="flex items-center gap-2">
@@ -227,48 +247,46 @@ export default function ProductosPage() {
           <textarea rows={3} value={form.descripcion} onChange={(e) => setForm({ ...form, descripcion: e.target.value })} className="w-full border border-gray-300 rounded-lg px-4 py-2 text-sm" />
         </div>
         <div>
-          <label className="block text-sm font-medium text-text mb-2">Imágenes del producto</label>
-          <div className="flex flex-wrap gap-3">
-            {(() => {
-              const imagenes: string[] = (() => {
-                try { return JSON.parse(form.imagenes); } catch { return []; }
-              })();
-              return imagenes.map((url, i) => (
-                <div key={i} className="relative inline-block">
-                  <img src={url} alt="" className="h-20 w-20 object-cover rounded-lg border border-gray-200" />
-                  <button
-                    type="button"
-                    onClick={() => {
-                      const arr = [...imagenes];
-                      arr.splice(i, 1);
-                      setForm({ ...form, imagenes: JSON.stringify(arr) });
-                    }}
-                    className="absolute -top-2 -right-2 bg-red-500 text-white rounded-full w-5 h-5 text-xs flex items-center justify-center hover:bg-red-600"
-                  >
-                    ×
-                  </button>
+          <label className="block text-sm font-medium text-text mb-1">Imágenes</label>
+          <input type="hidden" value={form.imagenes} readOnly />
+          {(() => {
+            const imagenesArr = (() => { try { return JSON.parse(form.imagenes); } catch { return []; } })();
+            return (
+              <div className="space-y-3">
+                <div className="flex flex-wrap gap-2">
+                  {imagenesArr.map((url: string, i: number) => (
+                    <div key={i} className="relative w-24 h-24 border border-gray-200 rounded-lg overflow-hidden bg-gray-50 group">
+                      <img src={url} alt={`img-${i}`} className="w-full h-full object-cover" />
+                      <button
+                        type="button"
+                        onClick={() => {
+                          const arr = imagenesArr.filter((_: string, j: number) => j !== i);
+                          setForm({ ...form, imagenes: JSON.stringify(arr) });
+                        }}
+                        className="absolute top-1 right-1 bg-red-600 text-white text-xs w-5 h-5 rounded-full opacity-0 group-hover:opacity-100 transition-opacity"
+                      >
+                        ×
+                      </button>
+                    </div>
+                  ))}
                 </div>
-              ));
-            })()}
-            <ImageUploader
-              folder="uploads"
-              label=""
-              onUpload={(url) => {
-                if (!url) return;
-                const imagenes: string[] = (() => {
-                  try { return JSON.parse(form.imagenes); } catch { return []; }
-                })();
-                setForm({ ...form, imagenes: JSON.stringify([...imagenes, url]) });
-              }}
-            />
-          </div>
+                <ImageUploader
+                  currentImage=""
+                  onUpload={(url) => {
+                    const arr = [...imagenesArr, url];
+                    setForm({ ...form, imagenes: JSON.stringify(arr) });
+                  }}
+                />
+              </div>
+            );
+          })()}
         </div>
         <div className="flex gap-3">
           <button type="submit" className="bg-accent hover:bg-accent/90 text-white font-semibold py-2 px-4 rounded-lg transition-colors text-sm">
             {editando ? 'Actualizar' : 'Crear producto'}
           </button>
           {editando && (
-            <button type="button" onClick={() => { setEditando(null); setForm({ nombre: '', slug: '', sku: '', descripcion: '', dimensiones: '', unidad: 'm2', precio: 0, precioAntes: 0, descuento: 0, marca: 'Marca Propia', imagenes: '[]', destacado: false, activo: true, orden: 0, categoriaId: 0 }); }} className="bg-gray-200 hover:bg-gray-300 text-text font-medium py-2 px-4 rounded-lg transition-colors text-sm">
+            <button type="button" onClick={() => { setEditando(null);              setForm({ nombre: '', slug: '', sku: '', descripcion: '', dimensiones: '', unidad: 'm2', precio: 0, precioAntes: 0, descuento: 0, rendimiento: 1, unidadVenta: 'un', precioUnitario: 0, imagenes: '[]', destacado: false, activo: true, orden: 0, categoriaId: 0 }); }} className="bg-gray-200 hover:bg-gray-300 text-text font-medium py-2 px-4 rounded-lg transition-colors text-sm">
               Cancelar
             </button>
           )}

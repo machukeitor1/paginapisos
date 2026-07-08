@@ -43,6 +43,27 @@ function slugify(text: string): string {
     .replace(/^-|-$/g, "");
 }
 
+const RENDIMIENTOS: Record<string, { rendimiento: number; unidadVenta: string }> = {
+  REM: { rendimiento: 8.8, unidadVenta: "caja" },
+  SPC: { rendimiento: 2.64, unidadVenta: "caja" },
+  PIM: { rendimiento: 2.3, unidadVenta: "caja" },
+};
+
+function calcularRendimiento(sku: string, dimensiones: string | null): { rendimiento: number; unidadVenta: string } {
+  const prefix = sku.substring(0, 3);
+  if (RENDIMIENTOS[prefix]) return RENDIMIENTOS[prefix];
+
+  if (dimensiones) {
+    const match = dimensiones.match(/([\d.]+)\s*cm\s*x\s*([\d.]+)\s*cm/);
+    if (match) {
+      const m2 = (parseFloat(match[1]) / 100) * (parseFloat(match[2]) / 100);
+      if (m2 > 0) return { rendimiento: Math.round(m2 * 10000) / 10000, unidadVenta: "un" };
+    }
+  }
+
+  return { rendimiento: 1, unidadVenta: "un" };
+}
+
 async function main() {
   console.log("Reading scraped data...");
   const raw = readFileSync(DATA_FILE, "utf-8");
@@ -108,6 +129,10 @@ async function main() {
 
       // Crear producto
       try {
+        const precioBase = prod.precio_m2 || prod.precio_unitario || 0;
+        const cfg = calcularRendimiento(prod.sku, prod.dimensiones || null);
+        const precioUnitario = Math.round(precioBase * cfg.rendimiento);
+
         await prisma.producto.create({
           data: {
             nombre: prod.nombre,
@@ -116,10 +141,13 @@ async function main() {
             descripcion: prod.descripcion || "",
             dimensiones: prod.dimensiones || null,
             unidad: "m2",
-            precio: prod.precio_m2 || prod.precio_unitario || 0,
+            precio: precioBase,
             precioAntes: null,
             descuento: null,
-            marca: prod.marca || "Marca Propia",
+            rendimiento: cfg.rendimiento,
+            unidadVenta: cfg.unidadVenta,
+            precioUnitario,
+            marca: "",
             imagenes: JSON.stringify(localImages),
             destacado: false,
             activo: true,
@@ -128,7 +156,7 @@ async function main() {
           },
         });
         productosInsertados++;
-        console.log(`  [OK] ${prod.sku} - ${localImages.length} imagenes`);
+        console.log(`  [OK] ${prod.sku} - ${localImages.length} imagenes (rend=${cfg.rendimiento} ${cfg.unidadVenta}, pu=${precioUnitario})`);
       } catch (e: any) {
         console.log(`  [ERROR] ${prod.sku}: ${e.message}`);
       }

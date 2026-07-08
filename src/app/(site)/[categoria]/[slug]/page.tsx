@@ -15,7 +15,6 @@ interface Producto {
   precio: number;
   precioAntes: number | null;
   descuento: number | null;
-  marca: string;
   imagenes: string;
   destacado: boolean;
   categoria: { slug: string; nombre: string };
@@ -25,7 +24,7 @@ export default function ProductoPage() {
   const params = useParams();
   const [producto, setProducto] = useState<Producto | null>(null);
   const [imagenActual, setImagenActual] = useState(0);
-  const [whatsapp, setWhatsapp] = useState('56958110962');
+  const [whatsapp, setWhatsapp] = useState('');
   const intervaloRef = useRef<ReturnType<typeof setInterval> | null>(null);
 
   useEffect(() => {
@@ -146,7 +145,6 @@ export default function ProductoPage() {
             <span className="bg-primary/10 text-primary px-2 py-0.5 rounded">{producto.categoria.nombre}</span>
           </div>
           <div className="text-sm text-muted mb-2">SKU: {producto.sku}</div>
-          {producto.marca && <div className="text-sm text-muted mb-2">Marca: {producto.marca}</div>}
           {producto.dimensiones && <div className="text-sm text-muted mb-4">Dimensiones: {producto.dimensiones}</div>}
 
           {producto.descripcion && (
@@ -173,11 +171,6 @@ export default function ProductoPage() {
               </svg>
               Consultar por WhatsApp
             </a>
-          </div>
-
-          <div className="bg-blue-50 border border-blue-100 rounded-xl p-4 text-sm text-blue-800">
-            <p className="font-semibold mb-1">Información de despacho</p>
-            <p>Despacho 24 hrs en Región Metropolitana. 72 hrs a otras regiones. Retiro gratis en tienda.</p>
           </div>
         </div>
       </div>

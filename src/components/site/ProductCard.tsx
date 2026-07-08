@@ -11,7 +11,6 @@ interface Producto {
   precio: number;
   precioAntes: number | null;
   descuento: number | null;
-  marca: string;
   imagenes: string;
   categoria: { slug: string; nombre: string };
 }

@@ -55,13 +55,20 @@ export default function Hero() {
           key={b.id}
           className={`absolute inset-0 transition-opacity duration-700 ${i === current ? 'opacity-100' : 'opacity-0'}`}
         >
-          {b.imagen && (
+          {(b.imagen || b.imagenMovil) ? (
             <img
-              src={b.imagen}
+              src={b.imagen || b.imagenMovil!}
               alt={b.titulo}
               className="w-full h-full object-cover"
               onError={(e) => { (e.target as HTMLImageElement).style.display = 'none'; }}
             />
+          ) : (
+            <div className="w-full h-full bg-primary flex items-center justify-center">
+              <div className="text-center text-white">
+                <h1 className="text-3xl md:text-5xl font-bold mb-4">Revestimientos y Pisos</h1>
+                <p className="text-lg md:text-xl text-gray-300">Materiales de construcción de primera calidad</p>
+              </div>
+            </div>
           )}
           <div className="absolute inset-0 bg-gradient-to-r from-primary/80 via-primary/50 to-transparent" />
           <div className="absolute inset-0 flex items-center">
@@ -72,7 +79,7 @@ export default function Hero() {
                     {b.badge}
                   </span>
                 )}
-                <h2 className="text-3xl md:text-5xl font-bold text-white mb-4">{b.titulo}</h2>
+                {b.titulo?.trim() && <h2 className="text-3xl md:text-5xl font-bold text-white mb-4">{b.titulo}</h2>}
                 {b.subtitulo && (
                   <p className="text-base md:text-xl text-gray-200 mb-6">{b.subtitulo}</p>
                 )}

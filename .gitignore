@@ -36,10 +36,22 @@ yarn-error.log*
 *.tsbuildinfo
 next-env.d.ts
 
-# python
-__pycache__/
-*.pyc
-
-# sqlite (local only)
+# database
 prisma/dev.db
-prisma/dev.db-journal
+
+# uploads
+public/uploads/
+
+# business documents
+Document.docx
+Fichas/
+Listado_Productos.csv
+Listado_Productos.xlsx
+Plantilla_Cotizacion.docx
+
+# project scripts
+iniciar.bat
+scraped_data.json
+scripts/
+wm_sample.jpg
+restore_images.ts

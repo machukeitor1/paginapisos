@@ -25,6 +25,10 @@ export async function GET(request: Request) {
       where.vendedorId = vendedorSession.id;
     }
 
+    if (estado) {
+      where.estado = estado;
+    }
+
     if (q) {
       where.cliente = {
         OR: [
@@ -41,10 +45,6 @@ export async function GET(request: Request) {
       const hastaDate = new Date(hasta);
       hastaDate.setDate(hastaDate.getDate() + 1);
       where.createdAt = { ...where.createdAt, lt: hastaDate };
-    }
-
-    if (estado) {
-      where.estado = estado;
     }
 
     const cotizaciones = await prisma.cotizacion.findMany({
@@ -72,31 +72,50 @@ export async function POST(request: Request) {
     const data = await request.json();
     const { cliente, items, notas } = data;
 
-    if (!cliente?.rut || !cliente?.nombre) {
-      return NextResponse.json({ error: "Datos del cliente requeridos" }, { status: 400 });
+    if (!cliente?.nombre) {
+      return NextResponse.json({ error: "Nombre del cliente requerido" }, { status: 400 });
     }
     if (!items?.length) {
       return NextResponse.json({ error: "Debe agregar al menos un producto" }, { status: 400 });
     }
 
-    const clienteDb = await prisma.cliente.upsert({
-      where: { rut: cliente.rut },
-      update: {
-        nombre: cliente.nombre,
-        direccion: cliente.direccion || null,
-        comuna: cliente.comuna || null,
-        telefono: cliente.telefono || null,
-        email: cliente.email || null,
-      },
-      create: {
-        nombre: cliente.nombre,
-        rut: cliente.rut,
-        direccion: cliente.direccion || null,
-        comuna: cliente.comuna || null,
-        telefono: cliente.telefono || null,
-        email: cliente.email || null,
-      },
-    });
+    let clienteDb;
+    if (cliente.rut) {
+      const existing = await prisma.cliente.findFirst({ where: { rut: cliente.rut } });
+      if (existing) {
+        clienteDb = await prisma.cliente.update({
+          where: { id: existing.id },
+          data: {
+            nombre: cliente.nombre,
+            direccion: cliente.direccion || null,
+            comuna: cliente.comuna || null,
+            telefono: cliente.telefono || null,
+            email: cliente.email || null,
+          },
+        });
+      } else {
+        clienteDb = await prisma.cliente.create({
+          data: {
+            nombre: cliente.nombre,
+            rut: cliente.rut,
+            direccion: cliente.direccion || null,
+            comuna: cliente.comuna || null,
+            telefono: cliente.telefono || null,
+            email: cliente.email || null,
+          },
+        });
+      }
+    } else {
+      clienteDb = await prisma.cliente.create({
+        data: {
+          nombre: cliente.nombre,
+          direccion: cliente.direccion || null,
+          comuna: cliente.comuna || null,
+          telefono: cliente.telefono || null,
+          email: cliente.email || null,
+        },
+      });
+    }
 
     const lastCot = await prisma.cotizacion.findFirst({
       orderBy: { id: "desc" },
@@ -113,6 +132,8 @@ export async function POST(request: Request) {
       productoId: item.productoId || null,
       descripcion: item.descripcion,
       cantidad: item.cantidad,
+      rendimiento: item.rendimiento || 1,
+      unidadVenta: item.unidadVenta || 'un',
       precioUnitario: item.precioUnitario,
       descuentoPorc: item.descuentoPorc || 0,
       importe: item.importe,
@@ -120,8 +141,9 @@ export async function POST(request: Request) {
     }));
 
     const subtotal = itemsData.reduce((sum: number, i: any) => sum + i.importe, 0);
-    const iva = Math.round(subtotal * 0.19);
-    const total = subtotal + iva;
+    const neto = Math.round(subtotal / 1.19);
+    const iva = subtotal - neto;
+    const total = subtotal;
 
     const cotizacion = await prisma.cotizacion.create({
       data: {
@@ -131,7 +153,6 @@ export async function POST(request: Request) {
         iva,
         total,
         notas: notas || null,
-        estado: "Pendiente",
         clienteId: clienteDb.id,
         vendedorId: session.id,
         items: {

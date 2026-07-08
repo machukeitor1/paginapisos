@@ -68,20 +68,12 @@ export default function BannersPage() {
             <input type="text" value={form.url} onChange={(e) => setForm({ ...form, url: e.target.value })} className="w-full border border-gray-300 rounded-lg px-4 py-2 text-sm" />
           </div>
           <div>
-            <ImageUploader
-              folder="banner"
-              label="Imagen Desktop"
-              currentUrl={form.imagen || null}
-              onUpload={(url) => setForm({ ...form, imagen: url })}
-            />
+            <label className="block text-sm font-medium text-text mb-1">Imagen Desktop</label>
+            <ImageUploader currentImage={form.imagen} onUpload={(url) => setForm({ ...form, imagen: url })} />
           </div>
           <div>
-            <ImageUploader
-              folder="banner"
-              label="Imagen Móvil"
-              currentUrl={form.imagenMovil || null}
-              onUpload={(url) => setForm({ ...form, imagenMovil: url })}
-            />
+            <label className="block text-sm font-medium text-text mb-1">Imagen Móvil</label>
+            <ImageUploader currentImage={form.imagenMovil} onUpload={(url) => setForm({ ...form, imagenMovil: url })} />
           </div>
           <div>
             <label className="block text-sm font-medium text-text mb-1">Orden</label>
@@ -108,7 +100,6 @@ export default function BannersPage() {
         <table className="w-full text-sm">
           <thead className="bg-gray-50">
             <tr>
-              <th className="text-left p-3 font-semibold">Preview</th>
               <th className="text-left p-3 font-semibold">Título</th>
               <th className="text-left p-3 font-semibold">Badge</th>
               <th className="text-left p-3 font-semibold">Imagen</th>
@@ -119,11 +110,6 @@ export default function BannersPage() {
           <tbody>
             {items.map((item) => (
               <tr key={item.id} className="border-t border-gray-100 hover:bg-gray-50">
-                <td className="p-3">
-                  {item.imagen && (
-                    <img src={item.imagen} alt="" className="h-10 w-16 object-cover rounded" />
-                  )}
-                </td>
                 <td className="p-3">{item.titulo}</td>
                 <td className="p-3">{item.badge || '-'}</td>
                 <td className="p-3 text-muted truncate max-w-[200px]">{item.imagen}</td>

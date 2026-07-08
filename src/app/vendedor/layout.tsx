@@ -11,7 +11,7 @@ export default function VendedorLayout({ children }: { children: React.ReactNode
   const pathname = usePathname();
 
   useEffect(() => {
-    if (pathname === '/vendedor/login') {
+    if (pathname === '/vendedor/login' || pathname === '/vendedor') {
       setLoading(false);
       return;
     }
@@ -28,7 +28,7 @@ export default function VendedorLayout({ children }: { children: React.ReactNode
       .finally(() => setLoading(false));
   }, [pathname, router]);
 
-  if (pathname === '/vendedor/login') {
+  if (pathname === '/vendedor/login' || pathname === '/vendedor') {
     return <>{children}</>;
   }
 

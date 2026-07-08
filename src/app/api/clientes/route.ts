@@ -29,28 +29,47 @@ export async function GET(request: Request) {
 export async function POST(request: Request) {
   try {
     const data = await request.json();
-    if (!data.nombre || !data.rut) {
-      return NextResponse.json({ error: "Nombre y RUT requeridos" }, { status: 400 });
+    if (!data.nombre) {
+      return NextResponse.json({ error: "Nombre requerido" }, { status: 400 });
     }
 
-    const cliente = await prisma.cliente.upsert({
-      where: { rut: data.rut },
-      update: {
-        nombre: data.nombre,
-        direccion: data.direccion || null,
-        comuna: data.comuna || null,
-        telefono: data.telefono || null,
-        email: data.email || null,
-      },
-      create: {
-        nombre: data.nombre,
-        rut: data.rut,
-        direccion: data.direccion || null,
-        comuna: data.comuna || null,
-        telefono: data.telefono || null,
-        email: data.email || null,
-      },
-    });
+    let cliente;
+    if (data.rut) {
+      const existing = await prisma.cliente.findFirst({ where: { rut: data.rut } });
+      if (existing) {
+        cliente = await prisma.cliente.update({
+          where: { id: existing.id },
+          data: {
+            nombre: data.nombre,
+            direccion: data.direccion || null,
+            comuna: data.comuna || null,
+            telefono: data.telefono || null,
+            email: data.email || null,
+          },
+        });
+      } else {
+        cliente = await prisma.cliente.create({
+          data: {
+            nombre: data.nombre,
+            rut: data.rut,
+            direccion: data.direccion || null,
+            comuna: data.comuna || null,
+            telefono: data.telefono || null,
+            email: data.email || null,
+          },
+        });
+      }
+    } else {
+      cliente = await prisma.cliente.create({
+        data: {
+          nombre: data.nombre,
+          direccion: data.direccion || null,
+          comuna: data.comuna || null,
+          telefono: data.telefono || null,
+          email: data.email || null,
+        },
+      });
+    }
 
     return NextResponse.json(cliente, { status: 201 });
   } catch (error: any) {

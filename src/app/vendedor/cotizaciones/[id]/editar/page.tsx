@@ -9,10 +9,13 @@ interface ProductoSearch {
   nombre: string;
   sku: string;
   precio: number;
+  precioUnitario: number;
+  descuento: number | null;
   unidad: string;
   slug: string;
-  rendimiento: number | null;
+  rendimiento: number;
   unidadVenta: string;
+  dimensiones: string | null;
   categoria: { nombre: string };
 }
 
@@ -21,12 +24,13 @@ interface EditItem {
   productoId: number | null;
   descripcion: string;
   cantidad: number;
+  rendimiento: number;
+  unidadVenta: string;
   precioUnitario: number;
   descuentoPorc: number;
   importe: number;
-  proyectoM2: number | null;
-  rendimiento: number | null;
-  unidadVenta: string;
+  proyectoM2: number;
+  precioM2: number;
 }
 
 export default function EditarCotizacionPage() {
@@ -76,12 +80,13 @@ export default function EditarCotizacionPage() {
           productoId: item.productoId,
           descripcion: item.descripcion,
           cantidad: item.cantidad,
+          rendimiento: item.rendimiento || 1,
+          unidadVenta: item.unidadVenta || 'un',
           precioUnitario: item.precioUnitario,
           descuentoPorc: item.descuentoPorc,
           importe: item.importe,
-          proyectoM2: item.proyectoM2 || null,
-          rendimiento: null,
-          unidadVenta: "un",
+          proyectoM2: item.proyectoM2 ?? item.cantidad * (item.rendimiento || 1),
+          precioM2: Math.round(item.precioUnitario / (item.rendimiento || 1)),
         }));
         setItems(loaded);
         setNextKey(loaded.length + 1);
@@ -108,43 +113,27 @@ export default function EditarCotizacionPage() {
   }, [searchQuery]);
 
   const addItem = useCallback((prod: ProductoSearch) => {
-    const hasRendimiento = prod.rendimiento && prod.rendimiento > 0;
-    const esCajaOUnidad = hasRendimiento && (prod.unidadVenta === "caja" || prod.unidadVenta === "un");
-    const defaultProyectoM2 = 10;
-    let cantidad: number;
-    let precioUnitario: number;
-    let proyectoM2: number | null;
-    let descripcion: string;
-
-    if (esCajaOUnidad && prod.rendimiento) {
-      proyectoM2 = defaultProyectoM2;
-      cantidad = Math.ceil(defaultProyectoM2 / prod.rendimiento);
-      if (prod.unidad === "m2") {
-        precioUnitario = Math.round(prod.precio * prod.rendimiento);
-      } else {
-        precioUnitario = prod.precio;
-      }
-      descripcion = `${prod.sku} - ${prod.nombre} (${prod.unidadVenta === "caja" ? "Caja rinde " + prod.rendimiento + " m²" : "Unidad rinde " + prod.rendimiento + " m²"})`;
-    } else {
-      proyectoM2 = null;
-      cantidad = 1;
-      precioUnitario = prod.precio;
-      descripcion = `${prod.sku} - ${prod.nombre}`;
-    }
-
+    const uv = prod.unidadVenta || 'un';
+    const rend = prod.rendimiento || 1;
+    const pm2 = prod.precio || Math.round((prod.precioUnitario || 0) / rend) || 0;
+    const m2 = rend;
+    const cant = Math.ceil(m2 / rend) || 1;
     setItems((prev) => [
       ...prev,
       {
         key: nextKey,
         productoId: prod.id,
-        descripcion,
-        cantidad,
-        precioUnitario,
-        descuentoPorc: 0,
-        importe: Math.round(cantidad * precioUnitario),
-        proyectoM2,
-        rendimiento: prod.rendimiento || null,
-        unidadVenta: prod.unidadVenta || "un",
+        descripcion: `${prod.sku} - ${prod.nombre}`,
+        cantidad: cant,
+        rendimiento: rend,
+        unidadVenta: uv,
+        precioUnitario: Math.round(pm2 * rend),
+        descuentoPorc: prod.descuento || 0,
+        importe: uv === 'caja'
+          ? Math.round(cant * Math.round(pm2 * rend) * (1 - (prod.descuento || 0) / 100))
+          : Math.round(m2 * pm2 * (1 - (prod.descuento || 0) / 100)),
+        proyectoM2: m2,
+        precioM2: pm2,
       },
     ]);
     setNextKey((k) => k + 1);
@@ -158,33 +147,32 @@ export default function EditarCotizacionPage() {
     setItems((prev) => prev.filter((i) => i.key !== key));
   };
 
-  const updateItem = (key: number, field: keyof EditItem, value: number) => {
+  const updateItem = (key: number, field: string, value: number) => {
     setItems((prev) =>
       prev.map((i) => {
         if (i.key !== key) return i;
         const updated = { ...i, [field]: value };
-
-        if (field === 'proyectoM2' && i.rendimiento && i.rendimiento > 0) {
-          updated.cantidad = Math.ceil(value / i.rendimiento);
-          updated.importe = Math.round(updated.cantidad * i.precioUnitario * (1 - i.descuentoPorc / 100));
-        } else if (field === 'cantidad' && i.rendimiento && i.rendimiento > 0) {
-          updated.proyectoM2 = Math.round(value * i.rendimiento * 100) / 100;
-          updated.importe = Math.round(value * i.precioUnitario * (1 - i.descuentoPorc / 100));
-        } else if (field === 'cantidad' || field === 'precioUnitario' || field === 'descuentoPorc') {
-          const q = field === 'cantidad' ? value : i.cantidad;
-          const pu = field === 'precioUnitario' ? value : i.precioUnitario;
-          const d = field === 'descuentoPorc' ? value : i.descuentoPorc;
-          updated.importe = Math.round(q * pu * (1 - d / 100));
+        const calcImporte = (item: typeof i) => {
+          if (item.unidadVenta === 'caja') {
+            return Math.round(item.cantidad * item.precioUnitario * (1 - item.descuentoPorc / 100));
+          }
+          return Math.round(item.proyectoM2 * item.precioM2 * (1 - item.descuentoPorc / 100));
+        };
+        if (field === 'proyectoM2') {
+          updated.cantidad = Math.ceil(value / i.rendimiento) || 1;
+        } else if (field === 'precioM2') {
+          updated.precioUnitario = Math.round(value * i.rendimiento);
         }
-
+        updated.importe = calcImporte(updated);
         return updated;
       })
     );
   };
 
   const subtotal = items.reduce((s, i) => s + i.importe, 0);
-  const iva = Math.round(subtotal * 0.19);
-  const total = subtotal + iva;
+  const neto = Math.round(subtotal / 1.19);
+  const iva = subtotal - neto;
+  const total = subtotal;
 
   const buscarCliente = async () => {
     if (clienteRut.length < 2) return;
@@ -202,8 +190,8 @@ export default function EditarCotizacionPage() {
   };
 
   const actualizarCotizacion = async () => {
-    if (!clienteRut || !clienteNombre) {
-      setError('Debe ingresar RUT y nombre del cliente');
+    if (!clienteNombre) {
+      setError('Debe ingresar el nombre del cliente');
       return;
     }
     if (items.length === 0) {
@@ -230,8 +218,10 @@ export default function EditarCotizacionPage() {
           items: items.map((i) => ({
             productoId: i.productoId,
             descripcion: i.descripcion,
-            cantidad: i.cantidad,
-            precioUnitario: i.precioUnitario,
+            cantidad: Math.ceil(i.proyectoM2 / i.rendimiento) || 1,
+            rendimiento: i.rendimiento,
+            unidadVenta: i.unidadVenta,
+            precioUnitario: Math.round(i.precioM2 * i.rendimiento),
             descuentoPorc: i.descuentoPorc,
             importe: i.importe,
             proyectoM2: i.proyectoM2,
@@ -258,58 +248,6 @@ export default function EditarCotizacionPage() {
     }
   };
 
-  const renderCantidadHeader = () => {
-    const hasCajas = items.some((i) => i.rendimiento && i.rendimiento > 0);
-    if (hasCajas) return <th className="text-center py-2 px-2 w-24">Cant</th>;
-    return <th className="text-center py-2 px-2 w-24">Cant (m²)</th>;
-  };
-
-  const renderCantidadCell = (item: EditItem) => {
-    if (item.rendimiento && item.rendimiento > 0) {
-      return (
-        <td className="py-2 px-2 text-center text-gray-800 font-medium">
-          {item.cantidad} {item.unidadVenta === "caja" ? "cajas" : "un"}
-        </td>
-      );
-    }
-    return (
-      <td className="py-2 px-2">
-        <input
-          type="number"
-          min={1}
-          step={1}
-          value={item.cantidad}
-          onChange={(e) => updateItem(item.key, 'cantidad', parseInt(e.target.value) || 1)}
-          className="w-full border border-gray-300 rounded px-2 py-1 text-center text-sm focus:outline-none focus:ring-2 focus:ring-blue-500/50"
-        />
-      </td>
-    );
-  };
-
-  const renderM2ProyectoHeader = () => {
-    const hasCajas = items.some((i) => i.rendimiento && i.rendimiento > 0);
-    if (hasCajas) return <th className="text-center py-2 px-2 w-24">m² Proyecto</th>;
-    return null;
-  };
-
-  const renderM2ProyectoCell = (item: EditItem) => {
-    if (item.rendimiento && item.rendimiento > 0) {
-      return (
-        <td className="py-2 px-2">
-          <input
-            type="number"
-            min={0}
-            step={1}
-            value={item.proyectoM2 || 0}
-            onChange={(e) => updateItem(item.key, 'proyectoM2', parseInt(e.target.value) || 0)}
-            className="w-full border border-gray-300 rounded px-2 py-1 text-center text-sm focus:outline-none focus:ring-2 focus:ring-blue-500/50"
-          />
-        </td>
-      );
-    }
-    return null;
-  };
-
   if (loading) {
     return <div className="p-6 flex justify-center"><div className="animate-spin rounded-full h-8 w-8 border-4 border-blue-600 border-t-transparent" /></div>;
   }
@@ -324,7 +262,6 @@ export default function EditarCotizacionPage() {
       {error && <div className="bg-red-50 border border-red-200 text-red-700 text-sm rounded-lg px-4 py-3 mb-4">{error}</div>}
       {success && <div className="bg-green-50 border border-green-200 text-green-700 text-sm rounded-lg px-4 py-3 mb-4">{success}</div>}
 
-      {/* Header */}
       <div className="bg-white rounded-xl shadow-sm border border-gray-200 p-6 mb-4">
         <div className="text-center mb-4">
           <h1 className="text-lg font-bold text-gray-800">REVESTIMIENTOS CHILLÁN</h1>
@@ -337,7 +274,6 @@ export default function EditarCotizacionPage() {
         </div>
       </div>
 
-      {/* Cliente */}
       <div className="bg-white rounded-xl shadow-sm border border-gray-200 p-6 mb-4">
         <h2 className="text-sm font-semibold text-gray-700 mb-3">Datos del Cliente</h2>
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-3">
@@ -364,7 +300,6 @@ export default function EditarCotizacionPage() {
         </div>
       </div>
 
-      {/* Productos */}
       <div className="bg-white rounded-xl shadow-sm border border-gray-200 p-6 mb-4">
         <h2 className="text-sm font-semibold text-gray-700 mb-3">Productos</h2>
 
@@ -383,6 +318,7 @@ export default function EditarCotizacionPage() {
                   <span className="font-medium text-gray-800">{p.sku}</span>
                   <span className="text-gray-500 ml-2">{p.nombre}</span>
                   <span className="text-gray-400 ml-2">${p.precio.toLocaleString('es-CL')}/{p.unidad}</span>
+                  {p.descuento ? <span className="text-red-500 text-xs ml-1">{p.descuento}% OFF</span> : null}
                   <span className="text-xs text-gray-400 ml-2">{p.categoria.nombre}</span>
                 </button>
               ))}
@@ -400,9 +336,9 @@ export default function EditarCotizacionPage() {
                 <tr className="border-b border-gray-200 text-xs text-gray-500 uppercase">
                   <th className="text-left py-2 pr-2">#</th>
                   <th className="text-left py-2 px-2">Descripción</th>
-                  {renderM2ProyectoHeader()}
-                  {renderCantidadHeader()}
+                  <th className="text-center py-2 px-2 w-20">M²</th>
                   <th className="text-right py-2 px-2 w-28">P. Unitario</th>
+                  <th className="text-center py-2 px-2 w-24">Cant.</th>
                   <th className="text-center py-2 px-2 w-20">Desc %</th>
                   <th className="text-right py-2 px-2 w-28">Importe</th>
                   <th className="py-2 pl-2 w-10"></th>
@@ -413,18 +349,27 @@ export default function EditarCotizacionPage() {
                   <tr key={item.key} className="border-b border-gray-100 hover:bg-gray-50">
                     <td className="py-2 pr-2 text-gray-400 text-xs">{idx + 1}</td>
                     <td className="py-2 px-2 text-gray-800">{item.descripcion}</td>
-                    {renderM2ProyectoCell(item)}
-                    {renderCantidadCell(item)}
                     <td className="py-2 px-2">
                       <input
                         type="number"
                         min={0}
                         step={1}
-                        value={item.precioUnitario}
-                        onChange={(e) => updateItem(item.key, 'precioUnitario', parseInt(e.target.value) || 0)}
+                        value={item.proyectoM2}
+                        onChange={(e) => updateItem(item.key, 'proyectoM2', parseInt(e.target.value) || 0)}
+                        className="w-full border border-gray-300 rounded px-2 py-1 text-center text-sm focus:outline-none focus:ring-2 focus:ring-blue-500/50"
+                      />
+                    </td>
+                    <td className="py-2 px-2">
+                      <input
+                        type="number"
+                        min={0}
+                        step={1}
+                        value={item.precioM2}
+                        onChange={(e) => updateItem(item.key, 'precioM2', parseInt(e.target.value) || 0)}
                         className="w-full border border-gray-300 rounded px-2 py-1 text-right text-sm focus:outline-none focus:ring-2 focus:ring-blue-500/50"
                       />
                     </td>
+                    <td className="py-2 px-2 text-center font-medium text-gray-700">{item.cantidad} {item.unidadVenta}</td>
                     <td className="py-2 px-2">
                       <input
                         type="number"
@@ -459,7 +404,7 @@ export default function EditarCotizacionPage() {
             <div className="w-64 space-y-1">
               <div className="flex justify-between text-gray-600">
                 <span>Subtotal:</span>
-                <span>${subtotal.toLocaleString('es-CL', { minimumFractionDigits: 0 })}</span>
+                <span>${neto.toLocaleString('es-CL', { minimumFractionDigits: 0 })}</span>
               </div>
               <div className="flex justify-between text-gray-600">
                 <span>IVA 19%:</span>
@@ -474,13 +419,11 @@ export default function EditarCotizacionPage() {
         )}
       </div>
 
-      {/* Notas */}
       <div className="bg-white rounded-xl shadow-sm border border-gray-200 p-6 mb-4">
         <label className="block text-xs text-gray-500 mb-1">Notas</label>
         <textarea value={notas} onChange={(e) => setNotas(e.target.value)} rows={2} className="w-full border border-gray-300 rounded-lg px-3 py-2 text-sm focus:outline-none focus:ring-2 focus:ring-blue-500/50" />
       </div>
 
-      {/* Actions */}
       <div className="flex gap-3">
         <button
           onClick={actualizarCotizacion}

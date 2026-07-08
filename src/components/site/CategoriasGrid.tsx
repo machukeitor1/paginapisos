@@ -26,12 +26,12 @@ export default function CategoriasGrid() {
     <section className="py-16 bg-white">
       <div className="max-w-7xl mx-auto px-4">
         <h2 className="text-3xl font-bold text-primary mb-8 text-center">Nuestros Productos</h2>
-        <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-5 gap-4">
+        <div className="flex flex-wrap justify-center gap-4">
           {categorias.map((cat) => (
             <Link
               key={cat.id}
               href={`/${cat.slug}`}
-              className="group bg-card rounded-xl shadow-md overflow-hidden hover:shadow-lg transition-all hover:-translate-y-1"
+              className="group bg-card rounded-xl shadow-md overflow-hidden hover:shadow-lg transition-all hover:-translate-y-1 w-[calc(50%-0.5rem)] md:w-[calc(33.33%-0.67rem)] lg:w-[calc(20%-0.8rem)] max-w-xs"
             >
               <div className="h-32 bg-gray-100 flex items-center justify-center">
                 {cat.imagen ? (
