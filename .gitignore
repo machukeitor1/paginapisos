@@ -39,9 +39,6 @@ next-env.d.ts
 # database
 prisma/dev.db
 
-# uploads
-public/uploads/
-
 # business documents
 Document.docx
 Fichas/
