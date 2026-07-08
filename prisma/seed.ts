@@ -140,6 +140,26 @@ async function main() {
     console.log(`✅ ${actualizados} productos actualizados con rendimiento/precioUnitario/unidadVenta desde productos_overrides.json`);
   }
 
+  // Corregir categoria de productos mal ubicados (ej: REG001 creados bajo Metal Siding por duplicados historicos)
+  if (existsSync(jsonPath)) {
+    const raw = readFileSync(jsonPath, "utf-8");
+    const data = JSON.parse(raw);
+    let corregidos = 0;
+    for (const [slugCat, info] of Object.entries(data) as any[]) {
+      const cat = await prisma.categoria.findUnique({ where: { slug: slugCat } });
+      if (!cat) continue;
+      for (const prod of info.productos) {
+        if (!prod.sku) continue;
+        const res = await prisma.producto.updateMany({
+          where: { sku: prod.sku, NOT: { categoriaId: cat.id } },
+          data: { categoriaId: cat.id },
+        });
+        if (res.count > 0) corregidos++;
+      }
+    }
+    if (corregidos > 0) console.log(`✅ ${corregidos} productos movidos a su categoria correcta`);
+  }
+
   // Escanear imagenes de todos los productos (asegura orden correcto siempre)
   const todosProductos = await prisma.producto.findMany({ select: { id: true, slug: true } });
   console.log(`🖼️ Escaneando imagenes para ${todosProductos.length} productos...`);
