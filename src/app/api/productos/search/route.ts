@@ -11,8 +11,8 @@ export async function GET(request: Request) {
       where: {
         activo: true,
         OR: [
-          { sku: { contains: q } },
-          { nombre: { contains: q } },
+          { sku: { contains: q, mode: "insensitive" } },
+          { nombre: { contains: q, mode: "insensitive" } },
         ],
       },
       select: {
