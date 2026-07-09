@@ -34,12 +34,13 @@ export default function ConfiguracionPage() {
       const res = await fetch('/api/configuracion', {
         method: 'PUT',
         headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify(form),
+        body: JSON.stringify({ ...form, id: undefined }),
       });
+      const data = await res.json();
       if (res.ok) {
         setMensaje('Configuración guardada correctamente');
       } else {
-        setMensaje('Error al guardar');
+        setMensaje(data.error || 'Error al guardar');
       }
     } catch {
       setMensaje('Error de conexión');
