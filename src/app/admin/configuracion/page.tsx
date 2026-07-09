@@ -36,14 +36,15 @@ export default function ConfiguracionPage() {
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify({ ...form, id: undefined }),
       });
-      const data = await res.json();
+      let data: any;
+      try { data = await res.json(); } catch { data = {}; }
       if (res.ok) {
         setMensaje('Configuración guardada correctamente');
       } else {
-        setMensaje(data.error || 'Error al guardar');
+        setMensaje(data.error || `Error ${res.status}`);
       }
     } catch {
-      setMensaje('Error de conexión');
+      setMensaje('Error de conexión (fetch falló)');
     }
     setGuardando(false);
   };

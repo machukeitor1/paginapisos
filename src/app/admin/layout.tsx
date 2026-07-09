@@ -3,6 +3,7 @@
 import { useState, useEffect } from 'react';
 import { useRouter, usePathname } from 'next/navigation';
 import Link from 'next/link';
+import SessionTimeout from '@/components/admin/SessionTimeout';
 
 export default function AdminLayout({ children }: { children: React.ReactNode }) {
   const [autenticado, setAutenticado] = useState(false);
@@ -55,7 +56,9 @@ export default function AdminLayout({ children }: { children: React.ReactNode })
   };
 
   return (
-    <div className="min-h-screen bg-background flex">
+    <>
+      <SessionTimeout />
+      <div className="min-h-screen bg-background flex">
       <aside className="w-64 bg-primary min-h-screen flex flex-col">
         <div className="p-4 border-b border-white/10">
           <Link href="/admin/dashboard" className="text-white font-bold text-lg">Admin Panel</Link>
@@ -93,5 +96,6 @@ export default function AdminLayout({ children }: { children: React.ReactNode })
       </aside>
       <main className="flex-1 p-8">{children}</main>
     </div>
+    </>
   );
 }

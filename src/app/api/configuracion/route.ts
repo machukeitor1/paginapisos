@@ -16,8 +16,11 @@ export async function GET() {
 }
 
 export async function PUT(request: Request) {
+  let data: any;
+  try { data = await request.json(); } catch {
+    return NextResponse.json({ error: "JSON inválido" }, { status: 400 });
+  }
   try {
-    const data = await request.json();
     const config = await prisma.configuracion.upsert({
       where: { id: 1 },
       update: data,
