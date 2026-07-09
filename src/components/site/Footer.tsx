@@ -1,15 +1,13 @@
+import { prisma } from '@/lib/prisma';
 import CategoriaSelector from './CategoriaSelector';
 
 async function getData() {
   try {
-    const base = process.env.NEXT_PUBLIC_BASE_URL || 'http://localhost:3000';
-    const [catRes, configRes] = await Promise.all([
-      fetch(`${base}/api/categorias?activas=true`, { cache: 'no-store' }),
-      fetch(`${base}/api/configuracion`, { cache: 'no-store' }),
+    const [categorias, config] = await Promise.all([
+      prisma.categoria.findMany({ where: { activo: true }, orderBy: { orden: 'asc' } }),
+      prisma.configuracion.findFirst(),
     ]);
-    const categorias = await catRes.json();
-    const config = await configRes.json();
-    return { categorias: Array.isArray(categorias) ? categorias : [], config };
+    return { categorias, config };
   } catch {
     return { categorias: [], config: null };
   }
