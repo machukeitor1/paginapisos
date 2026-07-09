@@ -27,13 +27,24 @@
 
 1. En tu **Render Dashboard** del servicio Web (`paginapisos`):
    - Ve a **Environment**
-   - Agrega una variable:
-     - **Key**: `DATABASE_URL`
-     - **Value**: (pega el External Database URL del paso 2)
+   - Agrega estas variables:
+
+     | Key | Value |
+     |-----|-------|
+     | `DATABASE_URL` | External Database URL del paso 2 |
+     | `JWT_SECRET` | Un valor secreto (ej: `openssl rand -base64 32`) |
+     | `CLOUDINARY_CLOUD_NAME` | Tu Cloudinary Cloud Name |
+     | `CLOUDINARY_API_KEY` | Tu Cloudinary API Key |
+     | `CLOUDINARY_API_SECRET` | Tu Cloudinary API Secret |
+
    - Guarda (**Save Changes**)
 
-2. También asegúrate de que ya existe:
-   - `JWT_SECRET` (con un valor secreto)
+### Cómo obtener las credenciales de Cloudinary
+
+1. Crea una cuenta gratis en [https://cloudinary.com](https://cloudinary.com)
+2. Ve a tu **Dashboard**
+3. Ahí verás: `Cloud Name`, `API Key`, `API Secret`
+4. Si no ves el API Secret, ve a **Settings** → **Access Keys** para generarlo
 
 ## Paso 4: Re-deploy
 

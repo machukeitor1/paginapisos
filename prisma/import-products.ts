@@ -1,37 +1,65 @@
+import "dotenv/config";
 import { PrismaClient } from "@prisma/client";
-import { readFileSync, existsSync } from "fs";
-import { writeFile, mkdir } from "fs/promises";
+import { readFileSync } from "fs";
 import path from "path";
 import https from "https";
 import http from "http";
+import { v2 as cloudinary } from "cloudinary";
+
+cloudinary.config({
+  cloud_name: process.env.CLOUDINARY_CLOUD_NAME,
+  api_key: process.env.CLOUDINARY_API_KEY,
+  api_secret: process.env.CLOUDINARY_API_SECRET,
+});
 
 const prisma = new PrismaClient();
-const UPLOAD_DIR = path.join(process.cwd(), "public", "uploads");
 const DATA_FILE = path.join(process.cwd(), "scraped_data.json");
 
-async function downloadFile(url: string, dest: string): Promise<boolean> {
+async function uploadToCloudinary(buffer: Buffer, filename: string): Promise<string | null> {
+  try {
+    const result = await new Promise<any>((resolve, reject) => {
+      const uploadStream = cloudinary.uploader.upload_stream(
+        { folder: "productos", public_id: path.parse(filename).name, resource_type: "image" },
+        (error, result) => {
+          if (error) reject(error);
+          else resolve(result);
+        }
+      );
+      uploadStream.end(buffer);
+    });
+    return result.secure_url;
+  } catch {
+    return null;
+  }
+}
+
+async function downloadAndUpload(url: string, filename: string): Promise<string | null> {
   return new Promise((resolve) => {
     const proto = url.startsWith("https") ? https : http;
     const req = proto.get(url, { headers: { "User-Agent": "Mozilla/5.0" } }, (res) => {
       if (res.statusCode === 301 || res.statusCode === 302) {
-        downloadFile(res.headers.location!, dest).then(resolve);
+        if (res.headers.location) {
+          downloadAndUpload(res.headers.location, filename).then(resolve);
+        } else {
+          resolve(null);
+        }
         return;
       }
       if (res.statusCode !== 200) {
-        resolve(false);
+        resolve(null);
         return;
       }
       const chunks: Buffer[] = [];
       res.on("data", (chunk) => chunks.push(chunk));
       res.on("end", async () => {
         const buffer = Buffer.concat(chunks);
-        await writeFile(dest, buffer);
-        resolve(true);
+        const cloudinaryUrl = await uploadToCloudinary(buffer, filename);
+        resolve(cloudinaryUrl);
       });
-      res.on("error", () => resolve(false));
+      res.on("error", () => resolve(null));
     });
-    req.on("error", () => resolve(false));
-    req.setTimeout(15000, () => { req.destroy(); resolve(false); });
+    req.on("error", () => resolve(null));
+    req.setTimeout(15000, () => { req.destroy(); resolve(null); });
   });
 }
 
@@ -69,8 +97,6 @@ async function main() {
   const raw = readFileSync(DATA_FILE, "utf-8");
   const data = JSON.parse(raw);
 
-  await mkdir(UPLOAD_DIR, { recursive: true });
-
   let totalProductos = 0;
   let totalImagenes = 0;
   let productosInsertados = 0;
@@ -105,24 +131,18 @@ async function main() {
         continue;
       }
 
-      // Descargar imagenes
-      const localImages: string[] = [];
+      // Subir imagenes a Cloudinary
+      const cloudinaryImages: string[] = [];
       for (let i = 0; i < (prod.imagenes || []).length; i++) {
         const imgUrl = prod.imagenes[i];
         if (!imgUrl || imgUrl.includes("sharer") || imgUrl.includes("og:image")) continue;
 
         const ext = path.extname(new URL(imgUrl).pathname) || ".jpg";
         const filename = `${productSlug}-${i + 1}${ext}`;
-        const filepath = path.join(UPLOAD_DIR, filename);
 
-        if (existsSync(filepath)) {
-          localImages.push(`/uploads/${filename}`);
-          continue;
-        }
-
-        const ok = await downloadFile(imgUrl, filepath);
-        if (ok) {
-          localImages.push(`/uploads/${filename}`);
+        const cloudinaryUrl = await downloadAndUpload(imgUrl, filename);
+        if (cloudinaryUrl) {
+          cloudinaryImages.push(cloudinaryUrl);
           totalImagenes++;
         }
       }
@@ -148,7 +168,7 @@ async function main() {
             unidadVenta: cfg.unidadVenta,
             precioUnitario,
             marca: "",
-            imagenes: JSON.stringify(localImages),
+            imagenes: JSON.stringify(cloudinaryImages),
             destacado: false,
             activo: true,
             orden: 0,
@@ -156,7 +176,7 @@ async function main() {
           },
         });
         productosInsertados++;
-        console.log(`  [OK] ${prod.sku} - ${localImages.length} imagenes (rend=${cfg.rendimiento} ${cfg.unidadVenta}, pu=${precioUnitario})`);
+        console.log(`  [OK] ${prod.sku} - ${cloudinaryImages.length} imagenes (rend=${cfg.rendimiento} ${cfg.unidadVenta}, pu=${precioUnitario})`);
       } catch (e: any) {
         console.log(`  [ERROR] ${prod.sku}: ${e.message}`);
       }

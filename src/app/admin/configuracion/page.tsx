@@ -1,6 +1,7 @@
 'use client';
 
 import { useState, useEffect } from 'react';
+import ImageUploader from '@/components/admin/ImageUploader';
 
 export default function ConfiguracionPage() {
   const [form, setForm] = useState({
@@ -62,8 +63,8 @@ export default function ConfiguracionPage() {
             <input type="text" value={form.nombreEmpresa} onChange={(e) => setForm({ ...form, nombreEmpresa: e.target.value })} className="w-full border border-gray-300 rounded-lg px-4 py-3 text-sm focus:outline-none focus:ring-2 focus:ring-accent/50" />
           </div>
           <div>
-            <label className="block text-sm font-medium text-text mb-1">Logo (URL path)</label>
-            <input type="text" value={form.logo} onChange={(e) => setForm({ ...form, logo: e.target.value })} className="w-full border border-gray-300 rounded-lg px-4 py-3 text-sm focus:outline-none focus:ring-2 focus:ring-accent/50" />
+            <label className="block text-sm font-medium text-text mb-1">Logo</label>
+            <ImageUploader currentImage={form.logo} onUpload={(url) => setForm({ ...form, logo: url })} />
           </div>
           <div>
             <label className="block text-sm font-medium text-text mb-1">WhatsApp Global</label>

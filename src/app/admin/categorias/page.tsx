@@ -1,6 +1,7 @@
 'use client';
 
 import { useState, useEffect } from 'react';
+import ImageUploader from '@/components/admin/ImageUploader';
 
 export default function CategoriasPage() {
   const [items, setItems] = useState<any[]>([]);
@@ -57,8 +58,8 @@ export default function CategoriasPage() {
             <input type="text" required value={form.slug} onChange={(e) => setForm({ ...form, slug: e.target.value })} className="w-full border border-gray-300 rounded-lg px-4 py-2 text-sm" />
           </div>
           <div>
-            <label className="block text-sm font-medium text-text mb-1">Imagen (URL)</label>
-            <input type="text" value={form.imagen} onChange={(e) => setForm({ ...form, imagen: e.target.value })} className="w-full border border-gray-300 rounded-lg px-4 py-2 text-sm" />
+            <label className="block text-sm font-medium text-text mb-1">Imagen</label>
+            <ImageUploader currentImage={form.imagen} onUpload={(url) => setForm({ ...form, imagen: url })} />
           </div>
           <div>
             <label className="block text-sm font-medium text-text mb-1">Orden</label>

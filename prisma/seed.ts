@@ -1,17 +1,17 @@
+import "dotenv/config";
 import { PrismaClient } from "@prisma/client";
 import bcrypt from "bcryptjs";
-import { readFileSync, existsSync, readdirSync } from "fs";
+import { readFileSync, existsSync } from "fs";
 import path from "path";
+import { v2 as cloudinary } from "cloudinary";
+
+cloudinary.config({
+  cloud_name: process.env.CLOUDINARY_CLOUD_NAME,
+  api_key: process.env.CLOUDINARY_API_KEY,
+  api_secret: process.env.CLOUDINARY_API_SECRET,
+});
 
 const prisma = new PrismaClient();
-const UPLOAD_DIR = path.join(process.cwd(), "public", "uploads");
-const BANNER_DIR = path.join(process.cwd(), "public", "banner");
-
-const sortNumerico = (a: string, b: string) => {
-  const nA = parseInt(a.match(/-(\d+)\.\w+$/)?.[1] || "0");
-  const nB = parseInt(b.match(/-(\d+)\.\w+$/)?.[1] || "0");
-  return nA - nB;
-};
 
 async function main() {
   console.log("🌱 Insertando datos semilla...");
@@ -101,18 +101,6 @@ async function main() {
             },
           });
 
-          // escanear imagenes locales que coincidan con el slug
-          const imgRegex = new RegExp(`^${productSlug}-\\d+\\.`);
-          let imgFiles: string[];
-          try { imgFiles = readdirSync(UPLOAD_DIR).filter(f => imgRegex.test(f)).sort(sortNumerico); } catch { imgFiles = []; }
-          if (imgFiles.length > 0) {
-            const paths = imgFiles.map(f => `/uploads/${f}`);
-            await prisma.producto.update({
-              where: { sku: prod.sku },
-              data: { imagenes: JSON.stringify(paths) },
-            });
-          }
-
           inserted++;
         } catch (e: any) {
           console.log(`  [ERROR] ${prod.sku}: ${e.message}`);
@@ -160,26 +148,17 @@ async function main() {
     if (corregidos > 0) console.log(`✅ ${corregidos} productos movidos a su categoria correcta`);
   }
 
-  // Escanear imagenes de todos los productos (asegura orden correcto siempre)
-  const todosProductos = await prisma.producto.findMany({ select: { id: true, slug: true } });
-  console.log(`🖼️ Escaneando imagenes para ${todosProductos.length} productos...`);
+  // Escanear imagenes de todos los productos (solo si hay locales, skip si ya estan en cloudinary)
+  const todosProductos = await prisma.producto.findMany({ select: { id: true, slug: true, imagenes: true } });
   let actualizados = 0;
   for (const prod of todosProductos) {
-    const imgRegex = new RegExp(`^${prod.slug}-\\d+\\.`);
-    let imgFiles: string[];
-    try { imgFiles = readdirSync(UPLOAD_DIR).filter(f => imgRegex.test(f)).sort(sortNumerico); } catch { imgFiles = []; }
-    if (imgFiles.length > 0) {
-      const paths = imgFiles.map(f => `/uploads/${f}`);
-      await prisma.producto.update({
-        where: { id: prod.id },
-        data: { imagenes: JSON.stringify(paths) },
-      });
-      actualizados++;
+    const imgs = JSON.parse(prod.imagenes || "[]");
+    if (imgs.length > 0 && imgs[0].startsWith("/uploads/")) {
+      console.log(`  Producto ${prod.slug} tiene imagenes locales pendientes de migrar. Ejecuta scripts/migrate-cloudinary.ts`);
     }
   }
-  console.log(`✅ ${actualizados} productos actualizados con imagenes`);
 
-  // Asignar imagen a categorias desde el primer producto
+  // Asignar imagen a categorias desde el primer producto (usa Cloudinary si existe)
   const catsSinImg = await prisma.categoria.findMany({
     where: { imagen: null },
     include: { productos: { take: 1, orderBy: { orden: "asc" } } },
@@ -196,24 +175,24 @@ async function main() {
       catsActualizadas++;
     }
   }
-  if (catsActualizadas > 0) console.log(`✅ ${catsActualizadas} categorias actualizadas con imagen`);
-  else console.log("⏭️ Categorias ya tienen imagen o no hay productos");
+  if (catsActualizadas > 0) console.log(`✅ ${catsActualizadas} categorias actualizadas con imagen desde productos`);
 
-  // Banners (siempre actualizar)
-  let bannerFiles: string[] = [];
-  try { bannerFiles = readdirSync(BANNER_DIR).sort(); } catch {}
-
-  const makeBannerImg = (idx: number) =>
-    bannerFiles[idx] ? `/banner/${bannerFiles[idx]}` : (bannerFiles[0] ? `/banner/${bannerFiles[0]}` : "");
-
+  // Banners (usar Cloudinary si hay imagenes subidas)
   await prisma.banner.deleteMany();
+  const bannerImg = async (idx: number): Promise<string> => {
+    const result = await cloudinary.search
+      .expression(`folder:public/banner/*`)
+      .sort_by("public_id", "asc")
+      .max_results(10)
+      .execute();
+    return result.resources[idx]?.secure_url || "";
+  };
   const banners = [
-    { titulo: "", subtitulo: null, badge: null, imagen: makeBannerImg(0), imagenMovil: null, url: null, orden: 1 },
-    { titulo: "", subtitulo: null, badge: null, imagen: makeBannerImg(1), imagenMovil: null, url: null, orden: 2 },
+    { titulo: "", subtitulo: null, badge: null, imagen: await bannerImg(0), imagenMovil: null, url: null, orden: 1 },
+    { titulo: "", subtitulo: null, badge: null, imagen: await bannerImg(1), imagenMovil: null, url: null, orden: 2 },
   ];
   await prisma.banner.createMany({ data: banners });
-  const imgInfo = bannerFiles.length > 0 ? `(img1: ${makeBannerImg(0)}, img2: ${makeBannerImg(1)})` : "(sin imagen)";
-  console.log(`✅ Banners actualizados ${imgInfo}`);
+  console.log(`✅ Banners actualizados (${banners.filter(b => b.imagen).length} con imagen)`);
 
   // Sucursales (solo si no existen)
   const sucursalCount = await prisma.sucursal.count();
