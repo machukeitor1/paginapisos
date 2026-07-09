@@ -1,10 +1,4 @@
-import Link from 'next/link';
-
-interface Categoria {
-  id: number;
-  nombre: string;
-  slug: string;
-}
+import CategoriaSelector from './CategoriaSelector';
 
 async function getData() {
   try {
@@ -36,13 +30,7 @@ export default async function Footer() {
           </div>
           <div>
             <h4 className="text-white font-semibold mb-4">Categorías</h4>
-            <ul className="space-y-2 text-sm">
-              {categorias.map((cat: Categoria) => (
-                <li key={cat.id}>
-                  <Link href={`/${cat.slug}`} className="hover:text-accent transition-colors">{cat.nombre}</Link>
-                </li>
-              ))}
-            </ul>
+            <CategoriaSelector categorias={categorias} />
           </div>
           <div>
             <h4 className="text-white font-semibold mb-4">Contacto</h4>

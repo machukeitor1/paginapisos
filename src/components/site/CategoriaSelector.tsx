@@ -9,15 +9,20 @@ interface Categoria {
   slug: string;
 }
 
-export default function CategoriaSelector() {
+interface Props {
+  categorias?: Categoria[];
+}
+
+export default function CategoriaSelector({ categorias: propCategorias }: Props) {
   const router = useRouter();
-  const [categorias, setCategorias] = useState<Categoria[]>([]);
+  const [categorias, setCategorias] = useState<Categoria[]>(propCategorias || []);
 
   useEffect(() => {
+    if (propCategorias) return;
     fetch('/api/categorias?activas=true').then(r => r.json()).then(data => {
       if (Array.isArray(data)) setCategorias(data);
     }).catch(() => {});
-  }, []);
+  }, [propCategorias]);
 
   if (categorias.length === 0) return null;
 
@@ -27,7 +32,7 @@ export default function CategoriaSelector() {
   };
 
   return (
-    <div className="w-full max-w-xs mx-auto">
+    <div className="w-full max-w-xs">
       <select
         onChange={handleChange}
         defaultValue=""
