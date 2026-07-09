@@ -2,6 +2,16 @@
 
 import { useState, useEffect, useCallback } from 'react';
 
+function cloudinaryUrl(url: string, width: number): string {
+  if (!url.includes('res.cloudinary.com')) return url;
+  return url.replace('/image/upload/', `/image/upload/w_${width},f_auto,q_auto/`);
+}
+
+function generateSrcSet(url: string): string {
+  if (!url.includes('res.cloudinary.com')) return '';
+  return [400, 800, 1200].map(w => `${cloudinaryUrl(url, w)} ${w}w`).join(', ');
+}
+
 interface Banner {
   id: number;
   titulo: string;
@@ -55,12 +65,19 @@ export default function Hero() {
           className={`absolute inset-0 transition-opacity duration-700 ${i === current ? 'opacity-100' : 'opacity-0'}`}
         >
           {(b.imagen || b.imagenMovil) ? (
-            <img
-              src={b.imagen || b.imagenMovil!}
-              alt=""
-              className="w-full h-full object-cover"
-              onError={(e) => { (e.target as HTMLImageElement).style.display = 'none'; }}
-            />
+            <picture>
+              {b.imagenMovil && (
+                <source media="(max-width: 767px)" srcSet={b.imagenMovil} />
+              )}
+              {b.imagen && <source srcSet={generateSrcSet(b.imagen)} sizes="100vw" />}
+              <img
+                src={cloudinaryUrl(b.imagen || b.imagenMovil!, 400)}
+                alt=""
+                className="w-full h-full object-cover"
+                loading="lazy"
+                onError={(e) => { (e.target as HTMLImageElement).style.display = 'none'; }}
+              />
+            </picture>
           ) : (
             <div className="w-full h-full bg-primary flex items-center justify-center">
               <div className="text-center text-white">
