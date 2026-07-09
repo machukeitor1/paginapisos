@@ -15,7 +15,7 @@ export async function GET() {
   }
 }
 
-export async function PUT(request: Request) {
+export async function POST(request: Request) {
   let data: any;
   try { data = await request.json(); } catch {
     return NextResponse.json({ error: "JSON inválido" }, { status: 400 });
