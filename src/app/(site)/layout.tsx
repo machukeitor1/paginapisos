@@ -4,6 +4,8 @@ import Footer from "@/components/site/Footer";
 import WhatsAppButton from "@/components/site/WhatsAppButton";
 import MapButton from "@/components/site/MapButton";
 
+export const dynamic = 'force-dynamic';
+
 export const metadata: Metadata = {
   title: "Revestimientos y Pisos - Materiales de Construcción",
   description: "Venta de revestimientos metálicos, WPC, pisos vinílicos SPC, deck y siding granito. Despacho a todo Chile.",
