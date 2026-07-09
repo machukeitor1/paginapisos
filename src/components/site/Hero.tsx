@@ -66,10 +66,7 @@ export default function Hero() {
         >
           {(b.imagen || b.imagenMovil) ? (
             <picture>
-              {b.imagenMovil && (
-                <source media="(max-width: 767px)" srcSet={b.imagenMovil} />
-              )}
-              {b.imagen && <source srcSet={generateSrcSet(b.imagen)} sizes="100vw" />}
+              <source srcSet={generateSrcSet(b.imagen || b.imagenMovil!)} sizes="100vw" />
               <img
                 src={cloudinaryUrl(b.imagen || b.imagenMovil!, 400)}
                 alt=""
