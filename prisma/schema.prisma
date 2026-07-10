@@ -31,6 +31,7 @@ model Producto {
   descuento   Int?
   marca       String    @default("")
   imagenes    String    @default("[]")
+  estado      String    @default("disponible")
   destacado   Boolean   @default(false)
   activo      Boolean   @default(true)
   orden       Int       @default(0)

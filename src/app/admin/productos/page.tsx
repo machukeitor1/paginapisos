@@ -12,8 +12,10 @@ export default function ProductosPage() {
   const [busqueda, setBusqueda] = useState('');
   const [guardando, setGuardando] = useState(false);
   const [form, setForm] = useState({
-    nombre: '', slug: '', sku: '', descripcion: '', dimensiones: '', unidad: 'm2', precio: 0, precioAntes: 0, descuento: 0, rendimiento: 1, unidadVenta: 'un', precioUnitario: 0, imagenes: '[]', destacado: false, activo: true, orden: 0, categoriaId: 0,
+    nombre: '', slug: '', sku: '', descripcion: '', dimensiones: '', unidad: 'm2', precio: 0, precioAntes: 0, descuento: 0, rendimiento: 1, unidadVenta: 'un', precioUnitario: 0, imagenes: '[]', estado: 'disponible', destacado: false, activo: true, orden: 0, categoriaId: 0,
   });
+  const [cacheBust, setCacheBust] = useState(0);
+  useEffect(() => { setCacheBust(v => v + 1); }, [form.imagenes]);
 
   const cargar = () => {
     fetch('/api/productos').then(r => r.json()).then(data => {
@@ -141,7 +143,7 @@ export default function ProductosPage() {
 
     if (res.ok) {
       setEditando(null);
-      setForm({ nombre: '', slug: '', sku: '', descripcion: '', dimensiones: '', unidad: 'm2', precio: 0, precioAntes: 0, descuento: 0, rendimiento: 1, unidadVenta: 'un', precioUnitario: 0, imagenes: '[]', destacado: false, activo: true, orden: 0, categoriaId: 0 });
+      setForm({ nombre: '', slug: '', sku: '', descripcion: '', dimensiones: '', unidad: 'm2', precio: 0, precioAntes: 0, descuento: 0, rendimiento: 1, unidadVenta: 'un', precioUnitario: 0, imagenes: '[]', estado: 'disponible', destacado: false, activo: true, orden: 0, categoriaId: 0 });
       cargar();
     }
   };
@@ -150,7 +152,7 @@ export default function ProductosPage() {
     setEditando(prod);
     const base = prod.precioAntes || prod.precio;
     setForm({
-      nombre: prod.nombre, slug: prod.slug, sku: prod.sku, descripcion: prod.descripcion || '', dimensiones: prod.dimensiones || '', unidad: prod.unidad, precio: prod.precio, precioAntes: base, descuento: prod.descuento || 0, rendimiento: prod.rendimiento || 1, unidadVenta: prod.unidadVenta || 'un', precioUnitario: prod.precioUnitario || 0, imagenes: prod.imagenes, destacado: prod.destacado, activo: prod.activo, orden: prod.orden, categoriaId: prod.categoriaId,
+      nombre: prod.nombre, slug: prod.slug, sku: prod.sku, descripcion: prod.descripcion || '', dimensiones: prod.dimensiones || '', unidad: prod.unidad, precio: prod.precio, precioAntes: base, descuento: prod.descuento || 0, rendimiento: prod.rendimiento || 1, unidadVenta: prod.unidadVenta || 'un', precioUnitario: prod.precioUnitario || 0, imagenes: prod.imagenes, estado: prod.estado || 'disponible', destacado: prod.destacado, activo: prod.activo, orden: prod.orden, categoriaId: prod.categoriaId,
     });
   };
 
@@ -236,6 +238,10 @@ export default function ProductosPage() {
               <input type="checkbox" checked={form.activo} onChange={(e) => setForm({ ...form, activo: e.target.checked })} className="rounded" />
               <span className="text-sm">Activo</span>
             </label>
+            <label className="flex items-center gap-2">
+              <input type="checkbox" checked={form.estado === 'a-pedido'} onChange={(e) => setForm({ ...form, estado: e.target.checked ? 'a-pedido' : 'disponible' })} className="rounded" />
+              <span className="text-sm font-medium text-orange-600">A Pedido</span>
+            </label>
           </div>
         </div>
         <div>
@@ -256,7 +262,7 @@ export default function ProductosPage() {
                 <div className="flex flex-wrap gap-2">
                   {imagenesArr.map((url: string, i: number) => (
                     <div key={i} className="relative w-24 h-24 border border-gray-200 rounded-lg overflow-hidden bg-gray-50 group">
-                      <img src={url} alt={`img-${i}`} className="w-full h-full object-cover" />
+                      <img src={`${url}?cb=${cacheBust}`} alt={`img-${i}`} className="w-full h-full object-cover" />
                       <button
                         type="button"
                         onClick={() => {
@@ -286,7 +292,7 @@ export default function ProductosPage() {
             {editando ? 'Actualizar' : 'Crear producto'}
           </button>
           {editando && (
-            <button type="button" onClick={() => { setEditando(null);              setForm({ nombre: '', slug: '', sku: '', descripcion: '', dimensiones: '', unidad: 'm2', precio: 0, precioAntes: 0, descuento: 0, rendimiento: 1, unidadVenta: 'un', precioUnitario: 0, imagenes: '[]', destacado: false, activo: true, orden: 0, categoriaId: 0 }); }} className="bg-gray-200 hover:bg-gray-300 text-text font-medium py-2 px-4 rounded-lg transition-colors text-sm">
+            <button type="button" onClick={() => { setEditando(null);              setForm({ nombre: '', slug: '', sku: '', descripcion: '', dimensiones: '', unidad: 'm2', precio: 0, precioAntes: 0, descuento: 0, rendimiento: 1, unidadVenta: 'un', precioUnitario: 0, imagenes: '[]', estado: 'disponible', destacado: false, activo: true, orden: 0, categoriaId: 0 }); }} className="bg-gray-200 hover:bg-gray-300 text-text font-medium py-2 px-4 rounded-lg transition-colors text-sm">
               Cancelar
             </button>
           )}
@@ -354,6 +360,20 @@ export default function ProductosPage() {
               className="bg-gray-500 hover:bg-gray-600 text-white text-xs font-semibold py-1.5 px-3 rounded-lg"
               >
               Quitar destacado
+            </button>
+            <button
+              onClick={() => actualizarBatch('estado', 'a-pedido')}
+              disabled={guardando}
+              className="bg-orange-500 hover:bg-orange-600 text-white text-xs font-semibold py-1.5 px-3 rounded-lg"
+            >
+              A Pedido
+            </button>
+            <button
+              onClick={() => actualizarBatch('estado', 'disponible')}
+              disabled={guardando}
+              className="bg-green-600 hover:bg-green-700 text-white text-xs font-semibold py-1.5 px-3 rounded-lg"
+            >
+              Disponible
             </button>
             <div className="flex items-center gap-2">
               <span className="text-xs text-muted">Precio:</span>
