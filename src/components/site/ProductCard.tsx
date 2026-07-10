@@ -10,6 +10,8 @@ interface Producto {
   unidad: string;
   precio: number;
   precioAntes: number | null;
+  precioUnitario: number;
+  unidadVenta: string;
   descuento: number | null;
   imagenes: string;
   estado: string;
@@ -21,6 +23,7 @@ export default function ProductCard({ producto }: { producto: Producto }) {
   try { imagenes = JSON.parse(producto.imagenes); } catch {}
 
   const formatearPrecio = (p: number) => `$${Math.round(p).toLocaleString('es-CL')}`;
+  const displayPrice = producto.unidad === 'm2' ? producto.precio : (producto.precioUnitario || producto.precio);
   const linkProps = { href: `/${producto.categoria.slug}/${producto.slug}` };
 
   return (
@@ -58,7 +61,7 @@ export default function ProductCard({ producto }: { producto: Producto }) {
         {producto.dimensiones && <div className="text-xs text-muted mb-2">{producto.dimensiones}</div>}
 
         <div className="flex items-baseline gap-2 mb-3">
-          <span className="text-lg font-bold text-primary">{formatearPrecio(producto.precio)}</span>
+          <span className="text-lg font-bold text-primary">{formatearPrecio(displayPrice)}</span>
           <span className="text-xs text-muted">/ {producto.unidad}</span>
           {producto.precioAntes && (
             <span className="text-sm text-muted line-through">{formatearPrecio(producto.precioAntes)}</span>
