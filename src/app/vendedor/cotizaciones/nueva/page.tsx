@@ -81,7 +81,7 @@ export default function NuevaCotizacionPage() {
     const rend = prod.rendimiento || 1;
     const pu = prod.precioUnitario || Math.round((prod.precio || 0) * rend) || 0;
     const m2 = rend;
-    const cant = Math.floor(m2 / rend) || 1;
+    const cant = Math.round(m2 / rend) || 1;
     setItems((prev) => [
       ...prev,
       {
@@ -118,7 +118,7 @@ export default function NuevaCotizacionPage() {
           return Math.round(item.cantidad * item.precioUnitario * (1 - item.descuentoPorc / 100));
         };
         if (field === 'proyectoM2') {
-          updated.cantidad = Math.floor(value / i.rendimiento) || 1;
+          updated.cantidad = Math.round(value / i.rendimiento) || 1;
         } else if (field === 'precioUnitario') {
           updated.precioM2 = Math.round(value / i.rendimiento);
         }
@@ -177,7 +177,7 @@ export default function NuevaCotizacionPage() {
           items: items.map((i) => ({
             productoId: i.productoId,
             descripcion: i.descripcion,
-            cantidad: Math.floor(i.proyectoM2 / i.rendimiento) || 1,
+            cantidad: Math.round(i.proyectoM2 / i.rendimiento) || 1,
             rendimiento: i.rendimiento,
             unidadVenta: i.unidadVenta,
             precioUnitario: i.precioUnitario,
