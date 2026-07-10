@@ -2,14 +2,16 @@
 
 import { useState, useEffect, useCallback } from 'react';
 
-function cloudinaryUrl(url: string, width: number): string {
+function cloudinaryUrl(url: string, width: number, height?: number): string {
   if (!url.includes('res.cloudinary.com')) return url;
-  return url.replace('/image/upload/', `/image/upload/w_${width},f_auto,q_auto/`);
+  let t = `w_${width},c_fill,g_auto,f_auto,q_auto`;
+  if (height) t += `,h_${height}`;
+  return url.replace('/image/upload/', `/image/upload/${t}/`);
 }
 
-function generateSrcSet(url: string): string {
+function generateSrcSet(url: string, height?: number): string {
   if (!url.includes('res.cloudinary.com')) return '';
-  return [400, 800, 1200].map(w => `${cloudinaryUrl(url, w)} ${w}w`).join(', ');
+  return [400, 800, 1200].map(w => `${cloudinaryUrl(url, w, height)} ${w}w`).join(', ');
 }
 
 interface Banner {
@@ -66,12 +68,15 @@ export default function Hero() {
         >
           {(b.imagen || b.imagenMovil) ? (
             <picture>
-              <source srcSet={generateSrcSet(b.imagen || b.imagenMovil!)} sizes="100vw" />
+              <source media="(min-width: 768px)"
+                srcSet={generateSrcSet(b.imagen || b.imagenMovil!, 500)} sizes="100vw" />
+              <source media="(max-width: 767px)"
+                srcSet={generateSrcSet(b.imagenMovil || b.imagen!, 350)} sizes="100vw" />
               <img
-                src={cloudinaryUrl(b.imagen || b.imagenMovil!, 400)}
+                src={cloudinaryUrl(b.imagen || b.imagenMovil!, 400, 350)}
                 alt=""
                 className="w-full h-full object-cover"
-                loading="lazy"
+                loading={i === 0 ? 'eager' : 'lazy'}
                 onError={(e) => { (e.target as HTMLImageElement).style.display = 'none'; }}
               />
             </picture>
