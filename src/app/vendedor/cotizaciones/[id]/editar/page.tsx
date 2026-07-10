@@ -86,7 +86,7 @@ export default function EditarCotizacionPage() {
           descuentoPorc: item.descuentoPorc,
           importe: item.importe,
           proyectoM2: item.proyectoM2 ?? item.cantidad * (item.rendimiento || 1),
-          precioM2: Math.round(item.precioUnitario / (item.rendimiento || 1)),
+          precioM2: Math.ceil(item.precioUnitario / (item.rendimiento || 1)),
         }));
         setItems(loaded);
         setNextKey(loaded.length + 1);
@@ -115,7 +115,7 @@ export default function EditarCotizacionPage() {
   const addItem = useCallback((prod: ProductoSearch) => {
     const uv = prod.unidadVenta || 'un';
     const rend = prod.rendimiento || 1;
-    const pu = prod.precioUnitario || Math.round((prod.precio || 0) * rend) || 0;
+    const pu = prod.precioUnitario || Math.ceil((prod.precio || 0) * rend) || 0;
     const m2 = rend;
     const cant = Math.round(m2 / rend) || 1;
     setItems((prev) => [
@@ -129,9 +129,9 @@ export default function EditarCotizacionPage() {
         unidadVenta: uv,
         precioUnitario: pu,
         descuentoPorc: prod.descuento || 0,
-        importe: Math.round(cant * pu * (1 - (prod.descuento || 0) / 100)),
+        importe: Math.ceil(cant * pu * (1 - (prod.descuento || 0) / 100)),
         proyectoM2: m2,
-        precioM2: Math.round(pu / rend),
+        precioM2: Math.ceil(pu / rend),
       },
     ]);
     setNextKey((k) => k + 1);
@@ -151,12 +151,12 @@ export default function EditarCotizacionPage() {
         if (i.key !== key) return i;
         const updated = { ...i, [field]: value };
         const calcImporte = (item: typeof i) => {
-          return Math.round(item.cantidad * item.precioUnitario * (1 - item.descuentoPorc / 100));
+          return Math.ceil(item.cantidad * item.precioUnitario * (1 - item.descuentoPorc / 100));
         };
         if (field === 'proyectoM2') {
           updated.cantidad = Math.round(value / i.rendimiento) || 1;
         } else if (field === 'precioUnitario') {
-          updated.precioM2 = Math.round(value / i.rendimiento);
+          updated.precioM2 = Math.ceil(value / i.rendimiento);
         }
         updated.importe = calcImporte(updated);
         return updated;
@@ -165,7 +165,7 @@ export default function EditarCotizacionPage() {
   };
 
   const subtotal = items.reduce((s, i) => s + i.importe, 0);
-  const neto = Math.round(subtotal / 1.19);
+  const neto = Math.ceil(subtotal / 1.19);
   const iva = subtotal - neto;
   const total = subtotal;
 
