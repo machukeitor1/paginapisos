@@ -115,9 +115,9 @@ export default function EditarCotizacionPage() {
   const addItem = useCallback((prod: ProductoSearch) => {
     const uv = prod.unidadVenta || 'un';
     const rend = prod.rendimiento || 1;
-    const pm2 = prod.precio || Math.round((prod.precioUnitario || 0) / rend) || 0;
+    const pu = prod.precioUnitario || Math.round((prod.precio || 0) * rend) || 0;
     const m2 = rend;
-    const cant = Math.ceil(m2 / rend) || 1;
+    const cant = Math.floor(m2 / rend) || 1;
     setItems((prev) => [
       ...prev,
       {
@@ -127,11 +127,11 @@ export default function EditarCotizacionPage() {
         cantidad: cant,
         rendimiento: rend,
         unidadVenta: uv,
-        precioUnitario: Math.round(pm2 * rend),
+        precioUnitario: pu,
         descuentoPorc: prod.descuento || 0,
-        importe: Math.round(cant * Math.round(pm2 * rend) * (1 - (prod.descuento || 0) / 100)),
+        importe: Math.round(cant * pu * (1 - (prod.descuento || 0) / 100)),
         proyectoM2: m2,
-        precioM2: pm2,
+        precioM2: Math.round(pu / rend),
       },
     ]);
     setNextKey((k) => k + 1);
@@ -154,9 +154,9 @@ export default function EditarCotizacionPage() {
           return Math.round(item.cantidad * item.precioUnitario * (1 - item.descuentoPorc / 100));
         };
         if (field === 'proyectoM2') {
-          updated.cantidad = Math.ceil(value / i.rendimiento) || 1;
-        } else if (field === 'precioM2') {
-          updated.precioUnitario = Math.round(value * i.rendimiento);
+          updated.cantidad = Math.floor(value / i.rendimiento) || 1;
+        } else if (field === 'precioUnitario') {
+          updated.precioM2 = Math.round(value / i.rendimiento);
         }
         updated.importe = calcImporte(updated);
         return updated;
@@ -213,10 +213,10 @@ export default function EditarCotizacionPage() {
           items: items.map((i) => ({
             productoId: i.productoId,
             descripcion: i.descripcion,
-            cantidad: Math.ceil(i.proyectoM2 / i.rendimiento) || 1,
+            cantidad: Math.floor(i.proyectoM2 / i.rendimiento) || 1,
             rendimiento: i.rendimiento,
             unidadVenta: i.unidadVenta,
-            precioUnitario: Math.round(i.precioM2 * i.rendimiento),
+            precioUnitario: i.precioUnitario,
             descuentoPorc: i.descuentoPorc,
             importe: i.importe,
             proyectoM2: i.proyectoM2,
@@ -312,7 +312,8 @@ export default function EditarCotizacionPage() {
                 <button key={p.id} onClick={() => addItem(p)} className="w-full text-left px-4 py-2.5 hover:bg-blue-50 text-sm border-b border-gray-100 last:border-0">
                   <span className="font-medium text-gray-800">{p.sku}</span>
                   <span className="text-gray-500 ml-2">{p.nombre}</span>
-                  <span className="text-gray-400 ml-2">${p.precio.toLocaleString('es-CL')}/{p.unidad}</span>
+                  <span className="text-gray-400 ml-2">${(p.precioUnitario || p.precio).toLocaleString('es-CL')}/{p.unidadVenta}</span>
+                  <span className="text-gray-400 ml-1">| ${p.precio.toLocaleString('es-CL')}/{p.unidad}</span>
                   {p.descuento ? <span className="text-red-500 text-xs ml-1">{p.descuento}% OFF</span> : null}
                   <span className="text-xs text-gray-400 ml-2">{p.categoria.nombre}</span>
                 </button>
@@ -359,8 +360,8 @@ export default function EditarCotizacionPage() {
                         type="number"
                         min={0}
                         step={1}
-                        value={item.precioM2}
-                        onChange={(e) => updateItem(item.key, 'precioM2', parseInt(e.target.value) || 0)}
+                        value={item.precioUnitario}
+                        onChange={(e) => updateItem(item.key, 'precioUnitario', parseInt(e.target.value) || 0)}
                         className="w-full border border-gray-300 rounded px-2 py-1 text-right text-sm focus:outline-none focus:ring-2 focus:ring-blue-500/50"
                       />
                     </td>
