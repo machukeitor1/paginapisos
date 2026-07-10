@@ -129,9 +129,7 @@ export default function EditarCotizacionPage() {
         unidadVenta: uv,
         precioUnitario: Math.round(pm2 * rend),
         descuentoPorc: prod.descuento || 0,
-        importe: uv === 'caja'
-          ? Math.round(cant * Math.round(pm2 * rend) * (1 - (prod.descuento || 0) / 100))
-          : Math.round(m2 * pm2 * (1 - (prod.descuento || 0) / 100)),
+        importe: Math.round(cant * Math.round(pm2 * rend) * (1 - (prod.descuento || 0) / 100)),
         proyectoM2: m2,
         precioM2: pm2,
       },
@@ -153,10 +151,7 @@ export default function EditarCotizacionPage() {
         if (i.key !== key) return i;
         const updated = { ...i, [field]: value };
         const calcImporte = (item: typeof i) => {
-          if (item.unidadVenta === 'caja') {
-            return Math.round(item.cantidad * item.precioUnitario * (1 - item.descuentoPorc / 100));
-          }
-          return Math.round(item.proyectoM2 * item.precioM2 * (1 - item.descuentoPorc / 100));
+          return Math.round(item.cantidad * item.precioUnitario * (1 - item.descuentoPorc / 100));
         };
         if (field === 'proyectoM2') {
           updated.cantidad = Math.ceil(value / i.rendimiento) || 1;
