@@ -202,8 +202,8 @@ export default function ProductoPage() {
 
           <div className="bg-gray-50 rounded-xl p-6 mb-4">
             <div className="flex items-baseline gap-3 mb-4">
-              <span className="text-3xl font-bold text-accent">{formatearPrecio(producto.precio)}</span>
-              <span className="text-sm text-muted">/ {producto.unidad}</span>
+              <span className="text-3xl font-bold text-accent">{formatearPrecio(producto.categoria.slug === 'pisos-deck-wpc' ? (producto.precioUnitario || producto.precio) : producto.precio)}</span>
+              <span className="text-sm text-muted">/ {producto.categoria.slug === 'pisos-deck-wpc' ? (extra?.presentacion?.toLowerCase() || 'un') : producto.unidad}</span>
               {producto.precioAntes && (
                 <span className="text-lg text-muted line-through">{formatearPrecio(producto.precioAntes)}</span>
               )}
