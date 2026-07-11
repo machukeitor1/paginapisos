@@ -12,6 +12,7 @@ interface Producto {
   precioAntes: number | null;
   precioUnitario: number;
   unidadVenta: string;
+  rendimiento: number | null;
   descuento: number | null;
   imagenes: string;
   estado: string;
@@ -58,7 +59,8 @@ export default function ProductCard({ producto }: { producto: Producto }) {
           <h3 className="font-semibold text-text mb-1 hover:text-accent transition-colors line-clamp-2">{producto.nombre}</h3>
         </Link>
         <div className="text-xs text-muted mb-1">SKU: {producto.sku}</div>
-        {producto.dimensiones && <div className="text-xs text-muted mb-2">{producto.dimensiones}</div>}
+        {producto.dimensiones && <div className="text-xs text-muted mb-1">{producto.dimensiones}</div>}
+        <div className="text-xs text-muted mb-2">Presentación: {producto.unidadVenta === 'caja' ? 'Caja' : 'Unidad'}</div>
 
         <div className="flex items-baseline gap-2 mb-3">
           <span className="text-lg font-bold text-primary">{formatearPrecio(displayPrice)}</span>
