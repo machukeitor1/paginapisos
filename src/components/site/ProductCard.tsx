@@ -26,7 +26,9 @@ export default function ProductCard({ producto }: { producto: Producto }) {
   try { imagenes = JSON.parse(producto.imagenes); } catch {}
 
   const formatearPrecio = (p: number) => `$${Math.round(p).toLocaleString('es-CL')}`;
-  const showUnitPrice = ['pisos-deck-wpc', 'revestimiento-exterior-wpc', 'revestimientos-de-interior', 'cortavista', 'revestimiento-exterior-de-pvc'].includes(producto.categoria.slug);
+  const UNIT_PRICE_CATEGORIES = ['pisos-deck-wpc', 'revestimiento-exterior-wpc', 'revestimientos-de-interior', 'cortavista', 'revestimiento-exterior-de-pvc', 'cercos-wpc', 'siding-piedras-pu'];
+  const UNIT_PRICE_SKUS = ['RPU101-FACHALETA', 'APU102-CAFE', 'APU102-NOGAL'];
+  const showUnitPrice = UNIT_PRICE_CATEGORIES.includes(producto.categoria.slug) || UNIT_PRICE_SKUS.includes(producto.sku);
   const displayPrice = showUnitPrice ? (producto.precioUnitario || producto.precio) : (producto.unidad === 'm2' ? producto.precio : (producto.precioUnitario || producto.precio));
   const displayUnit = showUnitPrice ? (extra?.presentacion?.toLowerCase() || 'un') : producto.unidad;
   const linkProps = { href: `/${producto.categoria.slug}/${producto.slug}` };
