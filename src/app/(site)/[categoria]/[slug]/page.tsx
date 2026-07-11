@@ -163,6 +163,7 @@ export default function ProductoPage() {
             <span className="bg-primary/10 text-primary px-2 py-0.5 rounded">{producto.categoria.nombre}</span>
           </div>
           <div className="text-sm text-muted mb-2">SKU: {producto.sku}</div>
+          <div className="text-sm text-muted mb-2">Marca: {producto.marca || 'Grupo Cubico'}</div>
           {extra?.medidas?.length ? (
             <div className="text-sm text-muted mb-2">
               <span className="font-medium text-text">Medidas:</span>
@@ -175,15 +176,11 @@ export default function ProductoPage() {
             </div>
           )}
 
-          <div className="bg-gray-50 rounded-xl p-4 mb-6 space-y-1.5 text-sm">
-            {producto.marca && (
-              <div><span className="font-medium text-text">Marca:</span> <span className="text-muted">{producto.marca}</span></div>
-            )}
-            <div><span className="font-medium text-text">Presentación:</span> <span className="text-muted">{extra?.presentacion || (producto.unidadVenta === 'caja' ? 'Caja' : 'Unidad')}</span></div>
-            <div>
-              <span className="font-medium text-text">Rendimiento:</span>{' '}
-              <span className="text-muted">{extra?.rendimiento || '—'}</span>
-            </div>
+          <div className="bg-gray-50 rounded-xl p-4 mb-6 text-sm grid grid-cols-[auto_1fr] gap-x-2 gap-y-1.5">
+            <span className="font-medium text-text shrink-0">Presentación:</span>
+            <span className="text-muted">{extra?.presentacion || (producto.unidadVenta === 'caja' ? 'Caja' : 'Unidad')}</span>
+            <span className="font-medium text-text shrink-0">Rendimiento:</span>
+            <span className="text-muted">{extra?.rendimiento || '—'}</span>
           </div>
 
           {producto.descripcion && (

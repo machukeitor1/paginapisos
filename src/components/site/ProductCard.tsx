@@ -18,6 +18,7 @@ interface Producto {
   descuento: number | null;
   imagenes: string;
   estado: string;
+  marca: string;
   categoria: { slug: string; nombre: string };
 }
 
@@ -66,6 +67,7 @@ export default function ProductCard({ producto }: { producto: Producto }) {
           <h3 className="font-semibold text-text mb-1 hover:text-accent transition-colors line-clamp-2">{producto.nombre}</h3>
         </Link>
         <div className="text-xs text-muted mb-1">SKU: {producto.sku}</div>
+        <div className="text-xs text-muted mb-1">Marca: {producto.marca || 'Grupo Cubico'}</div>
         {extra?.medidas?.length ? <div className="text-xs text-muted mb-1">{extra.medidas[0]}</div> : producto.dimensiones && <div className="text-xs text-muted mb-1">{producto.dimensiones}</div>}
         <div className="text-xs text-muted mb-2">Presentación: {extra?.presentacion || (producto.unidadVenta === 'caja' ? 'Caja' : 'Unidad')}</div>
 
