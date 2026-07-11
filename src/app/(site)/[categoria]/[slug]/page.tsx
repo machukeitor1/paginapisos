@@ -176,11 +176,9 @@ export default function ProductoPage() {
             </div>
           )}
 
-          <div className="bg-gray-50 rounded-xl p-4 mb-6 text-sm grid grid-cols-[auto_1fr] gap-x-2 gap-y-1.5">
-            <span className="font-medium text-text shrink-0">Presentación:</span>
-            <span className="text-muted">{extra?.presentacion || (producto.unidadVenta === 'caja' ? 'Caja' : 'Unidad')}</span>
-            <span className="font-medium text-text shrink-0">Rendimiento:</span>
-            <span className="text-muted">{extra?.rendimiento || '—'}</span>
+          <div className="bg-gray-50 rounded-xl p-4 mb-6 text-sm space-y-1.5">
+            <div><span className="font-medium text-text">Presentación:</span> <span className="text-muted">{extra?.presentacion || (producto.unidadVenta === 'caja' ? 'Caja' : 'Unidad')}</span></div>
+            <div><span className="font-medium text-text">Rendimiento:</span> <span className="text-muted">{extra?.rendimiento || '—'}</span></div>
           </div>
 
           {producto.descripcion && (
