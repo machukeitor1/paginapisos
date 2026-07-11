@@ -176,10 +176,8 @@ export default function ProductoPage() {
             </div>
           )}
 
-          <div className="bg-gray-50 rounded-xl p-4 mb-6 text-sm space-y-1.5">
-            <div><span className="font-medium text-text">Presentación:</span> <span className="text-muted">{extra?.presentacion || (producto.unidadVenta === 'caja' ? 'Caja' : 'Unidad')}</span></div>
-            <div><span className="font-medium text-text">Rendimiento:</span> <span className="text-muted">{extra?.rendimiento || '—'}</span></div>
-          </div>
+          <div className="text-sm text-muted mb-2">Presentación: {extra?.presentacion || (producto.unidadVenta === 'caja' ? 'Caja' : 'Unidad')}</div>
+          <div className="text-sm text-muted mb-2">Rendimiento: {extra?.rendimiento || '—'}</div>
 
           {producto.descripcion && (
             <p className="text-text mb-6 leading-relaxed">{producto.descripcion}</p>
