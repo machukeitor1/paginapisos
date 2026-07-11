@@ -1,4 +1,5 @@
 import Link from 'next/link';
+import { getProductoExtra } from '@/lib/productos-data';
 
 interface Producto {
   id: number;
@@ -20,6 +21,7 @@ interface Producto {
 }
 
 export default function ProductCard({ producto }: { producto: Producto }) {
+  const extra = getProductoExtra(producto.sku);
   let imagenes: string[] = [];
   try { imagenes = JSON.parse(producto.imagenes); } catch {}
 
@@ -59,8 +61,8 @@ export default function ProductCard({ producto }: { producto: Producto }) {
           <h3 className="font-semibold text-text mb-1 hover:text-accent transition-colors line-clamp-2">{producto.nombre}</h3>
         </Link>
         <div className="text-xs text-muted mb-1">SKU: {producto.sku}</div>
-        {producto.dimensiones && <div className="text-xs text-muted mb-1">{producto.dimensiones}</div>}
-        <div className="text-xs text-muted mb-2">Presentación: {producto.unidadVenta === 'caja' ? 'Caja' : 'Unidad'}</div>
+        {extra?.medidas?.length ? <div className="text-xs text-muted mb-1">{extra.medidas[0]}</div> : producto.dimensiones && <div className="text-xs text-muted mb-1">{producto.dimensiones}</div>}
+        <div className="text-xs text-muted mb-2">Presentación: {extra?.presentacion || (producto.unidadVenta === 'caja' ? 'Caja' : 'Unidad')}</div>
 
         <div className="flex items-baseline gap-2 mb-3">
           <span className="text-lg font-bold text-primary">{formatearPrecio(displayPrice)}</span>

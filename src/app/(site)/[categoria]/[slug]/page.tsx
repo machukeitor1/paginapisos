@@ -3,6 +3,7 @@
 import { useState, useEffect, useRef } from 'react';
 import { useParams } from 'next/navigation';
 import Link from 'next/link';
+import { getProductoExtra } from '@/lib/productos-data';
 
 interface Producto {
   id: number;
@@ -24,53 +25,12 @@ interface Producto {
   categoria: { slug: string; nombre: string };
 }
 
-const RENDIMIENTO_MAP: Record<string, string> = {
-  'PEW101': '0,32 m²/Unidad',
-  'PEW102': '0,32 m²/Unidad',
-  'REP101': '1,72 Unidad / m²',
-  'REP102': '1,72 Unidad / m²',
-  'REM101-GRAFITO': '8,80 m² / Caja de 8 un.',
-  'REM101-MADERA': '8,80 m² / Caja de 8 un.',
-  'REM101-NEGRO': '8,80 m² / Caja de 8 un.',
-  'REM101-PIEDRA': '8,80 m² / Caja de 8 un.',
-  'REM102-CEDRO': '8,80 m² / Caja de 8 un.',
-  'REM102-CREMA': '8,80 m² / Caja de 8 un.',
-  'REM102-MADERA': '8,80 m² / Caja de 8 un.',
-  'REM103-BLANCO': '8,80 m² / Caja de 8 un.',
-  'REM103-NEGRO': '8,80 m² / Caja de 8 un.',
-  'REM105-GRAFITO': '8,80 m² / Caja de 8 un.',
-  'REM105-NEGRO': '8,80 m² / Caja de 8 un.',
-  'REM107-MADERA': '8,80 m² / Caja de 8 un.',
-  'REM108-NATURAL': '8,80 m² / Caja de 8 un.',
-  'REM108-ROBLE': '8,80 m² / Caja de 8 un.',
-  'CVW101': '4,79 Unidad / m²',
-  'CVW201': '4,79 Unidad / m²',
-};
-
-function parsearMedidas(dim: string) {
-  const partes = dim.split('×').map(p => p.trim());
-  if (partes.length === 3) {
-    return (
-      <>
-        <span>Largo: {partes[0]}</span>
-        <span className="mx-2 text-muted">|</span>
-        <span>Ancho: {partes[1]}</span>
-        <span className="mx-2 text-muted">|</span>
-        <span>Grosor: {partes[2]}</span>
-      </>
-    );
-  }
-  return dim;
-}
-
-function rendimientoDisplay(sku: string, rend: number | null, uv: string): string {
-  if (!rend) return '—';
-  const key = sku.toUpperCase();
-  if (RENDIMIENTO_MAP[key]) return RENDIMIENTO_MAP[key];
-  if (uv === 'caja') {
-    return `${rend.toFixed(2).replace('.', ',')} m² / Caja`;
-  }
-  return `${rend.toFixed(2).replace('.', ',')} m² / Unidad`;
+function MedidasDisplay({ medidas }: { medidas: string[] }) {
+  return (
+    <div className="space-y-0.5">
+      {medidas.map((m, i) => <div key={i}>{m}</div>)}
+    </div>
+  );
 }
 
 export default function ProductoPage() {
@@ -131,6 +91,7 @@ export default function ProductoPage() {
   let imagenes: string[] = [];
   try { imagenes = JSON.parse(producto.imagenes); } catch {}
 
+  const extra = getProductoExtra(producto.sku);
   const formatearPrecio = (p: number) => `$${Math.round(p).toLocaleString('es-CL')}`;
 
   const whatsappMsg = encodeURIComponent(
@@ -198,10 +159,15 @@ export default function ProductoPage() {
             <span className="bg-primary/10 text-primary px-2 py-0.5 rounded">{producto.categoria.nombre}</span>
           </div>
           <div className="text-sm text-muted mb-2">SKU: {producto.sku}</div>
-          {producto.dimensiones && (
+          {extra?.medidas?.length ? (
+            <div className="text-sm text-muted mb-2">
+              <span className="font-medium text-text">Medidas:</span>
+              <MedidasDisplay medidas={extra.medidas} />
+            </div>
+          ) : producto.dimensiones && (
             <div className="text-sm text-muted mb-2">
               <span className="font-medium text-text">Medidas:</span>{' '}
-              <span>{parsearMedidas(producto.dimensiones)}</span>
+              <span>{producto.dimensiones}</span>
             </div>
           )}
 
@@ -209,15 +175,29 @@ export default function ProductoPage() {
             {producto.marca && (
               <div><span className="font-medium text-text">Marca:</span> <span className="text-muted">{producto.marca}</span></div>
             )}
-            <div><span className="font-medium text-text">Presentación:</span> <span className="text-muted">{producto.unidadVenta === 'caja' ? 'Caja' : 'Unidad'}</span></div>
+            <div><span className="font-medium text-text">Presentación:</span> <span className="text-muted">{extra?.presentacion || (producto.unidadVenta === 'caja' ? 'Caja' : 'Unidad')}</span></div>
             <div>
               <span className="font-medium text-text">Rendimiento:</span>{' '}
-              <span className="text-muted">{rendimientoDisplay(producto.sku, producto.rendimiento, producto.unidadVenta)}</span>
+              <span className="text-muted">{extra?.rendimiento || '—'}</span>
             </div>
           </div>
 
           {producto.descripcion && (
             <p className="text-text mb-6 leading-relaxed">{producto.descripcion}</p>
+          )}
+
+          {extra?.accesorios && extra.accesorios.length > 0 && (
+            <div className="mb-6">
+              <h3 className="font-semibold text-text mb-2">Accesorios sugeridos</h3>
+              <ul className="space-y-1">
+                {extra.accesorios.map((a, i) => (
+                  <li key={i} className="text-sm text-muted flex gap-2">
+                    <span className="text-accent shrink-0">•</span>
+                    <span>{a}</span>
+                  </li>
+                ))}
+              </ul>
+            </div>
           )}
 
           <div className="bg-gray-50 rounded-xl p-6 mb-4">
