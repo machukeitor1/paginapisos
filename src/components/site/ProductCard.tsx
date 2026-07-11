@@ -1,5 +1,6 @@
 import Link from 'next/link';
 import { getProductoExtra } from '@/lib/productos-data';
+import { getProdData } from '@/lib/producto-data-helper';
 
 interface Producto {
   id: number;
@@ -21,7 +22,7 @@ interface Producto {
 }
 
 export default function ProductCard({ producto }: { producto: Producto }) {
-  const extra = getProductoExtra(producto.sku);
+  const extra = getProdData(producto, getProductoExtra(producto.sku));
   let imagenes: string[] = [];
   try { imagenes = JSON.parse(producto.imagenes); } catch {}
 

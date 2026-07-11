@@ -40,6 +40,10 @@ model Producto {
   unidadVenta   String    @default("un")
   precioUnitario Float    @default(0)
   createdAt     DateTime  @default(now())
+  medidas         String?
+  presentacion    String?
+  rendimientoTexto String?
+  accesorios      String?
   categoria   Categoria @relation(fields: [categoriaId], references: [id])
 }
 

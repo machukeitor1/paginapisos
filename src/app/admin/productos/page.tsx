@@ -13,6 +13,7 @@ export default function ProductosPage() {
   const [guardando, setGuardando] = useState(false);
   const [form, setForm] = useState({
     nombre: '', slug: '', sku: '', descripcion: '', dimensiones: '', unidad: 'm2', precio: 0, precioAntes: 0, descuento: 0, rendimiento: 1, unidadVenta: 'un', precioUnitario: 0, imagenes: '[]', estado: 'disponible', destacado: false, activo: true, orden: 0, categoriaId: 0,
+    medidas: '', presentacion: '', rendimientoTexto: '', accesorios: '',
   });
   const [cacheBust, setCacheBust] = useState(0);
   useEffect(() => { setCacheBust(v => v + 1); }, [form.imagenes]);
@@ -132,7 +133,15 @@ export default function ProductosPage() {
     const method = editando ? 'PUT' : 'POST';
     const url = editando ? `/api/productos/${editando.id}` : '/api/productos';
     const tieneDescuento = form.descuento > 0;
-    const body = { ...form, precioAntes: tieneDescuento ? form.precioAntes : null, descuento: tieneDescuento ? form.descuento : null, precioUnitario: Math.round(form.precio * form.rendimiento) };
+    const toJsonArr = (v: string) => JSON.stringify(v.split('\n').map(s => s.trim()).filter(Boolean));
+    const body = {
+      ...form,
+      precioAntes: tieneDescuento ? form.precioAntes : null,
+      descuento: tieneDescuento ? form.descuento : null,
+      precioUnitario: Math.round(form.precio * form.rendimiento),
+      medidas: form.medidas ? toJsonArr(form.medidas) : null,
+      accesorios: form.accesorios ? toJsonArr(form.accesorios) : null,
+    };
     if (!editando) delete (body as any).id;
 
     const res = await fetch(url, {
@@ -143,7 +152,7 @@ export default function ProductosPage() {
 
     if (res.ok) {
       setEditando(null);
-      setForm({ nombre: '', slug: '', sku: '', descripcion: '', dimensiones: '', unidad: 'm2', precio: 0, precioAntes: 0, descuento: 0, rendimiento: 1, unidadVenta: 'un', precioUnitario: 0, imagenes: '[]', estado: 'disponible', destacado: false, activo: true, orden: 0, categoriaId: 0 });
+      setForm({ nombre: '', slug: '', sku: '', descripcion: '', dimensiones: '', unidad: 'm2', precio: 0, precioAntes: 0, descuento: 0, rendimiento: 1, unidadVenta: 'un', precioUnitario: 0, imagenes: '[]', estado: 'disponible', destacado: false, activo: true, orden: 0, categoriaId: 0, medidas: '', presentacion: '', rendimientoTexto: '', accesorios: '' });
       cargar();
     }
   };
@@ -151,8 +160,10 @@ export default function ProductosPage() {
   const editar = (prod: any) => {
     setEditando(prod);
     const base = prod.precioAntes || prod.precio;
+    const parseToList = (v: string) => { try { const a = JSON.parse(v); return Array.isArray(a) ? a.join('\n') : ''; } catch { return ''; } };
     setForm({
       nombre: prod.nombre, slug: prod.slug, sku: prod.sku, descripcion: prod.descripcion || '', dimensiones: prod.dimensiones || '', unidad: prod.unidad, precio: prod.precio, precioAntes: base, descuento: prod.descuento || 0, rendimiento: prod.rendimiento || 1, unidadVenta: prod.unidadVenta || 'un', precioUnitario: prod.precioUnitario || 0, imagenes: prod.imagenes, estado: prod.estado || 'disponible', destacado: prod.destacado, activo: prod.activo, orden: prod.orden, categoriaId: prod.categoriaId,
+      medidas: parseToList(prod.medidas), presentacion: prod.presentacion || '', rendimientoTexto: prod.rendimientoTexto || '', accesorios: parseToList(prod.accesorios),
     });
   };
 
@@ -248,6 +259,26 @@ export default function ProductosPage() {
           <label className="block text-sm font-medium text-text mb-1">Dimensiones</label>
           <input type="text" value={form.dimensiones} onChange={(e) => setForm({ ...form, dimensiones: e.target.value })} className="w-full border border-gray-300 rounded-lg px-4 py-2 text-sm" />
         </div>
+        <div className="grid md:grid-cols-3 gap-4">
+          <div>
+            <label className="block text-sm font-medium text-text mb-1">Presentación</label>
+            <input type="text" value={form.presentacion} onChange={(e) => setForm({ ...form, presentacion: e.target.value })} placeholder="Ej: Caja de 8 un." className="w-full border border-gray-300 rounded-lg px-4 py-2 text-sm" />
+          </div>
+          <div>
+            <label className="block text-sm font-medium text-text mb-1">Rendimiento (texto)</label>
+            <input type="text" value={form.rendimientoTexto} onChange={(e) => setForm({ ...form, rendimientoTexto: e.target.value })} placeholder="Ej: 8.80 m2 / Caja de 8 un." className="w-full border border-gray-300 rounded-lg px-4 py-2 text-sm" />
+          </div>
+        </div>
+        <div className="grid md:grid-cols-2 gap-4">
+          <div>
+            <label className="block text-sm font-medium text-text mb-1">Medidas (una por línea)</label>
+            <textarea rows={4} value={form.medidas} onChange={(e) => setForm({ ...form, medidas: e.target.value })} placeholder="Largo: 290 cm&#10;Ancho: 38.3 cm&#10;Grosor: 1.6 cm" className="w-full border border-gray-300 rounded-lg px-4 py-2 text-sm" />
+          </div>
+          <div>
+            <label className="block text-sm font-medium text-text mb-1">Accesorios (uno por línea)</label>
+            <textarea rows={4} value={form.accesorios} onChange={(e) => setForm({ ...form, accesorios: e.target.value })} placeholder="1  Ángulo de inicio / Caja de 8 un.&#10;1  Ángulo exterior / Caja de 8 un." className="w-full border border-gray-300 rounded-lg px-4 py-2 text-sm" />
+          </div>
+        </div>
         <div>
           <label className="block text-sm font-medium text-text mb-1">Descripcion</label>
           <textarea rows={3} value={form.descripcion} onChange={(e) => setForm({ ...form, descripcion: e.target.value })} className="w-full border border-gray-300 rounded-lg px-4 py-2 text-sm" />
@@ -292,7 +323,7 @@ export default function ProductosPage() {
             {editando ? 'Actualizar' : 'Crear producto'}
           </button>
           {editando && (
-            <button type="button" onClick={() => { setEditando(null);              setForm({ nombre: '', slug: '', sku: '', descripcion: '', dimensiones: '', unidad: 'm2', precio: 0, precioAntes: 0, descuento: 0, rendimiento: 1, unidadVenta: 'un', precioUnitario: 0, imagenes: '[]', estado: 'disponible', destacado: false, activo: true, orden: 0, categoriaId: 0 }); }} className="bg-gray-200 hover:bg-gray-300 text-text font-medium py-2 px-4 rounded-lg transition-colors text-sm">
+            <button type="button" onClick={() => { setEditando(null);              setForm({ nombre: '', slug: '', sku: '', descripcion: '', dimensiones: '', unidad: 'm2', precio: 0, precioAntes: 0, descuento: 0, rendimiento: 1, unidadVenta: 'un', precioUnitario: 0, imagenes: '[]', estado: 'disponible', destacado: false, activo: true, orden: 0, categoriaId: 0, medidas: '', presentacion: '', rendimientoTexto: '', accesorios: '' }); }} className="bg-gray-200 hover:bg-gray-300 text-text font-medium py-2 px-4 rounded-lg transition-colors text-sm">
               Cancelar
             </button>
           )}

@@ -4,6 +4,7 @@ import { useState, useEffect, useRef } from 'react';
 import { useParams } from 'next/navigation';
 import Link from 'next/link';
 import { getProductoExtra } from '@/lib/productos-data';
+import { getProdData } from '@/lib/producto-data-helper';
 
 interface Producto {
   id: number;
@@ -91,7 +92,7 @@ export default function ProductoPage() {
   let imagenes: string[] = [];
   try { imagenes = JSON.parse(producto.imagenes); } catch {}
 
-  const extra = getProductoExtra(producto.sku);
+  const extra = getProdData(producto, getProductoExtra(producto.sku));
   const UNIT_PRICE_CATEGORIES = ['pisos-deck-wpc', 'revestimiento-exterior-wpc', 'revestimientos-de-interior', 'cortavista', 'revestimiento-exterior-de-pvc', 'cercos-wpc', 'siding-piedras-pu'];
   const UNIT_PRICE_SKUS = ['RPU101-FACHALETA', 'APU102-CAFE', 'APU102-NOGAL'];
   const showUnitPrice = UNIT_PRICE_CATEGORIES.includes(producto.categoria.slug) || UNIT_PRICE_SKUS.includes(producto.sku);
@@ -193,7 +194,7 @@ export default function ProductoPage() {
             <div className="mb-6">
               <h3 className="font-semibold text-text mb-2">Accesorios sugeridos</h3>
               <ul className="space-y-1">
-                {extra.accesorios.map((a, i) => (
+                {extra.accesorios.map((a: string, i: number) => (
                   <li key={i} className="text-sm text-muted flex gap-2">
                     <span className="text-accent shrink-0">•</span>
                     <span>{a}</span>
