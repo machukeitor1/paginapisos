@@ -26,7 +26,7 @@ export default function ProductCard({ producto }: { producto: Producto }) {
   try { imagenes = JSON.parse(producto.imagenes); } catch {}
 
   const formatearPrecio = (p: number) => `$${Math.round(p).toLocaleString('es-CL')}`;
-  const showUnitPrice = ['pisos-deck-wpc'].includes(producto.categoria.slug);
+  const showUnitPrice = ['pisos-deck-wpc', 'revestimiento-exterior-wpc', 'revestimientos-de-interior', 'cortavista', 'revestimiento-exterior-de-pvc'].includes(producto.categoria.slug);
   const displayPrice = showUnitPrice ? (producto.precioUnitario || producto.precio) : (producto.unidad === 'm2' ? producto.precio : (producto.precioUnitario || producto.precio));
   const displayUnit = showUnitPrice ? (extra?.presentacion?.toLowerCase() || 'un') : producto.unidad;
   const linkProps = { href: `/${producto.categoria.slug}/${producto.slug}` };
