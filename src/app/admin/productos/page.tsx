@@ -13,7 +13,7 @@ export default function ProductosPage() {
   const [guardando, setGuardando] = useState(false);
   const [form, setForm] = useState({
     nombre: '', slug: '', sku: '', descripcion: '', dimensiones: '', unidad: 'm2', precio: 0, precioAntes: 0, descuento: 0, rendimiento: 1, unidadVenta: 'un', precioUnitario: 0, imagenes: '[]', estado: 'disponible', destacado: false, activo: true, orden: 0, categoriaId: 0,
-    medidas: '', presentacion: '', rendimientoTexto: '', accesorios: '',
+    medidas: '', presentacion: '', rendimientoTexto: '', accesorios: '', esAccesorio: false,
   });
   const [cacheBust, setCacheBust] = useState(0);
   useEffect(() => { setCacheBust(v => v + 1); }, [form.imagenes]);
@@ -152,7 +152,7 @@ export default function ProductosPage() {
 
     if (res.ok) {
       setEditando(null);
-      setForm({ nombre: '', slug: '', sku: '', descripcion: '', dimensiones: '', unidad: 'm2', precio: 0, precioAntes: 0, descuento: 0, rendimiento: 1, unidadVenta: 'un', precioUnitario: 0, imagenes: '[]', estado: 'disponible', destacado: false, activo: true, orden: 0, categoriaId: 0, medidas: '', presentacion: '', rendimientoTexto: '', accesorios: '' });
+      setForm({ nombre: '', slug: '', sku: '', descripcion: '', dimensiones: '', unidad: 'm2', precio: 0, precioAntes: 0, descuento: 0, rendimiento: 1, unidadVenta: 'un', precioUnitario: 0, imagenes: '[]', estado: 'disponible', destacado: false, activo: true, orden: 0, categoriaId: 0, medidas: '', presentacion: '', rendimientoTexto: '', accesorios: '', esAccesorio: false });
       cargar();
     }
   };
@@ -163,7 +163,7 @@ export default function ProductosPage() {
     const parseToList = (v: string) => { try { const a = JSON.parse(v); return Array.isArray(a) ? a.join('\n') : ''; } catch { return ''; } };
     setForm({
       nombre: prod.nombre, slug: prod.slug, sku: prod.sku, descripcion: prod.descripcion || '', dimensiones: prod.dimensiones || '', unidad: prod.unidad, precio: prod.precio, precioAntes: base, descuento: prod.descuento || 0, rendimiento: prod.rendimiento || 1, unidadVenta: prod.unidadVenta || 'un', precioUnitario: prod.precioUnitario || 0, imagenes: prod.imagenes, estado: prod.estado || 'disponible', destacado: prod.destacado, activo: prod.activo, orden: prod.orden, categoriaId: prod.categoriaId,
-      medidas: parseToList(prod.medidas), presentacion: prod.presentacion || '', rendimientoTexto: prod.rendimientoTexto || '', accesorios: parseToList(prod.accesorios),
+      medidas: parseToList(prod.medidas), presentacion: prod.presentacion || '', rendimientoTexto: prod.rendimientoTexto || '', accesorios: parseToList(prod.accesorios), esAccesorio: prod.esAccesorio || false,
     });
   };
 
@@ -253,6 +253,10 @@ export default function ProductosPage() {
               <input type="checkbox" checked={form.estado === 'a-pedido'} onChange={(e) => setForm({ ...form, estado: e.target.checked ? 'a-pedido' : 'disponible' })} className="rounded" />
               <span className="text-sm font-medium text-orange-600">A Pedido</span>
             </label>
+            <label className="flex items-center gap-2">
+              <input type="checkbox" checked={form.esAccesorio} onChange={(e) => setForm({ ...form, esAccesorio: e.target.checked })} className="rounded" />
+              <span className="text-sm font-medium text-purple-600">Es Accesorio</span>
+            </label>
           </div>
         </div>
         <div>
@@ -323,7 +327,7 @@ export default function ProductosPage() {
             {editando ? 'Actualizar' : 'Crear producto'}
           </button>
           {editando && (
-            <button type="button" onClick={() => { setEditando(null);              setForm({ nombre: '', slug: '', sku: '', descripcion: '', dimensiones: '', unidad: 'm2', precio: 0, precioAntes: 0, descuento: 0, rendimiento: 1, unidadVenta: 'un', precioUnitario: 0, imagenes: '[]', estado: 'disponible', destacado: false, activo: true, orden: 0, categoriaId: 0, medidas: '', presentacion: '', rendimientoTexto: '', accesorios: '' }); }} className="bg-gray-200 hover:bg-gray-300 text-text font-medium py-2 px-4 rounded-lg transition-colors text-sm">
+            <button type="button" onClick={() => { setEditando(null);              setForm({ nombre: '', slug: '', sku: '', descripcion: '', dimensiones: '', unidad: 'm2', precio: 0, precioAntes: 0, descuento: 0, rendimiento: 1, unidadVenta: 'un', precioUnitario: 0, imagenes: '[]', estado: 'disponible', destacado: false, activo: true, orden: 0, categoriaId: 0, medidas: '', presentacion: '', rendimientoTexto: '', accesorios: '', esAccesorio: false }); }} className="bg-gray-200 hover:bg-gray-300 text-text font-medium py-2 px-4 rounded-lg transition-colors text-sm">
               Cancelar
             </button>
           )}

@@ -44,6 +44,7 @@ model Producto {
   presentacion    String?
   rendimientoTexto String?
   accesorios      String?
+  esAccesorio     Boolean   @default(false)
   categoria   Categoria @relation(fields: [categoriaId], references: [id])
 }
 

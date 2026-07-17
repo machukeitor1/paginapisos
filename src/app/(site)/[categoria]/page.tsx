@@ -27,20 +27,37 @@ export default async function CategoriaPage({ params }: { params: { categoria: s
     include: { categoria: true },
   });
 
+  const productosNormales = productos.filter(p => !p.esAccesorio);
+  const accesorios = productos.filter(p => p.esAccesorio);
+
   return (
     <div className="max-w-7xl mx-auto px-4 py-12">
       <h1 className="text-3xl font-bold text-primary mb-2">{categoria.nombre}</h1>
       {categoria.descripcion && (
         <p className="text-muted mb-8">{categoria.descripcion}</p>
       )}
-      {productos.length === 0 ? (
+      {productosNormales.length === 0 && accesorios.length === 0 ? (
         <p className="text-muted">No hay productos disponibles en esta categoría.</p>
       ) : (
-        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-6">
-          {productos.map((prod) => (
-            <ProductCard key={prod.id} producto={prod} />
-          ))}
-        </div>
+        <>
+          {productosNormales.length > 0 && (
+            <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-6">
+              {productosNormales.map((prod) => (
+                <ProductCard key={prod.id} producto={prod} />
+              ))}
+            </div>
+          )}
+          {accesorios.length > 0 && (
+            <div className="mt-12">
+              <h2 className="text-2xl font-bold text-primary mb-6">Accesorios</h2>
+              <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-6">
+                {accesorios.map((prod) => (
+                  <ProductCard key={prod.id} producto={prod} />
+                ))}
+              </div>
+            </div>
+          )}
+        </>
       )}
     </div>
   );
