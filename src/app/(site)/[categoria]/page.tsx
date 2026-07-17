@@ -4,9 +4,7 @@ import ProductCard from "@/components/site/ProductCard";
 
 export const dynamic = 'force-dynamic';
 
-const CATEGORY_ALIASES: Record<string, string[]> = {
-  "revestimiento-exterior-metalico": ["siding-tipo-granito"],
-};
+const CATEGORY_ALIASES: Record<string, string[]> = {};
 
 export default async function CategoriaPage({ params }: { params: { categoria: string } }) {
   const categoria = await prisma.categoria.findUnique({
@@ -23,7 +21,7 @@ export default async function CategoriaPage({ params }: { params: { categoria: s
 
   const productos = await prisma.producto.findMany({
     where: { categoriaId: { in: categoriaIds }, activo: true },
-    orderBy: { orden: "asc" },
+    orderBy: { sku: "asc" },
     include: { categoria: true },
   });
 
