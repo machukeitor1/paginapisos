@@ -1,0 +1,2162 @@
+[
+  {
+    "modelo": "Producto",
+    "registroId": 84,
+    "campo": "imagenes[1]",
+    "urlActual": "https://res.cloudinary.com/jj8wyws3/image/upload/v1783566483/public/uploads/revestimiento-de-interior-color-negro-riw102-negro-3.webp",
+    "urlOriginal": "https://res.cloudinary.com/jj8wyws3/image/upload/v1/public/uploads/revestimiento-de-interior-color-negro-riw102-negro-3.webp",
+    "publicId": "public/uploads/revestimiento-de-interior-color-negro-riw102-negro-3"
+  },
+  {
+    "modelo": "Producto",
+    "registroId": 84,
+    "campo": "imagenes[2]",
+    "urlActual": "https://res.cloudinary.com/jj8wyws3/image/upload/v1783566484/public/uploads/revestimiento-de-interior-color-negro-riw102-negro-4.webp",
+    "urlOriginal": "https://res.cloudinary.com/jj8wyws3/image/upload/v1/public/uploads/revestimiento-de-interior-color-negro-riw102-negro-4.webp",
+    "publicId": "public/uploads/revestimiento-de-interior-color-negro-riw102-negro-4"
+  },
+  {
+    "modelo": "Producto",
+    "registroId": 109,
+    "campo": "imagenes[0]",
+    "urlActual": "https://res.cloudinary.com/jj8wyws3/image/upload/v1783566484/public/uploads/viga-de-piedra-pu-color-cafe-apu102-apu102-cafe-2.webp",
+    "urlOriginal": "https://res.cloudinary.com/jj8wyws3/image/upload/v1/public/uploads/viga-de-piedra-pu-color-cafe-apu102-apu102-cafe-2.webp",
+    "publicId": "public/uploads/viga-de-piedra-pu-color-cafe-apu102-apu102-cafe-2"
+  },
+  {
+    "modelo": "Producto",
+    "registroId": 91,
+    "campo": "imagenes[0]",
+    "urlActual": "https://res.cloudinary.com/jj8wyws3/image/upload/v1783566485/public/uploads/corta-vista-extruido-de-wpc-color-cafe-chocolate-cvw201-cafechocolate-2.webp",
+    "urlOriginal": "https://res.cloudinary.com/jj8wyws3/image/upload/v1/public/uploads/corta-vista-extruido-de-wpc-color-cafe-chocolate-cvw201-cafechocolate-2.webp",
+    "publicId": "public/uploads/corta-vista-extruido-de-wpc-color-cafe-chocolate-cvw201-cafechocolate-2"
+  },
+  {
+    "modelo": "Producto",
+    "registroId": 91,
+    "campo": "imagenes[1]",
+    "urlActual": "https://res.cloudinary.com/jj8wyws3/image/upload/v1783566484/public/uploads/corta-vista-extruido-de-wpc-color-cafe-chocolate-cvw201-cafechocolate-3.webp",
+    "urlOriginal": "https://res.cloudinary.com/jj8wyws3/image/upload/v1/public/uploads/corta-vista-extruido-de-wpc-color-cafe-chocolate-cvw201-cafechocolate-3.webp",
+    "publicId": "public/uploads/corta-vista-extruido-de-wpc-color-cafe-chocolate-cvw201-cafechocolate-3"
+  },
+  {
+    "modelo": "Producto",
+    "registroId": 91,
+    "campo": "imagenes[2]",
+    "urlActual": "https://res.cloudinary.com/jj8wyws3/image/upload/v1783566482/public/uploads/corta-vista-extruido-de-wpc-color-cafe-chocolate-cvw201-cafechocolate-4.webp",
+    "urlOriginal": "https://res.cloudinary.com/jj8wyws3/image/upload/v1/public/uploads/corta-vista-extruido-de-wpc-color-cafe-chocolate-cvw201-cafechocolate-4.webp",
+    "publicId": "public/uploads/corta-vista-extruido-de-wpc-color-cafe-chocolate-cvw201-cafechocolate-4"
+  },
+  {
+    "modelo": "Producto",
+    "registroId": 93,
+    "campo": "imagenes[0]",
+    "urlActual": "https://res.cloudinary.com/jj8wyws3/image/upload/v1783566482/public/uploads/corta-vista-coextruido-wpc-color-cafe-madera-cvw101-cafemadera-2.webp",
+    "urlOriginal": "https://res.cloudinary.com/jj8wyws3/image/upload/v1/public/uploads/corta-vista-coextruido-wpc-color-cafe-madera-cvw101-cafemadera-2.webp",
+    "publicId": "public/uploads/corta-vista-coextruido-wpc-color-cafe-madera-cvw101-cafemadera-2"
+  },
+  {
+    "modelo": "Producto",
+    "registroId": 93,
+    "campo": "imagenes[1]",
+    "urlActual": "https://res.cloudinary.com/jj8wyws3/image/upload/v1783566482/public/uploads/corta-vista-coextruido-wpc-color-cafe-madera-cvw101-cafemadera-3.webp",
+    "urlOriginal": "https://res.cloudinary.com/jj8wyws3/image/upload/v1/public/uploads/corta-vista-coextruido-wpc-color-cafe-madera-cvw101-cafemadera-3.webp",
+    "publicId": "public/uploads/corta-vista-coextruido-wpc-color-cafe-madera-cvw101-cafemadera-3"
+  },
+  {
+    "modelo": "Producto",
+    "registroId": 93,
+    "campo": "imagenes[2]",
+    "urlActual": "https://res.cloudinary.com/jj8wyws3/image/upload/v1783566482/public/uploads/corta-vista-coextruido-wpc-color-cafe-madera-cvw101-cafemadera-4.webp",
+    "urlOriginal": "https://res.cloudinary.com/jj8wyws3/image/upload/v1/public/uploads/corta-vista-coextruido-wpc-color-cafe-madera-cvw101-cafemadera-4.webp",
+    "publicId": "public/uploads/corta-vista-coextruido-wpc-color-cafe-madera-cvw101-cafemadera-4"
+  },
+  {
+    "modelo": "Producto",
+    "registroId": 108,
+    "campo": "imagenes[0]",
+    "urlActual": "https://res.cloudinary.com/jj8wyws3/image/upload/v1783566484/public/uploads/siding-piedra-pu-color-fachaleta-rpu101-rpu101-fachaleta-2.webp",
+    "urlOriginal": "https://res.cloudinary.com/jj8wyws3/image/upload/v1/public/uploads/siding-piedra-pu-color-fachaleta-rpu101-rpu101-fachaleta-2.webp",
+    "publicId": "public/uploads/siding-piedra-pu-color-fachaleta-rpu101-rpu101-fachaleta-2"
+  },
+  {
+    "modelo": "Producto",
+    "registroId": 110,
+    "campo": "imagenes[0]",
+    "urlActual": "https://res.cloudinary.com/jj8wyws3/image/upload/v1783566484/public/uploads/viga-de-piedra-pu-color-nogal-apu102-apu102-nogal-2.webp",
+    "urlOriginal": "https://res.cloudinary.com/jj8wyws3/image/upload/v1/public/uploads/viga-de-piedra-pu-color-nogal-apu102-apu102-nogal-2.webp",
+    "publicId": "public/uploads/viga-de-piedra-pu-color-nogal-apu102-apu102-nogal-2"
+  },
+  {
+    "modelo": "Producto",
+    "registroId": 103,
+    "campo": "imagenes[0]",
+    "urlActual": "https://res.cloudinary.com/jj8wyws3/image/upload/v1783566485/public/uploads/siding-piedra-pu-color-cobre-rpu101-rpu101-cobre-2.webp",
+    "urlOriginal": "https://res.cloudinary.com/jj8wyws3/image/upload/v1/public/uploads/siding-piedra-pu-color-cobre-rpu101-rpu101-cobre-2.webp",
+    "publicId": "public/uploads/siding-piedra-pu-color-cobre-rpu101-rpu101-cobre-2"
+  },
+  {
+    "modelo": "Producto",
+    "registroId": 103,
+    "campo": "imagenes[1]",
+    "urlActual": "https://res.cloudinary.com/jj8wyws3/image/upload/v1783566484/public/uploads/siding-piedra-pu-color-cobre-rpu101-rpu101-cobre-3.webp",
+    "urlOriginal": "https://res.cloudinary.com/jj8wyws3/image/upload/v1/public/uploads/siding-piedra-pu-color-cobre-rpu101-rpu101-cobre-3.webp",
+    "publicId": "public/uploads/siding-piedra-pu-color-cobre-rpu101-rpu101-cobre-3"
+  },
+  {
+    "modelo": "Producto",
+    "registroId": 111,
+    "campo": "imagenes[0]",
+    "urlActual": "https://res.cloudinary.com/jj8wyws3/image/upload/v1783566485/public/uploads/cerco-exterior-wpc-color-cafe-cew01-180-cew01-180-cafe-2.webp",
+    "urlOriginal": "https://res.cloudinary.com/jj8wyws3/image/upload/v1/public/uploads/cerco-exterior-wpc-color-cafe-cew01-180-cew01-180-cafe-2.webp",
+    "publicId": "public/uploads/cerco-exterior-wpc-color-cafe-cew01-180-cew01-180-cafe-2"
+  },
+  {
+    "modelo": "Producto",
+    "registroId": 112,
+    "campo": "imagenes[0]",
+    "urlActual": "https://res.cloudinary.com/jj8wyws3/image/upload/v1783566483/public/uploads/cerco-exterior-wpc-color-negro-cew01-180-cew01-180-negro-2.webp",
+    "urlOriginal": "https://res.cloudinary.com/jj8wyws3/image/upload/v1/public/uploads/cerco-exterior-wpc-color-negro-cew01-180-cew01-180-negro-2.webp",
+    "publicId": "public/uploads/cerco-exterior-wpc-color-negro-cew01-180-cew01-180-negro-2"
+  },
+  {
+    "modelo": "Producto",
+    "registroId": 113,
+    "campo": "imagenes[0]",
+    "urlActual": "https://res.cloudinary.com/jj8wyws3/image/upload/v1783566482/public/uploads/cerco-exterior-wpc-color-cafe-cew02-180-cew02-180-cafe-2.webp",
+    "urlOriginal": "https://res.cloudinary.com/jj8wyws3/image/upload/v1/public/uploads/cerco-exterior-wpc-color-cafe-cew02-180-cew02-180-cafe-2.webp",
+    "publicId": "public/uploads/cerco-exterior-wpc-color-cafe-cew02-180-cew02-180-cafe-2"
+  },
+  {
+    "modelo": "Producto",
+    "registroId": 22,
+    "campo": "imagenes[0]",
+    "urlActual": "https://res.cloudinary.com/jj8wyws3/image/upload/v1783566483/public/uploads/piso-vinilico-spc-de-interior-marmol-carbon-caja-12-un-spc103-marmolcarbon-2.webp",
+    "urlOriginal": "https://res.cloudinary.com/jj8wyws3/image/upload/v1/public/uploads/piso-vinilico-spc-de-interior-marmol-carbon-caja-12-un-spc103-marmolcarbon-2.webp",
+    "publicId": "public/uploads/piso-vinilico-spc-de-interior-marmol-carbon-caja-12-un-spc103-marmolcarbon-2"
+  },
+  {
+    "modelo": "Producto",
+    "registroId": 22,
+    "campo": "imagenes[1]",
+    "urlActual": "https://res.cloudinary.com/jj8wyws3/image/upload/v1783566483/public/uploads/piso-vinilico-spc-de-interior-marmol-carbon-caja-12-un-spc103-marmolcarbon-3.webp",
+    "urlOriginal": "https://res.cloudinary.com/jj8wyws3/image/upload/v1/public/uploads/piso-vinilico-spc-de-interior-marmol-carbon-caja-12-un-spc103-marmolcarbon-3.webp",
+    "publicId": "public/uploads/piso-vinilico-spc-de-interior-marmol-carbon-caja-12-un-spc103-marmolcarbon-3"
+  },
+  {
+    "modelo": "Producto",
+    "registroId": 22,
+    "campo": "imagenes[2]",
+    "urlActual": "https://res.cloudinary.com/jj8wyws3/image/upload/v1783566484/public/uploads/piso-vinilico-spc-de-interior-marmol-carbon-caja-12-un-spc103-marmolcarbon-4.webp",
+    "urlOriginal": "https://res.cloudinary.com/jj8wyws3/image/upload/v1/public/uploads/piso-vinilico-spc-de-interior-marmol-carbon-caja-12-un-spc103-marmolcarbon-4.webp",
+    "publicId": "public/uploads/piso-vinilico-spc-de-interior-marmol-carbon-caja-12-un-spc103-marmolcarbon-4"
+  },
+  {
+    "modelo": "Producto",
+    "registroId": 22,
+    "campo": "imagenes[3]",
+    "urlActual": "https://res.cloudinary.com/jj8wyws3/image/upload/v1783566483/public/uploads/piso-vinilico-spc-de-interior-marmol-carbon-caja-12-un-spc103-marmolcarbon-5.webp",
+    "urlOriginal": "https://res.cloudinary.com/jj8wyws3/image/upload/v1/public/uploads/piso-vinilico-spc-de-interior-marmol-carbon-caja-12-un-spc103-marmolcarbon-5.webp",
+    "publicId": "public/uploads/piso-vinilico-spc-de-interior-marmol-carbon-caja-12-un-spc103-marmolcarbon-5"
+  },
+  {
+    "modelo": "Producto",
+    "registroId": 98,
+    "campo": "imagenes[0]",
+    "urlActual": "https://res.cloudinary.com/jj8wyws3/image/upload/v1783566482/public/uploads/corta-vista-coextruido-wpc-color-negro-cvw101-negro-2.webp",
+    "urlOriginal": "https://res.cloudinary.com/jj8wyws3/image/upload/v1/public/uploads/corta-vista-coextruido-wpc-color-negro-cvw101-negro-2.webp",
+    "publicId": "public/uploads/corta-vista-coextruido-wpc-color-negro-cvw101-negro-2"
+  },
+  {
+    "modelo": "Producto",
+    "registroId": 98,
+    "campo": "imagenes[1]",
+    "urlActual": "https://res.cloudinary.com/jj8wyws3/image/upload/v1783566482/public/uploads/corta-vista-coextruido-wpc-color-negro-cvw101-negro-3.webp",
+    "urlOriginal": "https://res.cloudinary.com/jj8wyws3/image/upload/v1/public/uploads/corta-vista-coextruido-wpc-color-negro-cvw101-negro-3.webp",
+    "publicId": "public/uploads/corta-vista-coextruido-wpc-color-negro-cvw101-negro-3"
+  },
+  {
+    "modelo": "Producto",
+    "registroId": 98,
+    "campo": "imagenes[2]",
+    "urlActual": "https://res.cloudinary.com/jj8wyws3/image/upload/v1783566482/public/uploads/corta-vista-coextruido-wpc-color-negro-cvw101-negro-4.webp",
+    "urlOriginal": "https://res.cloudinary.com/jj8wyws3/image/upload/v1/public/uploads/corta-vista-coextruido-wpc-color-negro-cvw101-negro-4.webp",
+    "publicId": "public/uploads/corta-vista-coextruido-wpc-color-negro-cvw101-negro-4"
+  },
+  {
+    "modelo": "Producto",
+    "registroId": 104,
+    "campo": "imagenes[0]",
+    "urlActual": "https://res.cloudinary.com/jj8wyws3/image/upload/v1783566484/public/uploads/siding-piedra-pu-color-grafito-rpu101-rpu101-grafito-2.webp",
+    "urlOriginal": "https://res.cloudinary.com/jj8wyws3/image/upload/v1/public/uploads/siding-piedra-pu-color-grafito-rpu101-rpu101-grafito-2.webp",
+    "publicId": "public/uploads/siding-piedra-pu-color-grafito-rpu101-rpu101-grafito-2"
+  },
+  {
+    "modelo": "Producto",
+    "registroId": 104,
+    "campo": "imagenes[1]",
+    "urlActual": "https://res.cloudinary.com/jj8wyws3/image/upload/v1783566484/public/uploads/siding-piedra-pu-color-grafito-rpu101-rpu101-grafito-3.webp",
+    "urlOriginal": "https://res.cloudinary.com/jj8wyws3/image/upload/v1/public/uploads/siding-piedra-pu-color-grafito-rpu101-rpu101-grafito-3.webp",
+    "publicId": "public/uploads/siding-piedra-pu-color-grafito-rpu101-rpu101-grafito-3"
+  },
+  {
+    "modelo": "Producto",
+    "registroId": 97,
+    "campo": "imagenes[0]",
+    "urlActual": "https://res.cloudinary.com/jj8wyws3/image/upload/v1783566482/public/uploads/corta-vista-coextruido-wpc-color-cafe-chocolate-cvw101-cafechocolate-2.webp",
+    "urlOriginal": "https://res.cloudinary.com/jj8wyws3/image/upload/v1/public/uploads/corta-vista-coextruido-wpc-color-cafe-chocolate-cvw101-cafechocolate-2.webp",
+    "publicId": "public/uploads/corta-vista-coextruido-wpc-color-cafe-chocolate-cvw101-cafechocolate-2"
+  },
+  {
+    "modelo": "Producto",
+    "registroId": 97,
+    "campo": "imagenes[1]",
+    "urlActual": "https://res.cloudinary.com/jj8wyws3/image/upload/v1783566482/public/uploads/corta-vista-coextruido-wpc-color-cafe-chocolate-cvw101-cafechocolate-3.webp",
+    "urlOriginal": "https://res.cloudinary.com/jj8wyws3/image/upload/v1/public/uploads/corta-vista-coextruido-wpc-color-cafe-chocolate-cvw101-cafechocolate-3.webp",
+    "publicId": "public/uploads/corta-vista-coextruido-wpc-color-cafe-chocolate-cvw101-cafechocolate-3"
+  },
+  {
+    "modelo": "Producto",
+    "registroId": 97,
+    "campo": "imagenes[2]",
+    "urlActual": "https://res.cloudinary.com/jj8wyws3/image/upload/v1783566482/public/uploads/corta-vista-coextruido-wpc-color-cafe-chocolate-cvw101-cafechocolate-4.webp",
+    "urlOriginal": "https://res.cloudinary.com/jj8wyws3/image/upload/v1/public/uploads/corta-vista-coextruido-wpc-color-cafe-chocolate-cvw101-cafechocolate-4.webp",
+    "publicId": "public/uploads/corta-vista-coextruido-wpc-color-cafe-chocolate-cvw101-cafechocolate-4"
+  },
+  {
+    "modelo": "Producto",
+    "registroId": 9,
+    "campo": "imagenes[0]",
+    "urlActual": "https://res.cloudinary.com/jj8wyws3/image/upload/v1783566483/public/uploads/revestimiento-metalico-de-pared-color-crema-caja-8-un-rem102-crema-2.webp",
+    "urlOriginal": "https://res.cloudinary.com/jj8wyws3/image/upload/v1/public/uploads/revestimiento-metalico-de-pared-color-crema-caja-8-un-rem102-crema-2.webp",
+    "publicId": "public/uploads/revestimiento-metalico-de-pared-color-crema-caja-8-un-rem102-crema-2"
+  },
+  {
+    "modelo": "Producto",
+    "registroId": 9,
+    "campo": "imagenes[1]",
+    "urlActual": "https://res.cloudinary.com/jj8wyws3/image/upload/v1783566485/public/uploads/revestimiento-metalico-de-pared-color-crema-caja-8-un-rem102-crema-3.webp",
+    "urlOriginal": "https://res.cloudinary.com/jj8wyws3/image/upload/v1/public/uploads/revestimiento-metalico-de-pared-color-crema-caja-8-un-rem102-crema-3.webp",
+    "publicId": "public/uploads/revestimiento-metalico-de-pared-color-crema-caja-8-un-rem102-crema-3"
+  },
+  {
+    "modelo": "Producto",
+    "registroId": 9,
+    "campo": "imagenes[2]",
+    "urlActual": "https://res.cloudinary.com/jj8wyws3/image/upload/v1783566484/public/uploads/revestimiento-metalico-de-pared-color-crema-caja-8-un-rem102-crema-4.webp",
+    "urlOriginal": "https://res.cloudinary.com/jj8wyws3/image/upload/v1/public/uploads/revestimiento-metalico-de-pared-color-crema-caja-8-un-rem102-crema-4.webp",
+    "publicId": "public/uploads/revestimiento-metalico-de-pared-color-crema-caja-8-un-rem102-crema-4"
+  },
+  {
+    "modelo": "Producto",
+    "registroId": 9,
+    "campo": "imagenes[3]",
+    "urlActual": "https://res.cloudinary.com/jj8wyws3/image/upload/v1783566483/public/uploads/revestimiento-metalico-de-pared-color-crema-caja-8-un-rem102-crema-5.webp",
+    "urlOriginal": "https://res.cloudinary.com/jj8wyws3/image/upload/v1/public/uploads/revestimiento-metalico-de-pared-color-crema-caja-8-un-rem102-crema-5.webp",
+    "publicId": "public/uploads/revestimiento-metalico-de-pared-color-crema-caja-8-un-rem102-crema-5"
+  },
+  {
+    "modelo": "Producto",
+    "registroId": 62,
+    "campo": "imagenes[0]",
+    "urlActual": "https://res.cloudinary.com/jj8wyws3/image/upload/v1783566483/public/uploads/piso-porcelanato-60x60-brillante-gris-piedra-caja-4-un-pip003-grispie-1.webp",
+    "urlOriginal": "https://res.cloudinary.com/jj8wyws3/image/upload/v1/public/uploads/piso-porcelanato-60x60-brillante-gris-piedra-caja-4-un-pip003-grispie-1.webp",
+    "publicId": "public/uploads/piso-porcelanato-60x60-brillante-gris-piedra-caja-4-un-pip003-grispie-1"
+  },
+  {
+    "modelo": "Producto",
+    "registroId": 62,
+    "campo": "imagenes[1]",
+    "urlActual": "https://res.cloudinary.com/jj8wyws3/image/upload/v1783566483/public/uploads/piso-porcelanato-60x60-brillante-gris-piedra-caja-4-un-pip003-grispie-2.jpg",
+    "urlOriginal": "https://res.cloudinary.com/jj8wyws3/image/upload/v1/public/uploads/piso-porcelanato-60x60-brillante-gris-piedra-caja-4-un-pip003-grispie-2.jpg",
+    "publicId": "public/uploads/piso-porcelanato-60x60-brillante-gris-piedra-caja-4-un-pip003-grispie-2"
+  },
+  {
+    "modelo": "Producto",
+    "registroId": 62,
+    "campo": "imagenes[2]",
+    "urlActual": "https://res.cloudinary.com/jj8wyws3/image/upload/v1783566483/public/uploads/piso-porcelanato-60x60-brillante-gris-piedra-caja-4-un-pip003-grispie-3.jpg",
+    "urlOriginal": "https://res.cloudinary.com/jj8wyws3/image/upload/v1/public/uploads/piso-porcelanato-60x60-brillante-gris-piedra-caja-4-un-pip003-grispie-3.jpg",
+    "publicId": "public/uploads/piso-porcelanato-60x60-brillante-gris-piedra-caja-4-un-pip003-grispie-3"
+  },
+  {
+    "modelo": "Producto",
+    "registroId": 15,
+    "campo": "imagenes[0]",
+    "urlActual": "https://res.cloudinary.com/jj8wyws3/image/upload/v1783566483/public/uploads/piso-vinilico-spc-de-interior-color-grafito-caja-12-un-spc101-grafito-2.jpg",
+    "urlOriginal": "https://res.cloudinary.com/jj8wyws3/image/upload/v1/public/uploads/piso-vinilico-spc-de-interior-color-grafito-caja-12-un-spc101-grafito-2.jpg",
+    "publicId": "public/uploads/piso-vinilico-spc-de-interior-color-grafito-caja-12-un-spc101-grafito-2"
+  },
+  {
+    "modelo": "Producto",
+    "registroId": 15,
+    "campo": "imagenes[1]",
+    "urlActual": "https://res.cloudinary.com/jj8wyws3/image/upload/v1783566483/public/uploads/piso-vinilico-spc-de-interior-color-grafito-caja-12-un-spc101-grafito-3.jpg",
+    "urlOriginal": "https://res.cloudinary.com/jj8wyws3/image/upload/v1/public/uploads/piso-vinilico-spc-de-interior-color-grafito-caja-12-un-spc101-grafito-3.jpg",
+    "publicId": "public/uploads/piso-vinilico-spc-de-interior-color-grafito-caja-12-un-spc101-grafito-3"
+  },
+  {
+    "modelo": "Producto",
+    "registroId": 15,
+    "campo": "imagenes[2]",
+    "urlActual": "https://res.cloudinary.com/jj8wyws3/image/upload/v1783566483/public/uploads/piso-vinilico-spc-de-interior-color-grafito-caja-12-un-spc101-grafito-4.jpg",
+    "urlOriginal": "https://res.cloudinary.com/jj8wyws3/image/upload/v1/public/uploads/piso-vinilico-spc-de-interior-color-grafito-caja-12-un-spc101-grafito-4.jpg",
+    "publicId": "public/uploads/piso-vinilico-spc-de-interior-color-grafito-caja-12-un-spc101-grafito-4"
+  },
+  {
+    "modelo": "Producto",
+    "registroId": 15,
+    "campo": "imagenes[3]",
+    "urlActual": "https://res.cloudinary.com/jj8wyws3/image/upload/v1783566483/public/uploads/piso-vinilico-spc-de-interior-color-grafito-caja-12-un-spc101-grafito-5.jpg",
+    "urlOriginal": "https://res.cloudinary.com/jj8wyws3/image/upload/v1/public/uploads/piso-vinilico-spc-de-interior-color-grafito-caja-12-un-spc101-grafito-5.jpg",
+    "publicId": "public/uploads/piso-vinilico-spc-de-interior-color-grafito-caja-12-un-spc101-grafito-5"
+  },
+  {
+    "modelo": "Producto",
+    "registroId": 92,
+    "campo": "imagenes[0]",
+    "urlActual": "https://res.cloudinary.com/jj8wyws3/image/upload/v1783566482/public/uploads/corta-vista-extruido-de-wpc-color-negro-cvw201-negro-2.webp",
+    "urlOriginal": "https://res.cloudinary.com/jj8wyws3/image/upload/v1/public/uploads/corta-vista-extruido-de-wpc-color-negro-cvw201-negro-2.webp",
+    "publicId": "public/uploads/corta-vista-extruido-de-wpc-color-negro-cvw201-negro-2"
+  },
+  {
+    "modelo": "Producto",
+    "registroId": 92,
+    "campo": "imagenes[1]",
+    "urlActual": "https://res.cloudinary.com/jj8wyws3/image/upload/v1783566482/public/uploads/corta-vista-extruido-de-wpc-color-negro-cvw201-negro-3.webp",
+    "urlOriginal": "https://res.cloudinary.com/jj8wyws3/image/upload/v1/public/uploads/corta-vista-extruido-de-wpc-color-negro-cvw201-negro-3.webp",
+    "publicId": "public/uploads/corta-vista-extruido-de-wpc-color-negro-cvw201-negro-3"
+  },
+  {
+    "modelo": "Producto",
+    "registroId": 92,
+    "campo": "imagenes[2]",
+    "urlActual": "https://res.cloudinary.com/jj8wyws3/image/upload/v1783566482/public/uploads/corta-vista-extruido-de-wpc-color-negro-cvw201-negro-4.webp",
+    "urlOriginal": "https://res.cloudinary.com/jj8wyws3/image/upload/v1/public/uploads/corta-vista-extruido-de-wpc-color-negro-cvw201-negro-4.webp",
+    "publicId": "public/uploads/corta-vista-extruido-de-wpc-color-negro-cvw201-negro-4"
+  },
+  {
+    "modelo": "Producto",
+    "registroId": 96,
+    "campo": "imagenes[0]",
+    "urlActual": "https://res.cloudinary.com/jj8wyws3/image/upload/v1783566484/public/uploads/corta-vista-coextruido-wpc-color-cafe-antique-cvw101-cafeantique-2.webp",
+    "urlOriginal": "https://res.cloudinary.com/jj8wyws3/image/upload/v1/public/uploads/corta-vista-coextruido-wpc-color-cafe-antique-cvw101-cafeantique-2.webp",
+    "publicId": "public/uploads/corta-vista-coextruido-wpc-color-cafe-antique-cvw101-cafeantique-2"
+  },
+  {
+    "modelo": "Producto",
+    "registroId": 96,
+    "campo": "imagenes[1]",
+    "urlActual": "https://res.cloudinary.com/jj8wyws3/image/upload/v1783566484/public/uploads/corta-vista-coextruido-wpc-color-cafe-antique-cvw101-cafeantique-3.webp",
+    "urlOriginal": "https://res.cloudinary.com/jj8wyws3/image/upload/v1/public/uploads/corta-vista-coextruido-wpc-color-cafe-antique-cvw101-cafeantique-3.webp",
+    "publicId": "public/uploads/corta-vista-coextruido-wpc-color-cafe-antique-cvw101-cafeantique-3"
+  },
+  {
+    "modelo": "Producto",
+    "registroId": 96,
+    "campo": "imagenes[2]",
+    "urlActual": "https://res.cloudinary.com/jj8wyws3/image/upload/v1783566482/public/uploads/corta-vista-coextruido-wpc-color-cafe-antique-cvw101-cafeantique-4.webp",
+    "urlOriginal": "https://res.cloudinary.com/jj8wyws3/image/upload/v1/public/uploads/corta-vista-coextruido-wpc-color-cafe-antique-cvw101-cafeantique-4.webp",
+    "publicId": "public/uploads/corta-vista-coextruido-wpc-color-cafe-antique-cvw101-cafeantique-4"
+  },
+  {
+    "modelo": "Producto",
+    "registroId": 33,
+    "campo": "imagenes[0]",
+    "urlActual": "https://res.cloudinary.com/jj8wyws3/image/upload/v1783566484/public/uploads/piso-flotante-interior-color-crema-caja-10-un-pim101-crema-2.webp",
+    "urlOriginal": "https://res.cloudinary.com/jj8wyws3/image/upload/v1/public/uploads/piso-flotante-interior-color-crema-caja-10-un-pim101-crema-2.webp",
+    "publicId": "public/uploads/piso-flotante-interior-color-crema-caja-10-un-pim101-crema-2"
+  },
+  {
+    "modelo": "Producto",
+    "registroId": 33,
+    "campo": "imagenes[1]",
+    "urlActual": "https://res.cloudinary.com/jj8wyws3/image/upload/v1783566483/public/uploads/piso-flotante-interior-color-crema-caja-10-un-pim101-crema-3.webp",
+    "urlOriginal": "https://res.cloudinary.com/jj8wyws3/image/upload/v1/public/uploads/piso-flotante-interior-color-crema-caja-10-un-pim101-crema-3.webp",
+    "publicId": "public/uploads/piso-flotante-interior-color-crema-caja-10-un-pim101-crema-3"
+  },
+  {
+    "modelo": "Producto",
+    "registroId": 33,
+    "campo": "imagenes[2]",
+    "urlActual": "https://res.cloudinary.com/jj8wyws3/image/upload/v1783566483/public/uploads/piso-flotante-interior-color-crema-caja-10-un-pim101-crema-4.webp",
+    "urlOriginal": "https://res.cloudinary.com/jj8wyws3/image/upload/v1/public/uploads/piso-flotante-interior-color-crema-caja-10-un-pim101-crema-4.webp",
+    "publicId": "public/uploads/piso-flotante-interior-color-crema-caja-10-un-pim101-crema-4"
+  },
+  {
+    "modelo": "Producto",
+    "registroId": 33,
+    "campo": "imagenes[3]",
+    "urlActual": "https://res.cloudinary.com/jj8wyws3/image/upload/v1783566483/public/uploads/piso-flotante-interior-color-crema-caja-10-un-pim101-crema-5.webp",
+    "urlOriginal": "https://res.cloudinary.com/jj8wyws3/image/upload/v1/public/uploads/piso-flotante-interior-color-crema-caja-10-un-pim101-crema-5.webp",
+    "publicId": "public/uploads/piso-flotante-interior-color-crema-caja-10-un-pim101-crema-5"
+  },
+  {
+    "modelo": "Producto",
+    "registroId": 67,
+    "campo": "imagenes[0]",
+    "urlActual": "https://res.cloudinary.com/jj8wyws3/image/upload/v1783566483/public/uploads/revestimiento-exterior-coextruido-color-grafito-negro-rew103-grafitonegro-2.webp",
+    "urlOriginal": "https://res.cloudinary.com/jj8wyws3/image/upload/v1/public/uploads/revestimiento-exterior-coextruido-color-grafito-negro-rew103-grafitonegro-2.webp",
+    "publicId": "public/uploads/revestimiento-exterior-coextruido-color-grafito-negro-rew103-grafitonegro-2"
+  },
+  {
+    "modelo": "Producto",
+    "registroId": 67,
+    "campo": "imagenes[1]",
+    "urlActual": "https://res.cloudinary.com/jj8wyws3/image/upload/v1783566483/public/uploads/revestimiento-exterior-coextruido-color-grafito-negro-rew103-grafitonegro-3.webp",
+    "urlOriginal": "https://res.cloudinary.com/jj8wyws3/image/upload/v1/public/uploads/revestimiento-exterior-coextruido-color-grafito-negro-rew103-grafitonegro-3.webp",
+    "publicId": "public/uploads/revestimiento-exterior-coextruido-color-grafito-negro-rew103-grafitonegro-3"
+  },
+  {
+    "modelo": "Producto",
+    "registroId": 67,
+    "campo": "imagenes[2]",
+    "urlActual": "https://res.cloudinary.com/jj8wyws3/image/upload/v1783566483/public/uploads/revestimiento-exterior-coextruido-color-grafito-negro-rew103-grafitonegro-4.webp",
+    "urlOriginal": "https://res.cloudinary.com/jj8wyws3/image/upload/v1/public/uploads/revestimiento-exterior-coextruido-color-grafito-negro-rew103-grafitonegro-4.webp",
+    "publicId": "public/uploads/revestimiento-exterior-coextruido-color-grafito-negro-rew103-grafitonegro-4"
+  },
+  {
+    "modelo": "Producto",
+    "registroId": 78,
+    "campo": "imagenes[0]",
+    "urlActual": "https://res.cloudinary.com/jj8wyws3/image/upload/v1783566483/public/uploads/revestimiento-de-interior-color-gris-plata-riw301-grisplata-2.webp",
+    "urlOriginal": "https://res.cloudinary.com/jj8wyws3/image/upload/v1/public/uploads/revestimiento-de-interior-color-gris-plata-riw301-grisplata-2.webp",
+    "publicId": "public/uploads/revestimiento-de-interior-color-gris-plata-riw301-grisplata-2"
+  },
+  {
+    "modelo": "Producto",
+    "registroId": 78,
+    "campo": "imagenes[1]",
+    "urlActual": "https://res.cloudinary.com/jj8wyws3/image/upload/v1783566483/public/uploads/revestimiento-de-interior-color-gris-plata-riw301-grisplata-3.webp",
+    "urlOriginal": "https://res.cloudinary.com/jj8wyws3/image/upload/v1/public/uploads/revestimiento-de-interior-color-gris-plata-riw301-grisplata-3.webp",
+    "publicId": "public/uploads/revestimiento-de-interior-color-gris-plata-riw301-grisplata-3"
+  },
+  {
+    "modelo": "Producto",
+    "registroId": 78,
+    "campo": "imagenes[2]",
+    "urlActual": "https://res.cloudinary.com/jj8wyws3/image/upload/v1783566483/public/uploads/revestimiento-de-interior-color-gris-plata-riw301-grisplata-4.webp",
+    "urlOriginal": "https://res.cloudinary.com/jj8wyws3/image/upload/v1/public/uploads/revestimiento-de-interior-color-gris-plata-riw301-grisplata-4.webp",
+    "publicId": "public/uploads/revestimiento-de-interior-color-gris-plata-riw301-grisplata-4"
+  },
+  {
+    "modelo": "Producto",
+    "registroId": 105,
+    "campo": "imagenes[0]",
+    "urlActual": "https://res.cloudinary.com/jj8wyws3/image/upload/v1783566484/public/uploads/siding-piedra-pu-color-cafe-madera-rpu101-rpu101-cafemadera-2.webp",
+    "urlOriginal": "https://res.cloudinary.com/jj8wyws3/image/upload/v1/public/uploads/siding-piedra-pu-color-cafe-madera-rpu101-rpu101-cafemadera-2.webp",
+    "publicId": "public/uploads/siding-piedra-pu-color-cafe-madera-rpu101-rpu101-cafemadera-2"
+  },
+  {
+    "modelo": "Producto",
+    "registroId": 105,
+    "campo": "imagenes[1]",
+    "urlActual": "https://res.cloudinary.com/jj8wyws3/image/upload/v1783566484/public/uploads/siding-piedra-pu-color-cafe-madera-rpu101-rpu101-cafemadera-3.webp",
+    "urlOriginal": "https://res.cloudinary.com/jj8wyws3/image/upload/v1/public/uploads/siding-piedra-pu-color-cafe-madera-rpu101-rpu101-cafemadera-3.webp",
+    "publicId": "public/uploads/siding-piedra-pu-color-cafe-madera-rpu101-rpu101-cafemadera-3"
+  },
+  {
+    "modelo": "Producto",
+    "registroId": 106,
+    "campo": "imagenes[0]",
+    "urlActual": "https://res.cloudinary.com/jj8wyws3/image/upload/v1783566485/public/uploads/siding-piedra-pu-color-piedra-volcanica-rpu101-rpu101-piedravolcanica-2.webp",
+    "urlOriginal": "https://res.cloudinary.com/jj8wyws3/image/upload/v1/public/uploads/siding-piedra-pu-color-piedra-volcanica-rpu101-rpu101-piedravolcanica-2.webp",
+    "publicId": "public/uploads/siding-piedra-pu-color-piedra-volcanica-rpu101-rpu101-piedravolcanica-2"
+  },
+  {
+    "modelo": "Producto",
+    "registroId": 106,
+    "campo": "imagenes[1]",
+    "urlActual": "https://res.cloudinary.com/jj8wyws3/image/upload/v1783566484/public/uploads/siding-piedra-pu-color-piedra-volcanica-rpu101-rpu101-piedravolcanica-3.webp",
+    "urlOriginal": "https://res.cloudinary.com/jj8wyws3/image/upload/v1/public/uploads/siding-piedra-pu-color-piedra-volcanica-rpu101-rpu101-piedravolcanica-3.webp",
+    "publicId": "public/uploads/siding-piedra-pu-color-piedra-volcanica-rpu101-rpu101-piedravolcanica-3"
+  },
+  {
+    "modelo": "Producto",
+    "registroId": 55,
+    "campo": "imagenes[0]",
+    "urlActual": "https://res.cloudinary.com/jj8wyws3/image/upload/v1783566483/public/uploads/piso-porcelanato-60x60-concrete-piedra-caja-4-un-pip102-piedra-2.webp",
+    "urlOriginal": "https://res.cloudinary.com/jj8wyws3/image/upload/v1/public/uploads/piso-porcelanato-60x60-concrete-piedra-caja-4-un-pip102-piedra-2.webp",
+    "publicId": "public/uploads/piso-porcelanato-60x60-concrete-piedra-caja-4-un-pip102-piedra-2"
+  },
+  {
+    "modelo": "Producto",
+    "registroId": 55,
+    "campo": "imagenes[1]",
+    "urlActual": "https://res.cloudinary.com/jj8wyws3/image/upload/v1783566483/public/uploads/piso-porcelanato-60x60-concrete-piedra-caja-4-un-pip102-piedra-3.webp",
+    "urlOriginal": "https://res.cloudinary.com/jj8wyws3/image/upload/v1/public/uploads/piso-porcelanato-60x60-concrete-piedra-caja-4-un-pip102-piedra-3.webp",
+    "publicId": "public/uploads/piso-porcelanato-60x60-concrete-piedra-caja-4-un-pip102-piedra-3"
+  },
+  {
+    "modelo": "Producto",
+    "registroId": 55,
+    "campo": "imagenes[2]",
+    "urlActual": "https://res.cloudinary.com/jj8wyws3/image/upload/v1783566483/public/uploads/piso-porcelanato-60x60-concrete-piedra-caja-4-un-pip102-piedra-4.webp",
+    "urlOriginal": "https://res.cloudinary.com/jj8wyws3/image/upload/v1/public/uploads/piso-porcelanato-60x60-concrete-piedra-caja-4-un-pip102-piedra-4.webp",
+    "publicId": "public/uploads/piso-porcelanato-60x60-concrete-piedra-caja-4-un-pip102-piedra-4"
+  },
+  {
+    "modelo": "Producto",
+    "registroId": 57,
+    "campo": "imagenes[0]",
+    "urlActual": "https://res.cloudinary.com/jj8wyws3/image/upload/v1783566484/public/uploads/piso-porcelanato-120x20-forest-madera-caja-6-un-pip101-madera-2.webp",
+    "urlOriginal": "https://res.cloudinary.com/jj8wyws3/image/upload/v1/public/uploads/piso-porcelanato-120x20-forest-madera-caja-6-un-pip101-madera-2.webp",
+    "publicId": "public/uploads/piso-porcelanato-120x20-forest-madera-caja-6-un-pip101-madera-2"
+  },
+  {
+    "modelo": "Producto",
+    "registroId": 57,
+    "campo": "imagenes[1]",
+    "urlActual": "https://res.cloudinary.com/jj8wyws3/image/upload/v1783566483/public/uploads/piso-porcelanato-120x20-forest-madera-caja-6-un-pip101-madera-3.webp",
+    "urlOriginal": "https://res.cloudinary.com/jj8wyws3/image/upload/v1/public/uploads/piso-porcelanato-120x20-forest-madera-caja-6-un-pip101-madera-3.webp",
+    "publicId": "public/uploads/piso-porcelanato-120x20-forest-madera-caja-6-un-pip101-madera-3"
+  },
+  {
+    "modelo": "Producto",
+    "registroId": 57,
+    "campo": "imagenes[2]",
+    "urlActual": "https://res.cloudinary.com/jj8wyws3/image/upload/v1783566483/public/uploads/piso-porcelanato-120x20-forest-madera-caja-6-un-pip101-madera-4.webp",
+    "urlOriginal": "https://res.cloudinary.com/jj8wyws3/image/upload/v1/public/uploads/piso-porcelanato-120x20-forest-madera-caja-6-un-pip101-madera-4.webp",
+    "publicId": "public/uploads/piso-porcelanato-120x20-forest-madera-caja-6-un-pip101-madera-4"
+  },
+  {
+    "modelo": "Producto",
+    "registroId": 107,
+    "campo": "imagenes[0]",
+    "urlActual": "https://res.cloudinary.com/jj8wyws3/image/upload/v1783566485/public/uploads/siding-piedra-pu-color-piedra-rpu101-rpu101-piedra-2.webp",
+    "urlOriginal": "https://res.cloudinary.com/jj8wyws3/image/upload/v1/public/uploads/siding-piedra-pu-color-piedra-rpu101-rpu101-piedra-2.webp",
+    "publicId": "public/uploads/siding-piedra-pu-color-piedra-rpu101-rpu101-piedra-2"
+  },
+  {
+    "modelo": "Producto",
+    "registroId": 107,
+    "campo": "imagenes[1]",
+    "urlActual": "https://res.cloudinary.com/jj8wyws3/image/upload/v1783566484/public/uploads/siding-piedra-pu-color-piedra-rpu101-rpu101-piedra-3.webp",
+    "urlOriginal": "https://res.cloudinary.com/jj8wyws3/image/upload/v1/public/uploads/siding-piedra-pu-color-piedra-rpu101-rpu101-piedra-3.webp",
+    "publicId": "public/uploads/siding-piedra-pu-color-piedra-rpu101-rpu101-piedra-3"
+  },
+  {
+    "modelo": "Producto",
+    "registroId": 12,
+    "campo": "imagenes[0]",
+    "urlActual": "https://res.cloudinary.com/jj8wyws3/image/upload/v1783566483/public/uploads/revestimiento-metalico-de-pared-color-grafito-caja-8-un-rem105-grafito-2.webp",
+    "urlOriginal": "https://res.cloudinary.com/jj8wyws3/image/upload/v1/public/uploads/revestimiento-metalico-de-pared-color-grafito-caja-8-un-rem105-grafito-2.webp",
+    "publicId": "public/uploads/revestimiento-metalico-de-pared-color-grafito-caja-8-un-rem105-grafito-2"
+  },
+  {
+    "modelo": "Producto",
+    "registroId": 12,
+    "campo": "imagenes[1]",
+    "urlActual": "https://res.cloudinary.com/jj8wyws3/image/upload/v1783566484/public/uploads/revestimiento-metalico-de-pared-color-grafito-caja-8-un-rem105-grafito-3.webp",
+    "urlOriginal": "https://res.cloudinary.com/jj8wyws3/image/upload/v1/public/uploads/revestimiento-metalico-de-pared-color-grafito-caja-8-un-rem105-grafito-3.webp",
+    "publicId": "public/uploads/revestimiento-metalico-de-pared-color-grafito-caja-8-un-rem105-grafito-3"
+  },
+  {
+    "modelo": "Producto",
+    "registroId": 12,
+    "campo": "imagenes[2]",
+    "urlActual": "https://res.cloudinary.com/jj8wyws3/image/upload/v1783566483/public/uploads/revestimiento-metalico-de-pared-color-grafito-caja-8-un-rem105-grafito-4.webp",
+    "urlOriginal": "https://res.cloudinary.com/jj8wyws3/image/upload/v1/public/uploads/revestimiento-metalico-de-pared-color-grafito-caja-8-un-rem105-grafito-4.webp",
+    "publicId": "public/uploads/revestimiento-metalico-de-pared-color-grafito-caja-8-un-rem105-grafito-4"
+  },
+  {
+    "modelo": "Producto",
+    "registroId": 12,
+    "campo": "imagenes[3]",
+    "urlActual": "https://res.cloudinary.com/jj8wyws3/image/upload/v1783566484/public/uploads/revestimiento-metalico-de-pared-color-grafito-caja-8-un-rem105-grafito-5.webp",
+    "urlOriginal": "https://res.cloudinary.com/jj8wyws3/image/upload/v1/public/uploads/revestimiento-metalico-de-pared-color-grafito-caja-8-un-rem105-grafito-5.webp",
+    "publicId": "public/uploads/revestimiento-metalico-de-pared-color-grafito-caja-8-un-rem105-grafito-5"
+  },
+  {
+    "modelo": "Producto",
+    "registroId": 16,
+    "campo": "imagenes[0]",
+    "urlActual": "https://res.cloudinary.com/jj8wyws3/image/upload/v1783566484/public/uploads/piso-vinilico-spc-de-interior-color-gris-piedra-caja-12-un-spc101-grispiedra-2.webp",
+    "urlOriginal": "https://res.cloudinary.com/jj8wyws3/image/upload/v1/public/uploads/piso-vinilico-spc-de-interior-color-gris-piedra-caja-12-un-spc101-grispiedra-2.webp",
+    "publicId": "public/uploads/piso-vinilico-spc-de-interior-color-gris-piedra-caja-12-un-spc101-grispiedra-2"
+  },
+  {
+    "modelo": "Producto",
+    "registroId": 16,
+    "campo": "imagenes[1]",
+    "urlActual": "https://res.cloudinary.com/jj8wyws3/image/upload/v1783566483/public/uploads/piso-vinilico-spc-de-interior-color-gris-piedra-caja-12-un-spc101-grispiedra-3.webp",
+    "urlOriginal": "https://res.cloudinary.com/jj8wyws3/image/upload/v1/public/uploads/piso-vinilico-spc-de-interior-color-gris-piedra-caja-12-un-spc101-grispiedra-3.webp",
+    "publicId": "public/uploads/piso-vinilico-spc-de-interior-color-gris-piedra-caja-12-un-spc101-grispiedra-3"
+  },
+  {
+    "modelo": "Producto",
+    "registroId": 16,
+    "campo": "imagenes[2]",
+    "urlActual": "https://res.cloudinary.com/jj8wyws3/image/upload/v1783566484/public/uploads/piso-vinilico-spc-de-interior-color-gris-piedra-caja-12-un-spc101-grispiedra-4.webp",
+    "urlOriginal": "https://res.cloudinary.com/jj8wyws3/image/upload/v1/public/uploads/piso-vinilico-spc-de-interior-color-gris-piedra-caja-12-un-spc101-grispiedra-4.webp",
+    "publicId": "public/uploads/piso-vinilico-spc-de-interior-color-gris-piedra-caja-12-un-spc101-grispiedra-4"
+  },
+  {
+    "modelo": "Producto",
+    "registroId": 16,
+    "campo": "imagenes[3]",
+    "urlActual": "https://res.cloudinary.com/jj8wyws3/image/upload/v1783566483/public/uploads/piso-vinilico-spc-de-interior-color-gris-piedra-caja-12-un-spc101-grispiedra-5.webp",
+    "urlOriginal": "https://res.cloudinary.com/jj8wyws3/image/upload/v1/public/uploads/piso-vinilico-spc-de-interior-color-gris-piedra-caja-12-un-spc101-grispiedra-5.webp",
+    "publicId": "public/uploads/piso-vinilico-spc-de-interior-color-gris-piedra-caja-12-un-spc101-grispiedra-5"
+  },
+  {
+    "modelo": "Producto",
+    "registroId": 16,
+    "campo": "imagenes[4]",
+    "urlActual": "https://res.cloudinary.com/jj8wyws3/image/upload/v1783566484/public/uploads/piso-vinilico-spc-de-interior-color-gris-piedra-caja-12-un-spc101-grispiedra-6.webp",
+    "urlOriginal": "https://res.cloudinary.com/jj8wyws3/image/upload/v1/public/uploads/piso-vinilico-spc-de-interior-color-gris-piedra-caja-12-un-spc101-grispiedra-6.webp",
+    "publicId": "public/uploads/piso-vinilico-spc-de-interior-color-gris-piedra-caja-12-un-spc101-grispiedra-6"
+  },
+  {
+    "modelo": "Producto",
+    "registroId": 16,
+    "campo": "imagenes[5]",
+    "urlActual": "https://res.cloudinary.com/jj8wyws3/image/upload/v1783566483/public/uploads/piso-vinilico-spc-de-interior-color-gris-piedra-caja-12-un-spc101-grispiedra-7.webp",
+    "urlOriginal": "https://res.cloudinary.com/jj8wyws3/image/upload/v1/public/uploads/piso-vinilico-spc-de-interior-color-gris-piedra-caja-12-un-spc101-grispiedra-7.webp",
+    "publicId": "public/uploads/piso-vinilico-spc-de-interior-color-gris-piedra-caja-12-un-spc101-grispiedra-7"
+  },
+  {
+    "modelo": "Producto",
+    "registroId": 16,
+    "campo": "imagenes[6]",
+    "urlActual": "https://res.cloudinary.com/jj8wyws3/image/upload/v1783566483/public/uploads/piso-vinilico-spc-de-interior-color-gris-piedra-caja-12-un-spc101-grispiedra-8.webp",
+    "urlOriginal": "https://res.cloudinary.com/jj8wyws3/image/upload/v1/public/uploads/piso-vinilico-spc-de-interior-color-gris-piedra-caja-12-un-spc101-grispiedra-8.webp",
+    "publicId": "public/uploads/piso-vinilico-spc-de-interior-color-gris-piedra-caja-12-un-spc101-grispiedra-8"
+  },
+  {
+    "modelo": "Producto",
+    "registroId": 16,
+    "campo": "imagenes[7]",
+    "urlActual": "https://res.cloudinary.com/jj8wyws3/image/upload/v1783566483/public/uploads/piso-vinilico-spc-de-interior-color-gris-piedra-caja-12-un-spc101-grispiedra-9.webp",
+    "urlOriginal": "https://res.cloudinary.com/jj8wyws3/image/upload/v1/public/uploads/piso-vinilico-spc-de-interior-color-gris-piedra-caja-12-un-spc101-grispiedra-9.webp",
+    "publicId": "public/uploads/piso-vinilico-spc-de-interior-color-gris-piedra-caja-12-un-spc101-grispiedra-9"
+  },
+  {
+    "modelo": "Producto",
+    "registroId": 49,
+    "campo": "imagenes[0]",
+    "urlActual": "https://res.cloudinary.com/jj8wyws3/image/upload/v1783566486/public/uploads/siding-texturizado-tipo-granito-cafe-caja-de-8-un-reg001-cafe-1.jpg",
+    "urlOriginal": "https://res.cloudinary.com/jj8wyws3/image/upload/v1/public/uploads/siding-texturizado-tipo-granito-cafe-caja-de-8-un-reg001-cafe-1.jpg",
+    "publicId": "public/uploads/siding-texturizado-tipo-granito-cafe-caja-de-8-un-reg001-cafe-1"
+  },
+  {
+    "modelo": "Producto",
+    "registroId": 49,
+    "campo": "imagenes[1]",
+    "urlActual": "https://res.cloudinary.com/jj8wyws3/image/upload/v1783566485/public/uploads/siding-texturizado-tipo-granito-cafe-caja-de-8-un-reg001-cafe-2.jpg",
+    "urlOriginal": "https://res.cloudinary.com/jj8wyws3/image/upload/v1/public/uploads/siding-texturizado-tipo-granito-cafe-caja-de-8-un-reg001-cafe-2.jpg",
+    "publicId": "public/uploads/siding-texturizado-tipo-granito-cafe-caja-de-8-un-reg001-cafe-2"
+  },
+  {
+    "modelo": "Producto",
+    "registroId": 49,
+    "campo": "imagenes[2]",
+    "urlActual": "https://res.cloudinary.com/jj8wyws3/image/upload/v1783566484/public/uploads/siding-texturizado-tipo-granito-cafe-caja-de-8-un-reg001-cafe-3.jpg",
+    "urlOriginal": "https://res.cloudinary.com/jj8wyws3/image/upload/v1/public/uploads/siding-texturizado-tipo-granito-cafe-caja-de-8-un-reg001-cafe-3.jpg",
+    "publicId": "public/uploads/siding-texturizado-tipo-granito-cafe-caja-de-8-un-reg001-cafe-3"
+  },
+  {
+    "modelo": "Producto",
+    "registroId": 88,
+    "campo": "imagenes[0]",
+    "urlActual": "https://res.cloudinary.com/jj8wyws3/image/upload/v1783566483/public/uploads/revestimiento-de-interior-color-chocolate-riw103-chocolate-2.webp",
+    "urlOriginal": "https://res.cloudinary.com/jj8wyws3/image/upload/v1/public/uploads/revestimiento-de-interior-color-chocolate-riw103-chocolate-2.webp",
+    "publicId": "public/uploads/revestimiento-de-interior-color-chocolate-riw103-chocolate-2"
+  },
+  {
+    "modelo": "Producto",
+    "registroId": 88,
+    "campo": "imagenes[1]",
+    "urlActual": "https://res.cloudinary.com/jj8wyws3/image/upload/v1783566483/public/uploads/revestimiento-de-interior-color-chocolate-riw103-chocolate-3.webp",
+    "urlOriginal": "https://res.cloudinary.com/jj8wyws3/image/upload/v1/public/uploads/revestimiento-de-interior-color-chocolate-riw103-chocolate-3.webp",
+    "publicId": "public/uploads/revestimiento-de-interior-color-chocolate-riw103-chocolate-3"
+  },
+  {
+    "modelo": "Producto",
+    "registroId": 88,
+    "campo": "imagenes[2]",
+    "urlActual": "https://res.cloudinary.com/jj8wyws3/image/upload/v1783566484/public/uploads/revestimiento-de-interior-color-chocolate-riw103-chocolate-4.webp",
+    "urlOriginal": "https://res.cloudinary.com/jj8wyws3/image/upload/v1/public/uploads/revestimiento-de-interior-color-chocolate-riw103-chocolate-4.webp",
+    "publicId": "public/uploads/revestimiento-de-interior-color-chocolate-riw103-chocolate-4"
+  },
+  {
+    "modelo": "Producto",
+    "registroId": 115,
+    "campo": "imagenes[0]",
+    "urlActual": "https://res.cloudinary.com/jj8wyws3/image/upload/v1783566484/public/uploads/cerco-exterior-wpc-color-cafe-cew03-180-cew03-180-cafe-2.webp",
+    "urlOriginal": "https://res.cloudinary.com/jj8wyws3/image/upload/v1/public/uploads/cerco-exterior-wpc-color-cafe-cew03-180-cew03-180-cafe-2.webp",
+    "publicId": "public/uploads/cerco-exterior-wpc-color-cafe-cew03-180-cew03-180-cafe-2"
+  },
+  {
+    "modelo": "Producto",
+    "registroId": 2,
+    "campo": "imagenes[0]",
+    "urlActual": "https://res.cloudinary.com/jj8wyws3/image/upload/v1783566484/public/uploads/revestimiento-metalico-de-pared-color-negro-caja-8-un-rem105-negro-2.webp",
+    "urlOriginal": "https://res.cloudinary.com/jj8wyws3/image/upload/v1/public/uploads/revestimiento-metalico-de-pared-color-negro-caja-8-un-rem105-negro-2.webp",
+    "publicId": "public/uploads/revestimiento-metalico-de-pared-color-negro-caja-8-un-rem105-negro-2"
+  },
+  {
+    "modelo": "Producto",
+    "registroId": 2,
+    "campo": "imagenes[1]",
+    "urlActual": "https://res.cloudinary.com/jj8wyws3/image/upload/v1783566484/public/uploads/revestimiento-metalico-de-pared-color-negro-caja-8-un-rem105-negro-3.webp",
+    "urlOriginal": "https://res.cloudinary.com/jj8wyws3/image/upload/v1/public/uploads/revestimiento-metalico-de-pared-color-negro-caja-8-un-rem105-negro-3.webp",
+    "publicId": "public/uploads/revestimiento-metalico-de-pared-color-negro-caja-8-un-rem105-negro-3"
+  },
+  {
+    "modelo": "Producto",
+    "registroId": 2,
+    "campo": "imagenes[2]",
+    "urlActual": "https://res.cloudinary.com/jj8wyws3/image/upload/v1783566484/public/uploads/revestimiento-metalico-de-pared-color-negro-caja-8-un-rem105-negro-4.webp",
+    "urlOriginal": "https://res.cloudinary.com/jj8wyws3/image/upload/v1/public/uploads/revestimiento-metalico-de-pared-color-negro-caja-8-un-rem105-negro-4.webp",
+    "publicId": "public/uploads/revestimiento-metalico-de-pared-color-negro-caja-8-un-rem105-negro-4"
+  },
+  {
+    "modelo": "Producto",
+    "registroId": 2,
+    "campo": "imagenes[3]",
+    "urlActual": "https://res.cloudinary.com/jj8wyws3/image/upload/v1783566484/public/uploads/revestimiento-metalico-de-pared-color-negro-caja-8-un-rem105-negro-5.webp",
+    "urlOriginal": "https://res.cloudinary.com/jj8wyws3/image/upload/v1/public/uploads/revestimiento-metalico-de-pared-color-negro-caja-8-un-rem105-negro-5.webp",
+    "publicId": "public/uploads/revestimiento-metalico-de-pared-color-negro-caja-8-un-rem105-negro-5"
+  },
+  {
+    "modelo": "Producto",
+    "registroId": 116,
+    "campo": "imagenes[0]",
+    "urlActual": "https://res.cloudinary.com/jj8wyws3/image/upload/v1783566482/public/uploads/cerco-exterior-wpc-color-negro-cew03-180-cew03-180-negro-2.webp",
+    "urlOriginal": "https://res.cloudinary.com/jj8wyws3/image/upload/v1/public/uploads/cerco-exterior-wpc-color-negro-cew03-180-cew03-180-negro-2.webp",
+    "publicId": "public/uploads/cerco-exterior-wpc-color-negro-cew03-180-cew03-180-negro-2"
+  },
+  {
+    "modelo": "Producto",
+    "registroId": 10,
+    "campo": "imagenes[0]",
+    "urlActual": "https://res.cloudinary.com/jj8wyws3/image/upload/v1783566483/public/uploads/revestimiento-metalico-de-pared-color-blanco-caja-8-un-rem103-blanco-2.webp",
+    "urlOriginal": "https://res.cloudinary.com/jj8wyws3/image/upload/v1/public/uploads/revestimiento-metalico-de-pared-color-blanco-caja-8-un-rem103-blanco-2.webp",
+    "publicId": "public/uploads/revestimiento-metalico-de-pared-color-blanco-caja-8-un-rem103-blanco-2"
+  },
+  {
+    "modelo": "Producto",
+    "registroId": 10,
+    "campo": "imagenes[1]",
+    "urlActual": "https://res.cloudinary.com/jj8wyws3/image/upload/v1783566483/public/uploads/revestimiento-metalico-de-pared-color-blanco-caja-8-un-rem103-blanco-3.webp",
+    "urlOriginal": "https://res.cloudinary.com/jj8wyws3/image/upload/v1/public/uploads/revestimiento-metalico-de-pared-color-blanco-caja-8-un-rem103-blanco-3.webp",
+    "publicId": "public/uploads/revestimiento-metalico-de-pared-color-blanco-caja-8-un-rem103-blanco-3"
+  },
+  {
+    "modelo": "Producto",
+    "registroId": 10,
+    "campo": "imagenes[2]",
+    "urlActual": "https://res.cloudinary.com/jj8wyws3/image/upload/v1783566483/public/uploads/revestimiento-metalico-de-pared-color-blanco-caja-8-un-rem103-blanco-4.webp",
+    "urlOriginal": "https://res.cloudinary.com/jj8wyws3/image/upload/v1/public/uploads/revestimiento-metalico-de-pared-color-blanco-caja-8-un-rem103-blanco-4.webp",
+    "publicId": "public/uploads/revestimiento-metalico-de-pared-color-blanco-caja-8-un-rem103-blanco-4"
+  },
+  {
+    "modelo": "Producto",
+    "registroId": 10,
+    "campo": "imagenes[3]",
+    "urlActual": "https://res.cloudinary.com/jj8wyws3/image/upload/v1783566483/public/uploads/revestimiento-metalico-de-pared-color-blanco-caja-8-un-rem103-blanco-5.webp",
+    "urlOriginal": "https://res.cloudinary.com/jj8wyws3/image/upload/v1/public/uploads/revestimiento-metalico-de-pared-color-blanco-caja-8-un-rem103-blanco-5.webp",
+    "publicId": "public/uploads/revestimiento-metalico-de-pared-color-blanco-caja-8-un-rem103-blanco-5"
+  },
+  {
+    "modelo": "Producto",
+    "registroId": 11,
+    "campo": "imagenes[0]",
+    "urlActual": "https://res.cloudinary.com/jj8wyws3/image/upload/v1783566484/public/uploads/revestimiento-metalico-de-pared-color-negro-caja-8-un-rem103-negro-2.webp",
+    "urlOriginal": "https://res.cloudinary.com/jj8wyws3/image/upload/v1/public/uploads/revestimiento-metalico-de-pared-color-negro-caja-8-un-rem103-negro-2.webp",
+    "publicId": "public/uploads/revestimiento-metalico-de-pared-color-negro-caja-8-un-rem103-negro-2"
+  },
+  {
+    "modelo": "Producto",
+    "registroId": 11,
+    "campo": "imagenes[1]",
+    "urlActual": "https://res.cloudinary.com/jj8wyws3/image/upload/v1783566484/public/uploads/revestimiento-metalico-de-pared-color-negro-caja-8-un-rem103-negro-3.webp",
+    "urlOriginal": "https://res.cloudinary.com/jj8wyws3/image/upload/v1/public/uploads/revestimiento-metalico-de-pared-color-negro-caja-8-un-rem103-negro-3.webp",
+    "publicId": "public/uploads/revestimiento-metalico-de-pared-color-negro-caja-8-un-rem103-negro-3"
+  },
+  {
+    "modelo": "Producto",
+    "registroId": 11,
+    "campo": "imagenes[2]",
+    "urlActual": "https://res.cloudinary.com/jj8wyws3/image/upload/v1783566486/public/uploads/revestimiento-metalico-de-pared-color-negro-caja-8-un-rem103-negro-4.webp",
+    "urlOriginal": "https://res.cloudinary.com/jj8wyws3/image/upload/v1/public/uploads/revestimiento-metalico-de-pared-color-negro-caja-8-un-rem103-negro-4.webp",
+    "publicId": "public/uploads/revestimiento-metalico-de-pared-color-negro-caja-8-un-rem103-negro-4"
+  },
+  {
+    "modelo": "Producto",
+    "registroId": 48,
+    "campo": "imagenes[0]",
+    "urlActual": "https://res.cloudinary.com/jj8wyws3/image/upload/v1783566489/public/uploads/siding-texturizado-tipo-granito-piedra-caja-de-8-un-reg001-piedra-2.jpg",
+    "urlOriginal": "https://res.cloudinary.com/jj8wyws3/image/upload/v1/public/uploads/siding-texturizado-tipo-granito-piedra-caja-de-8-un-reg001-piedra-2.jpg",
+    "publicId": "public/uploads/siding-texturizado-tipo-granito-piedra-caja-de-8-un-reg001-piedra-2"
+  },
+  {
+    "modelo": "Producto",
+    "registroId": 48,
+    "campo": "imagenes[1]",
+    "urlActual": "https://res.cloudinary.com/jj8wyws3/image/upload/v1783566484/public/uploads/siding-texturizado-tipo-granito-piedra-caja-de-8-un-reg001-piedra-3.jpg",
+    "urlOriginal": "https://res.cloudinary.com/jj8wyws3/image/upload/v1/public/uploads/siding-texturizado-tipo-granito-piedra-caja-de-8-un-reg001-piedra-3.jpg",
+    "publicId": "public/uploads/siding-texturizado-tipo-granito-piedra-caja-de-8-un-reg001-piedra-3"
+  },
+  {
+    "modelo": "Producto",
+    "registroId": 23,
+    "campo": "imagenes[0]",
+    "urlActual": "https://res.cloudinary.com/jj8wyws3/image/upload/v1783566484/public/uploads/piso-vinilico-spc-de-interior-color-crema-caja-12-un-spc101-crema-2.webp",
+    "urlOriginal": "https://res.cloudinary.com/jj8wyws3/image/upload/v1/public/uploads/piso-vinilico-spc-de-interior-color-crema-caja-12-un-spc101-crema-2.webp",
+    "publicId": "public/uploads/piso-vinilico-spc-de-interior-color-crema-caja-12-un-spc101-crema-2"
+  },
+  {
+    "modelo": "Producto",
+    "registroId": 23,
+    "campo": "imagenes[1]",
+    "urlActual": "https://res.cloudinary.com/jj8wyws3/image/upload/v1783566484/public/uploads/piso-vinilico-spc-de-interior-color-crema-caja-12-un-spc101-crema-3.webp",
+    "urlOriginal": "https://res.cloudinary.com/jj8wyws3/image/upload/v1/public/uploads/piso-vinilico-spc-de-interior-color-crema-caja-12-un-spc101-crema-3.webp",
+    "publicId": "public/uploads/piso-vinilico-spc-de-interior-color-crema-caja-12-un-spc101-crema-3"
+  },
+  {
+    "modelo": "Producto",
+    "registroId": 23,
+    "campo": "imagenes[2]",
+    "urlActual": "https://res.cloudinary.com/jj8wyws3/image/upload/v1783566483/public/uploads/piso-vinilico-spc-de-interior-color-crema-caja-12-un-spc101-crema-4.webp",
+    "urlOriginal": "https://res.cloudinary.com/jj8wyws3/image/upload/v1/public/uploads/piso-vinilico-spc-de-interior-color-crema-caja-12-un-spc101-crema-4.webp",
+    "publicId": "public/uploads/piso-vinilico-spc-de-interior-color-crema-caja-12-un-spc101-crema-4"
+  },
+  {
+    "modelo": "Producto",
+    "registroId": 23,
+    "campo": "imagenes[3]",
+    "urlActual": "https://res.cloudinary.com/jj8wyws3/image/upload/v1783566483/public/uploads/piso-vinilico-spc-de-interior-color-crema-caja-12-un-spc101-crema-5.webp",
+    "urlOriginal": "https://res.cloudinary.com/jj8wyws3/image/upload/v1/public/uploads/piso-vinilico-spc-de-interior-color-crema-caja-12-un-spc101-crema-5.webp",
+    "publicId": "public/uploads/piso-vinilico-spc-de-interior-color-crema-caja-12-un-spc101-crema-5"
+  },
+  {
+    "modelo": "Producto",
+    "registroId": 23,
+    "campo": "imagenes[4]",
+    "urlActual": "https://res.cloudinary.com/jj8wyws3/image/upload/v1783566483/public/uploads/piso-vinilico-spc-de-interior-color-crema-caja-12-un-spc101-crema-6.webp",
+    "urlOriginal": "https://res.cloudinary.com/jj8wyws3/image/upload/v1/public/uploads/piso-vinilico-spc-de-interior-color-crema-caja-12-un-spc101-crema-6.webp",
+    "publicId": "public/uploads/piso-vinilico-spc-de-interior-color-crema-caja-12-un-spc101-crema-6"
+  },
+  {
+    "modelo": "Producto",
+    "registroId": 23,
+    "campo": "imagenes[5]",
+    "urlActual": "https://res.cloudinary.com/jj8wyws3/image/upload/v1783566483/public/uploads/piso-vinilico-spc-de-interior-color-crema-caja-12-un-spc101-crema-7.webp",
+    "urlOriginal": "https://res.cloudinary.com/jj8wyws3/image/upload/v1/public/uploads/piso-vinilico-spc-de-interior-color-crema-caja-12-un-spc101-crema-7.webp",
+    "publicId": "public/uploads/piso-vinilico-spc-de-interior-color-crema-caja-12-un-spc101-crema-7"
+  },
+  {
+    "modelo": "Producto",
+    "registroId": 27,
+    "campo": "imagenes[0]",
+    "urlActual": "https://res.cloudinary.com/jj8wyws3/image/upload/v1783566483/public/uploads/piso-vinilico-spc-de-interior-marmol-grafito-caja-12-un-spc103-marmolgrafito-2.jpg",
+    "urlOriginal": "https://res.cloudinary.com/jj8wyws3/image/upload/v1/public/uploads/piso-vinilico-spc-de-interior-marmol-grafito-caja-12-un-spc103-marmolgrafito-2.jpg",
+    "publicId": "public/uploads/piso-vinilico-spc-de-interior-marmol-grafito-caja-12-un-spc103-marmolgrafito-2"
+  },
+  {
+    "modelo": "Producto",
+    "registroId": 27,
+    "campo": "imagenes[1]",
+    "urlActual": "https://res.cloudinary.com/jj8wyws3/image/upload/v1783566483/public/uploads/piso-vinilico-spc-de-interior-marmol-grafito-caja-12-un-spc103-marmolgrafito-3.jpg",
+    "urlOriginal": "https://res.cloudinary.com/jj8wyws3/image/upload/v1/public/uploads/piso-vinilico-spc-de-interior-marmol-grafito-caja-12-un-spc103-marmolgrafito-3.jpg",
+    "publicId": "public/uploads/piso-vinilico-spc-de-interior-marmol-grafito-caja-12-un-spc103-marmolgrafito-3"
+  },
+  {
+    "modelo": "Producto",
+    "registroId": 27,
+    "campo": "imagenes[2]",
+    "urlActual": "https://res.cloudinary.com/jj8wyws3/image/upload/v1783566483/public/uploads/piso-vinilico-spc-de-interior-marmol-grafito-caja-12-un-spc103-marmolgrafito-4.jpg",
+    "urlOriginal": "https://res.cloudinary.com/jj8wyws3/image/upload/v1/public/uploads/piso-vinilico-spc-de-interior-marmol-grafito-caja-12-un-spc103-marmolgrafito-4.jpg",
+    "publicId": "public/uploads/piso-vinilico-spc-de-interior-marmol-grafito-caja-12-un-spc103-marmolgrafito-4"
+  },
+  {
+    "modelo": "Producto",
+    "registroId": 27,
+    "campo": "imagenes[3]",
+    "urlActual": "https://res.cloudinary.com/jj8wyws3/image/upload/v1783566485/public/uploads/piso-vinilico-spc-de-interior-marmol-grafito-caja-12-un-spc103-marmolgrafito-5.jpg",
+    "urlOriginal": "https://res.cloudinary.com/jj8wyws3/image/upload/v1/public/uploads/piso-vinilico-spc-de-interior-marmol-grafito-caja-12-un-spc103-marmolgrafito-5.jpg",
+    "publicId": "public/uploads/piso-vinilico-spc-de-interior-marmol-grafito-caja-12-un-spc103-marmolgrafito-5"
+  },
+  {
+    "modelo": "Producto",
+    "registroId": 58,
+    "campo": "imagenes[0]",
+    "urlActual": "https://res.cloudinary.com/jj8wyws3/image/upload/v1783566484/public/uploads/piso-porcelanato-120x20-forest-nogal-caja-6-un-pip101-nogal-2.webp",
+    "urlOriginal": "https://res.cloudinary.com/jj8wyws3/image/upload/v1/public/uploads/piso-porcelanato-120x20-forest-nogal-caja-6-un-pip101-nogal-2.webp",
+    "publicId": "public/uploads/piso-porcelanato-120x20-forest-nogal-caja-6-un-pip101-nogal-2"
+  },
+  {
+    "modelo": "Producto",
+    "registroId": 58,
+    "campo": "imagenes[1]",
+    "urlActual": "https://res.cloudinary.com/jj8wyws3/image/upload/v1783566483/public/uploads/piso-porcelanato-120x20-forest-nogal-caja-6-un-pip101-nogal-3.webp",
+    "urlOriginal": "https://res.cloudinary.com/jj8wyws3/image/upload/v1/public/uploads/piso-porcelanato-120x20-forest-nogal-caja-6-un-pip101-nogal-3.webp",
+    "publicId": "public/uploads/piso-porcelanato-120x20-forest-nogal-caja-6-un-pip101-nogal-3"
+  },
+  {
+    "modelo": "Producto",
+    "registroId": 58,
+    "campo": "imagenes[2]",
+    "urlActual": "https://res.cloudinary.com/jj8wyws3/image/upload/v1783566483/public/uploads/piso-porcelanato-120x20-forest-nogal-caja-6-un-pip101-nogal-4.webp",
+    "urlOriginal": "https://res.cloudinary.com/jj8wyws3/image/upload/v1/public/uploads/piso-porcelanato-120x20-forest-nogal-caja-6-un-pip101-nogal-4.webp",
+    "publicId": "public/uploads/piso-porcelanato-120x20-forest-nogal-caja-6-un-pip101-nogal-4"
+  },
+  {
+    "modelo": "Producto",
+    "registroId": 42,
+    "campo": "imagenes[0]",
+    "urlActual": "https://res.cloudinary.com/jj8wyws3/image/upload/v1783566484/public/uploads/deck-wpc-premium-bicolor-negro-pew101-negro-2.webp",
+    "urlOriginal": "https://res.cloudinary.com/jj8wyws3/image/upload/v1/public/uploads/deck-wpc-premium-bicolor-negro-pew101-negro-2.webp",
+    "publicId": "public/uploads/deck-wpc-premium-bicolor-negro-pew101-negro-2"
+  },
+  {
+    "modelo": "Producto",
+    "registroId": 42,
+    "campo": "imagenes[1]",
+    "urlActual": "https://res.cloudinary.com/jj8wyws3/image/upload/v1783566483/public/uploads/deck-wpc-premium-bicolor-negro-pew101-negro-3.jpg",
+    "urlOriginal": "https://res.cloudinary.com/jj8wyws3/image/upload/v1/public/uploads/deck-wpc-premium-bicolor-negro-pew101-negro-3.jpg",
+    "publicId": "public/uploads/deck-wpc-premium-bicolor-negro-pew101-negro-3"
+  },
+  {
+    "modelo": "Producto",
+    "registroId": 42,
+    "campo": "imagenes[2]",
+    "urlActual": "https://res.cloudinary.com/jj8wyws3/image/upload/v1783566483/public/uploads/deck-wpc-premium-bicolor-negro-pew101-negro-4.jpg",
+    "urlOriginal": "https://res.cloudinary.com/jj8wyws3/image/upload/v1/public/uploads/deck-wpc-premium-bicolor-negro-pew101-negro-4.jpg",
+    "publicId": "public/uploads/deck-wpc-premium-bicolor-negro-pew101-negro-4"
+  },
+  {
+    "modelo": "Producto",
+    "registroId": 42,
+    "campo": "imagenes[3]",
+    "urlActual": "https://res.cloudinary.com/jj8wyws3/image/upload/v1783566483/public/uploads/deck-wpc-premium-bicolor-negro-pew101-negro-5.jpg",
+    "urlOriginal": "https://res.cloudinary.com/jj8wyws3/image/upload/v1/public/uploads/deck-wpc-premium-bicolor-negro-pew101-negro-5.jpg",
+    "publicId": "public/uploads/deck-wpc-premium-bicolor-negro-pew101-negro-5"
+  },
+  {
+    "modelo": "Producto",
+    "registroId": 42,
+    "campo": "imagenes[4]",
+    "urlActual": "https://res.cloudinary.com/jj8wyws3/image/upload/v1783566483/public/uploads/deck-wpc-premium-bicolor-negro-pew101-negro-6.jpg",
+    "urlOriginal": "https://res.cloudinary.com/jj8wyws3/image/upload/v1/public/uploads/deck-wpc-premium-bicolor-negro-pew101-negro-6.jpg",
+    "publicId": "public/uploads/deck-wpc-premium-bicolor-negro-pew101-negro-6"
+  },
+  {
+    "modelo": "Producto",
+    "registroId": 42,
+    "campo": "imagenes[5]",
+    "urlActual": "https://res.cloudinary.com/jj8wyws3/image/upload/v1783566483/public/uploads/deck-wpc-premium-bicolor-negro-pew101-negro-7.jpg",
+    "urlOriginal": "https://res.cloudinary.com/jj8wyws3/image/upload/v1/public/uploads/deck-wpc-premium-bicolor-negro-pew101-negro-7.jpg",
+    "publicId": "public/uploads/deck-wpc-premium-bicolor-negro-pew101-negro-7"
+  },
+  {
+    "modelo": "Producto",
+    "registroId": 42,
+    "campo": "imagenes[6]",
+    "urlActual": "https://res.cloudinary.com/jj8wyws3/image/upload/v1783566483/public/uploads/deck-wpc-premium-bicolor-negro-pew101-negro-8.jpg",
+    "urlOriginal": "https://res.cloudinary.com/jj8wyws3/image/upload/v1/public/uploads/deck-wpc-premium-bicolor-negro-pew101-negro-8.jpg",
+    "publicId": "public/uploads/deck-wpc-premium-bicolor-negro-pew101-negro-8"
+  },
+  {
+    "modelo": "Producto",
+    "registroId": 42,
+    "campo": "imagenes[7]",
+    "urlActual": "https://res.cloudinary.com/jj8wyws3/image/upload/v1783566483/public/uploads/deck-wpc-premium-bicolor-negro-pew101-negro-9.jpg",
+    "urlOriginal": "https://res.cloudinary.com/jj8wyws3/image/upload/v1/public/uploads/deck-wpc-premium-bicolor-negro-pew101-negro-9.jpg",
+    "publicId": "public/uploads/deck-wpc-premium-bicolor-negro-pew101-negro-9"
+  },
+  {
+    "modelo": "Producto",
+    "registroId": 42,
+    "campo": "imagenes[8]",
+    "urlActual": "https://res.cloudinary.com/jj8wyws3/image/upload/v1783566483/public/uploads/deck-wpc-premium-bicolor-negro-pew101-negro-10.jpg",
+    "urlOriginal": "https://res.cloudinary.com/jj8wyws3/image/upload/v1/public/uploads/deck-wpc-premium-bicolor-negro-pew101-negro-10.jpg",
+    "publicId": "public/uploads/deck-wpc-premium-bicolor-negro-pew101-negro-10"
+  },
+  {
+    "modelo": "Producto",
+    "registroId": 42,
+    "campo": "imagenes[9]",
+    "urlActual": "https://res.cloudinary.com/jj8wyws3/image/upload/v1783566484/public/uploads/deck-wpc-premium-bicolor-negro-pew101-negro-11.jpg",
+    "urlOriginal": "https://res.cloudinary.com/jj8wyws3/image/upload/v1/public/uploads/deck-wpc-premium-bicolor-negro-pew101-negro-11.jpg",
+    "publicId": "public/uploads/deck-wpc-premium-bicolor-negro-pew101-negro-11"
+  },
+  {
+    "modelo": "Producto",
+    "registroId": 24,
+    "campo": "imagenes[0]",
+    "urlActual": "https://res.cloudinary.com/jj8wyws3/image/upload/v1783566486/public/uploads/piso-vinilico-spc-de-interior-parquet-nogal-caja-12-un-spc102-parquetnogal-2.jpg",
+    "urlOriginal": "https://res.cloudinary.com/jj8wyws3/image/upload/v1/public/uploads/piso-vinilico-spc-de-interior-parquet-nogal-caja-12-un-spc102-parquetnogal-2.jpg",
+    "publicId": "public/uploads/piso-vinilico-spc-de-interior-parquet-nogal-caja-12-un-spc102-parquetnogal-2"
+  },
+  {
+    "modelo": "Producto",
+    "registroId": 24,
+    "campo": "imagenes[1]",
+    "urlActual": "https://res.cloudinary.com/jj8wyws3/image/upload/v1783566483/public/uploads/piso-vinilico-spc-de-interior-parquet-nogal-caja-12-un-spc102-parquetnogal-3.jpg",
+    "urlOriginal": "https://res.cloudinary.com/jj8wyws3/image/upload/v1/public/uploads/piso-vinilico-spc-de-interior-parquet-nogal-caja-12-un-spc102-parquetnogal-3.jpg",
+    "publicId": "public/uploads/piso-vinilico-spc-de-interior-parquet-nogal-caja-12-un-spc102-parquetnogal-3"
+  },
+  {
+    "modelo": "Producto",
+    "registroId": 24,
+    "campo": "imagenes[2]",
+    "urlActual": "https://res.cloudinary.com/jj8wyws3/image/upload/v1783566483/public/uploads/piso-vinilico-spc-de-interior-parquet-nogal-caja-12-un-spc102-parquetnogal-4.jpg",
+    "urlOriginal": "https://res.cloudinary.com/jj8wyws3/image/upload/v1/public/uploads/piso-vinilico-spc-de-interior-parquet-nogal-caja-12-un-spc102-parquetnogal-4.jpg",
+    "publicId": "public/uploads/piso-vinilico-spc-de-interior-parquet-nogal-caja-12-un-spc102-parquetnogal-4"
+  },
+  {
+    "modelo": "Producto",
+    "registroId": 24,
+    "campo": "imagenes[3]",
+    "urlActual": "https://res.cloudinary.com/jj8wyws3/image/upload/v1783566484/public/uploads/piso-vinilico-spc-de-interior-parquet-nogal-caja-12-un-spc102-parquetnogal-5.jpg",
+    "urlOriginal": "https://res.cloudinary.com/jj8wyws3/image/upload/v1/public/uploads/piso-vinilico-spc-de-interior-parquet-nogal-caja-12-un-spc102-parquetnogal-5.jpg",
+    "publicId": "public/uploads/piso-vinilico-spc-de-interior-parquet-nogal-caja-12-un-spc102-parquetnogal-5"
+  },
+  {
+    "modelo": "Producto",
+    "registroId": 24,
+    "campo": "imagenes[4]",
+    "urlActual": "https://res.cloudinary.com/jj8wyws3/image/upload/v1783566484/public/uploads/piso-vinilico-spc-de-interior-parquet-nogal-caja-12-un-spc102-parquetnogal-6.jpg",
+    "urlOriginal": "https://res.cloudinary.com/jj8wyws3/image/upload/v1/public/uploads/piso-vinilico-spc-de-interior-parquet-nogal-caja-12-un-spc102-parquetnogal-6.jpg",
+    "publicId": "public/uploads/piso-vinilico-spc-de-interior-parquet-nogal-caja-12-un-spc102-parquetnogal-6"
+  },
+  {
+    "modelo": "Producto",
+    "registroId": 52,
+    "campo": "imagenes[0]",
+    "urlActual": "https://res.cloudinary.com/jj8wyws3/image/upload/v1783566483/public/uploads/piso-porcelanato-60x60-brillante-gris-artico-caja-4-un-pip003-grisartico-2.webp",
+    "urlOriginal": "https://res.cloudinary.com/jj8wyws3/image/upload/v1/public/uploads/piso-porcelanato-60x60-brillante-gris-artico-caja-4-un-pip003-grisartico-2.webp",
+    "publicId": "public/uploads/piso-porcelanato-60x60-brillante-gris-artico-caja-4-un-pip003-grisartico-2"
+  },
+  {
+    "modelo": "Producto",
+    "registroId": 52,
+    "campo": "imagenes[1]",
+    "urlActual": "https://res.cloudinary.com/jj8wyws3/image/upload/v1783566483/public/uploads/piso-porcelanato-60x60-brillante-gris-artico-caja-4-un-pip003-grisartico-3.jpg",
+    "urlOriginal": "https://res.cloudinary.com/jj8wyws3/image/upload/v1/public/uploads/piso-porcelanato-60x60-brillante-gris-artico-caja-4-un-pip003-grisartico-3.jpg",
+    "publicId": "public/uploads/piso-porcelanato-60x60-brillante-gris-artico-caja-4-un-pip003-grisartico-3"
+  },
+  {
+    "modelo": "Producto",
+    "registroId": 52,
+    "campo": "imagenes[2]",
+    "urlActual": "https://res.cloudinary.com/jj8wyws3/image/upload/v1783566483/public/uploads/piso-porcelanato-60x60-brillante-gris-artico-caja-4-un-pip003-grisartico-4.jpg",
+    "urlOriginal": "https://res.cloudinary.com/jj8wyws3/image/upload/v1/public/uploads/piso-porcelanato-60x60-brillante-gris-artico-caja-4-un-pip003-grisartico-4.jpg",
+    "publicId": "public/uploads/piso-porcelanato-60x60-brillante-gris-artico-caja-4-un-pip003-grisartico-4"
+  },
+  {
+    "modelo": "Producto",
+    "registroId": 68,
+    "campo": "imagenes[0]",
+    "urlActual": "https://res.cloudinary.com/jj8wyws3/image/upload/v1783566483/public/uploads/revestimiento-exterior-coextruido-color-madera-negro-rew103-maderanegro-2.webp",
+    "urlOriginal": "https://res.cloudinary.com/jj8wyws3/image/upload/v1/public/uploads/revestimiento-exterior-coextruido-color-madera-negro-rew103-maderanegro-2.webp",
+    "publicId": "public/uploads/revestimiento-exterior-coextruido-color-madera-negro-rew103-maderanegro-2"
+  },
+  {
+    "modelo": "Producto",
+    "registroId": 68,
+    "campo": "imagenes[1]",
+    "urlActual": "https://res.cloudinary.com/jj8wyws3/image/upload/v1783566483/public/uploads/revestimiento-exterior-coextruido-color-madera-negro-rew103-maderanegro-3.webp",
+    "urlOriginal": "https://res.cloudinary.com/jj8wyws3/image/upload/v1/public/uploads/revestimiento-exterior-coextruido-color-madera-negro-rew103-maderanegro-3.webp",
+    "publicId": "public/uploads/revestimiento-exterior-coextruido-color-madera-negro-rew103-maderanegro-3"
+  },
+  {
+    "modelo": "Producto",
+    "registroId": 68,
+    "campo": "imagenes[2]",
+    "urlActual": "https://res.cloudinary.com/jj8wyws3/image/upload/v1783566483/public/uploads/revestimiento-exterior-coextruido-color-madera-negro-rew103-maderanegro-4.webp",
+    "urlOriginal": "https://res.cloudinary.com/jj8wyws3/image/upload/v1/public/uploads/revestimiento-exterior-coextruido-color-madera-negro-rew103-maderanegro-4.webp",
+    "publicId": "public/uploads/revestimiento-exterior-coextruido-color-madera-negro-rew103-maderanegro-4"
+  },
+  {
+    "modelo": "Producto",
+    "registroId": 56,
+    "campo": "imagenes[0]",
+    "urlActual": "https://res.cloudinary.com/jj8wyws3/image/upload/v1783566483/public/uploads/piso-porcelanato-madera-90x14-6-gris-piedra-caja-10-un-pip001-piedra-2.webp",
+    "urlOriginal": "https://res.cloudinary.com/jj8wyws3/image/upload/v1/public/uploads/piso-porcelanato-madera-90x14-6-gris-piedra-caja-10-un-pip001-piedra-2.webp",
+    "publicId": "public/uploads/piso-porcelanato-madera-90x14-6-gris-piedra-caja-10-un-pip001-piedra-2"
+  },
+  {
+    "modelo": "Producto",
+    "registroId": 56,
+    "campo": "imagenes[1]",
+    "urlActual": "https://res.cloudinary.com/jj8wyws3/image/upload/v1783566484/public/uploads/piso-porcelanato-madera-90x14-6-gris-piedra-caja-10-un-pip001-piedra-3.webp",
+    "urlOriginal": "https://res.cloudinary.com/jj8wyws3/image/upload/v1/public/uploads/piso-porcelanato-madera-90x14-6-gris-piedra-caja-10-un-pip001-piedra-3.webp",
+    "publicId": "public/uploads/piso-porcelanato-madera-90x14-6-gris-piedra-caja-10-un-pip001-piedra-3"
+  },
+  {
+    "modelo": "Producto",
+    "registroId": 56,
+    "campo": "imagenes[2]",
+    "urlActual": "https://res.cloudinary.com/jj8wyws3/image/upload/v1783566483/public/uploads/piso-porcelanato-madera-90x14-6-gris-piedra-caja-10-un-pip001-piedra-4.webp",
+    "urlOriginal": "https://res.cloudinary.com/jj8wyws3/image/upload/v1/public/uploads/piso-porcelanato-madera-90x14-6-gris-piedra-caja-10-un-pip001-piedra-4.webp",
+    "publicId": "public/uploads/piso-porcelanato-madera-90x14-6-gris-piedra-caja-10-un-pip001-piedra-4"
+  },
+  {
+    "modelo": "Producto",
+    "registroId": 56,
+    "campo": "imagenes[3]",
+    "urlActual": "https://res.cloudinary.com/jj8wyws3/image/upload/v1783566485/public/uploads/piso-porcelanato-madera-90x14-6-gris-piedra-caja-10-un-pip001-piedra-5.webp",
+    "urlOriginal": "https://res.cloudinary.com/jj8wyws3/image/upload/v1/public/uploads/piso-porcelanato-madera-90x14-6-gris-piedra-caja-10-un-pip001-piedra-5.webp",
+    "publicId": "public/uploads/piso-porcelanato-madera-90x14-6-gris-piedra-caja-10-un-pip001-piedra-5"
+  },
+  {
+    "modelo": "Producto",
+    "registroId": 3,
+    "campo": "imagenes[0]",
+    "urlActual": "https://res.cloudinary.com/jj8wyws3/image/upload/v1783566484/public/uploads/revestimiento-metalico-de-pared-color-natural-caja-8-un-rem108-natural-2.webp",
+    "urlOriginal": "https://res.cloudinary.com/jj8wyws3/image/upload/v1/public/uploads/revestimiento-metalico-de-pared-color-natural-caja-8-un-rem108-natural-2.webp",
+    "publicId": "public/uploads/revestimiento-metalico-de-pared-color-natural-caja-8-un-rem108-natural-2"
+  },
+  {
+    "modelo": "Producto",
+    "registroId": 3,
+    "campo": "imagenes[1]",
+    "urlActual": "https://res.cloudinary.com/jj8wyws3/image/upload/v1783566484/public/uploads/revestimiento-metalico-de-pared-color-natural-caja-8-un-rem108-natural-3.webp",
+    "urlOriginal": "https://res.cloudinary.com/jj8wyws3/image/upload/v1/public/uploads/revestimiento-metalico-de-pared-color-natural-caja-8-un-rem108-natural-3.webp",
+    "publicId": "public/uploads/revestimiento-metalico-de-pared-color-natural-caja-8-un-rem108-natural-3"
+  },
+  {
+    "modelo": "Producto",
+    "registroId": 3,
+    "campo": "imagenes[2]",
+    "urlActual": "https://res.cloudinary.com/jj8wyws3/image/upload/v1783566484/public/uploads/revestimiento-metalico-de-pared-color-natural-caja-8-un-rem108-natural-4.webp",
+    "urlOriginal": "https://res.cloudinary.com/jj8wyws3/image/upload/v1/public/uploads/revestimiento-metalico-de-pared-color-natural-caja-8-un-rem108-natural-4.webp",
+    "publicId": "public/uploads/revestimiento-metalico-de-pared-color-natural-caja-8-un-rem108-natural-4"
+  },
+  {
+    "modelo": "Producto",
+    "registroId": 102,
+    "campo": "imagenes[0]",
+    "urlActual": "https://res.cloudinary.com/jj8wyws3/image/upload/v1783566484/public/uploads/revestimiento-exterior-de-pvc-color-cafe-rep101-cafe-2.webp",
+    "urlOriginal": "https://res.cloudinary.com/jj8wyws3/image/upload/v1/public/uploads/revestimiento-exterior-de-pvc-color-cafe-rep101-cafe-2.webp",
+    "publicId": "public/uploads/revestimiento-exterior-de-pvc-color-cafe-rep101-cafe-2"
+  },
+  {
+    "modelo": "Producto",
+    "registroId": 102,
+    "campo": "imagenes[1]",
+    "urlActual": "https://res.cloudinary.com/jj8wyws3/image/upload/v1783566484/public/uploads/revestimiento-exterior-de-pvc-color-cafe-rep101-cafe-3.webp",
+    "urlOriginal": "https://res.cloudinary.com/jj8wyws3/image/upload/v1/public/uploads/revestimiento-exterior-de-pvc-color-cafe-rep101-cafe-3.webp",
+    "publicId": "public/uploads/revestimiento-exterior-de-pvc-color-cafe-rep101-cafe-3"
+  },
+  {
+    "modelo": "Producto",
+    "registroId": 102,
+    "campo": "imagenes[2]",
+    "urlActual": "https://res.cloudinary.com/jj8wyws3/image/upload/v1783566483/public/uploads/revestimiento-exterior-de-pvc-color-cafe-rep101-cafe-4.webp",
+    "urlOriginal": "https://res.cloudinary.com/jj8wyws3/image/upload/v1/public/uploads/revestimiento-exterior-de-pvc-color-cafe-rep101-cafe-4.webp",
+    "publicId": "public/uploads/revestimiento-exterior-de-pvc-color-cafe-rep101-cafe-4"
+  },
+  {
+    "modelo": "Producto",
+    "registroId": 102,
+    "campo": "imagenes[3]",
+    "urlActual": "https://res.cloudinary.com/jj8wyws3/image/upload/v1783566483/public/uploads/revestimiento-exterior-de-pvc-color-cafe-rep101-cafe-5.webp",
+    "urlOriginal": "https://res.cloudinary.com/jj8wyws3/image/upload/v1/public/uploads/revestimiento-exterior-de-pvc-color-cafe-rep101-cafe-5.webp",
+    "publicId": "public/uploads/revestimiento-exterior-de-pvc-color-cafe-rep101-cafe-5"
+  },
+  {
+    "modelo": "Producto",
+    "registroId": 83,
+    "campo": "imagenes[0]",
+    "urlActual": "https://res.cloudinary.com/jj8wyws3/image/upload/v1783566483/public/uploads/revestimiento-de-interior-color-madera-negro-riw101-maderanegro-3.webp",
+    "urlOriginal": "https://res.cloudinary.com/jj8wyws3/image/upload/v1/public/uploads/revestimiento-de-interior-color-madera-negro-riw101-maderanegro-3.webp",
+    "publicId": "public/uploads/revestimiento-de-interior-color-madera-negro-riw101-maderanegro-3"
+  },
+  {
+    "modelo": "Producto",
+    "registroId": 83,
+    "campo": "imagenes[1]",
+    "urlActual": "https://res.cloudinary.com/jj8wyws3/image/upload/v1783566483/public/uploads/revestimiento-de-interior-color-madera-negro-riw101-maderanegro-4.webp",
+    "urlOriginal": "https://res.cloudinary.com/jj8wyws3/image/upload/v1/public/uploads/revestimiento-de-interior-color-madera-negro-riw101-maderanegro-4.webp",
+    "publicId": "public/uploads/revestimiento-de-interior-color-madera-negro-riw101-maderanegro-4"
+  },
+  {
+    "modelo": "Producto",
+    "registroId": 85,
+    "campo": "imagenes[0]",
+    "urlActual": "https://res.cloudinary.com/jj8wyws3/image/upload/v1783566484/public/uploads/revestimiento-de-interior-color-cedro-riw102-cedro-2.webp",
+    "urlOriginal": "https://res.cloudinary.com/jj8wyws3/image/upload/v1/public/uploads/revestimiento-de-interior-color-cedro-riw102-cedro-2.webp",
+    "publicId": "public/uploads/revestimiento-de-interior-color-cedro-riw102-cedro-2"
+  },
+  {
+    "modelo": "Producto",
+    "registroId": 85,
+    "campo": "imagenes[1]",
+    "urlActual": "https://res.cloudinary.com/jj8wyws3/image/upload/v1783566484/public/uploads/revestimiento-de-interior-color-cedro-riw102-cedro-3.webp",
+    "urlOriginal": "https://res.cloudinary.com/jj8wyws3/image/upload/v1/public/uploads/revestimiento-de-interior-color-cedro-riw102-cedro-3.webp",
+    "publicId": "public/uploads/revestimiento-de-interior-color-cedro-riw102-cedro-3"
+  },
+  {
+    "modelo": "Producto",
+    "registroId": 85,
+    "campo": "imagenes[2]",
+    "urlActual": "https://res.cloudinary.com/jj8wyws3/image/upload/v1783566483/public/uploads/revestimiento-de-interior-color-cedro-riw102-cedro-4.webp",
+    "urlOriginal": "https://res.cloudinary.com/jj8wyws3/image/upload/v1/public/uploads/revestimiento-de-interior-color-cedro-riw102-cedro-4.webp",
+    "publicId": "public/uploads/revestimiento-de-interior-color-cedro-riw102-cedro-4"
+  },
+  {
+    "modelo": "Producto",
+    "registroId": 6,
+    "campo": "imagenes[0]",
+    "urlActual": "https://res.cloudinary.com/jj8wyws3/image/upload/v1783566484/public/uploads/revestimiento-metalico-de-pared-color-grafito-caja-8-un-rem101-grafito-2.webp",
+    "urlOriginal": "https://res.cloudinary.com/jj8wyws3/image/upload/v1/public/uploads/revestimiento-metalico-de-pared-color-grafito-caja-8-un-rem101-grafito-2.webp",
+    "publicId": "public/uploads/revestimiento-metalico-de-pared-color-grafito-caja-8-un-rem101-grafito-2"
+  },
+  {
+    "modelo": "Producto",
+    "registroId": 6,
+    "campo": "imagenes[1]",
+    "urlActual": "https://res.cloudinary.com/jj8wyws3/image/upload/v1783566483/public/uploads/revestimiento-metalico-de-pared-color-grafito-caja-8-un-rem101-grafito-3.webp",
+    "urlOriginal": "https://res.cloudinary.com/jj8wyws3/image/upload/v1/public/uploads/revestimiento-metalico-de-pared-color-grafito-caja-8-un-rem101-grafito-3.webp",
+    "publicId": "public/uploads/revestimiento-metalico-de-pared-color-grafito-caja-8-un-rem101-grafito-3"
+  },
+  {
+    "modelo": "Producto",
+    "registroId": 6,
+    "campo": "imagenes[2]",
+    "urlActual": "https://res.cloudinary.com/jj8wyws3/image/upload/v1783566483/public/uploads/revestimiento-metalico-de-pared-color-grafito-caja-8-un-rem101-grafito-4.webp",
+    "urlOriginal": "https://res.cloudinary.com/jj8wyws3/image/upload/v1/public/uploads/revestimiento-metalico-de-pared-color-grafito-caja-8-un-rem101-grafito-4.webp",
+    "publicId": "public/uploads/revestimiento-metalico-de-pared-color-grafito-caja-8-un-rem101-grafito-4"
+  },
+  {
+    "modelo": "Producto",
+    "registroId": 59,
+    "campo": "imagenes[0]",
+    "urlActual": "https://res.cloudinary.com/jj8wyws3/image/upload/v1783566483/public/uploads/piso-porcelanato-120x20-forest-roble-caja-6-un-pip101-roble-2.webp",
+    "urlOriginal": "https://res.cloudinary.com/jj8wyws3/image/upload/v1/public/uploads/piso-porcelanato-120x20-forest-roble-caja-6-un-pip101-roble-2.webp",
+    "publicId": "public/uploads/piso-porcelanato-120x20-forest-roble-caja-6-un-pip101-roble-2"
+  },
+  {
+    "modelo": "Producto",
+    "registroId": 59,
+    "campo": "imagenes[1]",
+    "urlActual": "https://res.cloudinary.com/jj8wyws3/image/upload/v1783566483/public/uploads/piso-porcelanato-120x20-forest-roble-caja-6-un-pip101-roble-3.webp",
+    "urlOriginal": "https://res.cloudinary.com/jj8wyws3/image/upload/v1/public/uploads/piso-porcelanato-120x20-forest-roble-caja-6-un-pip101-roble-3.webp",
+    "publicId": "public/uploads/piso-porcelanato-120x20-forest-roble-caja-6-un-pip101-roble-3"
+  },
+  {
+    "modelo": "Producto",
+    "registroId": 59,
+    "campo": "imagenes[2]",
+    "urlActual": "https://res.cloudinary.com/jj8wyws3/image/upload/v1783566484/public/uploads/piso-porcelanato-120x20-forest-roble-caja-6-un-pip101-roble-4.webp",
+    "urlOriginal": "https://res.cloudinary.com/jj8wyws3/image/upload/v1/public/uploads/piso-porcelanato-120x20-forest-roble-caja-6-un-pip101-roble-4.webp",
+    "publicId": "public/uploads/piso-porcelanato-120x20-forest-roble-caja-6-un-pip101-roble-4"
+  },
+  {
+    "modelo": "Producto",
+    "registroId": 60,
+    "campo": "imagenes[0]",
+    "urlActual": "https://res.cloudinary.com/jj8wyws3/image/upload/v1783566485/public/uploads/piso-porcelanato-forest-color-antique-caja-6-un-pip101-cafeantique-2.webp",
+    "urlOriginal": "https://res.cloudinary.com/jj8wyws3/image/upload/v1/public/uploads/piso-porcelanato-forest-color-antique-caja-6-un-pip101-cafeantique-2.webp",
+    "publicId": "public/uploads/piso-porcelanato-forest-color-antique-caja-6-un-pip101-cafeantique-2"
+  },
+  {
+    "modelo": "Producto",
+    "registroId": 60,
+    "campo": "imagenes[1]",
+    "urlActual": "https://res.cloudinary.com/jj8wyws3/image/upload/v1783566484/public/uploads/piso-porcelanato-forest-color-antique-caja-6-un-pip101-cafeantique-3.webp",
+    "urlOriginal": "https://res.cloudinary.com/jj8wyws3/image/upload/v1/public/uploads/piso-porcelanato-forest-color-antique-caja-6-un-pip101-cafeantique-3.webp",
+    "publicId": "public/uploads/piso-porcelanato-forest-color-antique-caja-6-un-pip101-cafeantique-3"
+  },
+  {
+    "modelo": "Producto",
+    "registroId": 60,
+    "campo": "imagenes[2]",
+    "urlActual": "https://res.cloudinary.com/jj8wyws3/image/upload/v1783566485/public/uploads/piso-porcelanato-forest-color-antique-caja-6-un-pip101-cafeantique-4.webp",
+    "urlOriginal": "https://res.cloudinary.com/jj8wyws3/image/upload/v1/public/uploads/piso-porcelanato-forest-color-antique-caja-6-un-pip101-cafeantique-4.webp",
+    "publicId": "public/uploads/piso-porcelanato-forest-color-antique-caja-6-un-pip101-cafeantique-4"
+  },
+  {
+    "modelo": "Producto",
+    "registroId": 60,
+    "campo": "imagenes[3]",
+    "urlActual": "https://res.cloudinary.com/jj8wyws3/image/upload/v1783566483/public/uploads/piso-porcelanato-forest-color-antique-caja-6-un-pip101-cafeantique-5.webp",
+    "urlOriginal": "https://res.cloudinary.com/jj8wyws3/image/upload/v1/public/uploads/piso-porcelanato-forest-color-antique-caja-6-un-pip101-cafeantique-5.webp",
+    "publicId": "public/uploads/piso-porcelanato-forest-color-antique-caja-6-un-pip101-cafeantique-5"
+  },
+  {
+    "modelo": "Producto",
+    "registroId": 32,
+    "campo": "imagenes[0]",
+    "urlActual": "https://res.cloudinary.com/jj8wyws3/image/upload/v1783566483/public/uploads/piso-flotante-interior-color-madera-caja-10-un-pim101-madera-2.webp",
+    "urlOriginal": "https://res.cloudinary.com/jj8wyws3/image/upload/v1/public/uploads/piso-flotante-interior-color-madera-caja-10-un-pim101-madera-2.webp",
+    "publicId": "public/uploads/piso-flotante-interior-color-madera-caja-10-un-pim101-madera-2"
+  },
+  {
+    "modelo": "Producto",
+    "registroId": 32,
+    "campo": "imagenes[1]",
+    "urlActual": "https://res.cloudinary.com/jj8wyws3/image/upload/v1783566483/public/uploads/piso-flotante-interior-color-madera-caja-10-un-pim101-madera-3.webp",
+    "urlOriginal": "https://res.cloudinary.com/jj8wyws3/image/upload/v1/public/uploads/piso-flotante-interior-color-madera-caja-10-un-pim101-madera-3.webp",
+    "publicId": "public/uploads/piso-flotante-interior-color-madera-caja-10-un-pim101-madera-3"
+  },
+  {
+    "modelo": "Producto",
+    "registroId": 32,
+    "campo": "imagenes[2]",
+    "urlActual": "https://res.cloudinary.com/jj8wyws3/image/upload/v1783566485/public/uploads/piso-flotante-interior-color-madera-caja-10-un-pim101-madera-4.webp",
+    "urlOriginal": "https://res.cloudinary.com/jj8wyws3/image/upload/v1/public/uploads/piso-flotante-interior-color-madera-caja-10-un-pim101-madera-4.webp",
+    "publicId": "public/uploads/piso-flotante-interior-color-madera-caja-10-un-pim101-madera-4"
+  },
+  {
+    "modelo": "Producto",
+    "registroId": 32,
+    "campo": "imagenes[3]",
+    "urlActual": "https://res.cloudinary.com/jj8wyws3/image/upload/v1783566483/public/uploads/piso-flotante-interior-color-madera-caja-10-un-pim101-madera-5.webp",
+    "urlOriginal": "https://res.cloudinary.com/jj8wyws3/image/upload/v1/public/uploads/piso-flotante-interior-color-madera-caja-10-un-pim101-madera-5.webp",
+    "publicId": "public/uploads/piso-flotante-interior-color-madera-caja-10-un-pim101-madera-5"
+  },
+  {
+    "modelo": "Producto",
+    "registroId": 46,
+    "campo": "imagenes[0]",
+    "urlActual": "https://res.cloudinary.com/jj8wyws3/image/upload/v1783566484/public/uploads/siding-texturizado-tipo-granito-crema-caja-de-8-un-reg001-crema-2.jpg",
+    "urlOriginal": "https://res.cloudinary.com/jj8wyws3/image/upload/v1/public/uploads/siding-texturizado-tipo-granito-crema-caja-de-8-un-reg001-crema-2.jpg",
+    "publicId": "public/uploads/siding-texturizado-tipo-granito-crema-caja-de-8-un-reg001-crema-2"
+  },
+  {
+    "modelo": "Producto",
+    "registroId": 46,
+    "campo": "imagenes[1]",
+    "urlActual": "https://res.cloudinary.com/jj8wyws3/image/upload/v1783566484/public/uploads/siding-texturizado-tipo-granito-crema-caja-de-8-un-reg001-crema-3.jpg",
+    "urlOriginal": "https://res.cloudinary.com/jj8wyws3/image/upload/v1/public/uploads/siding-texturizado-tipo-granito-crema-caja-de-8-un-reg001-crema-3.jpg",
+    "publicId": "public/uploads/siding-texturizado-tipo-granito-crema-caja-de-8-un-reg001-crema-3"
+  },
+  {
+    "modelo": "Producto",
+    "registroId": 46,
+    "campo": "imagenes[2]",
+    "urlActual": "https://res.cloudinary.com/jj8wyws3/image/upload/v1783566485/public/uploads/siding-texturizado-tipo-granito-crema-caja-de-8-un-reg001-crema-4.jpg",
+    "urlOriginal": "https://res.cloudinary.com/jj8wyws3/image/upload/v1/public/uploads/siding-texturizado-tipo-granito-crema-caja-de-8-un-reg001-crema-4.jpg",
+    "publicId": "public/uploads/siding-texturizado-tipo-granito-crema-caja-de-8-un-reg001-crema-4"
+  },
+  {
+    "modelo": "Producto",
+    "registroId": 70,
+    "campo": "imagenes[0]",
+    "urlActual": "https://res.cloudinary.com/jj8wyws3/image/upload/v1783566483/public/uploads/revestimiento-exterior-coextruido-color-chocolate-negro-rew103-chocolatenegro-2.webp",
+    "urlOriginal": "https://res.cloudinary.com/jj8wyws3/image/upload/v1/public/uploads/revestimiento-exterior-coextruido-color-chocolate-negro-rew103-chocolatenegro-2.webp",
+    "publicId": "public/uploads/revestimiento-exterior-coextruido-color-chocolate-negro-rew103-chocolatenegro-2"
+  },
+  {
+    "modelo": "Producto",
+    "registroId": 70,
+    "campo": "imagenes[1]",
+    "urlActual": "https://res.cloudinary.com/jj8wyws3/image/upload/v1783566483/public/uploads/revestimiento-exterior-coextruido-color-chocolate-negro-rew103-chocolatenegro-3.webp",
+    "urlOriginal": "https://res.cloudinary.com/jj8wyws3/image/upload/v1/public/uploads/revestimiento-exterior-coextruido-color-chocolate-negro-rew103-chocolatenegro-3.webp",
+    "publicId": "public/uploads/revestimiento-exterior-coextruido-color-chocolate-negro-rew103-chocolatenegro-3"
+  },
+  {
+    "modelo": "Producto",
+    "registroId": 70,
+    "campo": "imagenes[2]",
+    "urlActual": "https://res.cloudinary.com/jj8wyws3/image/upload/v1783566483/public/uploads/revestimiento-exterior-coextruido-color-chocolate-negro-rew103-chocolatenegro-4.webp",
+    "urlOriginal": "https://res.cloudinary.com/jj8wyws3/image/upload/v1/public/uploads/revestimiento-exterior-coextruido-color-chocolate-negro-rew103-chocolatenegro-4.webp",
+    "publicId": "public/uploads/revestimiento-exterior-coextruido-color-chocolate-negro-rew103-chocolatenegro-4"
+  },
+  {
+    "modelo": "Producto",
+    "registroId": 80,
+    "campo": "imagenes[0]",
+    "urlActual": "https://res.cloudinary.com/jj8wyws3/image/upload/v1783566483/public/uploads/revestimiento-de-interior-color-gris-grafito-riw301-grisgrafito-2.webp",
+    "urlOriginal": "https://res.cloudinary.com/jj8wyws3/image/upload/v1/public/uploads/revestimiento-de-interior-color-gris-grafito-riw301-grisgrafito-2.webp",
+    "publicId": "public/uploads/revestimiento-de-interior-color-gris-grafito-riw301-grisgrafito-2"
+  },
+  {
+    "modelo": "Producto",
+    "registroId": 80,
+    "campo": "imagenes[1]",
+    "urlActual": "https://res.cloudinary.com/jj8wyws3/image/upload/v1783566483/public/uploads/revestimiento-de-interior-color-gris-grafito-riw301-grisgrafito-3.webp",
+    "urlOriginal": "https://res.cloudinary.com/jj8wyws3/image/upload/v1/public/uploads/revestimiento-de-interior-color-gris-grafito-riw301-grisgrafito-3.webp",
+    "publicId": "public/uploads/revestimiento-de-interior-color-gris-grafito-riw301-grisgrafito-3"
+  },
+  {
+    "modelo": "Producto",
+    "registroId": 80,
+    "campo": "imagenes[2]",
+    "urlActual": "https://res.cloudinary.com/jj8wyws3/image/upload/v1783566485/public/uploads/revestimiento-de-interior-color-gris-grafito-riw301-grisgrafito-4.webp",
+    "urlOriginal": "https://res.cloudinary.com/jj8wyws3/image/upload/v1/public/uploads/revestimiento-de-interior-color-gris-grafito-riw301-grisgrafito-4.webp",
+    "publicId": "public/uploads/revestimiento-de-interior-color-gris-grafito-riw301-grisgrafito-4"
+  },
+  {
+    "modelo": "Producto",
+    "registroId": 114,
+    "campo": "imagenes[0]",
+    "urlActual": "https://res.cloudinary.com/jj8wyws3/image/upload/v1783566484/public/uploads/cerco-exterior-wpc-color-negro-cew02-180-cew02-180-negro-2.webp",
+    "urlOriginal": "https://res.cloudinary.com/jj8wyws3/image/upload/v1/public/uploads/cerco-exterior-wpc-color-negro-cew02-180-cew02-180-negro-2.webp",
+    "publicId": "public/uploads/cerco-exterior-wpc-color-negro-cew02-180-cew02-180-negro-2"
+  },
+  {
+    "modelo": "Producto",
+    "registroId": 1,
+    "campo": "imagenes[0]",
+    "urlActual": "https://res.cloudinary.com/jj8wyws3/image/upload/v1783566484/public/uploads/revestimiento-metalico-de-pared-color-cedro-caja-8-un-rem102-cedro-2.jpg",
+    "urlOriginal": "https://res.cloudinary.com/jj8wyws3/image/upload/v1/public/uploads/revestimiento-metalico-de-pared-color-cedro-caja-8-un-rem102-cedro-2.jpg",
+    "publicId": "public/uploads/revestimiento-metalico-de-pared-color-cedro-caja-8-un-rem102-cedro-2"
+  },
+  {
+    "modelo": "Producto",
+    "registroId": 1,
+    "campo": "imagenes[1]",
+    "urlActual": "https://res.cloudinary.com/jj8wyws3/image/upload/v1783566484/public/uploads/revestimiento-metalico-de-pared-color-cedro-caja-8-un-rem102-cedro-3.jpg",
+    "urlOriginal": "https://res.cloudinary.com/jj8wyws3/image/upload/v1/public/uploads/revestimiento-metalico-de-pared-color-cedro-caja-8-un-rem102-cedro-3.jpg",
+    "publicId": "public/uploads/revestimiento-metalico-de-pared-color-cedro-caja-8-un-rem102-cedro-3"
+  },
+  {
+    "modelo": "Producto",
+    "registroId": 1,
+    "campo": "imagenes[2]",
+    "urlActual": "https://res.cloudinary.com/jj8wyws3/image/upload/v1783566485/public/uploads/revestimiento-metalico-de-pared-color-cedro-caja-8-un-rem102-cedro-4.jpg",
+    "urlOriginal": "https://res.cloudinary.com/jj8wyws3/image/upload/v1/public/uploads/revestimiento-metalico-de-pared-color-cedro-caja-8-un-rem102-cedro-4.jpg",
+    "publicId": "public/uploads/revestimiento-metalico-de-pared-color-cedro-caja-8-un-rem102-cedro-4"
+  },
+  {
+    "modelo": "Producto",
+    "registroId": 8,
+    "campo": "imagenes[0]",
+    "urlActual": "https://res.cloudinary.com/jj8wyws3/image/upload/v1783566484/public/uploads/revestimiento-metalico-de-pared-color-piedra-caja-8-un-rem101-piedra-2.webp",
+    "urlOriginal": "https://res.cloudinary.com/jj8wyws3/image/upload/v1/public/uploads/revestimiento-metalico-de-pared-color-piedra-caja-8-un-rem101-piedra-2.webp",
+    "publicId": "public/uploads/revestimiento-metalico-de-pared-color-piedra-caja-8-un-rem101-piedra-2"
+  },
+  {
+    "modelo": "Producto",
+    "registroId": 8,
+    "campo": "imagenes[1]",
+    "urlActual": "https://res.cloudinary.com/jj8wyws3/image/upload/v1783566484/public/uploads/revestimiento-metalico-de-pared-color-piedra-caja-8-un-rem101-piedra-3.webp",
+    "urlOriginal": "https://res.cloudinary.com/jj8wyws3/image/upload/v1/public/uploads/revestimiento-metalico-de-pared-color-piedra-caja-8-un-rem101-piedra-3.webp",
+    "publicId": "public/uploads/revestimiento-metalico-de-pared-color-piedra-caja-8-un-rem101-piedra-3"
+  },
+  {
+    "modelo": "Producto",
+    "registroId": 8,
+    "campo": "imagenes[2]",
+    "urlActual": "https://res.cloudinary.com/jj8wyws3/image/upload/v1783566484/public/uploads/revestimiento-metalico-de-pared-color-piedra-caja-8-un-rem101-piedra-4.webp",
+    "urlOriginal": "https://res.cloudinary.com/jj8wyws3/image/upload/v1/public/uploads/revestimiento-metalico-de-pared-color-piedra-caja-8-un-rem101-piedra-4.webp",
+    "publicId": "public/uploads/revestimiento-metalico-de-pared-color-piedra-caja-8-un-rem101-piedra-4"
+  },
+  {
+    "modelo": "Producto",
+    "registroId": 8,
+    "campo": "imagenes[3]",
+    "urlActual": "https://res.cloudinary.com/jj8wyws3/image/upload/v1783566484/public/uploads/revestimiento-metalico-de-pared-color-piedra-caja-8-un-rem101-piedra-5.webp",
+    "urlOriginal": "https://res.cloudinary.com/jj8wyws3/image/upload/v1/public/uploads/revestimiento-metalico-de-pared-color-piedra-caja-8-un-rem101-piedra-5.webp",
+    "publicId": "public/uploads/revestimiento-metalico-de-pared-color-piedra-caja-8-un-rem101-piedra-5"
+  },
+  {
+    "modelo": "Producto",
+    "registroId": 99,
+    "campo": "imagenes[0]",
+    "urlActual": "https://res.cloudinary.com/jj8wyws3/image/upload/v1783566483/public/uploads/revestimiento-exterior-de-pvc-color-blanco-rep101-blanco-2.webp",
+    "urlOriginal": "https://res.cloudinary.com/jj8wyws3/image/upload/v1/public/uploads/revestimiento-exterior-de-pvc-color-blanco-rep101-blanco-2.webp",
+    "publicId": "public/uploads/revestimiento-exterior-de-pvc-color-blanco-rep101-blanco-2"
+  },
+  {
+    "modelo": "Producto",
+    "registroId": 99,
+    "campo": "imagenes[1]",
+    "urlActual": "https://res.cloudinary.com/jj8wyws3/image/upload/v1783566484/public/uploads/revestimiento-exterior-de-pvc-color-blanco-rep101-blanco-3.webp",
+    "urlOriginal": "https://res.cloudinary.com/jj8wyws3/image/upload/v1/public/uploads/revestimiento-exterior-de-pvc-color-blanco-rep101-blanco-3.webp",
+    "publicId": "public/uploads/revestimiento-exterior-de-pvc-color-blanco-rep101-blanco-3"
+  },
+  {
+    "modelo": "Producto",
+    "registroId": 99,
+    "campo": "imagenes[2]",
+    "urlActual": "https://res.cloudinary.com/jj8wyws3/image/upload/v1783566483/public/uploads/revestimiento-exterior-de-pvc-color-blanco-rep101-blanco-4.webp",
+    "urlOriginal": "https://res.cloudinary.com/jj8wyws3/image/upload/v1/public/uploads/revestimiento-exterior-de-pvc-color-blanco-rep101-blanco-4.webp",
+    "publicId": "public/uploads/revestimiento-exterior-de-pvc-color-blanco-rep101-blanco-4"
+  },
+  {
+    "modelo": "Producto",
+    "registroId": 99,
+    "campo": "imagenes[3]",
+    "urlActual": "https://res.cloudinary.com/jj8wyws3/image/upload/v1783566483/public/uploads/revestimiento-exterior-de-pvc-color-blanco-rep101-blanco-5.webp",
+    "urlOriginal": "https://res.cloudinary.com/jj8wyws3/image/upload/v1/public/uploads/revestimiento-exterior-de-pvc-color-blanco-rep101-blanco-5.webp",
+    "publicId": "public/uploads/revestimiento-exterior-de-pvc-color-blanco-rep101-blanco-5"
+  },
+  {
+    "modelo": "Producto",
+    "registroId": 7,
+    "campo": "imagenes[0]",
+    "urlActual": "https://res.cloudinary.com/jj8wyws3/image/upload/v1783566484/public/uploads/revestimiento-metalico-de-pared-color-madera-caja-8-un-rem101-madera-2.webp",
+    "urlOriginal": "https://res.cloudinary.com/jj8wyws3/image/upload/v1/public/uploads/revestimiento-metalico-de-pared-color-madera-caja-8-un-rem101-madera-2.webp",
+    "publicId": "public/uploads/revestimiento-metalico-de-pared-color-madera-caja-8-un-rem101-madera-2"
+  },
+  {
+    "modelo": "Producto",
+    "registroId": 7,
+    "campo": "imagenes[1]",
+    "urlActual": "https://res.cloudinary.com/jj8wyws3/image/upload/v1783566483/public/uploads/revestimiento-metalico-de-pared-color-madera-caja-8-un-rem101-madera-3.webp",
+    "urlOriginal": "https://res.cloudinary.com/jj8wyws3/image/upload/v1/public/uploads/revestimiento-metalico-de-pared-color-madera-caja-8-un-rem101-madera-3.webp",
+    "publicId": "public/uploads/revestimiento-metalico-de-pared-color-madera-caja-8-un-rem101-madera-3"
+  },
+  {
+    "modelo": "Producto",
+    "registroId": 7,
+    "campo": "imagenes[2]",
+    "urlActual": "https://res.cloudinary.com/jj8wyws3/image/upload/v1783566483/public/uploads/revestimiento-metalico-de-pared-color-madera-caja-8-un-rem101-madera-4.webp",
+    "urlOriginal": "https://res.cloudinary.com/jj8wyws3/image/upload/v1/public/uploads/revestimiento-metalico-de-pared-color-madera-caja-8-un-rem101-madera-4.webp",
+    "publicId": "public/uploads/revestimiento-metalico-de-pared-color-madera-caja-8-un-rem101-madera-4"
+  },
+  {
+    "modelo": "Producto",
+    "registroId": 13,
+    "campo": "imagenes[0]",
+    "urlActual": "https://res.cloudinary.com/jj8wyws3/image/upload/v1783566484/public/uploads/revestimiento-metalico-de-pared-color-negro-caja-8-un-rem101-negro-2.jpg",
+    "urlOriginal": "https://res.cloudinary.com/jj8wyws3/image/upload/v1/public/uploads/revestimiento-metalico-de-pared-color-negro-caja-8-un-rem101-negro-2.jpg",
+    "publicId": "public/uploads/revestimiento-metalico-de-pared-color-negro-caja-8-un-rem101-negro-2"
+  },
+  {
+    "modelo": "Producto",
+    "registroId": 13,
+    "campo": "imagenes[1]",
+    "urlActual": "https://res.cloudinary.com/jj8wyws3/image/upload/v1783566486/public/uploads/revestimiento-metalico-de-pared-color-negro-caja-8-un-rem101-negro-3.jpg",
+    "urlOriginal": "https://res.cloudinary.com/jj8wyws3/image/upload/v1/public/uploads/revestimiento-metalico-de-pared-color-negro-caja-8-un-rem101-negro-3.jpg",
+    "publicId": "public/uploads/revestimiento-metalico-de-pared-color-negro-caja-8-un-rem101-negro-3"
+  },
+  {
+    "modelo": "Producto",
+    "registroId": 13,
+    "campo": "imagenes[2]",
+    "urlActual": "https://res.cloudinary.com/jj8wyws3/image/upload/v1783566485/public/uploads/revestimiento-metalico-de-pared-color-negro-caja-8-un-rem101-negro-4.jpg",
+    "urlOriginal": "https://res.cloudinary.com/jj8wyws3/image/upload/v1/public/uploads/revestimiento-metalico-de-pared-color-negro-caja-8-un-rem101-negro-4.jpg",
+    "publicId": "public/uploads/revestimiento-metalico-de-pared-color-negro-caja-8-un-rem101-negro-4"
+  },
+  {
+    "modelo": "Producto",
+    "registroId": 13,
+    "campo": "imagenes[3]",
+    "urlActual": "https://res.cloudinary.com/jj8wyws3/image/upload/v1783566485/public/uploads/revestimiento-metalico-de-pared-color-negro-caja-8-un-rem101-negro-5.jpg",
+    "urlOriginal": "https://res.cloudinary.com/jj8wyws3/image/upload/v1/public/uploads/revestimiento-metalico-de-pared-color-negro-caja-8-un-rem101-negro-5.jpg",
+    "publicId": "public/uploads/revestimiento-metalico-de-pared-color-negro-caja-8-un-rem101-negro-5"
+  },
+  {
+    "modelo": "Producto",
+    "registroId": 5,
+    "campo": "imagenes[0]",
+    "urlActual": "https://res.cloudinary.com/jj8wyws3/image/upload/v1783566483/public/uploads/revestimiento-metalico-de-pared-color-madera-caja-8-un-rem107-madera-2.webp",
+    "urlOriginal": "https://res.cloudinary.com/jj8wyws3/image/upload/v1/public/uploads/revestimiento-metalico-de-pared-color-madera-caja-8-un-rem107-madera-2.webp",
+    "publicId": "public/uploads/revestimiento-metalico-de-pared-color-madera-caja-8-un-rem107-madera-2"
+  },
+  {
+    "modelo": "Producto",
+    "registroId": 5,
+    "campo": "imagenes[1]",
+    "urlActual": "https://res.cloudinary.com/jj8wyws3/image/upload/v1783566485/public/uploads/revestimiento-metalico-de-pared-color-madera-caja-8-un-rem107-madera-3.webp",
+    "urlOriginal": "https://res.cloudinary.com/jj8wyws3/image/upload/v1/public/uploads/revestimiento-metalico-de-pared-color-madera-caja-8-un-rem107-madera-3.webp",
+    "publicId": "public/uploads/revestimiento-metalico-de-pared-color-madera-caja-8-un-rem107-madera-3"
+  },
+  {
+    "modelo": "Producto",
+    "registroId": 5,
+    "campo": "imagenes[2]",
+    "urlActual": "https://res.cloudinary.com/jj8wyws3/image/upload/v1783566484/public/uploads/revestimiento-metalico-de-pared-color-madera-caja-8-un-rem107-madera-4.webp",
+    "urlOriginal": "https://res.cloudinary.com/jj8wyws3/image/upload/v1/public/uploads/revestimiento-metalico-de-pared-color-madera-caja-8-un-rem107-madera-4.webp",
+    "publicId": "public/uploads/revestimiento-metalico-de-pared-color-madera-caja-8-un-rem107-madera-4"
+  },
+  {
+    "modelo": "Producto",
+    "registroId": 14,
+    "campo": "imagenes[0]",
+    "urlActual": "https://res.cloudinary.com/jj8wyws3/image/upload/v1783566484/public/uploads/revestimiento-metalico-de-pared-color-madera-caja-8-un-rem102-madera-2.jpg",
+    "urlOriginal": "https://res.cloudinary.com/jj8wyws3/image/upload/v1/public/uploads/revestimiento-metalico-de-pared-color-madera-caja-8-un-rem102-madera-2.jpg",
+    "publicId": "public/uploads/revestimiento-metalico-de-pared-color-madera-caja-8-un-rem102-madera-2"
+  },
+  {
+    "modelo": "Producto",
+    "registroId": 14,
+    "campo": "imagenes[1]",
+    "urlActual": "https://res.cloudinary.com/jj8wyws3/image/upload/v1783566485/public/uploads/revestimiento-metalico-de-pared-color-madera-caja-8-un-rem102-madera-3.jpg",
+    "urlOriginal": "https://res.cloudinary.com/jj8wyws3/image/upload/v1/public/uploads/revestimiento-metalico-de-pared-color-madera-caja-8-un-rem102-madera-3.jpg",
+    "publicId": "public/uploads/revestimiento-metalico-de-pared-color-madera-caja-8-un-rem102-madera-3"
+  },
+  {
+    "modelo": "Producto",
+    "registroId": 14,
+    "campo": "imagenes[2]",
+    "urlActual": "https://res.cloudinary.com/jj8wyws3/image/upload/v1783566484/public/uploads/revestimiento-metalico-de-pared-color-madera-caja-8-un-rem102-madera-4.jpg",
+    "urlOriginal": "https://res.cloudinary.com/jj8wyws3/image/upload/v1/public/uploads/revestimiento-metalico-de-pared-color-madera-caja-8-un-rem102-madera-4.jpg",
+    "publicId": "public/uploads/revestimiento-metalico-de-pared-color-madera-caja-8-un-rem102-madera-4"
+  },
+  {
+    "modelo": "Producto",
+    "registroId": 14,
+    "campo": "imagenes[3]",
+    "urlActual": "https://res.cloudinary.com/jj8wyws3/image/upload/v1783566485/public/uploads/revestimiento-metalico-de-pared-color-madera-caja-8-un-rem102-madera-5.jpg",
+    "urlOriginal": "https://res.cloudinary.com/jj8wyws3/image/upload/v1/public/uploads/revestimiento-metalico-de-pared-color-madera-caja-8-un-rem102-madera-5.jpg",
+    "publicId": "public/uploads/revestimiento-metalico-de-pared-color-madera-caja-8-un-rem102-madera-5"
+  },
+  {
+    "modelo": "Producto",
+    "registroId": 20,
+    "campo": "imagenes[0]",
+    "urlActual": "https://res.cloudinary.com/jj8wyws3/image/upload/v1783566484/public/uploads/piso-vinilico-spc-de-interior-marmol-piedra-caja-12-un-spc103-marmolpiedra-2.webp",
+    "urlOriginal": "https://res.cloudinary.com/jj8wyws3/image/upload/v1/public/uploads/piso-vinilico-spc-de-interior-marmol-piedra-caja-12-un-spc103-marmolpiedra-2.webp",
+    "publicId": "public/uploads/piso-vinilico-spc-de-interior-marmol-piedra-caja-12-un-spc103-marmolpiedra-2"
+  },
+  {
+    "modelo": "Producto",
+    "registroId": 20,
+    "campo": "imagenes[1]",
+    "urlActual": "https://res.cloudinary.com/jj8wyws3/image/upload/v1783566484/public/uploads/piso-vinilico-spc-de-interior-marmol-piedra-caja-12-un-spc103-marmolpiedra-3.webp",
+    "urlOriginal": "https://res.cloudinary.com/jj8wyws3/image/upload/v1/public/uploads/piso-vinilico-spc-de-interior-marmol-piedra-caja-12-un-spc103-marmolpiedra-3.webp",
+    "publicId": "public/uploads/piso-vinilico-spc-de-interior-marmol-piedra-caja-12-un-spc103-marmolpiedra-3"
+  },
+  {
+    "modelo": "Producto",
+    "registroId": 20,
+    "campo": "imagenes[2]",
+    "urlActual": "https://res.cloudinary.com/jj8wyws3/image/upload/v1783566483/public/uploads/piso-vinilico-spc-de-interior-marmol-piedra-caja-12-un-spc103-marmolpiedra-4.webp",
+    "urlOriginal": "https://res.cloudinary.com/jj8wyws3/image/upload/v1/public/uploads/piso-vinilico-spc-de-interior-marmol-piedra-caja-12-un-spc103-marmolpiedra-4.webp",
+    "publicId": "public/uploads/piso-vinilico-spc-de-interior-marmol-piedra-caja-12-un-spc103-marmolpiedra-4"
+  },
+  {
+    "modelo": "Producto",
+    "registroId": 20,
+    "campo": "imagenes[3]",
+    "urlActual": "https://res.cloudinary.com/jj8wyws3/image/upload/v1783566483/public/uploads/piso-vinilico-spc-de-interior-marmol-piedra-caja-12-un-spc103-marmolpiedra-5.webp",
+    "urlOriginal": "https://res.cloudinary.com/jj8wyws3/image/upload/v1/public/uploads/piso-vinilico-spc-de-interior-marmol-piedra-caja-12-un-spc103-marmolpiedra-5.webp",
+    "publicId": "public/uploads/piso-vinilico-spc-de-interior-marmol-piedra-caja-12-un-spc103-marmolpiedra-5"
+  },
+  {
+    "modelo": "Producto",
+    "registroId": 18,
+    "campo": "imagenes[0]",
+    "urlActual": "https://res.cloudinary.com/jj8wyws3/image/upload/v1783566483/public/uploads/piso-vinilico-spc-de-interior-color-nogal-caja-12-un-spc101-nogal-2.webp",
+    "urlOriginal": "https://res.cloudinary.com/jj8wyws3/image/upload/v1/public/uploads/piso-vinilico-spc-de-interior-color-nogal-caja-12-un-spc101-nogal-2.webp",
+    "publicId": "public/uploads/piso-vinilico-spc-de-interior-color-nogal-caja-12-un-spc101-nogal-2"
+  },
+  {
+    "modelo": "Producto",
+    "registroId": 18,
+    "campo": "imagenes[1]",
+    "urlActual": "https://res.cloudinary.com/jj8wyws3/image/upload/v1783566483/public/uploads/piso-vinilico-spc-de-interior-color-nogal-caja-12-un-spc101-nogal-3.webp",
+    "urlOriginal": "https://res.cloudinary.com/jj8wyws3/image/upload/v1/public/uploads/piso-vinilico-spc-de-interior-color-nogal-caja-12-un-spc101-nogal-3.webp",
+    "publicId": "public/uploads/piso-vinilico-spc-de-interior-color-nogal-caja-12-un-spc101-nogal-3"
+  },
+  {
+    "modelo": "Producto",
+    "registroId": 18,
+    "campo": "imagenes[2]",
+    "urlActual": "https://res.cloudinary.com/jj8wyws3/image/upload/v1783566483/public/uploads/piso-vinilico-spc-de-interior-color-nogal-caja-12-un-spc101-nogal-4.webp",
+    "urlOriginal": "https://res.cloudinary.com/jj8wyws3/image/upload/v1/public/uploads/piso-vinilico-spc-de-interior-color-nogal-caja-12-un-spc101-nogal-4.webp",
+    "publicId": "public/uploads/piso-vinilico-spc-de-interior-color-nogal-caja-12-un-spc101-nogal-4"
+  },
+  {
+    "modelo": "Producto",
+    "registroId": 18,
+    "campo": "imagenes[3]",
+    "urlActual": "https://res.cloudinary.com/jj8wyws3/image/upload/v1783566483/public/uploads/piso-vinilico-spc-de-interior-color-nogal-caja-12-un-spc101-nogal-5.webp",
+    "urlOriginal": "https://res.cloudinary.com/jj8wyws3/image/upload/v1/public/uploads/piso-vinilico-spc-de-interior-color-nogal-caja-12-un-spc101-nogal-5.webp",
+    "publicId": "public/uploads/piso-vinilico-spc-de-interior-color-nogal-caja-12-un-spc101-nogal-5"
+  },
+  {
+    "modelo": "Producto",
+    "registroId": 18,
+    "campo": "imagenes[4]",
+    "urlActual": "https://res.cloudinary.com/jj8wyws3/image/upload/v1783566483/public/uploads/piso-vinilico-spc-de-interior-color-nogal-caja-12-un-spc101-nogal-6.webp",
+    "urlOriginal": "https://res.cloudinary.com/jj8wyws3/image/upload/v1/public/uploads/piso-vinilico-spc-de-interior-color-nogal-caja-12-un-spc101-nogal-6.webp",
+    "publicId": "public/uploads/piso-vinilico-spc-de-interior-color-nogal-caja-12-un-spc101-nogal-6"
+  },
+  {
+    "modelo": "Producto",
+    "registroId": 18,
+    "campo": "imagenes[5]",
+    "urlActual": "https://res.cloudinary.com/jj8wyws3/image/upload/v1783566483/public/uploads/piso-vinilico-spc-de-interior-color-nogal-caja-12-un-spc101-nogal-7.webp",
+    "urlOriginal": "https://res.cloudinary.com/jj8wyws3/image/upload/v1/public/uploads/piso-vinilico-spc-de-interior-color-nogal-caja-12-un-spc101-nogal-7.webp",
+    "publicId": "public/uploads/piso-vinilico-spc-de-interior-color-nogal-caja-12-un-spc101-nogal-7"
+  },
+  {
+    "modelo": "Producto",
+    "registroId": 18,
+    "campo": "imagenes[6]",
+    "urlActual": "https://res.cloudinary.com/jj8wyws3/image/upload/v1783566483/public/uploads/piso-vinilico-spc-de-interior-color-nogal-caja-12-un-spc101-nogal-8.webp",
+    "urlOriginal": "https://res.cloudinary.com/jj8wyws3/image/upload/v1/public/uploads/piso-vinilico-spc-de-interior-color-nogal-caja-12-un-spc101-nogal-8.webp",
+    "publicId": "public/uploads/piso-vinilico-spc-de-interior-color-nogal-caja-12-un-spc101-nogal-8"
+  },
+  {
+    "modelo": "Producto",
+    "registroId": 26,
+    "campo": "imagenes[0]",
+    "urlActual": "https://res.cloudinary.com/jj8wyws3/image/upload/v1783566483/public/uploads/piso-vinilico-spc-de-interior-parquet-natural-caja-12-un-spc102-parquetnatural-2.jpg",
+    "urlOriginal": "https://res.cloudinary.com/jj8wyws3/image/upload/v1/public/uploads/piso-vinilico-spc-de-interior-parquet-natural-caja-12-un-spc102-parquetnatural-2.jpg",
+    "publicId": "public/uploads/piso-vinilico-spc-de-interior-parquet-natural-caja-12-un-spc102-parquetnatural-2"
+  },
+  {
+    "modelo": "Producto",
+    "registroId": 26,
+    "campo": "imagenes[1]",
+    "urlActual": "https://res.cloudinary.com/jj8wyws3/image/upload/v1783566483/public/uploads/piso-vinilico-spc-de-interior-parquet-natural-caja-12-un-spc102-parquetnatural-3.jpg",
+    "urlOriginal": "https://res.cloudinary.com/jj8wyws3/image/upload/v1/public/uploads/piso-vinilico-spc-de-interior-parquet-natural-caja-12-un-spc102-parquetnatural-3.jpg",
+    "publicId": "public/uploads/piso-vinilico-spc-de-interior-parquet-natural-caja-12-un-spc102-parquetnatural-3"
+  },
+  {
+    "modelo": "Producto",
+    "registroId": 26,
+    "campo": "imagenes[2]",
+    "urlActual": "https://res.cloudinary.com/jj8wyws3/image/upload/v1783566483/public/uploads/piso-vinilico-spc-de-interior-parquet-natural-caja-12-un-spc102-parquetnatural-4.jpg",
+    "urlOriginal": "https://res.cloudinary.com/jj8wyws3/image/upload/v1/public/uploads/piso-vinilico-spc-de-interior-parquet-natural-caja-12-un-spc102-parquetnatural-4.jpg",
+    "publicId": "public/uploads/piso-vinilico-spc-de-interior-parquet-natural-caja-12-un-spc102-parquetnatural-4"
+  },
+  {
+    "modelo": "Producto",
+    "registroId": 26,
+    "campo": "imagenes[3]",
+    "urlActual": "https://res.cloudinary.com/jj8wyws3/image/upload/v1783566483/public/uploads/piso-vinilico-spc-de-interior-parquet-natural-caja-12-un-spc102-parquetnatural-5.jpg",
+    "urlOriginal": "https://res.cloudinary.com/jj8wyws3/image/upload/v1/public/uploads/piso-vinilico-spc-de-interior-parquet-natural-caja-12-un-spc102-parquetnatural-5.jpg",
+    "publicId": "public/uploads/piso-vinilico-spc-de-interior-parquet-natural-caja-12-un-spc102-parquetnatural-5"
+  },
+  {
+    "modelo": "Producto",
+    "registroId": 26,
+    "campo": "imagenes[4]",
+    "urlActual": "https://res.cloudinary.com/jj8wyws3/image/upload/v1783566483/public/uploads/piso-vinilico-spc-de-interior-parquet-natural-caja-12-un-spc102-parquetnatural-6.jpg",
+    "urlOriginal": "https://res.cloudinary.com/jj8wyws3/image/upload/v1/public/uploads/piso-vinilico-spc-de-interior-parquet-natural-caja-12-un-spc102-parquetnatural-6.jpg",
+    "publicId": "public/uploads/piso-vinilico-spc-de-interior-parquet-natural-caja-12-un-spc102-parquetnatural-6"
+  },
+  {
+    "modelo": "Producto",
+    "registroId": 26,
+    "campo": "imagenes[5]",
+    "urlActual": "https://res.cloudinary.com/jj8wyws3/image/upload/v1783566483/public/uploads/piso-vinilico-spc-de-interior-parquet-natural-caja-12-un-spc102-parquetnatural-7.jpg",
+    "urlOriginal": "https://res.cloudinary.com/jj8wyws3/image/upload/v1/public/uploads/piso-vinilico-spc-de-interior-parquet-natural-caja-12-un-spc102-parquetnatural-7.jpg",
+    "publicId": "public/uploads/piso-vinilico-spc-de-interior-parquet-natural-caja-12-un-spc102-parquetnatural-7"
+  },
+  {
+    "modelo": "Producto",
+    "registroId": 26,
+    "campo": "imagenes[6]",
+    "urlActual": "https://res.cloudinary.com/jj8wyws3/image/upload/v1783566484/public/uploads/piso-vinilico-spc-de-interior-parquet-natural-caja-12-un-spc102-parquetnatural-8.jpg",
+    "urlOriginal": "https://res.cloudinary.com/jj8wyws3/image/upload/v1/public/uploads/piso-vinilico-spc-de-interior-parquet-natural-caja-12-un-spc102-parquetnatural-8.jpg",
+    "publicId": "public/uploads/piso-vinilico-spc-de-interior-parquet-natural-caja-12-un-spc102-parquetnatural-8"
+  },
+  {
+    "modelo": "Producto",
+    "registroId": 41,
+    "campo": "imagenes[0]",
+    "urlActual": "https://res.cloudinary.com/jj8wyws3/image/upload/v1783566483/public/uploads/deck-wpc-premium-bicolor-cafe-madera-pew101-cafemadera-2.webp",
+    "urlOriginal": "https://res.cloudinary.com/jj8wyws3/image/upload/v1/public/uploads/deck-wpc-premium-bicolor-cafe-madera-pew101-cafemadera-2.webp",
+    "publicId": "public/uploads/deck-wpc-premium-bicolor-cafe-madera-pew101-cafemadera-2"
+  },
+  {
+    "modelo": "Producto",
+    "registroId": 41,
+    "campo": "imagenes[1]",
+    "urlActual": "https://res.cloudinary.com/jj8wyws3/image/upload/v1783566483/public/uploads/deck-wpc-premium-bicolor-cafe-madera-pew101-cafemadera-3.jpg",
+    "urlOriginal": "https://res.cloudinary.com/jj8wyws3/image/upload/v1/public/uploads/deck-wpc-premium-bicolor-cafe-madera-pew101-cafemadera-3.jpg",
+    "publicId": "public/uploads/deck-wpc-premium-bicolor-cafe-madera-pew101-cafemadera-3"
+  },
+  {
+    "modelo": "Producto",
+    "registroId": 41,
+    "campo": "imagenes[2]",
+    "urlActual": "https://res.cloudinary.com/jj8wyws3/image/upload/v1783566485/public/uploads/deck-wpc-premium-bicolor-cafe-madera-pew101-cafemadera-4.jpg",
+    "urlOriginal": "https://res.cloudinary.com/jj8wyws3/image/upload/v1/public/uploads/deck-wpc-premium-bicolor-cafe-madera-pew101-cafemadera-4.jpg",
+    "publicId": "public/uploads/deck-wpc-premium-bicolor-cafe-madera-pew101-cafemadera-4"
+  },
+  {
+    "modelo": "Producto",
+    "registroId": 41,
+    "campo": "imagenes[3]",
+    "urlActual": "https://res.cloudinary.com/jj8wyws3/image/upload/v1783566485/public/uploads/deck-wpc-premium-bicolor-cafe-madera-pew101-cafemadera-5.jpg",
+    "urlOriginal": "https://res.cloudinary.com/jj8wyws3/image/upload/v1/public/uploads/deck-wpc-premium-bicolor-cafe-madera-pew101-cafemadera-5.jpg",
+    "publicId": "public/uploads/deck-wpc-premium-bicolor-cafe-madera-pew101-cafemadera-5"
+  },
+  {
+    "modelo": "Producto",
+    "registroId": 41,
+    "campo": "imagenes[4]",
+    "urlActual": "https://res.cloudinary.com/jj8wyws3/image/upload/v1783566485/public/uploads/deck-wpc-premium-bicolor-cafe-madera-pew101-cafemadera-6.jpg",
+    "urlOriginal": "https://res.cloudinary.com/jj8wyws3/image/upload/v1/public/uploads/deck-wpc-premium-bicolor-cafe-madera-pew101-cafemadera-6.jpg",
+    "publicId": "public/uploads/deck-wpc-premium-bicolor-cafe-madera-pew101-cafemadera-6"
+  },
+  {
+    "modelo": "Producto",
+    "registroId": 41,
+    "campo": "imagenes[5]",
+    "urlActual": "https://res.cloudinary.com/jj8wyws3/image/upload/v1783566483/public/uploads/deck-wpc-premium-bicolor-cafe-madera-pew101-cafemadera-7.jpg",
+    "urlOriginal": "https://res.cloudinary.com/jj8wyws3/image/upload/v1/public/uploads/deck-wpc-premium-bicolor-cafe-madera-pew101-cafemadera-7.jpg",
+    "publicId": "public/uploads/deck-wpc-premium-bicolor-cafe-madera-pew101-cafemadera-7"
+  },
+  {
+    "modelo": "Producto",
+    "registroId": 41,
+    "campo": "imagenes[6]",
+    "urlActual": "https://res.cloudinary.com/jj8wyws3/image/upload/v1783566483/public/uploads/deck-wpc-premium-bicolor-cafe-madera-pew101-cafemadera-8.jpg",
+    "urlOriginal": "https://res.cloudinary.com/jj8wyws3/image/upload/v1/public/uploads/deck-wpc-premium-bicolor-cafe-madera-pew101-cafemadera-8.jpg",
+    "publicId": "public/uploads/deck-wpc-premium-bicolor-cafe-madera-pew101-cafemadera-8"
+  },
+  {
+    "modelo": "Producto",
+    "registroId": 41,
+    "campo": "imagenes[7]",
+    "urlActual": "https://res.cloudinary.com/jj8wyws3/image/upload/v1783566483/public/uploads/deck-wpc-premium-bicolor-cafe-madera-pew101-cafemadera-9.jpg",
+    "urlOriginal": "https://res.cloudinary.com/jj8wyws3/image/upload/v1/public/uploads/deck-wpc-premium-bicolor-cafe-madera-pew101-cafemadera-9.jpg",
+    "publicId": "public/uploads/deck-wpc-premium-bicolor-cafe-madera-pew101-cafemadera-9"
+  },
+  {
+    "modelo": "Producto",
+    "registroId": 40,
+    "campo": "imagenes[0]",
+    "urlActual": "https://res.cloudinary.com/jj8wyws3/image/upload/v1783566482/public/uploads/deck-wpc-premium-bicolor-cafe-chocolate-pew101-cafechocolate-2.webp",
+    "urlOriginal": "https://res.cloudinary.com/jj8wyws3/image/upload/v1/public/uploads/deck-wpc-premium-bicolor-cafe-chocolate-pew101-cafechocolate-2.webp",
+    "publicId": "public/uploads/deck-wpc-premium-bicolor-cafe-chocolate-pew101-cafechocolate-2"
+  },
+  {
+    "modelo": "Producto",
+    "registroId": 40,
+    "campo": "imagenes[1]",
+    "urlActual": "https://res.cloudinary.com/jj8wyws3/image/upload/v1783566483/public/uploads/deck-wpc-premium-bicolor-cafe-chocolate-pew101-cafechocolate-3.jpg",
+    "urlOriginal": "https://res.cloudinary.com/jj8wyws3/image/upload/v1/public/uploads/deck-wpc-premium-bicolor-cafe-chocolate-pew101-cafechocolate-3.jpg",
+    "publicId": "public/uploads/deck-wpc-premium-bicolor-cafe-chocolate-pew101-cafechocolate-3"
+  },
+  {
+    "modelo": "Producto",
+    "registroId": 40,
+    "campo": "imagenes[2]",
+    "urlActual": "https://res.cloudinary.com/jj8wyws3/image/upload/v1783566483/public/uploads/deck-wpc-premium-bicolor-cafe-chocolate-pew101-cafechocolate-4.jpg",
+    "urlOriginal": "https://res.cloudinary.com/jj8wyws3/image/upload/v1/public/uploads/deck-wpc-premium-bicolor-cafe-chocolate-pew101-cafechocolate-4.jpg",
+    "publicId": "public/uploads/deck-wpc-premium-bicolor-cafe-chocolate-pew101-cafechocolate-4"
+  },
+  {
+    "modelo": "Producto",
+    "registroId": 40,
+    "campo": "imagenes[3]",
+    "urlActual": "https://res.cloudinary.com/jj8wyws3/image/upload/v1783566483/public/uploads/deck-wpc-premium-bicolor-cafe-chocolate-pew101-cafechocolate-5.jpg",
+    "urlOriginal": "https://res.cloudinary.com/jj8wyws3/image/upload/v1/public/uploads/deck-wpc-premium-bicolor-cafe-chocolate-pew101-cafechocolate-5.jpg",
+    "publicId": "public/uploads/deck-wpc-premium-bicolor-cafe-chocolate-pew101-cafechocolate-5"
+  },
+  {
+    "modelo": "Producto",
+    "registroId": 40,
+    "campo": "imagenes[4]",
+    "urlActual": "https://res.cloudinary.com/jj8wyws3/image/upload/v1783566483/public/uploads/deck-wpc-premium-bicolor-cafe-chocolate-pew101-cafechocolate-6.jpg",
+    "urlOriginal": "https://res.cloudinary.com/jj8wyws3/image/upload/v1/public/uploads/deck-wpc-premium-bicolor-cafe-chocolate-pew101-cafechocolate-6.jpg",
+    "publicId": "public/uploads/deck-wpc-premium-bicolor-cafe-chocolate-pew101-cafechocolate-6"
+  },
+  {
+    "modelo": "Producto",
+    "registroId": 40,
+    "campo": "imagenes[5]",
+    "urlActual": "https://res.cloudinary.com/jj8wyws3/image/upload/v1783566483/public/uploads/deck-wpc-premium-bicolor-cafe-chocolate-pew101-cafechocolate-7.jpg",
+    "urlOriginal": "https://res.cloudinary.com/jj8wyws3/image/upload/v1/public/uploads/deck-wpc-premium-bicolor-cafe-chocolate-pew101-cafechocolate-7.jpg",
+    "publicId": "public/uploads/deck-wpc-premium-bicolor-cafe-chocolate-pew101-cafechocolate-7"
+  },
+  {
+    "modelo": "Producto",
+    "registroId": 40,
+    "campo": "imagenes[6]",
+    "urlActual": "https://res.cloudinary.com/jj8wyws3/image/upload/v1783566483/public/uploads/deck-wpc-premium-bicolor-cafe-chocolate-pew101-cafechocolate-8.jpg",
+    "urlOriginal": "https://res.cloudinary.com/jj8wyws3/image/upload/v1/public/uploads/deck-wpc-premium-bicolor-cafe-chocolate-pew101-cafechocolate-8.jpg",
+    "publicId": "public/uploads/deck-wpc-premium-bicolor-cafe-chocolate-pew101-cafechocolate-8"
+  },
+  {
+    "modelo": "Producto",
+    "registroId": 40,
+    "campo": "imagenes[7]",
+    "urlActual": "https://res.cloudinary.com/jj8wyws3/image/upload/v1783566483/public/uploads/deck-wpc-premium-bicolor-cafe-chocolate-pew101-cafechocolate-9.jpg",
+    "urlOriginal": "https://res.cloudinary.com/jj8wyws3/image/upload/v1/public/uploads/deck-wpc-premium-bicolor-cafe-chocolate-pew101-cafechocolate-9.jpg",
+    "publicId": "public/uploads/deck-wpc-premium-bicolor-cafe-chocolate-pew101-cafechocolate-9"
+  },
+  {
+    "modelo": "Producto",
+    "registroId": 44,
+    "campo": "imagenes[0]",
+    "urlActual": "https://res.cloudinary.com/jj8wyws3/image/upload/v1783566485/public/uploads/deck-wpc-premium-bicolor-gris-piedra-pew101-grispiedra-2.webp",
+    "urlOriginal": "https://res.cloudinary.com/jj8wyws3/image/upload/v1/public/uploads/deck-wpc-premium-bicolor-gris-piedra-pew101-grispiedra-2.webp",
+    "publicId": "public/uploads/deck-wpc-premium-bicolor-gris-piedra-pew101-grispiedra-2"
+  },
+  {
+    "modelo": "Producto",
+    "registroId": 44,
+    "campo": "imagenes[1]",
+    "urlActual": "https://res.cloudinary.com/jj8wyws3/image/upload/v1783566483/public/uploads/deck-wpc-premium-bicolor-gris-piedra-pew101-grispiedra-3.jpg",
+    "urlOriginal": "https://res.cloudinary.com/jj8wyws3/image/upload/v1/public/uploads/deck-wpc-premium-bicolor-gris-piedra-pew101-grispiedra-3.jpg",
+    "publicId": "public/uploads/deck-wpc-premium-bicolor-gris-piedra-pew101-grispiedra-3"
+  },
+  {
+    "modelo": "Producto",
+    "registroId": 44,
+    "campo": "imagenes[2]",
+    "urlActual": "https://res.cloudinary.com/jj8wyws3/image/upload/v1783566485/public/uploads/deck-wpc-premium-bicolor-gris-piedra-pew101-grispiedra-4.jpg",
+    "urlOriginal": "https://res.cloudinary.com/jj8wyws3/image/upload/v1/public/uploads/deck-wpc-premium-bicolor-gris-piedra-pew101-grispiedra-4.jpg",
+    "publicId": "public/uploads/deck-wpc-premium-bicolor-gris-piedra-pew101-grispiedra-4"
+  },
+  {
+    "modelo": "Producto",
+    "registroId": 44,
+    "campo": "imagenes[3]",
+    "urlActual": "https://res.cloudinary.com/jj8wyws3/image/upload/v1783566483/public/uploads/deck-wpc-premium-bicolor-gris-piedra-pew101-grispiedra-5.jpg",
+    "urlOriginal": "https://res.cloudinary.com/jj8wyws3/image/upload/v1/public/uploads/deck-wpc-premium-bicolor-gris-piedra-pew101-grispiedra-5.jpg",
+    "publicId": "public/uploads/deck-wpc-premium-bicolor-gris-piedra-pew101-grispiedra-5"
+  },
+  {
+    "modelo": "Producto",
+    "registroId": 44,
+    "campo": "imagenes[4]",
+    "urlActual": "https://res.cloudinary.com/jj8wyws3/image/upload/v1783566483/public/uploads/deck-wpc-premium-bicolor-gris-piedra-pew101-grispiedra-6.jpg",
+    "urlOriginal": "https://res.cloudinary.com/jj8wyws3/image/upload/v1/public/uploads/deck-wpc-premium-bicolor-gris-piedra-pew101-grispiedra-6.jpg",
+    "publicId": "public/uploads/deck-wpc-premium-bicolor-gris-piedra-pew101-grispiedra-6"
+  },
+  {
+    "modelo": "Producto",
+    "registroId": 44,
+    "campo": "imagenes[5]",
+    "urlActual": "https://res.cloudinary.com/jj8wyws3/image/upload/v1783566483/public/uploads/deck-wpc-premium-bicolor-gris-piedra-pew101-grispiedra-7.jpg",
+    "urlOriginal": "https://res.cloudinary.com/jj8wyws3/image/upload/v1/public/uploads/deck-wpc-premium-bicolor-gris-piedra-pew101-grispiedra-7.jpg",
+    "publicId": "public/uploads/deck-wpc-premium-bicolor-gris-piedra-pew101-grispiedra-7"
+  },
+  {
+    "modelo": "Producto",
+    "registroId": 44,
+    "campo": "imagenes[6]",
+    "urlActual": "https://res.cloudinary.com/jj8wyws3/image/upload/v1783566485/public/uploads/deck-wpc-premium-bicolor-gris-piedra-pew101-grispiedra-8.jpg",
+    "urlOriginal": "https://res.cloudinary.com/jj8wyws3/image/upload/v1/public/uploads/deck-wpc-premium-bicolor-gris-piedra-pew101-grispiedra-8.jpg",
+    "publicId": "public/uploads/deck-wpc-premium-bicolor-gris-piedra-pew101-grispiedra-8"
+  },
+  {
+    "modelo": "Producto",
+    "registroId": 44,
+    "campo": "imagenes[7]",
+    "urlActual": "https://res.cloudinary.com/jj8wyws3/image/upload/v1783566483/public/uploads/deck-wpc-premium-bicolor-gris-piedra-pew101-grispiedra-9.jpg",
+    "urlOriginal": "https://res.cloudinary.com/jj8wyws3/image/upload/v1/public/uploads/deck-wpc-premium-bicolor-gris-piedra-pew101-grispiedra-9.jpg",
+    "publicId": "public/uploads/deck-wpc-premium-bicolor-gris-piedra-pew101-grispiedra-9"
+  },
+  {
+    "modelo": "Producto",
+    "registroId": 36,
+    "campo": "imagenes[0]",
+    "urlActual": "https://res.cloudinary.com/jj8wyws3/image/upload/v1783566484/public/uploads/deck-wpc-premium-bicolor-cafe-madera-pew102-pew102-cafemadera-2.webp",
+    "urlOriginal": "https://res.cloudinary.com/jj8wyws3/image/upload/v1/public/uploads/deck-wpc-premium-bicolor-cafe-madera-pew102-pew102-cafemadera-2.webp",
+    "publicId": "public/uploads/deck-wpc-premium-bicolor-cafe-madera-pew102-pew102-cafemadera-2"
+  },
+  {
+    "modelo": "Producto",
+    "registroId": 36,
+    "campo": "imagenes[1]",
+    "urlActual": "https://res.cloudinary.com/jj8wyws3/image/upload/v1783566484/public/uploads/deck-wpc-premium-bicolor-cafe-madera-pew102-pew102-cafemadera-3.webp",
+    "urlOriginal": "https://res.cloudinary.com/jj8wyws3/image/upload/v1/public/uploads/deck-wpc-premium-bicolor-cafe-madera-pew102-pew102-cafemadera-3.webp",
+    "publicId": "public/uploads/deck-wpc-premium-bicolor-cafe-madera-pew102-pew102-cafemadera-3"
+  },
+  {
+    "modelo": "Producto",
+    "registroId": 36,
+    "campo": "imagenes[2]",
+    "urlActual": "https://res.cloudinary.com/jj8wyws3/image/upload/v1783566483/public/uploads/deck-wpc-premium-bicolor-cafe-madera-pew102-pew102-cafemadera-4.webp",
+    "urlOriginal": "https://res.cloudinary.com/jj8wyws3/image/upload/v1/public/uploads/deck-wpc-premium-bicolor-cafe-madera-pew102-pew102-cafemadera-4.webp",
+    "publicId": "public/uploads/deck-wpc-premium-bicolor-cafe-madera-pew102-pew102-cafemadera-4"
+  },
+  {
+    "modelo": "Producto",
+    "registroId": 36,
+    "campo": "imagenes[3]",
+    "urlActual": "https://res.cloudinary.com/jj8wyws3/image/upload/v1783566483/public/uploads/deck-wpc-premium-bicolor-cafe-madera-pew102-pew102-cafemadera-5.webp",
+    "urlOriginal": "https://res.cloudinary.com/jj8wyws3/image/upload/v1/public/uploads/deck-wpc-premium-bicolor-cafe-madera-pew102-pew102-cafemadera-5.webp",
+    "publicId": "public/uploads/deck-wpc-premium-bicolor-cafe-madera-pew102-pew102-cafemadera-5"
+  },
+  {
+    "modelo": "Producto",
+    "registroId": 45,
+    "campo": "imagenes[0]",
+    "urlActual": "https://res.cloudinary.com/jj8wyws3/image/upload/v1783566485/public/uploads/deck-wpc-premium-bicolor-cafe-antique-pew101-cafeantique-2.webp",
+    "urlOriginal": "https://res.cloudinary.com/jj8wyws3/image/upload/v1/public/uploads/deck-wpc-premium-bicolor-cafe-antique-pew101-cafeantique-2.webp",
+    "publicId": "public/uploads/deck-wpc-premium-bicolor-cafe-antique-pew101-cafeantique-2"
+  },
+  {
+    "modelo": "Producto",
+    "registroId": 45,
+    "campo": "imagenes[1]",
+    "urlActual": "https://res.cloudinary.com/jj8wyws3/image/upload/v1783566483/public/uploads/deck-wpc-premium-bicolor-cafe-antique-pew101-cafeantique-3.jpg",
+    "urlOriginal": "https://res.cloudinary.com/jj8wyws3/image/upload/v1/public/uploads/deck-wpc-premium-bicolor-cafe-antique-pew101-cafeantique-3.jpg",
+    "publicId": "public/uploads/deck-wpc-premium-bicolor-cafe-antique-pew101-cafeantique-3"
+  },
+  {
+    "modelo": "Producto",
+    "registroId": 45,
+    "campo": "imagenes[2]",
+    "urlActual": "https://res.cloudinary.com/jj8wyws3/image/upload/v1783566483/public/uploads/deck-wpc-premium-bicolor-cafe-antique-pew101-cafeantique-4.jpg",
+    "urlOriginal": "https://res.cloudinary.com/jj8wyws3/image/upload/v1/public/uploads/deck-wpc-premium-bicolor-cafe-antique-pew101-cafeantique-4.jpg",
+    "publicId": "public/uploads/deck-wpc-premium-bicolor-cafe-antique-pew101-cafeantique-4"
+  },
+  {
+    "modelo": "Producto",
+    "registroId": 45,
+    "campo": "imagenes[3]",
+    "urlActual": "https://res.cloudinary.com/jj8wyws3/image/upload/v1783566483/public/uploads/deck-wpc-premium-bicolor-cafe-antique-pew101-cafeantique-5.jpg",
+    "urlOriginal": "https://res.cloudinary.com/jj8wyws3/image/upload/v1/public/uploads/deck-wpc-premium-bicolor-cafe-antique-pew101-cafeantique-5.jpg",
+    "publicId": "public/uploads/deck-wpc-premium-bicolor-cafe-antique-pew101-cafeantique-5"
+  },
+  {
+    "modelo": "Producto",
+    "registroId": 45,
+    "campo": "imagenes[4]",
+    "urlActual": "https://res.cloudinary.com/jj8wyws3/image/upload/v1783566483/public/uploads/deck-wpc-premium-bicolor-cafe-antique-pew101-cafeantique-6.jpg",
+    "urlOriginal": "https://res.cloudinary.com/jj8wyws3/image/upload/v1/public/uploads/deck-wpc-premium-bicolor-cafe-antique-pew101-cafeantique-6.jpg",
+    "publicId": "public/uploads/deck-wpc-premium-bicolor-cafe-antique-pew101-cafeantique-6"
+  },
+  {
+    "modelo": "Producto",
+    "registroId": 45,
+    "campo": "imagenes[5]",
+    "urlActual": "https://res.cloudinary.com/jj8wyws3/image/upload/v1783566483/public/uploads/deck-wpc-premium-bicolor-cafe-antique-pew101-cafeantique-7.jpg",
+    "urlOriginal": "https://res.cloudinary.com/jj8wyws3/image/upload/v1/public/uploads/deck-wpc-premium-bicolor-cafe-antique-pew101-cafeantique-7.jpg",
+    "publicId": "public/uploads/deck-wpc-premium-bicolor-cafe-antique-pew101-cafeantique-7"
+  },
+  {
+    "modelo": "Producto",
+    "registroId": 45,
+    "campo": "imagenes[6]",
+    "urlActual": "https://res.cloudinary.com/jj8wyws3/image/upload/v1783566483/public/uploads/deck-wpc-premium-bicolor-cafe-antique-pew101-cafeantique-8.jpg",
+    "urlOriginal": "https://res.cloudinary.com/jj8wyws3/image/upload/v1/public/uploads/deck-wpc-premium-bicolor-cafe-antique-pew101-cafeantique-8.jpg",
+    "publicId": "public/uploads/deck-wpc-premium-bicolor-cafe-antique-pew101-cafeantique-8"
+  },
+  {
+    "modelo": "Producto",
+    "registroId": 45,
+    "campo": "imagenes[7]",
+    "urlActual": "https://res.cloudinary.com/jj8wyws3/image/upload/v1783566483/public/uploads/deck-wpc-premium-bicolor-cafe-antique-pew101-cafeantique-9.jpg",
+    "urlOriginal": "https://res.cloudinary.com/jj8wyws3/image/upload/v1/public/uploads/deck-wpc-premium-bicolor-cafe-antique-pew101-cafeantique-9.jpg",
+    "publicId": "public/uploads/deck-wpc-premium-bicolor-cafe-antique-pew101-cafeantique-9"
+  },
+  {
+    "modelo": "Categoria",
+    "registroId": 1,
+    "campo": "imagen",
+    "urlActual": "https://res.cloudinary.com/jj8wyws3/image/upload/v1783566484/public/uploads/revestimiento-metalico-de-pared-color-natural-caja-8-un-rem108-natural-2.webp",
+    "urlOriginal": "https://res.cloudinary.com/jj8wyws3/image/upload/v1/public/uploads/revestimiento-metalico-de-pared-color-natural-caja-8-un-rem108-natural-2.webp",
+    "publicId": "public/uploads/revestimiento-metalico-de-pared-color-natural-caja-8-un-rem108-natural-2"
+  },
+  {
+    "modelo": "Categoria",
+    "registroId": 2,
+    "campo": "imagen",
+    "urlActual": "https://res.cloudinary.com/jj8wyws3/image/upload/v1783566483/public/uploads/piso-vinilico-spc-de-interior-color-carbon-caja-12-un-spc101-carbon-2.webp",
+    "urlOriginal": "https://res.cloudinary.com/jj8wyws3/image/upload/v1/public/uploads/piso-vinilico-spc-de-interior-color-carbon-caja-12-un-spc101-carbon-2.webp",
+    "publicId": "public/uploads/piso-vinilico-spc-de-interior-color-carbon-caja-12-un-spc101-carbon-2"
+  },
+  {
+    "modelo": "Categoria",
+    "registroId": 3,
+    "campo": "imagen",
+    "urlActual": "https://res.cloudinary.com/jj8wyws3/image/upload/v1783566483/public/uploads/piso-flotante-interior-color-natural-caja-10-un-pim101-natural-2.webp",
+    "urlOriginal": "https://res.cloudinary.com/jj8wyws3/image/upload/v1/public/uploads/piso-flotante-interior-color-natural-caja-10-un-pim101-natural-2.webp",
+    "publicId": "public/uploads/piso-flotante-interior-color-natural-caja-10-un-pim101-natural-2"
+  },
+  {
+    "modelo": "Categoria",
+    "registroId": 4,
+    "campo": "imagen",
+    "urlActual": "https://res.cloudinary.com/jj8wyws3/image/upload/v1783566485/public/uploads/deck-wpc-premium-bicolor-gris-grafito-pew102-grisgrafito-2.webp",
+    "urlOriginal": "https://res.cloudinary.com/jj8wyws3/image/upload/v1/public/uploads/deck-wpc-premium-bicolor-gris-grafito-pew102-grisgrafito-2.webp",
+    "publicId": "public/uploads/deck-wpc-premium-bicolor-gris-grafito-pew102-grisgrafito-2"
+  },
+  {
+    "modelo": "Categoria",
+    "registroId": 5,
+    "campo": "imagen",
+    "urlActual": "https://res.cloudinary.com/jj8wyws3/image/upload/v1783566484/public/uploads/siding-texturizado-tipo-granito-crema-caja-de-8-un-reg001-crema-2.jpg",
+    "urlOriginal": "https://res.cloudinary.com/jj8wyws3/image/upload/v1/public/uploads/siding-texturizado-tipo-granito-crema-caja-de-8-un-reg001-crema-2.jpg",
+    "publicId": "public/uploads/siding-texturizado-tipo-granito-crema-caja-de-8-un-reg001-crema-2"
+  },
+  {
+    "modelo": "Categoria",
+    "registroId": 7,
+    "campo": "imagen",
+    "urlActual": "https://res.cloudinary.com/jj8wyws3/image/upload/v1783566483/public/uploads/revestimiento-de-pared-wpc-extruido-color-negro-rew202-rew202-negro-2.webp",
+    "urlOriginal": "https://res.cloudinary.com/jj8wyws3/image/upload/v1/public/uploads/revestimiento-de-pared-wpc-extruido-color-negro-rew202-rew202-negro-2.webp",
+    "publicId": "public/uploads/revestimiento-de-pared-wpc-extruido-color-negro-rew202-rew202-negro-2"
+  },
+  {
+    "modelo": "Categoria",
+    "registroId": 8,
+    "campo": "imagen",
+    "urlActual": "https://res.cloudinary.com/jj8wyws3/image/upload/v1783566483/public/uploads/revestimiento-de-interior-color-chocolate-negro-riw101-chocolatenegro-2.webp",
+    "urlOriginal": "https://res.cloudinary.com/jj8wyws3/image/upload/v1/public/uploads/revestimiento-de-interior-color-chocolate-negro-riw101-chocolatenegro-2.webp",
+    "publicId": "public/uploads/revestimiento-de-interior-color-chocolate-negro-riw101-chocolatenegro-2"
+  },
+  {
+    "modelo": "Categoria",
+    "registroId": 9,
+    "campo": "imagen",
+    "urlActual": "https://res.cloudinary.com/jj8wyws3/image/upload/v1783566485/public/uploads/corta-vista-extruido-de-wpc-color-cafe-chocolate-cvw201-cafechocolate-2.webp",
+    "urlOriginal": "https://res.cloudinary.com/jj8wyws3/image/upload/v1/public/uploads/corta-vista-extruido-de-wpc-color-cafe-chocolate-cvw201-cafechocolate-2.webp",
+    "publicId": "public/uploads/corta-vista-extruido-de-wpc-color-cafe-chocolate-cvw201-cafechocolate-2"
+  },
+  {
+    "modelo": "Categoria",
+    "registroId": 10,
+    "campo": "imagen",
+    "urlActual": "https://res.cloudinary.com/jj8wyws3/image/upload/v1783566484/public/uploads/revestimiento-exterior-de-pvc-color-cafe-rep101-cafe-2.webp",
+    "urlOriginal": "https://res.cloudinary.com/jj8wyws3/image/upload/v1/public/uploads/revestimiento-exterior-de-pvc-color-cafe-rep101-cafe-2.webp",
+    "publicId": "public/uploads/revestimiento-exterior-de-pvc-color-cafe-rep101-cafe-2"
+  },
+  {
+    "modelo": "Categoria",
+    "registroId": 11,
+    "campo": "imagen",
+    "urlActual": "https://res.cloudinary.com/jj8wyws3/image/upload/v1783566484/public/uploads/siding-piedra-pu-color-grafito-rpu101-rpu101-grafito-2.webp",
+    "urlOriginal": "https://res.cloudinary.com/jj8wyws3/image/upload/v1/public/uploads/siding-piedra-pu-color-grafito-rpu101-rpu101-grafito-2.webp",
+    "publicId": "public/uploads/siding-piedra-pu-color-grafito-rpu101-rpu101-grafito-2"
+  },
+  {
+    "modelo": "Categoria",
+    "registroId": 12,
+    "campo": "imagen",
+    "urlActual": "https://res.cloudinary.com/jj8wyws3/image/upload/v1783566485/public/uploads/cerco-exterior-wpc-color-cafe-cew01-180-cew01-180-cafe-2.webp",
+    "urlOriginal": "https://res.cloudinary.com/jj8wyws3/image/upload/v1/public/uploads/cerco-exterior-wpc-color-cafe-cew01-180-cew01-180-cafe-2.webp",
+    "publicId": "public/uploads/cerco-exterior-wpc-color-cafe-cew01-180-cew01-180-cafe-2"
+  },
+  {
+    "modelo": "Categoria",
+    "registroId": 6,
+    "campo": "imagen",
+    "urlActual": "https://res.cloudinary.com/jj8wyws3/image/upload/v1783566485/public/uploads/piso-porcelanato-60x60-concrete-carbon-caja-4-un-pip102-carbon-2.webp",
+    "urlOriginal": "https://res.cloudinary.com/jj8wyws3/image/upload/v1/public/uploads/piso-porcelanato-60x60-concrete-carbon-caja-4-un-pip102-carbon-2.webp",
+    "publicId": "public/uploads/piso-porcelanato-60x60-concrete-carbon-caja-4-un-pip102-carbon-2"
+  },
+  {
+    "modelo": "Banner",
+    "registroId": 2,
+    "campo": "imagen",
+    "urlActual": "https://res.cloudinary.com/jj8wyws3/image/upload/v1783566484/public/banner/1783024242548-94aflz.jpg",
+    "urlOriginal": "https://res.cloudinary.com/jj8wyws3/image/upload/v1/public/banner/1783024242548-94aflz.jpg",
+    "publicId": "public/banner/1783024242548-94aflz"
+  },
+  {
+    "modelo": "Banner",
+    "registroId": 3,
+    "campo": "imagen",
+    "urlActual": "https://res.cloudinary.com/jj8wyws3/image/upload/v1783571894/productos/hmdhwc0aqfuvzoowfwoh.jpg",
+    "urlOriginal": "https://res.cloudinary.com/jj8wyws3/image/upload/v1/productos/hmdhwc0aqfuvzoowfwoh.jpg",
+    "publicId": "productos/hmdhwc0aqfuvzoowfwoh"
+  },
+  {
+    "modelo": "Banner",
+    "registroId": 1,
+    "campo": "imagen",
+    "urlActual": "https://res.cloudinary.com/jj8wyws3/image/upload/v1783712225/productos/lyd5ikpqh4v2varm6hgl.jpg",
+    "urlOriginal": "https://res.cloudinary.com/jj8wyws3/image/upload/v1/productos/lyd5ikpqh4v2varm6hgl.jpg",
+    "publicId": "productos/lyd5ikpqh4v2varm6hgl"
+  },
+  {
+    "modelo": "Banner",
+    "registroId": 1,
+    "campo": "imagenMovil",
+    "urlActual": "https://res.cloudinary.com/jj8wyws3/image/upload/v1783712175/productos/z1gk5mtwifbnvizptp1q.jpg",
+    "urlOriginal": "https://res.cloudinary.com/jj8wyws3/image/upload/v1/productos/z1gk5mtwifbnvizptp1q.jpg",
+    "publicId": "productos/z1gk5mtwifbnvizptp1q"
+  },
+  {
+    "modelo": "Configuracion",
+    "registroId": 1,
+    "campo": "logo",
+    "urlActual": "https://res.cloudinary.com/jj8wyws3/image/upload/v1783990479/productos/eazyp30xkvhyfj1cdue2.png",
+    "urlOriginal": "https://res.cloudinary.com/jj8wyws3/image/upload/v1/productos/eazyp30xkvhyfj1cdue2.png",
+    "publicId": "productos/eazyp30xkvhyfj1cdue2"
+  }
+]
