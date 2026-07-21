@@ -92,9 +92,8 @@ export default function ProductoPage() {
   try { imagenes = JSON.parse(producto.imagenes); } catch {}
 
   const extra = getProdData(producto, getProductoExtra(producto.sku));
-  const UNIT_PRICE_CATEGORIES = ['pisos-deck-wpc', 'revestimiento-exterior-wpc', 'revestimientos-de-interior', 'cortavista', 'revestimiento-exterior-de-pvc', 'cercos-wpc', 'siding-piedras-pu'];
   const UNIT_PRICE_SKUS = ['RPU101-FACHALETA', 'APU102-CAFE', 'APU102-NOGAL'];
-  const showUnitPrice = UNIT_PRICE_CATEGORIES.includes(producto.categoria.slug) || UNIT_PRICE_SKUS.includes(producto.sku);
+  const showUnitPrice = UNIT_PRICE_SKUS.includes(producto.sku);
   const formatearPrecio = (p: number) => `$${Math.round(p).toLocaleString('es-CL')}`;
 
   const whatsappMsg = encodeURIComponent(
@@ -199,7 +198,7 @@ export default function ProductoPage() {
           <div className="bg-gray-50 rounded-xl p-6 mb-4">
             <div className="flex items-baseline gap-3 mb-4">
               {(() => {
-                const displayPrice = showUnitPrice && producto.unidad === 'm2' ? Math.round(producto.precio * (producto.rendimiento || 1)) : producto.precio;
+                const displayPrice = showUnitPrice ? (producto.precioUnitario || producto.precio) : producto.precio;
                 const precioConDesc = producto.descuento ? Math.round(displayPrice * (1 - producto.descuento / 100)) : displayPrice;
                 return producto.descuento ? (
                   <>
@@ -210,7 +209,7 @@ export default function ProductoPage() {
                   <span className="text-3xl font-bold text-accent">{formatearPrecio(displayPrice)}</span>
                 );
               })()}
-              <span className="text-sm text-muted">/ {showUnitPrice ? (extra?.presentacion?.toLowerCase() || 'un') : producto.unidad}</span>
+              <span className="text-sm text-muted">/ {showUnitPrice ? (extra?.presentacion?.toLowerCase() || 'un') : 'm²'}</span>
             </div>
 
             <a
