@@ -27,7 +27,6 @@ model Producto {
   dimensiones String?
   unidad      String    @default("m2")
   precio      Float
-  precioAntes Float?
   descuento   Int?
   marca       String    @default("")
   imagenes    String    @default("[]")

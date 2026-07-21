@@ -15,7 +15,6 @@ interface Producto {
   dimensiones: string | null;
   unidad: string;
   precio: number;
-  precioAntes: number | null;
   descuento: number | null;
   imagenes: string;
   destacado: boolean;
@@ -199,11 +198,19 @@ export default function ProductoPage() {
 
           <div className="bg-gray-50 rounded-xl p-6 mb-4">
             <div className="flex items-baseline gap-3 mb-4">
-              <span className="text-3xl font-bold text-accent">{formatearPrecio(showUnitPrice && producto.unidad === 'm2' ? Math.round(producto.precio * (producto.rendimiento || 1)) : producto.precio)}</span>
+              {(() => {
+                const displayPrice = showUnitPrice && producto.unidad === 'm2' ? Math.round(producto.precio * (producto.rendimiento || 1)) : producto.precio;
+                const precioConDesc = producto.descuento ? Math.round(displayPrice * (1 - producto.descuento / 100)) : displayPrice;
+                return producto.descuento ? (
+                  <>
+                    <span className="text-lg text-muted line-through">{formatearPrecio(displayPrice)}</span>
+                    <span className="text-3xl font-bold text-accent">{formatearPrecio(precioConDesc)}</span>
+                  </>
+                ) : (
+                  <span className="text-3xl font-bold text-accent">{formatearPrecio(displayPrice)}</span>
+                );
+              })()}
               <span className="text-sm text-muted">/ {showUnitPrice ? (extra?.presentacion?.toLowerCase() || 'un') : producto.unidad}</span>
-              {producto.precioAntes && (
-                <span className="text-lg text-muted line-through">{formatearPrecio(producto.precioAntes)}</span>
-              )}
             </div>
 
             <a

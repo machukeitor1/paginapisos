@@ -12,7 +12,7 @@ export default function ProductosPage() {
   const [busqueda, setBusqueda] = useState('');
   const [guardando, setGuardando] = useState(false);
   const [form, setForm] = useState({
-    nombre: '', slug: '', sku: '', descripcion: '', dimensiones: '', unidad: 'm2', precio: 0, precioAntes: 0, descuento: 0, rendimiento: 1, unidadVenta: 'un', precioUnitario: 0, imagenes: '[]', estado: 'disponible', destacado: false, activo: true, orden: 0, categoriaId: 0,
+    nombre: '', slug: '', sku: '', descripcion: '', dimensiones: '', unidad: 'm2', precio: 0, descuento: 0, rendimiento: 1, unidadVenta: 'un', precioUnitario: 0, imagenes: '[]', estado: 'disponible', destacado: false, activo: true, orden: 0, categoriaId: 0,
     medidas: '', presentacion: '', rendimientoTexto: '', accesorios: '', esAccesorio: false,
   });
   const [cacheBust, setCacheBust] = useState(0);
@@ -94,15 +94,10 @@ export default function ProductosPage() {
     setGuardando(true);
     const ids = Array.from(seleccionados);
     await Promise.all(ids.map(async (id) => {
-      const prod = productos.find(p => p.id === id);
-      if (!prod) return;
-      const rend = prod.rendimiento || 1;
-      const precioOriginal = prod.precioAntes || prod.precio;
-      const precioConDescuento = Math.round(precioOriginal * (1 - porcentaje / 100));
       await fetch(`/api/productos/${id}`, {
         method: 'PUT',
         headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify({ precio: precioConDescuento, precioAntes: precioOriginal, descuento: porcentaje, precioUnitario: Math.round(precioConDescuento * rend) }),
+        body: JSON.stringify({ descuento: porcentaje }),
       });
     }));
     setGuardando(false);
@@ -114,14 +109,10 @@ export default function ProductosPage() {
     setGuardando(true);
     const ids = Array.from(seleccionados);
     await Promise.all(ids.map(async (id) => {
-      const prod = productos.find(p => p.id === id);
-      if (!prod) return;
-      const rend = prod.rendimiento || 1;
-      const precioOriginal = prod.precioAntes || prod.precio;
       await fetch(`/api/productos/${id}`, {
         method: 'PUT',
         headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify({ precio: precioOriginal, precioAntes: null, descuento: null, precioUnitario: Math.round(precioOriginal * rend) }),
+        body: JSON.stringify({ descuento: null }),
       });
     }));
     setGuardando(false);
@@ -136,12 +127,12 @@ export default function ProductosPage() {
     const toJsonArr = (v: string) => JSON.stringify(v.split('\n').map(s => s.trim()).filter(Boolean));
     const body = {
       ...form,
-      precioAntes: tieneDescuento ? form.precioAntes : null,
       descuento: tieneDescuento ? form.descuento : null,
       precioUnitario: Math.round(form.precio * form.rendimiento),
       medidas: form.medidas ? toJsonArr(form.medidas) : null,
       accesorios: form.accesorios ? toJsonArr(form.accesorios) : null,
     };
+    delete (body as any).precioAntes;
     if (!editando) delete (body as any).id;
 
     const res = await fetch(url, {
@@ -152,17 +143,16 @@ export default function ProductosPage() {
 
     if (res.ok) {
       setEditando(null);
-      setForm({ nombre: '', slug: '', sku: '', descripcion: '', dimensiones: '', unidad: 'm2', precio: 0, precioAntes: 0, descuento: 0, rendimiento: 1, unidadVenta: 'un', precioUnitario: 0, imagenes: '[]', estado: 'disponible', destacado: false, activo: true, orden: 0, categoriaId: 0, medidas: '', presentacion: '', rendimientoTexto: '', accesorios: '', esAccesorio: false });
+      setForm({ nombre: '', slug: '', sku: '', descripcion: '', dimensiones: '', unidad: 'm2', precio: 0, descuento: 0, rendimiento: 1, unidadVenta: 'un', precioUnitario: 0, imagenes: '[]', estado: 'disponible', destacado: false, activo: true, orden: 0, categoriaId: 0, medidas: '', presentacion: '', rendimientoTexto: '', accesorios: '', esAccesorio: false });
       cargar();
     }
   };
 
   const editar = (prod: any) => {
     setEditando(prod);
-    const base = prod.precioAntes || prod.precio;
     const parseToList = (v: string) => { try { const a = JSON.parse(v); return Array.isArray(a) ? a.join('\n') : ''; } catch { return ''; } };
     setForm({
-      nombre: prod.nombre, slug: prod.slug, sku: prod.sku, descripcion: prod.descripcion || '', dimensiones: prod.dimensiones || '', unidad: prod.unidad, precio: prod.precio, precioAntes: base, descuento: prod.descuento || 0, rendimiento: prod.rendimiento || 1, unidadVenta: prod.unidadVenta || 'un', precioUnitario: prod.precioUnitario || 0, imagenes: prod.imagenes, estado: prod.estado || 'disponible', destacado: prod.destacado, activo: prod.activo, orden: prod.orden, categoriaId: prod.categoriaId,
+      nombre: prod.nombre, slug: prod.slug, sku: prod.sku, descripcion: prod.descripcion || '', dimensiones: prod.dimensiones || '', unidad: prod.unidad, precio: prod.precio, descuento: prod.descuento || 0, rendimiento: prod.rendimiento || 1, unidadVenta: prod.unidadVenta || 'un', precioUnitario: prod.precioUnitario || 0, imagenes: prod.imagenes, estado: prod.estado || 'disponible', destacado: prod.destacado, activo: prod.activo, orden: prod.orden, categoriaId: prod.categoriaId,
       medidas: parseToList(prod.medidas), presentacion: prod.presentacion || '', rendimientoTexto: prod.rendimientoTexto || '', accesorios: parseToList(prod.accesorios), esAccesorio: prod.esAccesorio || false,
     });
   };
@@ -202,25 +192,21 @@ export default function ProductosPage() {
           </div>
           <div>
             <label className="block text-sm font-medium text-text mb-1">Precio Base</label>
-            <input type="number" step="0.01" required value={form.precioAntes || form.precio} onChange={(e) => {
+            <input type="number" step="0.01" required value={form.precio} onChange={(e) => {
               const base = parseFloat(e.target.value) || 0;
-              const d = form.descuento || 0;
-              const p = d > 0 ? Math.round(base * (1 - d / 100)) : base;
-              setForm({ ...form, precioAntes: base, precio: p, precioUnitario: Math.round(p * form.rendimiento) });
+              setForm({ ...form, precio: base, precioUnitario: Math.round(base * form.rendimiento) });
             }} className="w-full border border-gray-300 rounded-lg px-4 py-2 text-sm" />
           </div>
           <div>
             <label className="block text-sm font-medium text-text mb-1">Descuento %</label>
             <input type="number" min="0" max="99" value={form.descuento || ''} onChange={(e) => {
               const d = parseInt(e.target.value) || 0;
-              const base = form.precioAntes || form.precio;
-              const p = d > 0 ? Math.round(base * (1 - d / 100)) : base;
-              setForm({ ...form, descuento: d > 0 ? d : null as any, precio: p, precioUnitario: Math.round(p * form.rendimiento) });
+              setForm({ ...form, descuento: d > 0 ? d : null as any });
             }} className="w-full border border-gray-300 rounded-lg px-4 py-2 text-sm" />
           </div>
           <div>
             <label className="block text-sm font-medium text-text mb-1">Precio Final</label>
-            <input type="number" step="0.01" value={form.precio} readOnly className="w-full border border-gray-200 bg-gray-50 rounded-lg px-4 py-2 text-sm text-gray-500" />
+            <input type="number" step="0.01" value={form.descuento > 0 ? Math.round(form.precio * (1 - form.descuento / 100)) : form.precio} readOnly className="w-full border border-gray-200 bg-gray-50 rounded-lg px-4 py-2 text-sm text-gray-500" />
           </div>
           <div>
             <label className="block text-sm font-medium text-text mb-1">Unidad de Venta</label>
@@ -327,7 +313,7 @@ export default function ProductosPage() {
             {editando ? 'Actualizar' : 'Crear producto'}
           </button>
           {editando && (
-            <button type="button" onClick={() => { setEditando(null);              setForm({ nombre: '', slug: '', sku: '', descripcion: '', dimensiones: '', unidad: 'm2', precio: 0, precioAntes: 0, descuento: 0, rendimiento: 1, unidadVenta: 'un', precioUnitario: 0, imagenes: '[]', estado: 'disponible', destacado: false, activo: true, orden: 0, categoriaId: 0, medidas: '', presentacion: '', rendimientoTexto: '', accesorios: '', esAccesorio: false }); }} className="bg-gray-200 hover:bg-gray-300 text-text font-medium py-2 px-4 rounded-lg transition-colors text-sm">
+            <button type="button" onClick={() => { setEditando(null);              setForm({ nombre: '', slug: '', sku: '', descripcion: '', dimensiones: '', unidad: 'm2', precio: 0, descuento: 0, rendimiento: 1, unidadVenta: 'un', precioUnitario: 0, imagenes: '[]', estado: 'disponible', destacado: false, activo: true, orden: 0, categoriaId: 0, medidas: '', presentacion: '', rendimientoTexto: '', accesorios: '', esAccesorio: false }); }} className="bg-gray-200 hover:bg-gray-300 text-text font-medium py-2 px-4 rounded-lg transition-colors text-sm">
               Cancelar
             </button>
           )}
@@ -509,9 +495,9 @@ export default function ProductosPage() {
                 <td className="p-3 text-right">
                   {prod.descuento ? (
                     <span className="text-xs">
-                      <span className="line-through text-muted">${Math.round(prod.precioAntes || prod.precio).toLocaleString('es-CL')}</span>
+                      <span className="line-through text-muted">${Math.round(prod.precio).toLocaleString('es-CL')}</span>
                       <br />
-                      <span className="text-green-600 font-semibold">${Math.round(prod.precio).toLocaleString('es-CL')}</span>
+                      <span className="text-green-600 font-semibold">${Math.round(prod.precio * (1 - prod.descuento / 100)).toLocaleString('es-CL')}</span>
                       <span className="text-orange-500 ml-1">-{prod.descuento}%</span>
                     </span>
                   ) : (

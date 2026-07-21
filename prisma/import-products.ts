@@ -141,7 +141,6 @@ async function main() {
             dimensiones: prod.dimensiones || null,
             unidad: "m2",
             precio: precioBase,
-            precioAntes: null,
             descuento: null,
             rendimiento: cfg.rendimiento,
             unidadVenta: cfg.unidadVenta,

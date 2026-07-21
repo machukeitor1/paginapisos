@@ -11,7 +11,6 @@ interface Producto {
   dimensiones: string | null;
   unidad: string;
   precio: number;
-  precioAntes: number | null;
   precioUnitario: number;
   unidadVenta: string;
   rendimiento: number | null;
@@ -72,11 +71,15 @@ export default function ProductCard({ producto }: { producto: Producto }) {
         <div className="text-xs text-muted mb-2">Presentación: {extra?.presentacion || (producto.unidadVenta === 'caja' ? 'Caja' : 'Unidad')}</div>
 
         <div className="flex items-baseline gap-2 mb-3">
-          <span className="text-lg font-bold text-primary">{formatearPrecio(displayPrice)}</span>
-          <span className="text-xs text-muted">/ {displayUnit}</span>
-          {producto.precioAntes && (
-            <span className="text-sm text-muted line-through">{formatearPrecio(producto.precioAntes)}</span>
+          {producto.descuento ? (
+            <>
+              <span className="text-sm text-muted line-through">{formatearPrecio(displayPrice)}</span>
+              <span className="text-lg font-bold text-primary">{formatearPrecio(displayPrice * (1 - producto.descuento / 100))}</span>
+            </>
+          ) : (
+            <span className="text-lg font-bold text-primary">{formatearPrecio(displayPrice)}</span>
           )}
+          <span className="text-xs text-muted">/ {displayUnit}</span>
         </div>
 
         <Link
