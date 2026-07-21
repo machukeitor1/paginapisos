@@ -1,37 +1,46 @@
-import { S3Client, PutObjectCommand, DeleteObjectCommand } from "@aws-sdk/client-s3";
 import sharp from "sharp";
 
-export const r2 = new S3Client({
-  region: "auto",
-  endpoint: `https://${process.env.R2_ACCOUNT_ID}.r2.cloudflarestorage.com`,
-  forcePathStyle: true,
-  credentials: {
-    accessKeyId: process.env.R2_ACCESS_KEY_ID!,
-    secretAccessKey: process.env.R2_SECRET_ACCESS_KEY!,
-  },
-});
-
-export const BUCKET = process.env.R2_BUCKET_NAME!;
-export const PUBLIC_URL = process.env.R2_PUBLIC_URL!;
+const CF_ACCOUNT_ID = process.env.R2_ACCOUNT_ID!;
+const CF_API_TOKEN = process.env.CLOUDFLARE_API_TOKEN!;
+const BUCKET = process.env.R2_BUCKET_NAME!;
+const PUBLIC_URL = process.env.R2_PUBLIC_URL!;
 
 export async function uploadToR2(
   key: string,
   buffer: Buffer,
   contentType: string
 ): Promise<string> {
-  await r2.send(
-    new PutObjectCommand({
-      Bucket: BUCKET,
-      Key: key,
-      Body: buffer,
-      ContentType: contentType,
-    })
-  );
+  const url = `https://api.cloudflare.com/client/v4/accounts/${CF_ACCOUNT_ID}/r2/buckets/${BUCKET}/objects/${encodeURIComponent(key)}`;
+
+  const res = await fetch(url, {
+    method: "PUT",
+    headers: {
+      Authorization: `Bearer ${CF_API_TOKEN}`,
+      "Content-Type": contentType,
+    },
+    body: new Uint8Array(buffer),
+  });
+
+  if (!res.ok) {
+    const err = await res.text();
+    throw new Error(`R2 upload failed (${res.status}): ${err}`);
+  }
+
   return `${PUBLIC_URL}/${key}`;
 }
 
 export async function deleteFromR2(key: string): Promise<void> {
-  await r2.send(new DeleteObjectCommand({ Bucket: BUCKET, Key: key }));
+  const url = `https://api.cloudflare.com/client/v4/accounts/${CF_ACCOUNT_ID}/r2/buckets/${BUCKET}/objects/${encodeURIComponent(key)}`;
+
+  const res = await fetch(url, {
+    method: "DELETE",
+    headers: { Authorization: `Bearer ${CF_API_TOKEN}` },
+  });
+
+  if (!res.ok) {
+    const err = await res.text();
+    throw new Error(`R2 delete failed (${res.status}): ${err}`);
+  }
 }
 
 export async function generateBannerVariants(

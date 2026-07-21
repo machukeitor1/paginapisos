@@ -4,34 +4,10 @@ import { readFileSync } from "fs";
 import path from "path";
 import https from "https";
 import http from "http";
-import { v2 as cloudinary } from "cloudinary";
-
-cloudinary.config({
-  cloud_name: process.env.CLOUDINARY_CLOUD_NAME,
-  api_key: process.env.CLOUDINARY_API_KEY,
-  api_secret: process.env.CLOUDINARY_API_SECRET,
-});
+import { uploadToR2 } from "../src/lib/r2";
 
 const prisma = new PrismaClient();
 const DATA_FILE = path.join(process.cwd(), "scraped_data.json");
-
-async function uploadToCloudinary(buffer: Buffer, filename: string): Promise<string | null> {
-  try {
-    const result = await new Promise<any>((resolve, reject) => {
-      const uploadStream = cloudinary.uploader.upload_stream(
-        { folder: "productos", public_id: path.parse(filename).name, resource_type: "image" },
-        (error, result) => {
-          if (error) reject(error);
-          else resolve(result);
-        }
-      );
-      uploadStream.end(buffer);
-    });
-    return result.secure_url;
-  } catch {
-    return null;
-  }
-}
 
 async function downloadAndUpload(url: string, filename: string): Promise<string | null> {
   return new Promise((resolve) => {
@@ -53,8 +29,14 @@ async function downloadAndUpload(url: string, filename: string): Promise<string 
       res.on("data", (chunk) => chunks.push(chunk));
       res.on("end", async () => {
         const buffer = Buffer.concat(chunks);
-        const cloudinaryUrl = await uploadToCloudinary(buffer, filename);
-        resolve(cloudinaryUrl);
+        const ext = path.extname(filename).toLowerCase();
+        const ct = ext === ".jpg" || ext === ".jpeg" ? "image/jpeg" : "image/webp";
+        try {
+          const r2Url = await uploadToR2("productos/" + filename, buffer, ct);
+          resolve(r2Url);
+        } catch {
+          resolve(null);
+        }
       });
       res.on("error", () => resolve(null));
     });
@@ -124,15 +106,13 @@ async function main() {
       const baseSlug = slugify(prod.nombre || prod.url?.split("/").pop() || `prod-${totalProductos}`);
       const productSlug = `${baseSlug}-${slugify(prod.sku)}`;
 
-      // Verificar si ya existe
       const existing = await prisma.producto.findUnique({ where: { sku: prod.sku } });
       if (existing) {
         console.log(`  [EXIST] ${prod.sku} ya existe`);
         continue;
       }
 
-      // Subir imagenes a Cloudinary
-      const cloudinaryImages: string[] = [];
+      const r2Images: string[] = [];
       for (let i = 0; i < (prod.imagenes || []).length; i++) {
         const imgUrl = prod.imagenes[i];
         if (!imgUrl || imgUrl.includes("sharer") || imgUrl.includes("og:image")) continue;
@@ -140,14 +120,13 @@ async function main() {
         const ext = path.extname(new URL(imgUrl).pathname) || ".jpg";
         const filename = `${productSlug}-${i + 1}${ext}`;
 
-        const cloudinaryUrl = await downloadAndUpload(imgUrl, filename);
-        if (cloudinaryUrl) {
-          cloudinaryImages.push(cloudinaryUrl);
+        const r2Url = await downloadAndUpload(imgUrl, filename);
+        if (r2Url) {
+          r2Images.push(r2Url);
           totalImagenes++;
         }
       }
 
-      // Crear producto
       try {
         const precioBase = prod.precio_m2 || prod.precio_unitario || 0;
         const cfg = calcularRendimiento(prod.sku, prod.dimensiones || null);
@@ -168,7 +147,7 @@ async function main() {
             unidadVenta: cfg.unidadVenta,
             precioUnitario,
             marca: "",
-            imagenes: JSON.stringify(cloudinaryImages),
+            imagenes: JSON.stringify(r2Images),
             destacado: false,
             activo: true,
             orden: 0,
@@ -176,7 +155,7 @@ async function main() {
           },
         });
         productosInsertados++;
-        console.log(`  [OK] ${prod.sku} - ${cloudinaryImages.length} imagenes (rend=${cfg.rendimiento} ${cfg.unidadVenta}, pu=${precioUnitario})`);
+        console.log(`  [OK] ${prod.sku} - ${r2Images.length} imagenes (rend=${cfg.rendimiento} ${cfg.unidadVenta}, pu=${precioUnitario})`);
       } catch (e: any) {
         console.log(`  [ERROR] ${prod.sku}: ${e.message}`);
       }
@@ -186,7 +165,7 @@ async function main() {
   console.log(`\n--- RESUMEN ---`);
   console.log(`Productos procesados: ${totalProductos}`);
   console.log(`Productos insertados: ${productosInsertados}`);
-  console.log(`Imagenes descargadas: ${totalImagenes}`);
+  console.log(`Imagenes subidas a R2: ${totalImagenes}`);
 }
 
 main()
