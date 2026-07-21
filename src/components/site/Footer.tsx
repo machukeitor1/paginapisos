@@ -36,7 +36,7 @@ export default async function Footer() {
               {config?.emailContacto && <li>{config.emailContacto}</li>}
               <li>
                 <a
-                  href={`https://api.whatsapp.com/send?phone=${config?.whatsappGlobal || ''}&text=${encodeURIComponent('Hola, me gustaría recibir información sobre sus productos y servicios.')}`}
+                  href={`https://api.whatsapp.com/send?phone=${config?.whatsappGlobal || ''}&text=${encodeURIComponent('Hola, me gustaría recibir información sobre sus productos.')}`}
                   target="_blank"
                   rel="noopener noreferrer"
                   className="hover:text-accent transition-colors"

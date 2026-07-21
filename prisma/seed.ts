@@ -200,7 +200,7 @@ async function main() {
     where: { id: 1 },
     update: {
       nombreEmpresa: "Revestimientos Chillán",
-      whatsappGlobal: "56994316620",
+      whatsappGlobal: "56958603702",
       metaTitle: "Revestimientos Chillán - Materiales de Construcción",
       metaDescription: "Venta de revestimientos y pisos de primera calidad.",
     },
@@ -208,7 +208,7 @@ async function main() {
       id: 1,
       nombreEmpresa: "Revestimientos Chillán",
       logo: null,
-      whatsappGlobal: "56994316620",
+      whatsappGlobal: "56958603702",
       facebook: "https://facebook.com/revestimientoschillan",
       instagram: "https://instagram.com/revestimientoschillan",
       tiktok: "https://tiktok.com/@revestimientoschillan",

@@ -13,7 +13,7 @@ export default function WhatsAppButton() {
 
   if (!whatsapp) return null;
 
-  const mensaje = encodeURIComponent('Hola, me gustaría recibir información sobre sus productos y servicios.');
+  const mensaje = encodeURIComponent('Hola, me gustaría recibir información sobre sus productos.');
   const link = `https://api.whatsapp.com/send?phone=${whatsapp.replace(/\D/g, '')}&text=${mensaje}`;
 
   return (
