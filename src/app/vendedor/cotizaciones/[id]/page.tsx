@@ -43,6 +43,7 @@ export default function CotizacionDetailPage() {
   const [loading, setLoading] = useState(true);
   const [generating, setGenerating] = useState(false);
   const [updating, setUpdating] = useState(false);
+  const [logoBase64, setLogoBase64] = useState<string | null>(null);
 
   const cargar = useCallback(() => {
     fetch(`/api/cotizaciones/${params.id}`)
@@ -53,6 +54,17 @@ export default function CotizacionDetailPage() {
   }, [params.id]);
 
   useEffect(() => { cargar(); }, [cargar]);
+
+  useEffect(() => {
+    fetch('/Logo.png')
+      .then(r => r.blob())
+      .then(blob => {
+        const reader = new FileReader();
+        reader.onload = () => setLogoBase64(reader.result as string);
+        reader.readAsDataURL(blob);
+      })
+      .catch(() => {});
+  }, []);
 
   const cambiarEstado = async (estado: string) => {
     setUpdating(true);
@@ -76,7 +88,7 @@ export default function CotizacionDetailPage() {
       const doc = new jsPDF('p', 'mm', 'a4');
       const ML = 20, MR = 20, MT = 20, MB = 15;
       const PW = 210, UW = PW - ML - MR;
-      const colW = [8, 56, 16, 30, 18, 12, 30];
+      const colW = [60, 16, 20, 26, 14, 34];
 
       let y = MT + 5;
       const sec = (h: number) => { y += h; return y; };
@@ -103,18 +115,23 @@ export default function CotizacionDetailPage() {
         }
         doc.text('* Cotización válida por 3 días desde su emisión', ML, ly); ly += 4;
         doc.setFont('Helvetica', 'bold'); doc.setTextColor(80);
-        doc.text('Alcántara 1080, Villa Barcelona, Chillán | +56 9 9431 6620 | +56 9 8128 9079', PW / 2, ly, { align: 'center' });
+        doc.text('Visítanos en www.revestimientoschillan.cl', PW / 2, ly, { align: 'center' });
       };
 
       const fecha = new Date(cot.createdAt).toLocaleDateString('es-CL', { year: 'numeric', month: 'long', day: 'numeric' });
       const vence = new Date(cot.vencimiento).toLocaleDateString('es-CL', { year: 'numeric', month: 'long', day: 'numeric' });
 
       // ── Header ──
+      const logoW = logoBase64 ? 24 : 0;
+      const textCX = PW / 2;
+      if (logoBase64) {
+        doc.addImage(logoBase64, 'PNG', ML, MT - 4, logoW, logoW);
+      }
       doc.setFont('Helvetica', 'bold'); doc.setFontSize(16); doc.setTextColor(0);
-      doc.text('REVESTIMIENTOS CHILLÁN', PW / 2, y, { align: 'center' }); y = sec(6);
+      doc.text('REVESTIMIENTOS CHILLÁN', textCX, y, { align: 'center' }); y = sec(6);
       doc.setFont('Helvetica', 'normal'); doc.setFontSize(9); doc.setTextColor(100);
-      doc.text('Alcántara 1080, Villa Barcelona, Chillán', PW / 2, y, { align: 'center' }); y = sec(4);
-      doc.text('+56 9 9431 6620 | +56 9 8128 9079', PW / 2, y, { align: 'center' }); y = sec(6);
+      doc.text('Alcántara 1080-A, Villa Barcelona, Chillán', textCX, y, { align: 'center' }); y = sec(4);
+      doc.text('+56 9 58603702', textCX, y, { align: 'center' }); y = sec(6);
       doc.setDrawColor(0); doc.setLineWidth(0.5); doc.line(ML, y, PW - MR, y); y = sec(8);
       doc.setFont('Helvetica', 'bold'); doc.setFontSize(14); doc.setTextColor(0);
       doc.text(`COTIZACIÓN ${cot.numero}`, PW / 2, y, { align: 'center' }); y = sec(8);
@@ -153,10 +170,10 @@ export default function CotizacionDetailPage() {
       chk(16);
       doc.setDrawColor(0); doc.setLineWidth(0.3); doc.line(ML, y, PW - MR, y); y = sec(3);
       doc.setFont('Helvetica', 'bold'); doc.setFontSize(9); doc.setTextColor(0);
-      const hdrs = ['#', 'Descripción', 'M²', 'P. Unitario', 'Cant.', 'Desc %', 'Importe'];
+      const hdrs = ['Descripción', 'Unid.', 'Cant.', 'P. Unitario', 'Desc %', 'Importe'];
       let hx = ML;
       hdrs.forEach((h, i) => {
-        const a = i <= 1 ? 'left' : i === hdrs.length - 1 ? 'right' : 'center';
+        const a = i === 0 ? 'left' : i === hdrs.length - 1 ? 'right' : 'center';
         const ox = a === 'right' ? colW[i] : a === 'center' ? colW[i] / 2 : 0;
         doc.text(h, hx + ox, y, { align: a }); hx += colW[i];
       });
@@ -165,25 +182,24 @@ export default function CotizacionDetailPage() {
       // ── Table Rows ──
       doc.setFont('Helvetica', 'normal'); doc.setFontSize(8); doc.setTextColor(0);
       cot.items.forEach((item, idx) => {
-        const descLines = doc.splitTextToSize(item.descripcion, colW[1] - 2);
+        const descLines = doc.splitTextToSize(item.descripcion, colW[0] - 2);
         const rh = Math.max(descLines.length, 1) * 4 + 3;
         chk(rh + 2);
 
         if (idx % 2 === 0) { doc.setFillColor(245, 245, 245); doc.rect(ML, y - 2, UW, rh, 'F'); }
 
         let cx = ML;
-        doc.setTextColor(150); doc.text(String(idx + 1), cx + colW[0] / 2, y + 1, { align: 'center' }); cx += colW[0];
+        const isUnit = item.proyectoM2 == null;
         doc.setTextColor(0);
-        descLines.forEach((l: string, li: number) => doc.text(l, cx + 1, y + 1 + li * 4)); cx += colW[1];
+        descLines.forEach((l: string, li: number) => doc.text(l, cx + 1, y + 1 + li * 4)); cx += colW[0];
         doc.setTextColor(0);
-        doc.text(item.proyectoM2 != null ? `${item.proyectoM2.toFixed(2)}` : '-', cx + colW[2] / 2, y + 1, { align: 'center' }); cx += colW[2];
+        doc.text(isUnit ? `${item.cantidad}` : `${(item.proyectoM2 ?? 0).toFixed(2)}`, cx + colW[1] / 2, y + 1, { align: 'center' }); cx += colW[1];
+        doc.text(`${item.cantidad} ${item.unidadVenta}`, cx + colW[2] / 2, y + 1, { align: 'center' }); cx += colW[2];
+        doc.text(fmt(Math.round(isUnit ? item.precioUnitario : item.precioUnitario / item.rendimiento)), cx + colW[3] / 2, y + 1, { align: 'center' }); cx += colW[3];
         doc.setTextColor(0);
-        doc.text(fmt(Math.round(item.precioUnitario / item.rendimiento)), cx + colW[3] - 1, y + 1, { align: 'right' }); cx += colW[3];
-        doc.text(`${item.cantidad} ${item.unidadVenta}`, cx + colW[4] / 2, y + 1, { align: 'center' }); cx += colW[4];
-        doc.setTextColor(item.descuentoPorc > 0 ? 180 : 150);
-        doc.text(item.descuentoPorc > 0 ? `${item.descuentoPorc}%` : '-', cx + colW[5] / 2, y + 1, { align: 'center' }); cx += colW[5];
+        doc.text(item.descuentoPorc > 0 ? `${item.descuentoPorc}%` : '-', cx + colW[4] / 2, y + 1, { align: 'center' }); cx += colW[4];
         doc.setTextColor(0); doc.setFont('Helvetica', 'bold');
-        doc.text(fmt(item.importe), cx + colW[6] - 1, y + 1, { align: 'right' });
+        doc.text(fmt(item.importe), cx + colW[5] - 1, y + 1, { align: 'right' });
         doc.setFont('Helvetica', 'normal');
         y += rh + 1;
       });
@@ -265,8 +281,8 @@ export default function CotizacionDetailPage() {
       <div ref={pdfRef} className="bg-white rounded-xl shadow-sm border border-gray-200 p-8 md:p-10" style={{ fontFamily: 'Inter, Arial, sans-serif' }}>
         <div className="text-center border-b-2 border-gray-800 pb-4 mb-6">
           <h1 className="text-xl font-bold text-gray-800 tracking-wide">REVESTIMIENTOS CHILLÁN</h1>
-          <p className="text-xs text-gray-500 mt-1">Alcántara 1080, Villa Barcelona, Chillán</p>
-          <p className="text-xs text-gray-500">+56 9 9431 6620 | +56 9 8128 9079</p>
+          <p className="text-xs text-gray-500 mt-1">Alcántara 1080-A, Villa Barcelona, Chillán</p>
+          <p className="text-xs text-gray-500">+56 9 58603702</p>
         </div>
 
         <div className="text-center mb-6">
@@ -286,27 +302,28 @@ export default function CotizacionDetailPage() {
         <table className="w-full text-sm border-collapse mb-4">
           <thead>
             <tr className="border-b-2 border-gray-800">
-              <th className="text-left py-2 text-xs text-gray-500 uppercase font-semibold w-10">#</th>
               <th className="text-left py-2 text-xs text-gray-500 uppercase font-semibold">Descripción</th>
-              <th className="text-center py-2 text-xs text-gray-500 uppercase font-semibold w-20">M²</th>
-              <th className="text-right py-2 text-xs text-gray-500 uppercase font-semibold w-28">P. Unitario</th>
+              <th className="text-center py-2 text-xs text-gray-500 uppercase font-semibold w-20">Unid.</th>
               <th className="text-center py-2 text-xs text-gray-500 uppercase font-semibold w-24">Cant.</th>
+              <th className="text-center py-2 text-xs text-gray-500 uppercase font-semibold w-28">P. Unitario</th>
               <th className="text-center py-2 text-xs text-gray-500 uppercase font-semibold w-16">Desc %</th>
               <th className="text-right py-2 text-xs text-gray-500 uppercase font-semibold w-28">Importe</th>
             </tr>
           </thead>
           <tbody>
-            {cot.items.map((item, idx) => (
+            {cot.items.map((item) => {
+              const isUnit = item.proyectoM2 == null;
+              return (
               <tr key={item.id} className="border-b border-gray-200">
-                <td className="py-2.5 text-gray-400">{idx + 1}</td>
                 <td className="py-2.5 text-gray-800">{item.descripcion}</td>
-                <td className="py-2.5 text-center text-gray-800">{item.proyectoM2 != null ? `${item.proyectoM2.toFixed(2)} m²` : '-'}</td>
-                <td className="py-2.5 text-right text-gray-800">{formatCLP(Math.round(item.precioUnitario / item.rendimiento))}</td>
+                <td className="py-2.5 text-center text-gray-800">{isUnit ? item.cantidad : `${(item.proyectoM2 ?? 0).toFixed(2)}`}</td>
                 <td className="py-2.5 text-center text-gray-800">{item.cantidad} {item.unidadVenta}</td>
+                <td className="py-2.5 text-center text-gray-800">{formatCLP(Math.round(isUnit ? item.precioUnitario : item.precioUnitario / item.rendimiento))}</td>
                 <td className="py-2.5 text-center text-gray-800">{item.descuentoPorc > 0 ? `${item.descuentoPorc}%` : '-'}</td>
                 <td className="py-2.5 text-right font-medium text-gray-800">{formatCLP(item.importe)}</td>
               </tr>
-            ))}
+              );
+            })}
           </tbody>
         </table>
 
@@ -327,7 +344,7 @@ export default function CotizacionDetailPage() {
 
         <div className="border-t border-gray-300 pt-4 text-xs text-gray-400 text-center space-y-0.5">
           <p>* Cotización válida por 3 días desde su emisión</p>
-          <p className="mt-2 font-medium text-gray-500">Alcántara 1080, Villa Barcelona, Chillán | +56 9 9431 6620 | +56 9 8128 9079</p>
+          <p className="mt-2 font-medium text-gray-500">Visítanos en www.revestimientoschillan.cl</p>
         </div>
       </div>
     </div>

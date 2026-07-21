@@ -187,7 +187,7 @@ async function main() {
   const sucursalCount = await prisma.sucursal.count();
   if (sucursalCount === 0) {
     const sucursales = [
-      { nombre: "Chillán", zona: "Zona Sur - Ñuble", direccion: "Alcántara 1080, Villa Barcelona, Chillán", region: "Región de Ñuble", esCasaMatriz: true, horarioAtencion: "Lun a Vie: 09:00 - 18:00 | Sáb: 09:00 - 13:30", horarioEntrega: "Lun a Vie: 09:00 - 17:00 | Sáb: 09:00 - 13:00", whatsapp: "56994316620", telefono: "422201234", emailPostventa: "postventa@revestimienteschillan.cl", urlMaps: "https://maps.google.com/?q=Alcantara+1080+Villa+Barcelona+Chillan", activo: true, orden: 1 },
+      { nombre: "Chillán", zona: "Zona Sur - Ñuble", direccion: "Alcántara 1080-A, Villa Barcelona, Chillán", region: "Región de Ñuble", esCasaMatriz: true, horarioAtencion: "Lun a Vie: 09:00 - 18:00 | Sáb: 09:00 - 13:30", horarioEntrega: "Lun a Vie: 09:00 - 17:00 | Sáb: 09:00 - 13:00", whatsapp: "56994316620", telefono: "422201234", emailPostventa: "postventa@revestimienteschillan.cl", urlMaps: "https://maps.google.com/?q=Alcantara+1080+Villa+Barcelona+Chillan", activo: true, orden: 1 },
     ];
     await prisma.sucursal.createMany({ data: sucursales });
     console.log("✅ Sucursales creadas por defecto");

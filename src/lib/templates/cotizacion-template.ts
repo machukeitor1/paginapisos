@@ -13,8 +13,8 @@ interface ConfigData {
 
 const EMPRESA_FIJA: ConfigData = {
   nombreEmpresa: 'REVESTIMIENTOS CHILLÁN',
-  direccion: 'Alcántara 1080, Villa Barcelona, Chillán',
-  telefono: '+56 9 9431 6620 | +56 9 8128 9079',
+  direccion: 'Alcántara 1080-A, Villa Barcelona, Chillán',
+  telefono: '+56 9 58603702',
 };
 
 function fmtPhone(c: ConfigData): string {
@@ -195,7 +195,7 @@ function buildDocument(config: ConfigData): Document {
       spacing: { before: 200, after: 60 },
     }),
     new Paragraph({
-      children: [new TextRun({ text: `${config.direccion || EMPRESA_FIJA.direccion} | ${fmtPhone(config)}`, font: 'Arial', size: 16, color: '888888' })],
+      children: [new TextRun({ text: 'Visítanos en www.revestimientoschillan.cl', font: 'Arial', size: 16, color: '888888' })],
       alignment: AlignmentType.CENTER,
       spacing: { after: 40 },
     }),

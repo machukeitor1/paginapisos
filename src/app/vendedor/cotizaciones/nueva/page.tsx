@@ -29,7 +29,7 @@ interface CotizacionItem {
   precioUnitario: number;
   descuentoPorc: number;
   importe: number;
-  proyectoM2: number;
+  proyectoM2: number | null;
   precioM2: number;
 }
 
@@ -79,9 +79,12 @@ export default function NuevaCotizacionPage() {
   const addItem = useCallback((prod: ProductoSearch) => {
     const uv = prod.unidadVenta || 'un';
     const rend = prod.rendimiento || 1;
-    const pu = prod.precioUnitario || Math.ceil((prod.precio || 0) * rend) || 0;
-    const m2 = rend;
-    const cant = Math.round(m2 / rend) || 1;
+    const isUnit = prod.unidad !== 'm2';
+    const pu = isUnit
+      ? (prod.precioUnitario || prod.precio || 0)
+      : (prod.precioUnitario || Math.ceil((prod.precio || 0) * rend) || 0);
+    const m2 = isUnit ? null : rend;
+    const cant = isUnit ? 1 : (Math.round(rend / rend) || 1);
     setItems((prev) => [
       ...prev,
       {
@@ -95,7 +98,7 @@ export default function NuevaCotizacionPage() {
         descuentoPorc: prod.descuento || 0,
         importe: Math.ceil(cant * pu * (1 - (prod.descuento || 0) / 100)),
         proyectoM2: m2,
-        precioM2: Math.ceil(pu / rend),
+        precioM2: isUnit ? pu : Math.ceil(pu / rend),
       },
     ]);
     setNextKey((k) => k + 1);
@@ -117,10 +120,12 @@ export default function NuevaCotizacionPage() {
         const calcImporte = (item: typeof i) => {
           return Math.ceil(item.cantidad * item.precioUnitario * (1 - item.descuentoPorc / 100));
         };
-        if (field === 'proyectoM2') {
+        if (field === 'cantidad') {
+          // unidad: cantidad se edita directamente
+        } else if (field === 'proyectoM2') {
           updated.cantidad = Math.round(value / i.rendimiento) || 1;
         } else if (field === 'precioUnitario') {
-          updated.precioM2 = Math.ceil(value / i.rendimiento);
+          updated.precioM2 = i.proyectoM2 != null ? Math.ceil(value / i.rendimiento) : value;
         }
         updated.importe = calcImporte(updated);
         return updated;
@@ -177,7 +182,7 @@ export default function NuevaCotizacionPage() {
           items: items.map((i) => ({
             productoId: i.productoId,
             descripcion: i.descripcion,
-            cantidad: Math.round(i.proyectoM2 / i.rendimiento) || 1,
+            cantidad: i.cantidad,
             rendimiento: i.rendimiento,
             unidadVenta: i.unidadVenta,
             precioUnitario: i.precioUnitario,
@@ -212,8 +217,8 @@ export default function NuevaCotizacionPage() {
       <div className="bg-white rounded-xl shadow-sm border border-gray-200 p-6 mb-4">
         <div className="text-center mb-4">
           <h1 className="text-lg font-bold text-gray-800">REVESTIMIENTOS CHILLÁN</h1>
-          <p className="text-xs text-gray-500">Alcántara 1080, Villa Barcelona, Chillán</p>
-          <p className="text-xs text-gray-500">+56 9 9431 6620 | +56 9 8128 9079</p>
+          <p className="text-xs text-gray-500">Alcántara 1080-A, Villa Barcelona, Chillán</p>
+          <p className="text-xs text-gray-500">+56 9 58603702</p>
         </div>
         <div className="flex justify-between items-center text-sm text-gray-600 border-t pt-3">
           <span><strong>Vendedor:</strong> {vendedorNombre}</span>
@@ -287,31 +292,43 @@ export default function NuevaCotizacionPage() {
             <table className="w-full text-sm">
               <thead>
                 <tr className="border-b border-gray-200 text-xs text-gray-500 uppercase">
-                  <th className="text-left py-2 pr-2">#</th>
                   <th className="text-left py-2 px-2">Descripción</th>
-                  <th className="text-center py-2 px-2 w-20">M²</th>
-                  <th className="text-right py-2 px-2 w-28">P. Unitario</th>
+                  <th className="text-center py-2 px-2 w-20">Unid.</th>
                   <th className="text-center py-2 px-2 w-24">Cant.</th>
+                  <th className="text-center py-2 px-2 w-28">P. Unitario</th>
                   <th className="text-center py-2 px-2 w-20">Desc %</th>
                   <th className="text-right py-2 px-2 w-28">Importe</th>
                   <th className="py-2 pl-2 w-10"></th>
                 </tr>
               </thead>
               <tbody>
-                {items.map((item, idx) => (
+                {items.map((item) => {
+                  const isUnit = item.proyectoM2 == null;
+                  return (
                   <tr key={item.key} className="border-b border-gray-100 hover:bg-gray-50">
-                    <td className="py-2 pr-2 text-gray-400 text-xs">{idx + 1}</td>
                     <td className="py-2 px-2 text-gray-800">{item.descripcion}</td>
                     <td className="py-2 px-2">
-                      <input
-                        type="number"
-                        min={0}
-                        step={1}
-                        value={item.proyectoM2}
-                        onChange={(e) => updateItem(item.key, 'proyectoM2', parseInt(e.target.value) || 0)}
-                        className="w-full border border-gray-300 rounded px-2 py-1 text-center text-sm focus:outline-none focus:ring-2 focus:ring-blue-500/50"
-                      />
+                      {isUnit ? (
+                        <input
+                          type="number"
+                          min={1}
+                          step={1}
+                          value={item.cantidad}
+                          onChange={(e) => updateItem(item.key, 'cantidad', parseInt(e.target.value) || 1)}
+                          className="w-full border border-gray-300 rounded px-2 py-1 text-center text-sm focus:outline-none focus:ring-2 focus:ring-blue-500/50"
+                        />
+                      ) : (
+                        <input
+                          type="number"
+                          min={0}
+                          step={1}
+                          value={item.proyectoM2 ?? 0}
+                          onChange={(e) => updateItem(item.key, 'proyectoM2', parseInt(e.target.value) || 0)}
+                          className="w-full border border-gray-300 rounded px-2 py-1 text-center text-sm focus:outline-none focus:ring-2 focus:ring-blue-500/50"
+                        />
+                      )}
                     </td>
+                    <td className="py-2 px-2 text-center font-medium text-gray-700">{item.cantidad} {item.unidadVenta}</td>
                     <td className="py-2 px-2">
                       <input
                         type="number"
@@ -319,10 +336,9 @@ export default function NuevaCotizacionPage() {
                         step={1}
                         value={item.precioUnitario}
                         onChange={(e) => updateItem(item.key, 'precioUnitario', parseInt(e.target.value) || 0)}
-                        className="w-full border border-gray-300 rounded px-2 py-1 text-right text-sm focus:outline-none focus:ring-2 focus:ring-blue-500/50"
+                        className="w-full border border-gray-300 rounded px-2 py-1 text-center text-sm focus:outline-none focus:ring-2 focus:ring-blue-500/50"
                       />
                     </td>
-                    <td className="py-2 px-2 text-center font-medium text-gray-700">{item.cantidad} {item.unidadVenta}</td>
                     <td className="py-2 px-2">
                       <input
                         type="number"
@@ -343,7 +359,8 @@ export default function NuevaCotizacionPage() {
                       </button>
                     </td>
                   </tr>
-                ))}
+                  );
+                })}
               </tbody>
             </table>
           </div>
