@@ -2,16 +2,23 @@
 
 import { useState, useEffect, useCallback } from 'react';
 
-function cloudinaryUrl(url: string, width: number, height?: number): string {
-  if (!url.includes('res.cloudinary.com')) return url;
-  let t = `w_${width},c_fill,g_auto,f_auto,q_auto`;
-  if (height) t += `,h_${height}`;
-  return url.replace('/image/upload/', `/image/upload/${t}/`);
+function getVariantUrl(url: string, suffix: string): string {
+  if (url.includes('r2.dev')) {
+    return url.replace('_original.webp', `_${suffix}.webp`).replace('_original.jpg', `_${suffix}.webp`);
+  }
+  if (url.includes('res.cloudinary.com')) {
+    const width = suffix === 'w400' ? 400 : suffix === 'w800' ? 800 : 1200;
+    const t = `w_${width},c_fill,g_auto,f_auto,q_auto`;
+    return url.replace('/image/upload/', `/image/upload/${t}/`);
+  }
+  return url;
 }
 
-function generateSrcSet(url: string, height?: number): string {
-  if (!url.includes('res.cloudinary.com')) return '';
-  return [400, 800, 1200].map(w => `${cloudinaryUrl(url, w, height)} ${w}w`).join(', ');
+function generateSrcSet(url: string): string {
+  if (!url) return '';
+  return [400, 800, 1200]
+    .map(w => `${getVariantUrl(url, `w${w}`)} ${w}w`)
+    .join(', ');
 }
 
 interface Banner {
@@ -69,11 +76,11 @@ export default function Hero() {
           {(b.imagen || b.imagenMovil) ? (
             <picture>
               <source media="(min-width: 768px)"
-                srcSet={generateSrcSet(b.imagen || b.imagenMovil!, 500)} sizes="100vw" />
+                srcSet={generateSrcSet(b.imagen || b.imagenMovil!)} sizes="100vw" />
               <source media="(max-width: 767px)"
-                srcSet={generateSrcSet(b.imagenMovil || b.imagen!, 350)} sizes="100vw" />
+                srcSet={generateSrcSet(b.imagenMovil || b.imagen!)} sizes="100vw" />
               <img
-                src={cloudinaryUrl(b.imagen || b.imagenMovil!, 400, 350)}
+                src={getVariantUrl(b.imagen || b.imagenMovil!, 'w800')}
                 alt=""
                 className="w-full h-full object-cover"
                 loading={i === 0 ? 'eager' : 'lazy'}

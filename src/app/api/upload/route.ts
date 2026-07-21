@@ -1,11 +1,5 @@
 import { NextResponse } from "next/server";
-import { v2 as cloudinary } from "cloudinary";
-
-cloudinary.config({
-  cloud_name: process.env.CLOUDINARY_CLOUD_NAME,
-  api_key: process.env.CLOUDINARY_API_KEY,
-  api_secret: process.env.CLOUDINARY_API_SECRET,
-});
+import { uploadToR2 } from "@/lib/r2";
 
 export async function POST(request: Request) {
   try {
@@ -19,18 +13,15 @@ export async function POST(request: Request) {
     const bytes = await file.arrayBuffer();
     const buffer = Buffer.from(bytes);
 
-    const result = await new Promise<any>((resolve, reject) => {
-      const uploadStream = cloudinary.uploader.upload_stream(
-        { folder: "productos", resource_type: "image", invalidate: true },
-        (error, result) => {
-          if (error) reject(error);
-          else resolve(result);
-        }
-      );
-      uploadStream.end(buffer);
-    });
+    const ext = file.name.split(".").pop() || "webp";
+    const timestamp = Date.now();
+    const filename = `${timestamp}-${Math.random().toString(36).slice(2, 8)}.${ext}`;
+    const key = `productos/${filename}`;
 
-    return NextResponse.json({ url: result.secure_url });
+    const contentType = file.type || "image/webp";
+    const url = await uploadToR2(key, buffer, contentType);
+
+    return NextResponse.json({ url });
   } catch (error: any) {
     return NextResponse.json({ error: error.message || "Error al subir archivo" }, { status: 500 });
   }

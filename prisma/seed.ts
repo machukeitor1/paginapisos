@@ -3,13 +3,6 @@ import { PrismaClient } from "@prisma/client";
 import bcrypt from "bcryptjs";
 import { readFileSync, existsSync } from "fs";
 import path from "path";
-import { v2 as cloudinary } from "cloudinary";
-
-cloudinary.config({
-  cloud_name: process.env.CLOUDINARY_CLOUD_NAME,
-  api_key: process.env.CLOUDINARY_API_KEY,
-  api_secret: process.env.CLOUDINARY_API_SECRET,
-});
 
 const prisma = new PrismaClient();
 
@@ -177,22 +170,18 @@ async function main() {
   }
   if (catsActualizadas > 0) console.log(`✅ ${catsActualizadas} categorias actualizadas con imagen desde productos`);
 
-  // Banners (usar Cloudinary si hay imagenes subidas)
-  await prisma.banner.deleteMany();
-  const bannerImg = async (idx: number): Promise<string> => {
-    const result = await cloudinary.search
-      .expression(`folder:public/banner/*`)
-      .sort_by("public_id", "asc")
-      .max_results(10)
-      .execute();
-    return result.resources[idx]?.secure_url || "";
-  };
-  const banners = [
-    { titulo: "", subtitulo: null, badge: null, imagen: await bannerImg(0), imagenMovil: null, url: null, orden: 1 },
-    { titulo: "", subtitulo: null, badge: null, imagen: await bannerImg(1), imagenMovil: null, url: null, orden: 2 },
-  ];
-  await prisma.banner.createMany({ data: banners });
-  console.log(`✅ Banners actualizados (${banners.filter(b => b.imagen).length} con imagen)`);
+  // Banners (conservar existentes, solo crear si no hay)
+  const bannerCount = await prisma.banner.count();
+  if (bannerCount === 0) {
+    const banners = [
+      { titulo: "", subtitulo: null, badge: null, imagen: "", imagenMovil: null, url: null, orden: 1 },
+      { titulo: "", subtitulo: null, badge: null, imagen: "", imagenMovil: null, url: null, orden: 2 },
+    ];
+    await prisma.banner.createMany({ data: banners });
+    console.log("Banners creados vacíos (sube imágenes desde el admin)");
+  } else {
+    console.log("Banners ya existen, se conservan");
+  }
 
   // Sucursales (solo si no existen)
   const sucursalCount = await prisma.sucursal.count();
