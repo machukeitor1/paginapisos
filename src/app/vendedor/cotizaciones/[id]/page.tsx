@@ -3,7 +3,6 @@
 import { useEffect, useState, useRef, useCallback } from 'react';
 import { useParams } from 'next/navigation';
 import Link from 'next/link';
-import jsPDF from 'jspdf';
 
 interface CotizacionData {
   id: number;
@@ -81,10 +80,11 @@ export default function CotizacionDetailPage() {
 
   const formatCLP = (n: number) => '$' + Math.round(n).toLocaleString('es-CL');
 
-  const generatePDF = () => {
+  const generatePDF = async () => {
     if (!cot) return;
     setGenerating(true);
     try {
+      const { default: jsPDF } = await import('jspdf');
       const doc = new jsPDF('p', 'mm', 'a4');
       const ML = 20, MR = 20, MT = 20, MB = 15;
       const PW = 210, UW = PW - ML - MR;
@@ -122,10 +122,10 @@ export default function CotizacionDetailPage() {
       const vence = new Date(cot.vencimiento).toLocaleDateString('es-CL', { year: 'numeric', month: 'long', day: 'numeric' });
 
       // ── Header ──
-      const logoW = logoBase64 ? 24 : 0;
+      const logoW = 24;
       const textCX = PW / 2;
       if (logoBase64) {
-        doc.addImage(logoBase64, 'PNG', ML, MT - 4, logoW, logoW);
+        try { doc.addImage(logoBase64, 'PNG', ML, MT - 4, logoW, logoW); } catch (e) { console.warn('Logo omitido:', e); }
       }
       doc.setFont('Helvetica', 'bold'); doc.setFontSize(16); doc.setTextColor(0);
       doc.text('REVESTIMIENTOS CHILLÁN', textCX, y, { align: 'center' }); y = sec(6);
