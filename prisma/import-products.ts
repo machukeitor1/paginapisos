@@ -59,6 +59,13 @@ const RENDIMIENTOS: Record<string, { rendimiento: number; unidadVenta: string }>
   PIM: { rendimiento: 2.3, unidadVenta: "caja" },
 };
 
+const M2_PREFIXES = ['REM', 'REG', 'PIM', 'SPC', 'PIP', 'PEP'];
+
+function getUnidad(sku: string): string {
+  const prefix = sku.substring(0, 3);
+  return M2_PREFIXES.includes(prefix) ? 'm2' : 'un';
+}
+
 function calcularRendimiento(sku: string, dimensiones: string | null): { rendimiento: number; unidadVenta: string } {
   const prefix = sku.substring(0, 3);
   if (RENDIMIENTOS[prefix]) return RENDIMIENTOS[prefix];
@@ -139,7 +146,7 @@ async function main() {
             sku: prod.sku,
             descripcion: prod.descripcion || "",
             dimensiones: prod.dimensiones || null,
-            unidad: "m2",
+            unidad: getUnidad(prod.sku),
             precio: precioBase,
             descuento: null,
             rendimiento: cfg.rendimiento,

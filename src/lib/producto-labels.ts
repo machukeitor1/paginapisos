@@ -29,7 +29,7 @@ export function getDisplayLabel(sku: string, fallback: string): string {
   const skuLabel = LABEL_BY_SKU[sku];
   if (skuLabel) return skuLabel;
 
-  const prefix = sku.split('-')[0];
+  const prefix = sku.substring(0, 3);
   const prefixLabel = LABEL_BY_PREFIX[prefix];
   if (prefixLabel) return prefixLabel;
 

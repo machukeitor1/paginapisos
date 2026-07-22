@@ -6,6 +6,13 @@ import path from "path";
 
 const prisma = new PrismaClient();
 
+const M2_PREFIXES = ['REM', 'REG', 'PIM', 'SPC', 'PIP', 'PEP'];
+
+function getUnidad(sku: string): string {
+  const prefix = sku.substring(0, 3);
+  return M2_PREFIXES.includes(prefix) ? 'm2' : 'un';
+}
+
 async function main() {
   console.log("🌱 Insertando datos semilla...");
 
@@ -80,7 +87,7 @@ async function main() {
               sku: prod.sku,
               descripcion: prod.descripcion || "",
               dimensiones: prod.dimensiones || null,
-              unidad: "m2",
+              unidad: getUnidad(prod.sku),
               precio: pm2 || pu || 0,
               marca: "",
               imagenes: "[]",
