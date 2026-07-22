@@ -4,8 +4,6 @@ const LABEL_BY_SKU: Record<string, string> = {
   'RIW301-BLANCO': 'Unidad',
   'RIW301-GRISPLATA': 'Unidad',
   'RIW301-GRISGRAFITO': 'Unidad',
-  'RIW201-CHOCOLATE': 'Unidad',
-  'RIW201-MADERA': 'Unidad',
 };
 
 const LABEL_BY_PREFIX: Record<string, string> = {

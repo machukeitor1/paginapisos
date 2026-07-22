@@ -44,9 +44,15 @@ const UNIDAD_LABELS: Record<string, string> = {
   RIW: 'Tabla', REW: 'Tabla', CVW: 'Tabla',
 };
 
+const UNIDAD_LABELS_SKU: Record<string, string> = {
+  'RIW301-NATURAL': 'Unidad', 'RIW301-MADERA': 'Unidad', 'RIW301-BLANCO': 'Unidad',
+  'RIW301-GRISPLATA': 'Unidad', 'RIW301-GRISGRAFITO': 'Unidad',
+};
+
 function getPhysicalLabel(product: ProductoSearch): string {
-  const prefix = product.sku.substring(0, 3);
+  if (UNIDAD_LABELS_SKU[product.sku]) return UNIDAD_LABELS_SKU[product.sku];
   if (product.unidad === 'un') return 'Unidad';
+  const prefix = product.sku.substring(0, 3);
   return UNIDAD_LABELS[prefix] || 'Unidad';
 }
 

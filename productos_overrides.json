@@ -336,97 +336,97 @@
   },
   "RIW301-NATURAL": {
     "rendimiento": 0.96,
-    "precioUnitario": 9130,
+    "precioUnitario": 9510,
     "unidadVenta": "un"
   },
   "RIW301-MADERA": {
     "rendimiento": 0.96,
-    "precioUnitario": 9130,
+    "precioUnitario": 9510,
     "unidadVenta": "un"
   },
   "RIW201-CHOCOLATE": {
     "rendimiento": 0.48,
-    "precioUnitario": 3422,
+    "precioUnitario": 7130,
     "unidadVenta": "un"
   },
   "RIW201-MADERA": {
     "rendimiento": 0.48,
-    "precioUnitario": 3422,
+    "precioUnitario": 7130,
     "unidadVenta": "un"
   },
   "RIW201-CREMA": {
     "rendimiento": 0.48,
-    "precioUnitario": 3422,
+    "precioUnitario": 7130,
     "unidadVenta": "un"
   },
   "RIW301-BLANCO": {
     "rendimiento": 0.96,
-    "precioUnitario": 9130,
+    "precioUnitario": 9510,
     "unidadVenta": "un"
   },
   "RIW301-GRISPLATA": {
     "rendimiento": 0.96,
-    "precioUnitario": 9130,
+    "precioUnitario": 9510,
     "unidadVenta": "un"
   },
   "RIW101-CEDRONEGRO": {
-    "rendimiento": 0.372,
-    "precioUnitario": 2210,
+    "rendimiento": 0.37,
+    "precioUnitario": 5940,
     "unidadVenta": "un"
   },
   "RIW301-GRISGRAFITO": {
     "rendimiento": 0.96,
-    "precioUnitario": 9130,
+    "precioUnitario": 9510,
     "unidadVenta": "un"
   },
   "RIW101-CHOCOLATENEGRO": {
-    "rendimiento": 0.372,
-    "precioUnitario": 2210,
+    "rendimiento": 0.37,
+    "precioUnitario": 5940,
     "unidadVenta": "un"
   },
   "RIW101-CREMANEGRO": {
-    "rendimiento": 0.372,
-    "precioUnitario": 2210,
+    "rendimiento": 0.37,
+    "precioUnitario": 5940,
     "unidadVenta": "un"
   },
   "RIW101-MADERANEGRO": {
-    "rendimiento": 0.372,
-    "precioUnitario": 2210,
+    "rendimiento": 0.37,
+    "precioUnitario": 5940,
     "unidadVenta": "un"
   },
   "RIW102-NEGRO": {
-    "rendimiento": 0.468,
-    "precioUnitario": 3894,
+    "rendimiento": 0.47,
+    "precioUnitario": 8320,
     "unidadVenta": "un"
   },
   "RIW102-CEDRO": {
-    "rendimiento": 0.468,
-    "precioUnitario": 3894,
+    "rendimiento": 0.47,
+    "precioUnitario": 8320,
     "unidadVenta": "un"
   },
   "RIW103-CEDRO": {
-    "rendimiento": 0.372,
-    "precioUnitario": 2210,
+    "rendimiento": 0.37,
+    "precioUnitario": 5940,
     "unidadVenta": "un"
   },
   "RIW103-MADERA": {
-    "rendimiento": 0.372,
-    "precioUnitario": 2210,
+    "rendimiento": 0.37,
+    "precioUnitario": 5940,
     "unidadVenta": "un"
   },
   "RIW103-CHOCOLATE": {
-    "rendimiento": 0.372,
-    "precioUnitario": 2210,
+    "rendimiento": 0.37,
+    "precioUnitario": 5940,
     "unidadVenta": "un"
   },
   "RIW103-CREMA": {
-    "rendimiento": 0.372,
-    "precioUnitario": 2210,
+    "rendimiento": 0.37,
+    "precioUnitario": 5940,
     "unidadVenta": "un"
   },
   "RIW103-NEGRO": {
-    "rendimiento": 0.372,
-    "precioUnitario": 2210,
+    "rendimiento": 0.37,
+    "precioUnitario": 5940,
     "unidadVenta": "un"
   },
   "CVW201-CAFECHOCOLATE": {
