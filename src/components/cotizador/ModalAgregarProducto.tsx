@@ -76,7 +76,7 @@ export default function ModalAgregarProducto({ product, onAdd, onClose }: Props)
 
   const calcImporte = () => {
     if (modo === 'm2') {
-      const cajas = Math.round(proyectoM2 / rend) || 1;
+      const cajas = Math.ceil(proyectoM2 / rend) || 1;
       return Math.ceil(cajas * precioUnitario);
     }
     return Math.ceil(cantidad * precioUnitario);
@@ -84,11 +84,11 @@ export default function ModalAgregarProducto({ product, onAdd, onClose }: Props)
 
   const handleM2Change = (val: number) => {
     setProyectoM2(val);
-    setCantidad(Math.round(val / rend) || 1);
+    setCantidad(Math.ceil(val / rend) || 1);
   };
 
   const handleAdd = () => {
-    const finalCant = modo === 'm2' ? (Math.round(proyectoM2 / rend) || 1) : cantidad;
+    const finalCant = modo === 'm2' ? (Math.ceil(proyectoM2 / rend) || 1) : cantidad;
     const finalM2 = modo === 'm2' ? proyectoM2 : (isM2 ? rend : null);
     const importe = Math.ceil(finalCant * precioUnitario * (1 - descuento / 100));
 
