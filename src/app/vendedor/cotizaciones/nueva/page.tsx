@@ -4,6 +4,7 @@ import { useState, useEffect, useRef, useCallback } from 'react';
 import { useRouter } from 'next/navigation';
 import Link from 'next/link';
 import ModalAgregarProducto, { type ProductoSearch, type CotizacionItem } from '@/components/cotizador/ModalAgregarProducto';
+import { formatUnidad, getUnidadLabel } from '@/lib/format-unidad';
 
 export default function NuevaCotizacionPage() {
   const router = useRouter();
@@ -265,27 +266,32 @@ export default function NuevaCotizacionPage() {
                   <tr key={item.key} className="border-b border-gray-100 hover:bg-gray-50">
                     <td className="py-2 px-2 text-gray-800">{item.descripcion}</td>
                     <td className="py-2 px-2">
-                      {isM2Mode ? (
-                        <input
-                          type="number"
-                          min={0}
-                          step={1}
-                          value={item.proyectoM2 ?? 0}
-                          onChange={(e) => updateItem(item.key, 'proyectoM2', parseInt(e.target.value) || 0)}
-                          className="w-full border border-gray-300 rounded px-2 py-1 text-center text-sm focus:outline-none focus:ring-2 focus:ring-blue-500/50"
-                        />
-                      ) : (
-                        <input
-                          type="number"
-                          min={1}
-                          step={1}
-                          value={item.cantidad}
-                          onChange={(e) => updateItem(item.key, 'cantidad', parseInt(e.target.value) || 1)}
-                          className="w-full border border-gray-300 rounded px-2 py-1 text-center text-sm focus:outline-none focus:ring-2 focus:ring-blue-500/50"
-                        />
-                      )}
+                      <div className="flex flex-col items-center">
+                        {isM2Mode ? (
+                          <input
+                            type="number"
+                            min={0}
+                            step={1}
+                            value={item.proyectoM2 ?? 0}
+                            onChange={(e) => updateItem(item.key, 'proyectoM2', parseInt(e.target.value) || 0)}
+                            className="w-full border border-gray-300 rounded px-2 py-1 text-center text-sm focus:outline-none focus:ring-2 focus:ring-blue-500/50"
+                          />
+                        ) : (
+                          <input
+                            type="number"
+                            min={1}
+                            step={1}
+                            value={item.cantidad}
+                            onChange={(e) => updateItem(item.key, 'cantidad', parseInt(e.target.value) || 1)}
+                            className="w-full border border-gray-300 rounded px-2 py-1 text-center text-sm focus:outline-none focus:ring-2 focus:ring-blue-500/50"
+                          />
+                        )}
+                        <span className="text-[10px] text-gray-400 mt-0.5 leading-none">
+                          {isM2Mode ? 'm²' : getUnidadLabel(item.unidadVenta)}
+                        </span>
+                      </div>
                     </td>
-                    <td className="py-2 px-2 text-center font-medium text-gray-700">{item.cantidad} {item.unidadVenta}</td>
+                    <td className="py-2 px-2 text-center font-medium text-gray-700">{formatUnidad(item.cantidad, item.unidadVenta)}</td>
                     <td className="py-2 px-2">
                       <input
                         type="number"

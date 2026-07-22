@@ -3,6 +3,7 @@
 import { useEffect, useState, useRef, useCallback } from 'react';
 import { useParams } from 'next/navigation';
 import Link from 'next/link';
+import { formatUnidad } from '@/lib/format-unidad';
 
 interface CotizacionData {
   id: number;
@@ -89,7 +90,7 @@ export default function CotizacionDetailPage() {
       const doc = new jsPDF('p', 'mm', 'a4');
       const ML = 20, MR = 20, MT = 20, MB = 15;
       const PW = 210, UW = PW - ML - MR;
-      const colW = [60, 16, 20, 26, 14, 34];
+      const colW = [70, 20, 26, 14, 28];
 
       let y = MT + 5;
       const sec = (h: number) => { y += h; return y; };
@@ -171,7 +172,7 @@ export default function CotizacionDetailPage() {
       chk(16);
       doc.setDrawColor(0); doc.setLineWidth(0.3); doc.line(ML, y, PW - MR, y); y = sec(3);
       doc.setFont('Helvetica', 'bold'); doc.setFontSize(9); doc.setTextColor(0);
-      const hdrs = ['Descripción', 'Unid.', 'Cant.', 'P. Unitario', 'Desc %', 'Importe'];
+      const hdrs = ['Descripción', 'Cant.', 'P. Unitario', 'Desc %', 'Importe'];
       let hx = ML;
       hdrs.forEach((h, i) => {
         const a = i === 0 ? 'left' : i === hdrs.length - 1 ? 'right' : 'center';
@@ -190,17 +191,15 @@ export default function CotizacionDetailPage() {
         if (idx % 2 === 0) { doc.setFillColor(245, 245, 245); doc.rect(ML, y - 2, UW, rh, 'F'); }
 
         let cx = ML;
-        const isM2Mode = item.modo === 'm2';
         doc.setTextColor(0);
         descLines.forEach((l: string, li: number) => doc.text(l, cx + 1, y + 1 + li * 4)); cx += colW[0];
         doc.setTextColor(0);
-        doc.text(isM2Mode ? `${(item.proyectoM2 ?? 0).toFixed(2)}` : `${item.cantidad}`, cx + colW[1] / 2, y + 1, { align: 'center' }); cx += colW[1];
-        doc.text(`${item.cantidad} ${item.unidadVenta}`, cx + colW[2] / 2, y + 1, { align: 'center' }); cx += colW[2];
-        doc.text(fmt(Math.round(item.precioUnitario)), cx + colW[3] / 2, y + 1, { align: 'center' }); cx += colW[3];
+        doc.text(formatUnidad(item.cantidad, item.unidadVenta), cx + colW[1] / 2, y + 1, { align: 'center' }); cx += colW[1];
+        doc.text(fmt(Math.round(item.precioUnitario)), cx + colW[2] / 2, y + 1, { align: 'center' }); cx += colW[2];
         doc.setTextColor(0);
-        doc.text(item.descuentoPorc > 0 ? `${item.descuentoPorc}%` : '-', cx + colW[4] / 2, y + 1, { align: 'center' }); cx += colW[4];
+        doc.text(item.descuentoPorc > 0 ? `${item.descuentoPorc}%` : '-', cx + colW[3] / 2, y + 1, { align: 'center' }); cx += colW[3];
         doc.setTextColor(0); doc.setFont('Helvetica', 'bold');
-        doc.text(fmt(item.importe), cx + colW[5] - 1, y + 1, { align: 'right' });
+        doc.text(fmt(item.importe), cx + colW[4] - 1, y + 1, { align: 'right' });
         doc.setFont('Helvetica', 'normal');
         y += rh + 1;
       });
@@ -304,7 +303,6 @@ export default function CotizacionDetailPage() {
           <thead>
             <tr className="border-b-2 border-gray-800">
               <th className="text-left py-2 text-xs text-gray-500 uppercase font-semibold">Descripción</th>
-              <th className="text-center py-2 text-xs text-gray-500 uppercase font-semibold w-20">Unid.</th>
               <th className="text-center py-2 text-xs text-gray-500 uppercase font-semibold w-24">Cant.</th>
               <th className="text-center py-2 text-xs text-gray-500 uppercase font-semibold w-28">P. Unitario</th>
               <th className="text-center py-2 text-xs text-gray-500 uppercase font-semibold w-16">Desc %</th>
@@ -313,12 +311,10 @@ export default function CotizacionDetailPage() {
           </thead>
           <tbody>
             {cot.items.map((item) => {
-              const isM2Mode = item.modo === 'm2';
               return (
               <tr key={item.id} className="border-b border-gray-200">
                 <td className="py-2.5 text-gray-800">{item.descripcion}</td>
-                <td className="py-2.5 text-center text-gray-800">{isM2Mode ? `${(item.proyectoM2 ?? 0).toFixed(2)}` : item.cantidad}</td>
-                <td className="py-2.5 text-center text-gray-800">{item.cantidad} {item.unidadVenta}</td>
+                <td className="py-2.5 text-center text-gray-800">{formatUnidad(item.cantidad, item.unidadVenta)}</td>
                 <td className="py-2.5 text-center text-gray-800">{formatCLP(Math.round(item.precioUnitario))}</td>
                 <td className="py-2.5 text-center text-gray-800">{item.descuentoPorc > 0 ? `${item.descuentoPorc}%` : '-'}</td>
                 <td className="py-2.5 text-right font-medium text-gray-800">{formatCLP(item.importe)}</td>
