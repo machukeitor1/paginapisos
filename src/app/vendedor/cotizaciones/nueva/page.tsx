@@ -3,35 +3,7 @@
 import { useState, useEffect, useRef, useCallback } from 'react';
 import { useRouter } from 'next/navigation';
 import Link from 'next/link';
-
-interface ProductoSearch {
-  id: number;
-  nombre: string;
-  sku: string;
-  precio: number;
-  precioUnitario: number;
-  descuento: number | null;
-  unidad: string;
-  slug: string;
-  rendimiento: number;
-  unidadVenta: string;
-  dimensiones: string | null;
-  categoria: { nombre: string };
-}
-
-interface CotizacionItem {
-  key: number;
-  productoId: number | null;
-  descripcion: string;
-  cantidad: number;
-  rendimiento: number;
-  unidadVenta: string;
-  precioUnitario: number;
-  descuentoPorc: number;
-  importe: number;
-  proyectoM2: number | null;
-  precioM2: number;
-}
+import ModalAgregarProducto, { type ProductoSearch, type CotizacionItem } from '@/components/cotizador/ModalAgregarProducto';
 
 export default function NuevaCotizacionPage() {
   const router = useRouter();
@@ -51,6 +23,7 @@ export default function NuevaCotizacionPage() {
   const [saving, setSaving] = useState(false);
   const [error, setError] = useState('');
   const [success, setSuccess] = useState('');
+  const [selectedProduct, setSelectedProduct] = useState<ProductoSearch | null>(null);
 
   useEffect(() => {
     fetch('/api/auth/vendedor')
@@ -76,35 +49,18 @@ export default function NuevaCotizacionPage() {
     return () => clearTimeout(timer);
   }, [searchQuery]);
 
-  const addItem = useCallback((prod: ProductoSearch) => {
-    const uv = prod.unidadVenta || 'un';
-    const rend = prod.rendimiento || 1;
-    const isUnit = prod.unidad !== 'm2';
-    const pu = isUnit
-      ? (prod.precioUnitario || prod.precio || 0)
-      : (prod.precioUnitario || Math.ceil((prod.precio || 0) * rend) || 0);
-    const m2 = isUnit ? null : rend;
-    const cant = isUnit ? 1 : (Math.round(rend / rend) || 1);
-    setItems((prev) => [
-      ...prev,
-      {
-        key: nextKey,
-        productoId: prod.id,
-        descripcion: `${prod.sku} - ${prod.nombre}`,
-        cantidad: cant,
-        rendimiento: rend,
-        unidadVenta: uv,
-        precioUnitario: pu,
-        descuentoPorc: prod.descuento || 0,
-        importe: Math.ceil(cant * pu * (1 - (prod.descuento || 0) / 100)),
-        proyectoM2: m2,
-        precioM2: isUnit ? pu : Math.ceil(pu / rend),
-      },
-    ]);
-    setNextKey((k) => k + 1);
+  const handleProductClick = useCallback((prod: ProductoSearch) => {
+    setSelectedProduct(prod);
     setSearchQuery('');
     setSearchResults([]);
     setShowResults(false);
+  }, []);
+
+  const handleModalAdd = useCallback((item: CotizacionItem) => {
+    const newItem = { ...item, key: nextKey };
+    setItems((prev) => [...prev, newItem]);
+    setNextKey((k) => k + 1);
+    setSelectedProduct(null);
     searchRef.current?.focus();
   }, [nextKey]);
 
@@ -185,6 +141,7 @@ export default function NuevaCotizacionPage() {
             cantidad: i.cantidad,
             rendimiento: i.rendimiento,
             unidadVenta: i.unidadVenta,
+            modo: i.modo,
             precioUnitario: i.precioUnitario,
             descuentoPorc: i.descuentoPorc,
             importe: i.importe,
@@ -271,7 +228,7 @@ export default function NuevaCotizacionPage() {
           {showResults && searchResults.length > 0 && (
             <div className="absolute top-full left-0 right-0 bg-white border border-gray-200 rounded-lg mt-1 shadow-lg z-10 max-h-64 overflow-y-auto">
               {searchResults.map((p) => (
-                <button key={p.id} onClick={() => addItem(p)} className="w-full text-left px-4 py-2.5 hover:bg-blue-50 text-sm border-b border-gray-100 last:border-0">
+                <button key={p.id} onClick={() => handleProductClick(p)} className="w-full text-left px-4 py-2.5 hover:bg-blue-50 text-sm border-b border-gray-100 last:border-0">
                   <span className="font-medium text-gray-800">{p.sku}</span>
                   <span className="text-gray-500 ml-2">{p.nombre}</span>
                   <span className="text-gray-400 ml-2">${(p.precioUnitario || p.precio).toLocaleString('es-CL')}/{p.unidadVenta}</span>
@@ -303,27 +260,27 @@ export default function NuevaCotizacionPage() {
               </thead>
               <tbody>
                 {items.map((item) => {
-                  const isUnit = item.proyectoM2 == null;
+                  const isM2Mode = item.modo === 'm2';
                   return (
                   <tr key={item.key} className="border-b border-gray-100 hover:bg-gray-50">
                     <td className="py-2 px-2 text-gray-800">{item.descripcion}</td>
                     <td className="py-2 px-2">
-                      {isUnit ? (
-                        <input
-                          type="number"
-                          min={1}
-                          step={1}
-                          value={item.cantidad}
-                          onChange={(e) => updateItem(item.key, 'cantidad', parseInt(e.target.value) || 1)}
-                          className="w-full border border-gray-300 rounded px-2 py-1 text-center text-sm focus:outline-none focus:ring-2 focus:ring-blue-500/50"
-                        />
-                      ) : (
+                      {isM2Mode ? (
                         <input
                           type="number"
                           min={0}
                           step={1}
                           value={item.proyectoM2 ?? 0}
                           onChange={(e) => updateItem(item.key, 'proyectoM2', parseInt(e.target.value) || 0)}
+                          className="w-full border border-gray-300 rounded px-2 py-1 text-center text-sm focus:outline-none focus:ring-2 focus:ring-blue-500/50"
+                        />
+                      ) : (
+                        <input
+                          type="number"
+                          min={1}
+                          step={1}
+                          value={item.cantidad}
+                          onChange={(e) => updateItem(item.key, 'cantidad', parseInt(e.target.value) || 1)}
                           className="w-full border border-gray-300 rounded px-2 py-1 text-center text-sm focus:outline-none focus:ring-2 focus:ring-blue-500/50"
                         />
                       )}
@@ -409,6 +366,14 @@ export default function NuevaCotizacionPage() {
           Cancelar
         </Link>
       </div>
+
+      {selectedProduct && (
+        <ModalAgregarProducto
+          product={selectedProduct}
+          onAdd={handleModalAdd}
+          onClose={() => setSelectedProduct(null)}
+        />
+      )}
     </div>
   );
 }

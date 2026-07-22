@@ -15,23 +15,22 @@ const LABEL_BY_PREFIX: Record<string, string> = {
   'SPC': 'm²',
   'PIP': 'm²',
   'PEP': 'm²',
+  'RPU': 'm²',
+  'APU': 'm²',
+  'CEW': 'Kit con accesorios',
   'PEW': 'Unidad',
   'REP': 'Unidad',
-  'RPU': 'Unidad',
-  'APU': 'Unidad',
   'RIW': 'Tabla',
   'REW': 'Tabla',
   'CVW': 'Tabla',
-  'CEW': 'Kit con accesorios',
 };
 
-export function getDisplayLabel(sku: string, fallback: string): string {
+export function getDisplayLabel(sku: string, unidad: string): string {
   const skuLabel = LABEL_BY_SKU[sku];
   if (skuLabel) return skuLabel;
 
-  const prefix = sku.substring(0, 3);
-  const prefixLabel = LABEL_BY_PREFIX[prefix];
-  if (prefixLabel) return prefixLabel;
+  if (unidad === 'un') return 'Unidad';
 
-  return fallback || 'm²';
+  const prefix = sku.substring(0, 3);
+  return LABEL_BY_PREFIX[prefix] || 'm²';
 }

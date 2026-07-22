@@ -2,23 +2,26 @@ import { NextResponse } from "next/server";
 import { prisma } from "@/lib/prisma";
 import { getSession } from "@/lib/auth";
 
-const M2_PREFIXES = ['REM', 'REG', 'PIM', 'SPC', 'PIP', 'PEP'];
-
-const UNIDAD_BY_SKU: Record<string, string> = {
-  'RIW301-NATURAL': 'un',
-  'RIW301-MADERA': 'un',
-  'RIW301-BLANCO': 'un',
-  'RIW301-GRISPLATA': 'un',
-  'RIW301-GRISGRAFITO': 'un',
-  'RIW201-CHOCOLATE': 'un',
-  'RIW201-MADERA': 'un',
+const UNITARIO_SKUS: Record<string, boolean> = {
+  AIW001: true,
+  AEW101: true, AEW102: true,
+  ATW101: true, ATW102: true,
+  'AIM101-GRAFITO': true, 'AIM101-CREMA': true, 'AIM101-CEDRO': true,
+  'AIM101-MADERA': true, 'AIM101-NEGRO': true, 'AIM101-BLANCO': true,
+  'AUM101-GRAFITO': true, 'AUM101-CREMA': true, 'AUM101-CEDRO': true,
+  'AUM101-MADERA': true, 'AUM101-NEGRO': true, 'AUM101-BLANCO': true,
+  'ATM101-GRAFITO': true, 'ATM101-CREMA': true, 'ATM101-CEDRO': true,
+  'ATM101-MADERA': true, 'ATM101-NEGRO': true, 'ATM101-BLANCO': true,
+  'NPS101-NATURAL': true, 'NPS101-CARBON': true, 'NPS101-GRAFITO': true,
+  'NPS101-CREMA': true, 'NPS101-GRISPIEDRA': true,
+  'CPS101-GRAFITO': true, 'CPS101-CARBON': true, 'CPS101-CREMA': true,
+  'CPS101-GRISPIEDRA': true, 'CPS101-NATURAL': true,
+  'GPS101-NATURAL': true, 'GPS101-GRISPIEDRA': true, 'GPS101-CREMA': true,
+  'GPS101-GRAFITO': true, 'GPS101-CARBON': true,
 };
 
 function getUnidadForSku(sku: string): string {
-  const override = UNIDAD_BY_SKU[sku];
-  if (override) return override;
-  const prefix = sku.substring(0, 3);
-  return M2_PREFIXES.includes(prefix) ? 'm2' : 'un';
+  return UNITARIO_SKUS[sku] ? 'un' : 'm2';
 }
 
 export async function GET() {

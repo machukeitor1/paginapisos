@@ -134,6 +134,7 @@ export async function POST(request: Request) {
       cantidad: item.cantidad,
       rendimiento: item.rendimiento || 1,
       unidadVenta: item.unidadVenta || 'un',
+      modo: item.modo || 'unidad',
       precioUnitario: item.precioUnitario,
       descuentoPorc: item.descuentoPorc || 0,
       importe: item.importe,

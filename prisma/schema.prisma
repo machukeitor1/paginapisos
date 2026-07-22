@@ -149,5 +149,6 @@ model CotizacionItem {
   proyectoM2     Float?
   rendimiento    Float      @default(1)
   unidadVenta    String     @default("un")
+  modo           String     @default("unidad")
   cotizacion     Cotizacion @relation(fields: [cotizacionId], references: [id], onDelete: Cascade)
 }

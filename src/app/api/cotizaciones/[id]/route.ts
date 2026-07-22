@@ -129,6 +129,7 @@ export async function PUT(request: Request, { params }: { params: { id: string }
       cantidad: item.cantidad,
       rendimiento: item.rendimiento || 1,
       unidadVenta: item.unidadVenta || 'un',
+      modo: item.modo || 'unidad',
       precioUnitario: item.precioUnitario,
       descuentoPorc: item.descuentoPorc || 0,
       importe: item.importe,

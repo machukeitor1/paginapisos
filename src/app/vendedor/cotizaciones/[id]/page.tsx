@@ -26,6 +26,7 @@ interface CotizacionData {
     descuentoPorc: number;
     importe: number;
     proyectoM2: number | null;
+    modo: string;
   }>;
 }
 
@@ -189,13 +190,13 @@ export default function CotizacionDetailPage() {
         if (idx % 2 === 0) { doc.setFillColor(245, 245, 245); doc.rect(ML, y - 2, UW, rh, 'F'); }
 
         let cx = ML;
-        const isUnit = item.proyectoM2 == null;
+        const isM2Mode = item.modo === 'm2';
         doc.setTextColor(0);
         descLines.forEach((l: string, li: number) => doc.text(l, cx + 1, y + 1 + li * 4)); cx += colW[0];
         doc.setTextColor(0);
-        doc.text(isUnit ? `${item.cantidad}` : `${(item.proyectoM2 ?? 0).toFixed(2)}`, cx + colW[1] / 2, y + 1, { align: 'center' }); cx += colW[1];
+        doc.text(isM2Mode ? `${(item.proyectoM2 ?? 0).toFixed(2)}` : `${item.cantidad}`, cx + colW[1] / 2, y + 1, { align: 'center' }); cx += colW[1];
         doc.text(`${item.cantidad} ${item.unidadVenta}`, cx + colW[2] / 2, y + 1, { align: 'center' }); cx += colW[2];
-        doc.text(fmt(Math.round(isUnit ? item.precioUnitario : item.precioUnitario / item.rendimiento)), cx + colW[3] / 2, y + 1, { align: 'center' }); cx += colW[3];
+        doc.text(fmt(Math.round(item.precioUnitario)), cx + colW[3] / 2, y + 1, { align: 'center' }); cx += colW[3];
         doc.setTextColor(0);
         doc.text(item.descuentoPorc > 0 ? `${item.descuentoPorc}%` : '-', cx + colW[4] / 2, y + 1, { align: 'center' }); cx += colW[4];
         doc.setTextColor(0); doc.setFont('Helvetica', 'bold');
@@ -312,13 +313,13 @@ export default function CotizacionDetailPage() {
           </thead>
           <tbody>
             {cot.items.map((item) => {
-              const isUnit = item.proyectoM2 == null;
+              const isM2Mode = item.modo === 'm2';
               return (
               <tr key={item.id} className="border-b border-gray-200">
                 <td className="py-2.5 text-gray-800">{item.descripcion}</td>
-                <td className="py-2.5 text-center text-gray-800">{isUnit ? item.cantidad : `${(item.proyectoM2 ?? 0).toFixed(2)}`}</td>
+                <td className="py-2.5 text-center text-gray-800">{isM2Mode ? `${(item.proyectoM2 ?? 0).toFixed(2)}` : item.cantidad}</td>
                 <td className="py-2.5 text-center text-gray-800">{item.cantidad} {item.unidadVenta}</td>
-                <td className="py-2.5 text-center text-gray-800">{formatCLP(Math.round(isUnit ? item.precioUnitario : item.precioUnitario / item.rendimiento))}</td>
+                <td className="py-2.5 text-center text-gray-800">{formatCLP(Math.round(item.precioUnitario))}</td>
                 <td className="py-2.5 text-center text-gray-800">{item.descuentoPorc > 0 ? `${item.descuentoPorc}%` : '-'}</td>
                 <td className="py-2.5 text-right font-medium text-gray-800">{formatCLP(item.importe)}</td>
               </tr>
