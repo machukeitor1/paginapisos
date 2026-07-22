@@ -4,6 +4,7 @@ const LABEL_BY_SKU: Record<string, string> = {
   'RIW301-BLANCO': 'Unidad',
   'RIW301-GRISPLATA': 'Unidad',
   'RIW301-GRISGRAFITO': 'Unidad',
+  'RPU101-FACHALETA': 'Unidad',
 };
 
 const LABEL_BY_PREFIX: Record<string, string> = {
@@ -14,7 +15,7 @@ const LABEL_BY_PREFIX: Record<string, string> = {
   'PIP': 'm²',
   'PEP': 'm²',
   'RPU': 'm²',
-  'APU': 'm²',
+  'APU': 'Unidad',
   'CEW': 'Kit con accesorios',
   'PEW': 'Unidad',
   'REP': 'Unidad',

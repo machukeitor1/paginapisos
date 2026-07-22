@@ -515,18 +515,18 @@
     "unidadVenta": "un"
   },
   "RPU101-FACHALETA": {
-    "rendimiento": 0.72,
-    "precioUnitario": 22270,
+    "rendimiento": 0.7143,
+    "precioUnitario": 30930,
     "unidadVenta": "un"
   },
   "APU102-CAFE": {
     "rendimiento": 0.58,
-    "precioUnitario": 96622,
+    "precioUnitario": 166590,
     "unidadVenta": "un"
   },
   "APU102-NOGAL": {
     "rendimiento": 0.58,
-    "precioUnitario": 96622,
+    "precioUnitario": 166590,
     "unidadVenta": "un"
   },
   "CEW01-180-CAFE": {

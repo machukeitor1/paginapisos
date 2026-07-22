@@ -40,13 +40,14 @@ interface Props {
 
 const UNIDAD_LABELS: Record<string, string> = {
   REM: 'Caja', SPC: 'Caja', PIM: 'Caja', PIP: 'Caja', REG: 'Caja',
-  CEW: 'Kit con accesorios',
+  CEW: 'Kit con accesorios', APU: 'Unidad',
   RIW: 'Tabla', REW: 'Tabla', CVW: 'Tabla',
 };
 
 const UNIDAD_LABELS_SKU: Record<string, string> = {
   'RIW301-NATURAL': 'Unidad', 'RIW301-MADERA': 'Unidad', 'RIW301-BLANCO': 'Unidad',
   'RIW301-GRISPLATA': 'Unidad', 'RIW301-GRISGRAFITO': 'Unidad',
+  'RPU101-FACHALETA': 'Unidad',
 };
 
 function getPhysicalLabel(product: ProductoSearch): string {

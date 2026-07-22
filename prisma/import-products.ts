@@ -76,6 +76,7 @@ const UNITARIO_SKUS: Record<string, boolean> = {
   'CPS101-GRISPIEDRA': true, 'CPS101-NATURAL': true,
   'GPS101-NATURAL': true, 'GPS101-GRISPIEDRA': true, 'GPS101-CREMA': true,
   'GPS101-GRAFITO': true, 'GPS101-CARBON': true,
+  'RPU101-FACHALETA': true, 'APU102-CAFE': true, 'APU102-NOGAL': true,
 };
 
 function getUnidad(sku: string): string {
