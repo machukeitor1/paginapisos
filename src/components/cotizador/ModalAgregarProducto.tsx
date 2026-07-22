@@ -55,7 +55,6 @@ export default function ModalAgregarProducto({ product, onAdd, onClose }: Props)
   const rend = product.rendimiento || 1;
   const isM2 = product.unidad === 'm2';
   const physicalLabel = getPhysicalLabel(product);
-  const precioM2 = isM2 && rend > 0 ? Math.ceil((product.precioUnitario || 0) / rend) : product.precio || 0;
 
   const [modo, setModo] = useState<'unidad' | 'm2'>(isM2 ? 'unidad' : 'unidad');
   const [cantidad, setCantidad] = useState(1);
@@ -72,20 +71,15 @@ export default function ModalAgregarProducto({ product, onAdd, onClose }: Props)
   }, [modo, rend]);
 
   useEffect(() => {
-    if (modo === 'unidad' && isM2) {
-      setPrecioUnitario(product.precioUnitario || 0);
-    } else if (modo === 'm2') {
-      setPrecioUnitario(precioM2);
-    } else {
-      setPrecioUnitario(product.precioUnitario || 0);
-    }
-  }, [modo, isM2, product.precioUnitario, precioM2]);
+    setPrecioUnitario(product.precioUnitario || 0);
+  }, [modo, product.precioUnitario]);
 
   const calcImporte = () => {
-    if (modo === 'unidad') {
-      return Math.ceil(cantidad * precioUnitario * (1 - descuento / 100));
+    if (modo === 'm2') {
+      const cajas = Math.round(proyectoM2 / rend) || 1;
+      return Math.ceil(cajas * precioUnitario);
     }
-    return Math.ceil(proyectoM2 * precioUnitario * (1 - descuento / 100));
+    return Math.ceil(cantidad * precioUnitario);
   };
 
   const handleM2Change = (val: number) => {
@@ -94,9 +88,9 @@ export default function ModalAgregarProducto({ product, onAdd, onClose }: Props)
   };
 
   const handleAdd = () => {
-    const importe = calcImporte();
+    const finalCant = modo === 'm2' ? (Math.round(proyectoM2 / rend) || 1) : cantidad;
     const finalM2 = modo === 'm2' ? proyectoM2 : (isM2 ? rend : null);
-    const finalCant = modo === 'unidad' ? cantidad : Math.round(proyectoM2 / rend) || 1;
+    const importe = Math.ceil(finalCant * precioUnitario * (1 - descuento / 100));
 
     onAdd({
       key: 0,
@@ -109,7 +103,7 @@ export default function ModalAgregarProducto({ product, onAdd, onClose }: Props)
       descuentoPorc: descuento,
       importe,
       proyectoM2: finalM2,
-      precioM2: modo === 'm2' ? precioUnitario : (isM2 ? Math.ceil(precioUnitario / rend) : precioUnitario),
+      precioM2: isM2 ? Math.ceil(precioUnitario / rend) : precioUnitario,
       modo,
     });
   };
@@ -182,7 +176,7 @@ export default function ModalAgregarProducto({ product, onAdd, onClose }: Props)
           <div className="grid grid-cols-2 gap-3">
             <div>
               <label className="block text-xs text-gray-500 mb-1">
-                Precio {modo === 'm2' ? 'm²' : `/${physicalLabel.toLowerCase()}`}
+                Precio {physicalLabel}
               </label>
               <input
                 type="number"
