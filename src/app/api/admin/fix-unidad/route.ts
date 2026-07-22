@@ -21,7 +21,7 @@ function getUnidadForSku(sku: string): string {
   return M2_PREFIXES.includes(prefix) ? 'm2' : 'un';
 }
 
-export async function POST() {
+export async function GET() {
   const session = await getSession();
   if (!session) {
     return NextResponse.json({ error: "No autenticado" }, { status: 401 });
