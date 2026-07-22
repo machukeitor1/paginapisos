@@ -295,43 +295,43 @@
     "unidadVenta": "un"
   },
   "REW202-NEGRO": {
-    "rendimiento": 0.6351,
-    "precioUnitario": 11330,
+    "rendimiento": 0.5814,
+    "precioUnitario": 17840,
     "unidadVenta": "un"
   },
   "REW202-CAFECHOCOLATE": {
-    "rendimiento": 0.6351,
-    "precioUnitario": 11330,
+    "rendimiento": 0.5814,
+    "precioUnitario": 17840,
     "unidadVenta": "un"
   },
   "REW201-CAFECHOCOLATE": {
-    "rendimiento": 0.4234,
-    "precioUnitario": 4027,
+    "rendimiento": 0.3774,
+    "precioUnitario": 9510,
     "unidadVenta": "un"
   },
   "REW201-NEGRO": {
-    "rendimiento": 0.4234,
-    "precioUnitario": 4027,
+    "rendimiento": 0.3774,
+    "precioUnitario": 9510,
     "unidadVenta": "un"
   },
   "REW103-GRAFITONEGRO": {
-    "rendimiento": 0.5771,
-    "precioUnitario": 11675,
+    "rendimiento": 0.578,
+    "precioUnitario": 20230,
     "unidadVenta": "un"
   },
   "REW103-MADERANEGRO": {
-    "rendimiento": 0.5771,
-    "precioUnitario": 11675,
+    "rendimiento": 0.578,
+    "precioUnitario": 20230,
     "unidadVenta": "un"
   },
   "REW103-ANTIQUENEGRO": {
-    "rendimiento": 0.5771,
-    "precioUnitario": 11675,
+    "rendimiento": 0.578,
+    "precioUnitario": 20230,
     "unidadVenta": "un"
   },
   "REW103-CHOCOLATENEGRO": {
-    "rendimiento": 0.5771,
-    "precioUnitario": 11675,
+    "rendimiento": 0.578,
+    "precioUnitario": 20230,
     "unidadVenta": "un"
   },
   "RIW301-NATURAL": {
@@ -575,8 +575,8 @@
     "unidadVenta": "un"
   },
   "REW103-PIEDRANEGRO": {
-    "rendimiento": 0.5771,
-    "precioUnitario": 11675,
+    "rendimiento": 0.578,
+    "precioUnitario": 20230,
     "unidadVenta": "un"
   }
 }
