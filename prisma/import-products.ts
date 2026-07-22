@@ -57,6 +57,7 @@ const RENDIMIENTOS: Record<string, { rendimiento: number; unidadVenta: string }>
   REM: { rendimiento: 8.8, unidadVenta: "caja" },
   SPC: { rendimiento: 2.64, unidadVenta: "caja" },
   PIM: { rendimiento: 2.3, unidadVenta: "caja" },
+  REG: { rendimiento: 8.8, unidadVenta: "caja" },
 };
 
 const UNITARIO_SKUS: Record<string, boolean> = {

@@ -60,9 +60,9 @@
     "unidadVenta": "caja"
   },
   "REG001-CREMA": {
-    "rendimiento": 1.1107,
-    "precioUnitario": 35687,
-    "unidadVenta": "un"
+    "rendimiento": 8.80,
+    "precioUnitario": 282744,
+    "unidadVenta": "caja"
   },
   "REM101-NEGRO": {
     "rendimiento": 8.8,
@@ -75,14 +75,14 @@
     "unidadVenta": "caja"
   },
   "REG001-NEGRO": {
-    "rendimiento": 1.1107,
-    "precioUnitario": 35687,
-    "unidadVenta": "un"
+    "rendimiento": 8.80,
+    "precioUnitario": 282744,
+    "unidadVenta": "caja"
   },
   "REG001-PIEDRA": {
-    "rendimiento": 1.1107,
-    "precioUnitario": 35687,
-    "unidadVenta": "un"
+    "rendimiento": 8.80,
+    "precioUnitario": 282744,
+    "unidadVenta": "caja"
   },
   "SPC101-GRAFITO": {
     "rendimiento": 2.64,
@@ -560,9 +560,9 @@
     "unidadVenta": "un"
   },
   "REG001-CAFE": {
-    "rendimiento": 1.1107,
-    "precioUnitario": 35687,
-    "unidadVenta": "un"
+    "rendimiento": 8.80,
+    "precioUnitario": 282744,
+    "unidadVenta": "caja"
   },
   "PIP002-GRISCARBON": {
     "rendimiento": 0.36,

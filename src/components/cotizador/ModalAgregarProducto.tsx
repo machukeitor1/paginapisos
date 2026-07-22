@@ -39,7 +39,7 @@ interface Props {
 }
 
 const UNIDAD_LABELS: Record<string, string> = {
-  REM: 'Caja', SPC: 'Caja', PIM: 'Caja', PIP: 'Caja',
+  REM: 'Caja', SPC: 'Caja', PIM: 'Caja', PIP: 'Caja', REG: 'Caja',
   CEW: 'Kit con accesorios',
   RIW: 'Tabla', REW: 'Tabla', CVW: 'Tabla',
 };
