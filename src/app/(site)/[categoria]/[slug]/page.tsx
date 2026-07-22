@@ -5,6 +5,7 @@ import { useParams } from 'next/navigation';
 import Link from 'next/link';
 import { getProductoExtra } from '@/lib/productos-data';
 import { getProdData } from '@/lib/producto-data-helper';
+import { getDisplayLabel } from '@/lib/producto-labels';
 
 interface Producto {
   id: number;
@@ -92,9 +93,8 @@ export default function ProductoPage() {
   try { imagenes = JSON.parse(producto.imagenes); } catch {}
 
   const extra = getProdData(producto, getProductoExtra(producto.sku));
-  const UNIT_PRICE_SKUS = ['RPU101-FACHALETA', 'APU102-CAFE', 'APU102-NOGAL'];
-  const showUnitPrice = UNIT_PRICE_SKUS.includes(producto.sku);
   const formatearPrecio = (p: number) => `$${Math.round(p).toLocaleString('es-CL')}`;
+  const displayUnit = getDisplayLabel(producto.sku, producto.unidad);
 
   const whatsappMsg = encodeURIComponent(
     `Hola, me interesa el producto ${producto.nombre} (SKU: ${producto.sku}). ¿Podrían darme más información?`
@@ -198,18 +198,17 @@ export default function ProductoPage() {
           <div className="bg-gray-50 rounded-xl p-6 mb-4">
             <div className="flex items-baseline gap-3 mb-4">
               {(() => {
-                const displayPrice = showUnitPrice ? (producto.precioUnitario || producto.precio) : producto.precio;
-                const precioConDesc = producto.descuento ? Math.round(displayPrice * (1 - producto.descuento / 100)) : displayPrice;
+                const precioConDesc = producto.descuento ? Math.round(producto.precio * (1 - producto.descuento / 100)) : producto.precio;
                 return producto.descuento ? (
                   <>
-                    <span className="text-lg text-muted line-through">{formatearPrecio(displayPrice)}</span>
+                    <span className="text-lg text-muted line-through">{formatearPrecio(producto.precio)}</span>
                     <span className="text-3xl font-bold text-accent">{formatearPrecio(precioConDesc)}</span>
                   </>
                 ) : (
-                  <span className="text-3xl font-bold text-accent">{formatearPrecio(displayPrice)}</span>
+                  <span className="text-3xl font-bold text-accent">{formatearPrecio(producto.precio)}</span>
                 );
               })()}
-              <span className="text-sm text-muted">/ {showUnitPrice ? (extra?.presentacion?.toLowerCase() || 'un') : 'm²'}</span>
+              <span className="text-sm text-muted">/ {displayUnit}</span>
             </div>
 
             <a

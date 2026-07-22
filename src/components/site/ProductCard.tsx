@@ -1,6 +1,7 @@
 import Link from 'next/link';
 import { getProductoExtra } from '@/lib/productos-data';
 import { getProdData } from '@/lib/producto-data-helper';
+import { getDisplayLabel } from '@/lib/producto-labels';
 
 interface Producto {
   id: number;
@@ -27,10 +28,8 @@ export default function ProductCard({ producto }: { producto: Producto }) {
   try { imagenes = JSON.parse(producto.imagenes); } catch {}
 
   const formatearPrecio = (p: number) => `$${Math.round(p).toLocaleString('es-CL')}`;
-  const UNIT_PRICE_SKUS = ['RPU101-FACHALETA', 'APU102-CAFE', 'APU102-NOGAL'];
-  const showUnitPrice = UNIT_PRICE_SKUS.includes(producto.sku);
-  const displayPrice = showUnitPrice ? (producto.precioUnitario || producto.precio) : producto.precio;
-  const displayUnit = showUnitPrice ? (extra?.presentacion?.toLowerCase() || 'un') : 'm²';
+  const displayPrice = producto.precio;
+  const displayUnit = getDisplayLabel(producto.sku, producto.unidad);
   const linkProps = { href: `/${producto.categoria.slug}/${producto.slug}` };
 
   return (
