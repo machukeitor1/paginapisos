@@ -41,7 +41,6 @@ interface Props {
 const UNIDAD_LABELS: Record<string, string> = {
   REM: 'Caja', SPC: 'Caja', PIM: 'Caja', PIP: 'Caja',
   CEW: 'Kit con accesorios',
-  PEW: 'Perfil', REP: 'Perfil',
   RIW: 'Tabla', REW: 'Tabla', CVW: 'Tabla',
 };
 
