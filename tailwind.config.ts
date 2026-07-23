@@ -14,7 +14,7 @@ const config: Config = {
         background: "#f8f8f8",
         card: "#ffffff",
         text: "#333333",
-        muted: "#888888",
+        muted: "#666666",
       },
       fontFamily: {
         sans: ["Inter", "sans-serif"],

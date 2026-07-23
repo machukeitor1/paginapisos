@@ -283,7 +283,7 @@ export default function ProductosPage() {
                 <div className="flex flex-wrap gap-2">
                   {imagenesArr.map((url: string, i: number) => (
                     <div key={i} className="relative w-24 h-24 border border-gray-200 rounded-lg overflow-hidden bg-gray-50 group">
-                      <img src={`${url}?cb=${cacheBust}`} alt={`img-${i}`} className="w-full h-full object-cover" />
+                      <img src={`${url}?cb=${cacheBust}`} alt={`Imagen ${i + 1} del producto`} className="w-full h-full object-cover" />
                       <button
                         type="button"
                         onClick={() => {

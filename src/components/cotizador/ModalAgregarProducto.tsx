@@ -122,7 +122,7 @@ export default function ModalAgregarProducto({ product, onAdd, onClose }: Props)
             <h3 className="font-semibold text-gray-800 text-sm">{product.sku}</h3>
             <p className="text-xs text-gray-500 mt-0.5">{product.nombre}</p>
           </div>
-          <button onClick={onClose} className="text-gray-400 hover:text-gray-600">
+          <button onClick={onClose} className="text-gray-500 hover:text-gray-600">
             <svg className="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M6 18L18 6M6 6l12 12" /></svg>
           </button>
         </div>
@@ -157,7 +157,7 @@ export default function ModalAgregarProducto({ product, onAdd, onClose }: Props)
                 className="w-full border border-gray-300 rounded-lg px-3 py-2 text-sm focus:outline-none focus:ring-2 focus:ring-blue-500/50"
               />
               {isM2 && (
-                <p className="text-xs text-gray-400 mt-1">
+                <p className="text-xs text-gray-500 mt-1">
                   Equivale a {(cantidad * rend).toFixed(2)} m² ({rend} m²/{physicalLabel.toLowerCase()})
                 </p>
               )}
@@ -173,7 +173,7 @@ export default function ModalAgregarProducto({ product, onAdd, onClose }: Props)
                 onChange={(e) => handleM2Change(parseInt(e.target.value) || 0)}
                 className="w-full border border-gray-300 rounded-lg px-3 py-2 text-sm focus:outline-none focus:ring-2 focus:ring-blue-500/50"
               />
-              <p className="text-xs text-gray-400 mt-1">
+              <p className="text-xs text-gray-500 mt-1">
                 Equivale a {cantidad} {physicalLabel.toLowerCase()} ({rend} m²/{physicalLabel.toLowerCase()})
               </p>
             </div>

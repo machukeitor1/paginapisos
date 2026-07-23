@@ -80,13 +80,13 @@ export default function AdminLayout({ children }: { children: React.ReactNode })
           ))}
         </nav>
         <div className="p-4 border-t border-white/10">
-          <Link href="/" target="_blank" className="flex items-center gap-2 text-gray-400 hover:text-white text-sm mb-2 transition-colors">
+          <Link href="/" target="_blank" className="flex items-center gap-2 text-gray-500 hover:text-white text-sm mb-2 transition-colors">
             <svg className="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
               <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M10 6H6a2 2 0 00-2 2v10a2 2 0 002 2h10a2 2 0 002-2v-4M14 4h6m0 0v6m0-6L10 14" />
             </svg>
             Ver sitio
           </Link>
-          <button onClick={handleLogout} className="flex items-center gap-2 text-gray-400 hover:text-white text-sm transition-colors w-full">
+          <button onClick={handleLogout} className="flex items-center gap-2 text-gray-500 hover:text-white text-sm transition-colors w-full">
             <svg className="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
               <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M17 16l4-4m0 0l-4-4m4 4H7m6 4v1a3 3 0 01-3 3H6a3 3 0 01-3-3V7a3 3 0 013-3h4a3 3 0 013 3v1" />
             </svg>

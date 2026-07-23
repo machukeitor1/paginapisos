@@ -276,16 +276,16 @@ export default function EditarCotizacionPage() {
                 <button key={p.id} onClick={() => handleProductClick(p)} className="w-full text-left px-4 py-2.5 hover:bg-blue-50 text-sm border-b border-gray-100 last:border-0">
                   <span className="font-medium text-gray-800">{p.sku}</span>
                   <span className="text-gray-500 ml-2">{p.nombre}</span>
-                  <span className="text-gray-400 ml-2">${(p.precioUnitario || p.precio).toLocaleString('es-CL')}/{p.unidadVenta}</span>
-                  <span className="text-gray-400 ml-1">| ${p.precio.toLocaleString('es-CL')}/{p.unidad}</span>
+                  <span className="text-gray-500 ml-2">${(p.precioUnitario || p.precio).toLocaleString('es-CL')}/{p.unidadVenta}</span>
+                  <span className="text-gray-500 ml-1">| ${p.precio.toLocaleString('es-CL')}/{p.unidad}</span>
                   {p.descuento ? <span className="text-red-500 text-xs ml-1">{p.descuento}% OFF</span> : null}
-                  <span className="text-xs text-gray-400 ml-2">{p.categoria.nombre}</span>
+                  <span className="text-xs text-gray-500 ml-2">{p.categoria.nombre}</span>
                 </button>
               ))}
             </div>
           )}
           {showResults && searchQuery.length > 0 && searchResults.length === 0 && (
-            <div className="absolute top-full left-0 right-0 bg-white border border-gray-200 rounded-lg mt-1 shadow-lg z-10 p-3 text-sm text-gray-400">Sin resultados</div>
+            <div className="absolute top-full left-0 right-0 bg-white border border-gray-200 rounded-lg mt-1 shadow-lg z-10 p-3 text-sm text-gray-500">Sin resultados</div>
           )}
         </div>
 
@@ -309,7 +309,7 @@ export default function EditarCotizacionPage() {
                   const isM2Mode = item.modo === 'm2';
                   return (
                   <tr key={item.key} className="border-b border-gray-100 hover:bg-gray-50">
-                    <td className="py-2 pr-2 text-gray-400 text-xs">{idx + 1}</td>
+                    <td className="py-2 pr-2 text-gray-500 text-xs">{idx + 1}</td>
                     <td className="py-2 px-2 text-gray-800">{item.descripcion}</td>
                     <td className="py-2 px-2">
                       <div className="flex flex-col items-center">
@@ -332,7 +332,7 @@ export default function EditarCotizacionPage() {
                             className="w-full border border-gray-300 rounded px-2 py-1 text-center text-sm focus:outline-none focus:ring-2 focus:ring-blue-500/50"
                           />
                         )}
-                        <span className="text-[10px] text-gray-400 mt-0.5 leading-none">
+                        <span className="text-[10px] text-gray-500 mt-0.5 leading-none">
                           {isM2Mode ? 'm²' : getUnidadLabel(item.unidadVenta)}
                         </span>
                       </div>
@@ -375,7 +375,7 @@ export default function EditarCotizacionPage() {
           </div>
         )}
         {items.length === 0 && (
-          <p className="text-sm text-gray-400 text-center py-6">Busque productos por SKU para agregarlos a la cotización</p>
+          <p className="text-sm text-gray-500 text-center py-6">Busque productos por SKU para agregarlos a la cotización</p>
         )}
 
         {items.length > 0 && (

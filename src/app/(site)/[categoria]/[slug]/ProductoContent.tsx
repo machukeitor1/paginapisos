@@ -134,6 +134,7 @@ export default function ProductoContent() {
                   <button
                     key={i}
                     onClick={() => irAImagen(i)}
+                    aria-label={`Imagen ${i + 1} de ${imagenes.length}`}
                     className={`w-2 h-2 rounded-full transition-colors ${i === imagenActual ? 'bg-white' : 'bg-white/50'}`}
                   />
                 ))}
@@ -146,9 +147,10 @@ export default function ProductoContent() {
                 <button
                   key={i}
                   onClick={() => irAImagen(i)}
+                  aria-label={`Ver imagen ${i + 1}`}
                   className={`w-16 h-16 rounded-lg overflow-hidden border-2 transition-colors shrink-0 ${i === imagenActual ? 'border-accent' : 'border-transparent'}`}
                 >
-                  <img src={img} alt="" className="w-full h-full object-cover" />
+                  <img src={img} alt={`${producto.nombre} - imagen ${i + 1}`} className="w-full h-full object-cover" />
                 </button>
               ))}
             </div>

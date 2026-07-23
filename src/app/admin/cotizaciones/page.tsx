@@ -42,7 +42,7 @@ export default function AdminCotizacionesPage() {
 
       {items.length === 0 ? (
         <div className="bg-card rounded-xl shadow-sm border border-gray-200 p-12 text-center">
-          <p className="text-gray-400 text-sm">No hay cotizaciones registradas</p>
+          <p className="text-gray-500 text-sm">No hay cotizaciones registradas</p>
         </div>
       ) : (
         <div className="bg-card rounded-xl shadow-sm border border-gray-200 overflow-hidden">

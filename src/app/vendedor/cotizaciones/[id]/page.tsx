@@ -339,7 +339,7 @@ export default function CotizacionDetailPage() {
           </div>
         )}
 
-        <div className="border-t border-gray-300 pt-4 text-xs text-gray-400 text-center space-y-0.5">
+        <div className="border-t border-gray-300 pt-4 text-xs text-gray-500 text-center space-y-0.5">
           <p>* Cotización válida por 3 días desde su emisión</p>
           <p className="mt-2 font-medium text-gray-500">Visítanos en www.revestimientoschillan.cl</p>
         </div>
