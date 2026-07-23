@@ -2,6 +2,7 @@ import Link from 'next/link';
 import { getProductoExtra } from '@/lib/productos-data';
 import { getProdData } from '@/lib/producto-data-helper';
 import { getDisplayLabel } from '@/lib/producto-labels';
+import { getImageSrcSet } from '@/lib/image-utils';
 
 interface Producto {
   id: number;
@@ -32,12 +33,21 @@ export default function ProductCard({ producto }: { producto: Producto }) {
   const displayUnit = getDisplayLabel(producto.sku, producto.unidad);
   const linkProps = { href: `/${producto.categoria.slug}/${producto.slug}` };
 
+  const imgSrc = imagenes[0] ? getImageSrcSet(imagenes[0]) : null;
+
   return (
     <div className="bg-card rounded-xl shadow-md overflow-hidden hover:shadow-lg transition-shadow group relative">
       <Link {...linkProps}>
         <div className="relative h-48 bg-gray-100 overflow-hidden">
-          {imagenes.length > 0 ? (
-            <img src={imagenes[0]} alt={producto.nombre} className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-300" />
+          {imgSrc ? (
+            imgSrc.isResponsive ? (
+              <picture>
+                <source srcSet={imgSrc.srcSet} sizes={imgSrc.sizes} type="image/webp" />
+                <img src={imgSrc.src} alt={producto.nombre} className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-300" loading="lazy" />
+              </picture>
+            ) : (
+              <img src={imgSrc.src} alt={producto.nombre} className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-300" loading="lazy" />
+            )
           ) : (
             <div className="w-full h-full flex items-center justify-center text-muted">
               <svg className="w-12 h-12" fill="none" stroke="currentColor" viewBox="0 0 24 24">

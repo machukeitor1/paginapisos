@@ -1,5 +1,12 @@
 import { NextResponse } from "next/server";
 import { uploadToR2 } from "@/lib/r2";
+import sharp from "sharp";
+
+const VARIANTS = [
+  { width: 400, suffix: "w400" },
+  { width: 800, suffix: "w800" },
+  { width: 1200, suffix: "w1200" },
+];
 
 export async function POST(request: Request) {
   try {
@@ -13,15 +20,39 @@ export async function POST(request: Request) {
     const bytes = await file.arrayBuffer();
     const buffer = Buffer.from(bytes);
 
-    const ext = file.name.split(".").pop() || "webp";
     const timestamp = Date.now();
-    const filename = `${timestamp}-${Math.random().toString(36).slice(2, 8)}.${ext}`;
-    const key = `productos/${filename}`;
+    const baseName = `${timestamp}-${Math.random().toString(36).slice(2, 8)}`;
+    const baseKey = `productos/${baseName}`;
 
-    const contentType = file.type || "image/webp";
-    const url = await uploadToR2(key, buffer, contentType);
+    // Convert original to WebP
+    const webpBuffer = await sharp(buffer)
+      .resize(1600, null, { withoutEnlargement: true })
+      .webp({ quality: 85 })
+      .toBuffer();
 
-    return NextResponse.json({ url });
+    // Upload original (WebP)
+    const originalKey = `${baseKey}_original.webp`;
+    await uploadToR2(originalKey, webpBuffer, "image/webp");
+
+    // Generate and upload size variants
+    const urls: Record<string, string> = {};
+    urls.original = `${process.env.R2_PUBLIC_URL}/${originalKey}`;
+
+    for (const v of VARIANTS) {
+      const resized = await sharp(buffer)
+        .resize(v.width, null, { withoutEnlargement: true })
+        .webp({ quality: 85 })
+        .toBuffer();
+
+      const key = `${baseKey}_${v.suffix}.webp`;
+      await uploadToR2(key, resized, "image/webp");
+      urls[v.suffix] = `${process.env.R2_PUBLIC_URL}/${key}`;
+    }
+
+    return NextResponse.json({
+      url: urls.original,
+      urls,
+    });
   } catch (error: any) {
     return NextResponse.json({ error: error.message || "Error al subir archivo" }, { status: 500 });
   }

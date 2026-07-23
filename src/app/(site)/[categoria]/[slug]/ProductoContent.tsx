@@ -6,6 +6,7 @@ import Link from 'next/link';
 import { getProductoExtra } from '@/lib/productos-data';
 import { getProdData } from '@/lib/producto-data-helper';
 import { getDisplayLabel } from '@/lib/producto-labels';
+import { getImageSrcSet } from '@/lib/image-utils';
 
 interface Producto {
   id: number;
@@ -115,7 +116,17 @@ export default function ProductoContent() {
         <div>
           <div className="relative bg-gray-100 rounded-xl overflow-hidden h-80 md:h-96 mb-4">
             {imagenes.length > 0 ? (
-              <img src={imagenes[imagenActual]} alt={producto.nombre} className="w-full h-full object-cover transition-opacity duration-500" />
+              (() => {
+                const imgSrc = getImageSrcSet(imagenes[imagenActual], '(max-width: 768px) 800px, 1200px');
+                return imgSrc.isResponsive ? (
+                  <picture>
+                    <source srcSet={imgSrc.srcSet} sizes={imgSrc.sizes} type="image/webp" />
+                    <img src={imgSrc.src} alt={producto.nombre} className="w-full h-full object-cover transition-opacity duration-500" />
+                  </picture>
+                ) : (
+                  <img src={imgSrc.src} alt={producto.nombre} className="w-full h-full object-cover transition-opacity duration-500" />
+                );
+              })()
             ) : (
               <div className="w-full h-full flex items-center justify-center text-muted">
                 <svg className="w-20 h-20" fill="none" stroke="currentColor" viewBox="0 0 24 24">
@@ -143,16 +154,26 @@ export default function ProductoContent() {
           </div>
           {imagenes.length > 1 && (
             <div className="flex gap-2">
-              {imagenes.map((img, i) => (
+              {imagenes.map((img, i) => {
+                const thumbSrc = getImageSrcSet(img);
+                return (
                 <button
                   key={i}
                   onClick={() => irAImagen(i)}
                   aria-label={`Ver imagen ${i + 1}`}
                   className={`w-16 h-16 rounded-lg overflow-hidden border-2 transition-colors shrink-0 ${i === imagenActual ? 'border-accent' : 'border-transparent'}`}
                 >
-                  <img src={img} alt={`${producto.nombre} - imagen ${i + 1}`} className="w-full h-full object-cover" />
+                  {thumbSrc.isResponsive ? (
+                    <picture>
+                      <source srcSet={`${thumbSrc.src.replace('_w800.webp', '_w400.webp')}`} type="image/webp" />
+                      <img src={thumbSrc.src} alt={`${producto.nombre} - imagen ${i + 1}`} className="w-full h-full object-cover" />
+                    </picture>
+                  ) : (
+                    <img src={thumbSrc.src} alt={`${producto.nombre} - imagen ${i + 1}`} className="w-full h-full object-cover" />
+                  )}
                 </button>
-              ))}
+                );
+              })}
             </div>
           )}
         </div>
