@@ -124,7 +124,7 @@ export default function CotizacionDetailPage() {
       const vence = new Date(cot.vencimiento).toLocaleDateString('es-CL', { year: 'numeric', month: 'long', day: 'numeric' });
 
       // ── Header ──
-      const logoW = 24;
+      const logoW = 26;
       const textCX = PW / 2;
       if (logoBase64) {
         try { doc.addImage(logoBase64, 'PNG', ML, MT - 4, logoW, logoW); } catch (e) { console.warn('Logo omitido:', e); }
