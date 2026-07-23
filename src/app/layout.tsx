@@ -2,8 +2,10 @@ import type { Metadata } from "next";
 import "./globals.css";
 
 export const metadata: Metadata = {
-  title: "Revestimientos y Pisos - Materiales de Construcción",
-  description: "Venta de revestimientos metálicos, WPC, pisos vinílicos SPC, deck y siding granito. Despacho a todo Chile.",
+  metadataBase: new URL('https://revestimientoschillan.cl'),
+  title: "Revestimientos y Pisos en Chillán",
+  description: "Venta de revestimientos metálicos, pisos flotantes, WPC, pisos vinílicos SPC, deck y siding granito en Chillán.",
+  icons: { icon: '/Logo.png' },
 };
 
 export default function RootLayout({
