@@ -13,7 +13,7 @@ export default function ProductosPage() {
   const [guardando, setGuardando] = useState(false);
   const [form, setForm] = useState({
     nombre: '', slug: '', sku: '', descripcion: '', dimensiones: '', unidad: 'm2', precio: 0, descuento: 0, rendimiento: 1, unidadVenta: 'un', precioUnitario: 0, imagenes: '[]', estado: 'disponible', destacado: false, activo: true, orden: 0, categoriaId: 0,
-    medidas: '', presentacion: '', rendimientoTexto: '', accesorios: '', esAccesorio: false,
+    medidas: '', presentacion: '', rendimientoTexto: '', accesorios: '', esAccesorio: false, displayLabel: '',
   });
   const [cacheBust, setCacheBust] = useState(0);
   useEffect(() => { setCacheBust(v => v + 1); }, [form.imagenes]);
@@ -131,6 +131,7 @@ export default function ProductosPage() {
       precioUnitario: Math.round(form.precio * form.rendimiento),
       medidas: form.medidas ? toJsonArr(form.medidas) : null,
       accesorios: form.accesorios ? toJsonArr(form.accesorios) : null,
+      displayLabel: form.displayLabel || null,
     };
     delete (body as any).precioAntes;
     if (!editando) delete (body as any).id;
@@ -143,7 +144,7 @@ export default function ProductosPage() {
 
     if (res.ok) {
       setEditando(null);
-      setForm({ nombre: '', slug: '', sku: '', descripcion: '', dimensiones: '', unidad: 'm2', precio: 0, descuento: 0, rendimiento: 1, unidadVenta: 'un', precioUnitario: 0, imagenes: '[]', estado: 'disponible', destacado: false, activo: true, orden: 0, categoriaId: 0, medidas: '', presentacion: '', rendimientoTexto: '', accesorios: '', esAccesorio: false });
+      setForm({ nombre: '', slug: '', sku: '', descripcion: '', dimensiones: '', unidad: 'm2', precio: 0, descuento: 0, rendimiento: 1, unidadVenta: 'un', precioUnitario: 0, imagenes: '[]', estado: 'disponible', destacado: false, activo: true, orden: 0, categoriaId: 0, medidas: '', presentacion: '', rendimientoTexto: '', accesorios: '', esAccesorio: false, displayLabel: '' });
       cargar();
     }
   };
@@ -153,7 +154,7 @@ export default function ProductosPage() {
     const parseToList = (v: string) => { try { const a = JSON.parse(v); return Array.isArray(a) ? a.join('\n') : ''; } catch { return ''; } };
     setForm({
       nombre: prod.nombre, slug: prod.slug, sku: prod.sku, descripcion: prod.descripcion || '', dimensiones: prod.dimensiones || '', unidad: prod.unidad, precio: prod.precio, descuento: prod.descuento || 0, rendimiento: prod.rendimiento || 1, unidadVenta: prod.unidadVenta || 'un', precioUnitario: prod.precioUnitario || 0, imagenes: prod.imagenes, estado: prod.estado || 'disponible', destacado: prod.destacado, activo: prod.activo, orden: prod.orden, categoriaId: prod.categoriaId,
-      medidas: parseToList(prod.medidas), presentacion: prod.presentacion || '', rendimientoTexto: prod.rendimientoTexto || '', accesorios: parseToList(prod.accesorios), esAccesorio: prod.esAccesorio || false,
+      medidas: parseToList(prod.medidas), presentacion: prod.presentacion || '', rendimientoTexto: prod.rendimientoTexto || '', accesorios: parseToList(prod.accesorios), esAccesorio: prod.esAccesorio || false, displayLabel: prod.displayLabel || '',
     });
   };
 
@@ -214,6 +215,36 @@ export default function ProductosPage() {
               <option value="un">Unidad (un)</option>
               <option value="caja">Caja</option>
             </select>
+          </div>
+          <div>
+            <label className="block text-sm font-medium text-text mb-1">Etiqueta de Precio</label>
+            <select
+              value={['m²', 'Unidad', 'Caja', 'Tabla'].includes(form.displayLabel) ? form.displayLabel : '__custom__'}
+              onChange={(e) => {
+                if (e.target.value === '__custom__') {
+                  setForm({ ...form, displayLabel: '' });
+                } else {
+                  setForm({ ...form, displayLabel: e.target.value });
+                }
+              }}
+              className="w-full border border-gray-300 rounded-lg px-4 py-2 text-sm"
+            >
+              <option value="">Automática (según SKU)</option>
+              <option value="m²">m²</option>
+              <option value="Unidad">Unidad</option>
+              <option value="Caja">Caja</option>
+              <option value="Tabla">Tabla</option>
+              <option value="__custom__">Otra...</option>
+            </select>
+            {!['m²', 'Unidad', 'Caja', 'Tabla', ''].includes(form.displayLabel) && (
+              <input
+                type="text"
+                value={form.displayLabel}
+                onChange={(e) => setForm({ ...form, displayLabel: e.target.value })}
+                placeholder="Escribir etiqueta personalizada"
+                className="w-full border border-gray-300 rounded-lg px-4 py-2 text-sm mt-2"
+              />
+            )}
           </div>
           <div>
             <label className="block text-sm font-medium text-text mb-1">Rendimiento (m²/unidad)</label>
@@ -313,7 +344,7 @@ export default function ProductosPage() {
             {editando ? 'Actualizar' : 'Crear producto'}
           </button>
           {editando && (
-            <button type="button" onClick={() => { setEditando(null);              setForm({ nombre: '', slug: '', sku: '', descripcion: '', dimensiones: '', unidad: 'm2', precio: 0, descuento: 0, rendimiento: 1, unidadVenta: 'un', precioUnitario: 0, imagenes: '[]', estado: 'disponible', destacado: false, activo: true, orden: 0, categoriaId: 0, medidas: '', presentacion: '', rendimientoTexto: '', accesorios: '', esAccesorio: false }); }} className="bg-gray-200 hover:bg-gray-300 text-text font-medium py-2 px-4 rounded-lg transition-colors text-sm">
+            <button type="button" onClick={() => { setEditando(null);              setForm({ nombre: '', slug: '', sku: '', descripcion: '', dimensiones: '', unidad: 'm2', precio: 0, descuento: 0, rendimiento: 1, unidadVenta: 'un', precioUnitario: 0, imagenes: '[]', estado: 'disponible', destacado: false, activo: true, orden: 0, categoriaId: 0, medidas: '', presentacion: '', rendimientoTexto: '', accesorios: '', esAccesorio: false, displayLabel: '' }); }} className="bg-gray-200 hover:bg-gray-300 text-text font-medium py-2 px-4 rounded-lg transition-colors text-sm">
               Cancelar
             </button>
           )}

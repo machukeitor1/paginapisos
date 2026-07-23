@@ -24,7 +24,9 @@ const LABEL_BY_PREFIX: Record<string, string> = {
   'CVW': 'Tabla',
 };
 
-export function getDisplayLabel(sku: string, unidad: string): string {
+export function getDisplayLabel(sku: string, unidad: string, displayLabel?: string | null): string {
+  if (displayLabel) return displayLabel;
+
   const skuLabel = LABEL_BY_SKU[sku];
   if (skuLabel) return skuLabel;
 

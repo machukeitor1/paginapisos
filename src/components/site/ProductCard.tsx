@@ -20,6 +20,7 @@ interface Producto {
   imagenes: string;
   estado: string;
   marca: string;
+  displayLabel: string | null;
   categoria: { slug: string; nombre: string };
 }
 
@@ -30,7 +31,7 @@ export default function ProductCard({ producto }: { producto: Producto }) {
 
   const formatearPrecio = (p: number) => `$${Math.round(p).toLocaleString('es-CL')}`;
   const displayPrice = producto.precio;
-  const displayUnit = getDisplayLabel(producto.sku, producto.unidad);
+  const displayUnit = getDisplayLabel(producto.sku, producto.unidad, producto.displayLabel);
   const linkProps = { href: `/${producto.categoria.slug}/${producto.slug}` };
 
   const imgSrc = imagenes[0] ? getImageSrcSet(imagenes[0]) : null;

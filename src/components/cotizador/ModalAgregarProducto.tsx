@@ -1,6 +1,7 @@
 'use client';
 
 import { useState, useEffect } from 'react';
+import { getDisplayLabel } from '@/lib/producto-labels';
 
 export interface ProductoSearch {
   id: number;
@@ -14,6 +15,7 @@ export interface ProductoSearch {
   rendimiento: number;
   unidadVenta: string;
   dimensiones: string | null;
+  displayLabel: string | null;
   categoria: { nombre: string };
 }
 
@@ -38,29 +40,10 @@ interface Props {
   onClose: () => void;
 }
 
-const UNIDAD_LABELS: Record<string, string> = {
-  REM: 'Caja', SPC: 'Caja', PIM: 'Caja', PIP: 'Caja', REG: 'Caja',
-  CEW: 'Kit con accesorios', APU: 'Unidad',
-  RIW: 'Tabla', REW: 'Tabla', CVW: 'Tabla',
-};
-
-const UNIDAD_LABELS_SKU: Record<string, string> = {
-  'RIW301-NATURAL': 'Unidad', 'RIW301-MADERA': 'Unidad', 'RIW301-BLANCO': 'Unidad',
-  'RIW301-GRISPLATA': 'Unidad', 'RIW301-GRISGRAFITO': 'Unidad',
-  'RPU101-FACHALETA': 'Unidad',
-};
-
-function getPhysicalLabel(product: ProductoSearch): string {
-  if (UNIDAD_LABELS_SKU[product.sku]) return UNIDAD_LABELS_SKU[product.sku];
-  if (product.unidad === 'un') return 'Unidad';
-  const prefix = product.sku.substring(0, 3);
-  return UNIDAD_LABELS[prefix] || 'Unidad';
-}
-
 export default function ModalAgregarProducto({ product, onAdd, onClose }: Props) {
   const rend = product.rendimiento || 1;
   const isM2 = product.unidad === 'm2';
-  const physicalLabel = getPhysicalLabel(product);
+  const physicalLabel = getDisplayLabel(product.sku, product.unidad, product.displayLabel);
 
   const [modo, setModo] = useState<'unidad' | 'm2'>(isM2 ? 'unidad' : 'unidad');
   const [cantidad, setCantidad] = useState(1);

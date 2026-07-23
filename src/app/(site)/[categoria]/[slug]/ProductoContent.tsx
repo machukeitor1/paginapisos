@@ -24,6 +24,7 @@ interface Producto {
   unidadVenta: string;
   precioUnitario: number;
   marca: string;
+  displayLabel: string | null;
   categoria: { slug: string; nombre: string };
 }
 
@@ -95,7 +96,7 @@ export default function ProductoContent() {
 
   const extra = getProdData(producto, getProductoExtra(producto.sku));
   const formatearPrecio = (p: number) => `$${Math.round(p).toLocaleString('es-CL')}`;
-  const displayUnit = getDisplayLabel(producto.sku, producto.unidad);
+  const displayUnit = getDisplayLabel(producto.sku, producto.unidad, producto.displayLabel);
 
   const whatsappMsg = encodeURIComponent(
     `Hola, me interesa el producto ${producto.nombre} (SKU: ${producto.sku}). ¿Podrían darme más información?`

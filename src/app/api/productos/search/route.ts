@@ -27,6 +27,7 @@ export async function GET(request: Request) {
         rendimiento: true,
         unidadVenta: true,
         dimensiones: true,
+        displayLabel: true,
         categoria: { select: { nombre: true } },
       },
       take: 20,

@@ -26,23 +26,29 @@ async function uploadToR2(key: string, buffer: Buffer, contentType: string): Pro
 }
 
 async function processImage(imageUrl: string): Promise<boolean> {
-  // Skip if already processed (has _original.webp)
-  if (imageUrl.includes('_original.webp')) return false;
-
   // Skip non-R2 images
   if (!imageUrl.includes('r2.dev')) return false;
 
   try {
+    // Generate base key from URL
+    const urlPath = imageUrl.replace(PUBLIC_URL + '/', '');
+    const ext = urlPath.split('.').pop() || 'jpg';
+    const baseName = urlPath.replace(`.${ext}`, '');
+
+    // Check if variants already exist
+    const checkKey = `${baseName}_w800.webp`;
+    const checkUrl = `https://api.cloudflare.com/client/v4/accounts/${CF_ACCOUNT_ID}/r2/buckets/${BUCKET}/objects/${encodeURIComponent(checkKey)}`;
+    const checkRes = await fetch(checkUrl, {
+      method: 'HEAD',
+      headers: { Authorization: `Bearer ${CF_API_TOKEN}` },
+    });
+    if (checkRes.ok) return false; // Already processed
+
     // Download original
     const res = await fetch(imageUrl);
     if (!res.ok) return false;
     const arrayBuffer = await res.arrayBuffer();
     const buffer = Buffer.from(arrayBuffer);
-
-    // Generate base key from URL
-    const urlPath = imageUrl.replace(PUBLIC_URL + '/', '');
-    const ext = urlPath.split('.').pop() || 'jpg';
-    const baseName = urlPath.replace(`.${ext}`, '');
 
     // Convert to WebP and generate variants
     const webpBuffer = await sharp(buffer)
