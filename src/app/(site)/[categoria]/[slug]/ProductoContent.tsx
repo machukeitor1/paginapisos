@@ -96,7 +96,7 @@ export default function ProductoContent() {
 
   const extra = getProdData(producto, getProductoExtra(producto.sku));
   const formatearPrecio = (p: number) => `$${Math.round(p).toLocaleString('es-CL')}`;
-  const displayUnit = getDisplayLabel(producto.sku, producto.unidad, producto.displayLabel);
+  const displayUnit = getDisplayLabel(producto.sku, producto.unidad, producto.displayLabel, producto.unidadVenta);
 
   const whatsappMsg = encodeURIComponent(
     `Hola, me interesa el producto ${producto.nombre} (SKU: ${producto.sku}). ¿Podrían darme más información?`

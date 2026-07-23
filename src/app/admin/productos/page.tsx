@@ -211,10 +211,32 @@ export default function ProductosPage() {
           </div>
           <div>
             <label className="block text-sm font-medium text-text mb-1">Unidad de Venta</label>
-            <select value={form.unidadVenta} onChange={(e) => setForm({ ...form, unidadVenta: e.target.value })} className="w-full border border-gray-300 rounded-lg px-4 py-2 text-sm">
+            <select
+              value={['un', 'caja', 'tabla', 'm2'].includes(form.unidadVenta) ? form.unidadVenta : '__custom__'}
+              onChange={(e) => {
+                if (e.target.value === '__custom__') {
+                  setForm({ ...form, unidadVenta: '' });
+                } else {
+                  setForm({ ...form, unidadVenta: e.target.value });
+                }
+              }}
+              className="w-full border border-gray-300 rounded-lg px-4 py-2 text-sm"
+            >
               <option value="un">Unidad (un)</option>
               <option value="caja">Caja</option>
+              <option value="tabla">Tabla</option>
+              <option value="m2">m²</option>
+              <option value="__custom__">Otra...</option>
             </select>
+            {!['un', 'caja', 'tabla', 'm2', ''].includes(form.unidadVenta) && (
+              <input
+                type="text"
+                value={form.unidadVenta}
+                onChange={(e) => setForm({ ...form, unidadVenta: e.target.value })}
+                placeholder="Escribir unidad personalizada"
+                className="w-full border border-gray-300 rounded-lg px-4 py-2 text-sm mt-2"
+              />
+            )}
           </div>
           <div>
             <label className="block text-sm font-medium text-text mb-1">Etiqueta de Precio</label>

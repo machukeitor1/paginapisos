@@ -43,7 +43,7 @@ interface Props {
 export default function ModalAgregarProducto({ product, onAdd, onClose }: Props) {
   const rend = product.rendimiento || 1;
   const isM2 = product.unidad === 'm2';
-  const physicalLabel = getDisplayLabel(product.sku, product.unidad, product.displayLabel);
+  const physicalLabel = getDisplayLabel(product.sku, product.unidad, product.displayLabel, product.unidadVenta);
 
   const [modo, setModo] = useState<'unidad' | 'm2'>(isM2 ? 'unidad' : 'unidad');
   const [cantidad, setCantidad] = useState(1);
