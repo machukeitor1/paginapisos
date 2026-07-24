@@ -37,7 +37,7 @@ export default function Navbar() {
         <div className="flex items-center justify-between h-16">
           <Link href="/" className="flex items-center gap-2">
             {config?.logo ? (
-              <img src={config.logo} alt={config.nombreEmpresa} className="h-10 w-auto" />
+              <img src={config.logo} alt={config.nombreEmpresa} className="w-10 h-10 object-contain" />
             ) : (
               <span className="text-white font-bold text-xl tracking-tight">{config?.nombreEmpresa || 'Mi Empresa'}</span>
             )}

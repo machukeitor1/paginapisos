@@ -33,7 +33,9 @@ export default function CategoriaSelector({ categorias: propCategorias }: Props)
 
   return (
     <div className="w-full max-w-xs">
+      <label htmlFor="categoria-select" className="sr-only">Categoría</label>
       <select
+        id="categoria-select"
         onChange={handleChange}
         defaultValue=""
         className="w-full px-4 py-3 rounded-lg border border-gray-300 bg-white text-text focus:outline-none focus:ring-2 focus:ring-accent focus:border-transparent appearance-none cursor-pointer"

@@ -74,7 +74,7 @@ export default function Hero({ banners }: { banners: Banner[] }) {
                 srcSet={generateSrcSet(b.imagenMovil || b.imagen!)} sizes="100vw" />
               <img
                 src={getVariantUrl(b.imagen || b.imagenMovil!, 'w800')}
-                alt={b.titulo || 'Banner promocional'}
+                alt={b.titulo?.trim() || 'Banner promocional'}
                 className="w-full h-full object-cover"
                 loading={i === 0 ? 'eager' : 'lazy'}
                 fetchPriority={i === 0 ? 'high' : 'auto'}
@@ -104,14 +104,16 @@ export default function Hero({ banners }: { banners: Banner[] }) {
               <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 5l7 7-7 7" />
             </svg>
           </button>
-          <div className="absolute bottom-4 left-1/2 -translate-x-1/2 flex gap-2">
+          <div className="absolute bottom-4 left-1/2 -translate-x-1/2 flex gap-1">
             {banners.map((_, i) => (
               <button
                 key={i}
                 onClick={() => setCurrent(i)}
                 aria-label={`Banner ${i + 1} de ${banners.length}`}
-                className={`w-3 h-3 rounded-full transition-colors ${i === current ? 'bg-white' : 'bg-white/50'}`}
-              />
+                className={`p-2.5 rounded-full transition-colors ${i === current ? 'bg-white/40' : 'bg-white/10 hover:bg-white/20'}`}
+              >
+                <span className={`block w-2.5 h-2.5 rounded-full ${i === current ? 'bg-white' : 'bg-white/50'}`} />
+              </button>
             ))}
           </div>
         </>
