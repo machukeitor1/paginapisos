@@ -1,6 +1,7 @@
 'use client';
 
 import { useState, useEffect } from 'react';
+import { trackEvent } from '@/lib/ga';
 
 export default function WhatsAppButton() {
   const [whatsapp, setWhatsapp] = useState('');
@@ -21,6 +22,7 @@ export default function WhatsAppButton() {
       href={link}
       target="_blank"
       rel="noopener noreferrer"
+      onClick={() => trackEvent('whatsapp_click', { location: 'floating_button' })}
       className="fixed bottom-6 right-6 z-50 bg-green-600 hover:bg-green-700 text-white rounded-full p-3 shadow-lg transition-all hover:scale-110"
       aria-label="WhatsApp"
     >

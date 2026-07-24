@@ -1,5 +1,6 @@
 import { prisma } from '@/lib/prisma';
 import CategoriaSelector from './CategoriaSelector';
+import WhatsAppFooterLink from './WhatsAppFooterLink';
 
 async function getData() {
   try {
@@ -34,17 +35,11 @@ export default async function Footer() {
             <h4 className="text-white font-semibold mb-4">Contacto</h4>
             <ul className="space-y-2 text-sm">
               {config?.emailContacto && <li>{config.emailContacto}</li>}
-              <li>
-                <a
-                  href={`https://api.whatsapp.com/send?phone=${config?.whatsappGlobal || ''}&text=${encodeURIComponent('Hola, me gustaría recibir información sobre sus productos.')}`}
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  aria-label="Contactar por WhatsApp"
-                  className="hover:text-accent transition-colors"
-                >
-                  WhatsApp
-                </a>
-              </li>
+              {config?.whatsappGlobal && (
+                <li>
+                  <WhatsAppFooterLink phone={config.whatsappGlobal} />
+                </li>
+              )}
             </ul>
           </div>
           <div>

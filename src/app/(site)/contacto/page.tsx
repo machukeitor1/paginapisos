@@ -1,6 +1,7 @@
 'use client';
 
 import { useState, useEffect } from 'react';
+import { trackEvent } from '@/lib/ga';
 
 export default function ContactoPage() {
   const [config, setConfig] = useState<any>(null);
@@ -16,6 +17,7 @@ export default function ContactoPage() {
     if (!config?.whatsappGlobal) return;
     const texto = `Hola, soy ${form.nombre}.${form.email ? ` Mi email es ${form.email}.` : ''}${form.telefono ? ` Mi teléfono es ${form.telefono}.` : ''}\n\n${form.mensaje}`;
     const link = `https://api.whatsapp.com/send?phone=${config.whatsappGlobal.replace(/\D/g, '')}&text=${encodeURIComponent(texto)}`;
+    trackEvent('whatsapp_click', { location: 'contact_form' });
     window.open(link, '_blank');
     setEnviado(true);
   };

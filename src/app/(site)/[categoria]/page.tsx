@@ -1,5 +1,6 @@
 import { prisma } from "@/lib/prisma";
 import { notFound } from "next/navigation";
+import Link from "next/link";
 import ProductCard from "@/components/site/ProductCard";
 import type { Metadata } from "next";
 
@@ -63,13 +64,31 @@ export default async function CategoriaPage({ params }: { params: { categoria: s
     url: `https://revestimientoschillan.cl/${categoria.slug}`,
   };
 
+  const breadcrumbLd = {
+    '@context': 'https://schema.org',
+    '@type': 'BreadcrumbList',
+    itemListElement: [
+      { '@type': 'ListItem', position: 1, name: 'Inicio', item: 'https://revestimientoschillan.cl' },
+      { '@type': 'ListItem', position: 2, name: categoria.nombre },
+    ],
+  };
+
   return (
     <>
       <script
         type="application/ld+json"
         dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }}
       />
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(breadcrumbLd) }}
+      />
       <div className="max-w-7xl mx-auto px-4 py-12">
+        <nav className="text-sm text-muted mb-6">
+          <Link href="/" className="hover:text-accent">Inicio</Link>
+          <span className="mx-2">/</span>
+          <span className="text-text">{categoria.nombre}</span>
+        </nav>
         <h1 className="text-3xl font-bold text-primary mb-2">{categoria.nombre}</h1>
         {categoria.descripcion && (
           <p className="text-muted mb-8">{categoria.descripcion}</p>

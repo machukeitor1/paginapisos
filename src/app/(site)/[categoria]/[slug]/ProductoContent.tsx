@@ -7,6 +7,8 @@ import { getProductoExtra } from '@/lib/productos-data';
 import { getProdData } from '@/lib/producto-data-helper';
 import { getDisplayLabel } from '@/lib/producto-labels';
 import { getImageSrcSet } from '@/lib/image-utils';
+import { trackEvent } from '@/lib/ga';
+import ShareButtons from '@/components/site/ShareButtons';
 
 interface Producto {
   id: number;
@@ -39,19 +41,39 @@ function MedidasDisplay({ medidas }: { medidas: string[] }) {
 export default function ProductoContent() {
   const params = useParams();
   const [producto, setProducto] = useState<Producto | null>(null);
+  const [error, setError] = useState(false);
   const [imagenActual, setImagenActual] = useState(0);
   const [whatsapp, setWhatsapp] = useState('');
   const intervaloRef = useRef<ReturnType<typeof setInterval> | null>(null);
 
   useEffect(() => {
+    let cancelled = false;
+
     fetch(`/api/productos?slug=${params.slug}`)
       .then(r => r.json())
-      .then(data => { if (data) setProducto(data); })
-      .catch(() => {});
+      .then(data => {
+        if (cancelled) return;
+        if (data && !data.error) {
+          setProducto(data);
+        } else {
+          setError(true);
+        }
+      })
+      .catch(() => { if (!cancelled) setError(true); });
+
     fetch('/api/configuracion')
       .then(r => r.json())
       .then(data => { if (data?.whatsappGlobal) setWhatsapp(data.whatsappGlobal); })
       .catch(() => {});
+
+    const timeout = setTimeout(() => {
+      if (!cancelled) setError(true);
+    }, 8000);
+
+    return () => {
+      cancelled = true;
+      clearTimeout(timeout);
+    };
   }, [params.slug]);
 
   useEffect(() => {
@@ -82,6 +104,24 @@ export default function ProductoContent() {
       }, 4000);
     }
   };
+
+  if (error) {
+    return (
+      <div className="max-w-7xl mx-auto px-4 py-20 text-center">
+        <p className="text-6xl font-bold text-primary mb-4">!</p>
+        <h1 className="text-2xl font-bold text-text mb-3">Producto no encontrado</h1>
+        <p className="text-muted mb-8">
+          El producto que busca no existe o no está disponible.
+        </p>
+        <Link
+          href="/"
+          className="inline-block bg-accent hover:bg-accent/90 text-white font-semibold py-3 px-6 rounded-lg transition-colors"
+        >
+          Volver al inicio
+        </Link>
+      </div>
+    );
+  }
 
   if (!producto) {
     return (
@@ -122,10 +162,10 @@ export default function ProductoContent() {
                 return imgSrc.isResponsive ? (
                   <picture>
                     <source srcSet={imgSrc.srcSet} sizes={imgSrc.sizes} type="image/webp" />
-                    <img src={imgSrc.src} alt={producto.nombre} className="w-full h-full object-cover transition-opacity duration-500" />
+                    <img src={imgSrc.src} alt={producto.nombre} className="w-full h-full object-cover transition-all duration-500 hover:scale-110 cursor-zoom-in" />
                   </picture>
                 ) : (
-                  <img src={imgSrc.src} alt={producto.nombre} className="w-full h-full object-cover transition-opacity duration-500" />
+                  <img src={imgSrc.src} alt={producto.nombre} className="w-full h-full object-cover transition-all duration-500 hover:scale-110 cursor-zoom-in" />
                 );
               })()
             ) : (
@@ -219,6 +259,12 @@ export default function ProductoContent() {
             </div>
           )}
 
+          <ShareButtons
+            nombre={producto.nombre}
+            slug={producto.slug}
+            categoriaSlug={producto.categoria.slug}
+          />
+
           <div className="bg-gray-50 rounded-xl p-6 mb-4">
             <div className="flex items-baseline gap-3 mb-4">
               {(() => {
@@ -239,6 +285,7 @@ export default function ProductoContent() {
               href={whatsappLink}
               target="_blank"
               rel="noopener noreferrer"
+              onClick={() => trackEvent('whatsapp_click', { location: 'product_page', product_name: producto.nombre, product_sku: producto.sku })}
               className="flex items-center justify-center gap-2 w-full bg-green-600 hover:bg-green-700 text-white font-semibold py-3 rounded-lg transition-colors"
             >
               <svg className="w-5 h-5" fill="currentColor" viewBox="0 0 24 24">

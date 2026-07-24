@@ -1,6 +1,7 @@
 'use client';
 
 import { useState, useEffect } from 'react';
+import { trackEvent } from '@/lib/ga';
 
 interface Sucursal {
   id: number;
@@ -60,6 +61,7 @@ export default function Sucursales() {
                     href={`https://api.whatsapp.com/send?phone=${suc.whatsapp}&text=${encodeURIComponent('Hola, me gustaría recibir información sobre sus productos.')}`}
                     target="_blank"
                     rel="noopener noreferrer"
+                    onClick={() => trackEvent('whatsapp_click', { location: 'sucursal', branch_name: suc.nombre })}
                     className="flex-1 bg-green-600 hover:bg-green-700 text-white text-xs font-semibold py-2 px-3 rounded-lg transition-colors text-center"
                   >
                     WhatsApp

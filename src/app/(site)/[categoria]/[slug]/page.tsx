@@ -86,11 +86,25 @@ export default async function ProductoPage({ params }: { params: { categoria: st
     category: producto.categoria.nombre,
   };
 
+  const breadcrumbLd = {
+    '@context': 'https://schema.org',
+    '@type': 'BreadcrumbList',
+    itemListElement: [
+      { '@type': 'ListItem', position: 1, name: 'Inicio', item: 'https://revestimientoschillan.cl' },
+      { '@type': 'ListItem', position: 2, name: producto.categoria.nombre, item: `https://revestimientoschillan.cl/${producto.categoria.slug}` },
+      { '@type': 'ListItem', position: 3, name: producto.nombre },
+    ],
+  };
+
   return (
     <>
       <script
         type="application/ld+json"
         dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }}
+      />
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(breadcrumbLd) }}
       />
       <ProductoContent />
     </>
