@@ -61,6 +61,7 @@ export default function Hero({ banners }: { banners: Banner[] }) {
 
   return (
     <div className="relative w-full h-[350px] md:h-[500px] overflow-hidden bg-gray-900">
+      <h1 className="sr-only">Revestimientos y pisos en Chillán</h1>
       {banners.map((b, i) => (
         <div
           key={b.id}

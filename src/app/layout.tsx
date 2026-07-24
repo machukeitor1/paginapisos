@@ -8,7 +8,7 @@ export const metadata: Metadata = {
     default: "Revestimientos y Pisos en Chillán",
     template: "%s | Revestimientos Chillán",
   },
-  description: "Venta de revestimientos metálicos, pisos flotantes, WPC, pisos vinílicos SPC, deck y siding granito en Chillán.",
+  description: "Pisos SPC, flotantes, WPC, deck, siding granito y revestimientos metálicos en Chillán. Asesoría personalizada. Visítanos en Alcántara 1080-A villa Barcelona.",
   keywords: ["revestimientos chillan", "pisos chillan", "pisos vinilicos spc", "deck wpc", "siding granito", "piso flotante", "revestimientos metalicos"],
   authors: [{ name: "Revestimientos Chillán" }],
   creator: "Revestimientos Chillán",
@@ -36,10 +36,10 @@ export const metadata: Metadata = {
     url: 'https://revestimientoschillan.cl',
     siteName: 'Revestimientos Chillán',
     title: 'Revestimientos y Pisos en Chillán',
-    description: 'Venta de revestimientos metálicos, pisos flotantes, WPC, pisos vinílicos SPC, deck y siding granito en Chillán.',
+    description: 'Pisos SPC, flotantes, WPC, deck, siding granito y revestimientos metálicos en Chillán. Asesoría personalizada. Visítanos en Alcántara 1080-A villa Barcelona.',
     images: [
       {
-        url: '/redondo.png',
+        url: 'https://revestimientoschillan.cl/redondo.png',
         width: 864,
         height: 864,
         alt: 'Revestimientos Chillán',
@@ -49,8 +49,8 @@ export const metadata: Metadata = {
   twitter: {
     card: 'summary_large_image',
     title: 'Revestimientos y Pisos en Chillán',
-    description: 'Venta de revestimientos metálicos, pisos flotantes, WPC, pisos vinílicos SPC, deck y siding granito en Chillán.',
-    images: ['/redondo.png'],
+    description: 'Pisos SPC, flotantes, WPC, deck, siding granito y revestimientos metálicos en Chillán. Asesoría personalizada. Visítanos en Alcántara 1080-A villa Barcelona.',
+    images: ['https://revestimientoschillan.cl/redondo.png'],
   },
   robots: {
     index: true,
@@ -67,18 +67,46 @@ export const metadata: Metadata = {
 
 const jsonLd = {
   '@context': 'https://schema.org',
-  '@type': 'Organization',
+  '@type': 'LocalBusiness',
   name: 'Revestimientos Chillán',
   url: 'https://revestimientoschillan.cl',
   logo: 'https://revestimientoschillan.cl/redondo.png',
   image: 'https://revestimientoschillan.cl/redondo.png',
-  description: 'Venta de revestimientos metálicos, pisos flotantes, WPC, pisos vinílicos SPC, deck y siding granito en Chillán.',
+  description: 'Pisos SPC, flotantes, WPC, deck, siding granito y revestimientos metálicos en Chillán. Asesoría personalizada. Visítanos en Alcántara 1080-A villa Barcelona.',
+  telephone: '+56958603702',
+  email: 'contacto@revestimientoschillan.cl',
+  priceRange: '$$',
   address: {
     '@type': 'PostalAddress',
-    addressLocality: 'Chillán',
+    streetAddress: 'Alcántara 1080-A',
+    addressLocality: 'Villa Barcelona, Chillán',
     addressRegion: 'Ñuble',
+    postalCode: '3780000',
     addressCountry: 'CL',
   },
+  geo: {
+    '@type': 'GeoCoordinates',
+    latitude: -36.594282,
+    longitude: -72.069158,
+  },
+  openingHoursSpecification: [
+    {
+      '@type': 'OpeningHoursSpecification',
+      dayOfWeek: ['Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday'],
+      opens: '08:30',
+      closes: '18:30',
+    },
+    {
+      '@type': 'OpeningHoursSpecification',
+      dayOfWeek: 'Saturday',
+      opens: '09:00',
+      closes: '14:00',
+    },
+  ],
+  sameAs: [
+    'https://www.facebook.com/revestimientoschillan',
+    'https://www.instagram.com/revestimientoschillan',
+  ],
 };
 
 export default function RootLayout({
