@@ -1,12 +1,23 @@
 'use client';
 
 import { useState, useEffect, useCallback } from 'react';
-import { getBannerVariantUrl } from '@/lib/image-utils';
+
+function getVariantUrl(url: string, suffix: string): string {
+  if (url.includes('r2.dev')) {
+    return url.replace('_original.webp', `_${suffix}.webp`).replace('_original.jpg', `_${suffix}.webp`);
+  }
+  if (url.includes('res.cloudinary.com')) {
+    const width = suffix === 'w400' ? 400 : suffix === 'w800' ? 800 : 1200;
+    const t = `w_${width},c_fill,g_auto,f_auto,q_auto`;
+    return url.replace('/image/upload/', `/image/upload/${t}/`);
+  }
+  return url;
+}
 
 function generateSrcSet(url: string): string {
   if (!url) return '';
   return [400, 800, 1200]
-    .map(w => `${getBannerVariantUrl(url, `w${w}`)} ${w}w`)
+    .map(w => `${getVariantUrl(url, `w${w}`)} ${w}w`)
     .join(', ');
 }
 
@@ -62,7 +73,7 @@ export default function Hero({ banners }: { banners: Banner[] }) {
               <source media="(max-width: 767px)"
                 srcSet={generateSrcSet(b.imagenMovil || b.imagen!)} sizes="100vw" />
               <img
-                src={getBannerVariantUrl(b.imagen || b.imagenMovil!, 'w800')}
+                src={getVariantUrl(b.imagen || b.imagenMovil!, 'w800')}
                 alt={b.titulo?.trim() || 'Banner promocional'}
                 className="w-full h-full object-cover"
                 loading={i === 0 ? 'eager' : 'lazy'}

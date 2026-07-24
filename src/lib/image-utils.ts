@@ -24,15 +24,3 @@ export function getImageSrcSet(url: string, sizes = '(max-width: 640px) 400px, (
   // Old format: no variants
   return { src: url, srcSet: '', sizes: '', isResponsive: false };
 }
-
-export function getBannerVariantUrl(url: string, suffix: string): string {
-  if (url.includes('r2.dev')) {
-    return url.replace('_original.webp', `_${suffix}.webp`).replace('_original.jpg', `_${suffix}.webp`);
-  }
-  if (url.includes('res.cloudinary.com')) {
-    const width = suffix === 'w400' ? 400 : suffix === 'w800' ? 800 : 1200;
-    const t = `w_${width},c_fill,g_auto,f_auto,q_auto`;
-    return url.replace('/image/upload/', `/image/upload/${t}/`);
-  }
-  return url;
-}

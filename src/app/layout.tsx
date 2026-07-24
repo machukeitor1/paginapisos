@@ -1,9 +1,6 @@
 import type { Metadata } from "next";
-import { Inter } from "next/font/google";
 import Analytics from "@/components/Analytics";
 import "./globals.css";
-
-const inter = Inter({ subsets: ["latin"], display: "swap" });
 
 export const metadata: Metadata = {
   metadataBase: new URL('https://revestimientoschillan.cl'),
@@ -38,7 +35,7 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="es">
-      <body className={`${inter.className} antialiased`}>
+      <body className="antialiased">
         <Analytics />
         {children}
       </body>
