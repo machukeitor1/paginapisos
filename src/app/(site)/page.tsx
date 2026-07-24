@@ -4,6 +4,8 @@ import CategoriasGrid from "@/components/site/CategoriasGrid";
 import Sucursales from "@/components/site/Sucursales";
 import type { Metadata } from "next";
 
+export const revalidate = 60;
+
 export const metadata: Metadata = {
   alternates: {
     canonical: 'https://revestimientoschillan.cl',

@@ -3,8 +3,6 @@ import Footer from "@/components/site/Footer";
 import WhatsAppButton from "@/components/site/WhatsAppButton";
 import MapButton from "@/components/site/MapButton";
 
-export const dynamic = 'force-dynamic';
-
 export default function SiteLayout({ children }: { children: React.ReactNode }) {
   return (
     <>
