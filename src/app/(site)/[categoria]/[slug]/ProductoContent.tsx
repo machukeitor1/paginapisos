@@ -48,31 +48,36 @@ export default function ProductoContent() {
 
   useEffect(() => {
     let cancelled = false;
+    const timeoutId = setTimeout(() => {
+      if (!cancelled) setError(true);
+    }, 8000);
 
     fetch(`/api/productos?slug=${params.slug}`)
       .then(r => r.json())
       .then(data => {
         if (cancelled) return;
+        clearTimeout(timeoutId);
         if (data && !data.error) {
           setProducto(data);
         } else {
           setError(true);
         }
       })
-      .catch(() => { if (!cancelled) setError(true); });
+      .catch(() => {
+        if (!cancelled) {
+          clearTimeout(timeoutId);
+          setError(true);
+        }
+      });
 
     fetch('/api/configuracion')
       .then(r => r.json())
       .then(data => { if (data?.whatsappGlobal) setWhatsapp(data.whatsappGlobal); })
       .catch(() => {});
 
-    const timeout = setTimeout(() => {
-      if (!cancelled) setError(true);
-    }, 8000);
-
     return () => {
       cancelled = true;
-      clearTimeout(timeout);
+      clearTimeout(timeoutId);
     };
   }, [params.slug]);
 
