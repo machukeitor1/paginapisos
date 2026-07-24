@@ -21,7 +21,7 @@ function generateSrcSet(url: string): string {
     .join(', ');
 }
 
-interface Banner {
+export interface Banner {
   id: number;
   titulo: string;
   subtitulo: string | null;
@@ -31,15 +31,8 @@ interface Banner {
   url: string | null;
 }
 
-export default function Hero() {
-  const [banners, setBanners] = useState<Banner[]>([]);
+export default function Hero({ banners }: { banners: Banner[] }) {
   const [current, setCurrent] = useState(0);
-
-  useEffect(() => {
-    fetch('/api/banners?activas=true').then(r => r.json()).then(data => {
-      if (Array.isArray(data)) setBanners(data);
-    }).catch(() => {});
-  }, []);
 
   const next = useCallback(() => {
     setCurrent(c => (c + 1) % banners.length);

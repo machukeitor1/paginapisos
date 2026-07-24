@@ -1,17 +1,10 @@
-'use client';
-
-import { useState, useEffect } from 'react';
 import ProductCard from './ProductCard';
 
-export default function ProductosDestacados() {
-  const [productos, setProductos] = useState<any[]>([]);
+interface Props {
+  productos: any[];
+}
 
-  useEffect(() => {
-    fetch('/api/productos?destacados=true').then(r => r.json()).then(data => {
-      if (Array.isArray(data)) setProductos(data);
-    }).catch(() => {});
-  }, []);
-
+export default function ProductosDestacados({ productos }: Props) {
   if (productos.length === 0) return null;
 
   return (

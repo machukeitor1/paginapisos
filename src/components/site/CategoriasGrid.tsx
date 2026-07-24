@@ -1,6 +1,3 @@
-'use client';
-
-import { useState, useEffect } from 'react';
 import Link from 'next/link';
 
 interface Categoria {
@@ -11,15 +8,11 @@ interface Categoria {
   imagen: string | null;
 }
 
-export default function CategoriasGrid() {
-  const [categorias, setCategorias] = useState<Categoria[]>([]);
+interface Props {
+  categorias: Categoria[];
+}
 
-  useEffect(() => {
-    fetch('/api/categorias?activas=true').then(r => r.json()).then(data => {
-      if (Array.isArray(data)) setCategorias(data);
-    }).catch(() => {});
-  }, []);
-
+export default function CategoriasGrid({ categorias }: Props) {
   if (categorias.length === 0) return null;
 
   return (

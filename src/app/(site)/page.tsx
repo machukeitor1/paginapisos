@@ -1,3 +1,4 @@
+import { prisma } from "@/lib/prisma";
 import Hero from "@/components/site/Hero";
 import ProductosDestacados from "@/components/site/ProductosDestacados";
 import CategoriasGrid from "@/components/site/CategoriasGrid";
@@ -10,12 +11,30 @@ export const metadata: Metadata = {
   },
 };
 
-export default function HomePage() {
+export default async function HomePage() {
+  const [banners, categorias, productos] = await Promise.all([
+    prisma.banner.findMany({
+      where: { activo: true },
+      orderBy: { orden: 'asc' },
+      select: { id: true, titulo: true, subtitulo: true, badge: true, imagen: true, imagenMovil: true, url: true },
+    }),
+    prisma.categoria.findMany({
+      where: { activo: true },
+      orderBy: { orden: 'asc' },
+      select: { id: true, nombre: true, slug: true, descripcion: true, imagen: true },
+    }),
+    prisma.producto.findMany({
+      where: { destacado: true },
+      orderBy: { orden: 'asc' },
+      include: { categoria: true },
+    }),
+  ]);
+
   return (
     <>
-      <Hero />
-      <CategoriasGrid />
-      <ProductosDestacados />
+      <Hero banners={banners} />
+      <CategoriasGrid categorias={categorias} />
+      <ProductosDestacados productos={productos} />
       <Sucursales />
     </>
   );
