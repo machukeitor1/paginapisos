@@ -44,10 +44,10 @@ export default function ProductCard({ producto }: { producto: Producto }) {
             imgSrc.isResponsive ? (
               <picture>
                 <source srcSet={imgSrc.srcSet} sizes={imgSrc.sizes} type="image/webp" />
-                <img src={imgSrc.src} alt={producto.nombre} className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-300" loading="lazy" />
+                <img src={imgSrc.src} alt={producto.nombre} width={400} height={192} className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-300" loading="lazy" />
               </picture>
             ) : (
-              <img src={imgSrc.src} alt={producto.nombre} className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-300" loading="lazy" />
+              <img src={imgSrc.src} alt={producto.nombre} width={400} height={192} className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-300" loading="lazy" />
             )
           ) : (
             <div className="w-full h-full flex items-center justify-center text-muted">

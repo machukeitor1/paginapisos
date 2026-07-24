@@ -57,7 +57,7 @@ export default function Hero() {
 
   if (banners.length === 0) {
     return (
-      <div className="w-full h-[400px] md:h-[500px] bg-primary flex items-center justify-center">
+      <div className="w-full h-[350px] md:h-[500px] bg-primary flex items-center justify-center">
         <div className="text-center text-white">
           <h1 className="text-3xl md:text-5xl font-bold mb-4">Revestimientos y Pisos</h1>
           <p className="text-lg md:text-xl text-gray-300">Materiales de construcción de primera calidad</p>
@@ -84,6 +84,7 @@ export default function Hero() {
                 alt={b.titulo || 'Banner promocional'}
                 className="w-full h-full object-cover"
                 loading={i === 0 ? 'eager' : 'lazy'}
+                fetchPriority={i === 0 ? 'high' : 'auto'}
                 onError={(e) => { (e.target as HTMLImageElement).style.display = 'none'; }}
               />
             </picture>
