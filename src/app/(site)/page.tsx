@@ -1,4 +1,5 @@
 import { prisma } from "@/lib/prisma";
+import { getBannerVariantUrl } from "@/lib/image-utils";
 import Hero from "@/components/site/Hero";
 import ProductosDestacados from "@/components/site/ProductosDestacados";
 import CategoriasGrid from "@/components/site/CategoriasGrid";
@@ -30,8 +31,16 @@ export default async function HomePage() {
     }),
   ]);
 
+  const firstBanner = banners[0];
+  const preloadUrl = firstBanner
+    ? getBannerVariantUrl(firstBanner.imagenMovil || firstBanner.imagen, 'w400')
+    : null;
+
   return (
     <>
+      {preloadUrl && (
+        <link rel="preload" as="image" href={preloadUrl} />
+      )}
       <Hero banners={banners} />
       <CategoriasGrid categorias={categorias} />
       <ProductosDestacados productos={productos} />
