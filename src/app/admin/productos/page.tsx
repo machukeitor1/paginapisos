@@ -12,7 +12,7 @@ export default function ProductosPage() {
   const [busqueda, setBusqueda] = useState('');
   const [guardando, setGuardando] = useState(false);
   const [form, setForm] = useState({
-    nombre: '', slug: '', sku: '', descripcion: '', dimensiones: '', unidad: 'm2', precio: 0, descuento: 0, rendimiento: 1, unidadVenta: 'un', precioUnitario: 0, imagenes: '[]', estado: 'disponible', destacado: false, activo: true, orden: 0, categoriaId: 0,
+    nombre: '', slug: '', sku: '', marca: '', descripcion: '', dimensiones: '', unidad: 'm2', precio: 0, descuento: 0, rendimiento: 1, unidadVenta: 'un', precioUnitario: 0, imagenes: '[]', estado: 'disponible', destacado: false, activo: true, orden: 0, categoriaId: 0,
     medidas: '', presentacion: '', rendimientoTexto: '', accesorios: '', esAccesorio: false, displayLabel: '',
   });
   const [cacheBust, setCacheBust] = useState(0);
@@ -144,7 +144,7 @@ export default function ProductosPage() {
 
     if (res.ok) {
       setEditando(null);
-      setForm({ nombre: '', slug: '', sku: '', descripcion: '', dimensiones: '', unidad: 'm2', precio: 0, descuento: 0, rendimiento: 1, unidadVenta: 'un', precioUnitario: 0, imagenes: '[]', estado: 'disponible', destacado: false, activo: true, orden: 0, categoriaId: 0, medidas: '', presentacion: '', rendimientoTexto: '', accesorios: '', esAccesorio: false, displayLabel: '' });
+      setForm({ nombre: '', slug: '', sku: '', marca: '', descripcion: '', dimensiones: '', unidad: 'm2', precio: 0, descuento: 0, rendimiento: 1, unidadVenta: 'un', precioUnitario: 0, imagenes: '[]', estado: 'disponible', destacado: false, activo: true, orden: 0, categoriaId: 0, medidas: '', presentacion: '', rendimientoTexto: '', accesorios: '', esAccesorio: false, displayLabel: '' });
       cargar();
     }
   };
@@ -153,7 +153,7 @@ export default function ProductosPage() {
     setEditando(prod);
     const parseToList = (v: string) => { try { const a = JSON.parse(v); return Array.isArray(a) ? a.join('\n') : ''; } catch { return ''; } };
     setForm({
-      nombre: prod.nombre, slug: prod.slug, sku: prod.sku, descripcion: prod.descripcion || '', dimensiones: prod.dimensiones || '', unidad: prod.unidad, precio: prod.precio, descuento: prod.descuento || 0, rendimiento: prod.rendimiento || 1, unidadVenta: prod.unidadVenta || 'un', precioUnitario: prod.precioUnitario || 0, imagenes: prod.imagenes, estado: prod.estado || 'disponible', destacado: prod.destacado, activo: prod.activo, orden: prod.orden, categoriaId: prod.categoriaId,
+      nombre: prod.nombre, slug: prod.slug, sku: prod.sku, marca: prod.marca || '', descripcion: prod.descripcion || '', dimensiones: prod.dimensiones || '', unidad: prod.unidad, precio: prod.precio, descuento: prod.descuento || 0, rendimiento: prod.rendimiento || 1, unidadVenta: prod.unidadVenta || 'un', precioUnitario: prod.precioUnitario || 0, imagenes: prod.imagenes, estado: prod.estado || 'disponible', destacado: prod.destacado, activo: prod.activo, orden: prod.orden, categoriaId: prod.categoriaId,
       medidas: parseToList(prod.medidas), presentacion: prod.presentacion || '', rendimientoTexto: prod.rendimientoTexto || '', accesorios: parseToList(prod.accesorios), esAccesorio: prod.esAccesorio || false, displayLabel: prod.displayLabel || '',
     });
   };
@@ -183,6 +183,10 @@ export default function ProductosPage() {
           <div>
             <label className="block text-sm font-medium text-text mb-1">SKU</label>
             <input type="text" required value={form.sku} onChange={(e) => setForm({ ...form, sku: e.target.value })} className="w-full border border-gray-300 rounded-lg px-4 py-2 text-sm" />
+          </div>
+          <div>
+            <label className="block text-sm font-medium text-text mb-1">Marca</label>
+            <input type="text" value={form.marca} onChange={(e) => setForm({ ...form, marca: e.target.value })} placeholder="Grupo Cubico" className="w-full border border-gray-300 rounded-lg px-4 py-2 text-sm" />
           </div>
           <div>
             <label className="block text-sm font-medium text-text mb-1">Categoria</label>
@@ -366,7 +370,7 @@ export default function ProductosPage() {
             {editando ? 'Actualizar' : 'Crear producto'}
           </button>
           {editando && (
-            <button type="button" onClick={() => { setEditando(null);              setForm({ nombre: '', slug: '', sku: '', descripcion: '', dimensiones: '', unidad: 'm2', precio: 0, descuento: 0, rendimiento: 1, unidadVenta: 'un', precioUnitario: 0, imagenes: '[]', estado: 'disponible', destacado: false, activo: true, orden: 0, categoriaId: 0, medidas: '', presentacion: '', rendimientoTexto: '', accesorios: '', esAccesorio: false, displayLabel: '' }); }} className="bg-gray-200 hover:bg-gray-300 text-text font-medium py-2 px-4 rounded-lg transition-colors text-sm">
+            <button type="button" onClick={() => { setEditando(null);              setForm({ nombre: '', slug: '', sku: '', marca: '', descripcion: '', dimensiones: '', unidad: 'm2', precio: 0, descuento: 0, rendimiento: 1, unidadVenta: 'un', precioUnitario: 0, imagenes: '[]', estado: 'disponible', destacado: false, activo: true, orden: 0, categoriaId: 0, medidas: '', presentacion: '', rendimientoTexto: '', accesorios: '', esAccesorio: false, displayLabel: '' }); }} className="bg-gray-200 hover:bg-gray-300 text-text font-medium py-2 px-4 rounded-lg transition-colors text-sm">
               Cancelar
             </button>
           )}
