@@ -8,7 +8,7 @@ import type { Metadata } from "next";
 
 export const metadata: Metadata = {
   alternates: {
-    canonical: 'https://revestimientoschillan.cl',
+    canonical: 'https://www.revestimientoschillan.cl',
   },
 };
 

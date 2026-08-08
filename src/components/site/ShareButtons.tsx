@@ -12,7 +12,7 @@ interface ShareButtonsProps {
 export default function ShareButtons({ nombre, slug, categoriaSlug }: ShareButtonsProps) {
   const [copiado, setCopiado] = useState(false);
 
-  const url = `https://revestimientoschillan.cl/${categoriaSlug}/${slug}`;
+  const url = `https://www.revestimientoschillan.cl/${categoriaSlug}/${slug}`;
   const facebookUrl = `https://www.facebook.com/sharer/sharer.php?u=${encodeURIComponent(url)}`;
 
   const copiarLink = async () => {

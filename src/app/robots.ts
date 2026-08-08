@@ -5,6 +5,6 @@ export default function robots(): MetadataRoute.Robots {
     rules: [
       { userAgent: '*', allow: '/', disallow: ['/admin/', '/vendedor/'] },
     ],
-    sitemap: 'https://revestimientoschillan.cl/sitemap.xml',
+    sitemap: 'https://www.revestimientoschillan.cl/sitemap.xml',
   };
 }

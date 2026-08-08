@@ -3,7 +3,7 @@ import Analytics from "@/components/Analytics";
 import "./globals.css";
 
 export const metadata: Metadata = {
-  metadataBase: new URL('https://revestimientoschillan.cl'),
+  metadataBase: new URL('https://www.revestimientoschillan.cl'),
   title: {
     default: "Revestimientos de primera en Chillán | Revestimientos Chillán",
     template: "%s | Revestimientos Chillán",
@@ -14,7 +14,7 @@ export const metadata: Metadata = {
   creator: "Revestimientos Chillán",
   publisher: "Revestimientos Chillán",
   alternates: {
-    canonical: 'https://revestimientoschillan.cl',
+    canonical: 'https://www.revestimientoschillan.cl',
   },
   icons: {
     icon: [
@@ -33,13 +33,13 @@ export const metadata: Metadata = {
   openGraph: {
     type: 'website',
     locale: 'es_CL',
-    url: 'https://revestimientoschillan.cl',
+    url: 'https://www.revestimientoschillan.cl',
     siteName: 'Revestimientos Chillán',
     title: 'Revestimientos de primera en Chillán | Revestimientos Chillán',
     description: 'Revestimientos de primera en Chillán. Pisos SPC, pisos flotantes, WPC, deck, siding granito y revestimientos metálicos. Asesoría personalizada.',
     images: [
       {
-        url: 'https://revestimientoschillan.cl/redondo.png',
+        url: 'https://www.revestimientoschillan.cl/redondo.png',
         width: 864,
         height: 864,
         alt: 'Revestimientos Chillán',
@@ -50,7 +50,7 @@ export const metadata: Metadata = {
     card: 'summary_large_image',
     title: 'Revestimientos de primera en Chillán | Revestimientos Chillán',
     description: 'Revestimientos de primera en Chillán. Pisos SPC, pisos flotantes, WPC, deck, siding granito y revestimientos metálicos. Asesoría personalizada.',
-    images: ['https://revestimientoschillan.cl/redondo.png'],
+    images: ['https://www.revestimientoschillan.cl/redondo.png'],
   },
   robots: {
     index: true,
@@ -70,11 +70,11 @@ const jsonLd = {
   '@graph': [
     {
       '@type': 'LocalBusiness',
-      '@id': 'https://revestimientoschillan.cl/#localbusiness',
+      '@id': 'https://www.revestimientoschillan.cl/#localbusiness',
       name: 'Revestimientos Chillán',
-      url: 'https://revestimientoschillan.cl',
-      logo: 'https://revestimientoschillan.cl/redondo.png',
-      image: 'https://revestimientoschillan.cl/redondo.png',
+      url: 'https://www.revestimientoschillan.cl',
+      logo: 'https://www.revestimientoschillan.cl/redondo.png',
+      image: 'https://www.revestimientoschillan.cl/redondo.png',
       description: 'Revestimientos de primera en Chillán. Pisos SPC, pisos flotantes, WPC, deck, siding granito y revestimientos metálicos. Asesoría personalizada.',
       telephone: '+56958603702',
       email: 'ventas@revestimientoschillan.cl',
@@ -117,12 +117,12 @@ const jsonLd = {
     },
     {
       '@type': 'WebSite',
-      '@id': 'https://revestimientoschillan.cl/#website',
+      '@id': 'https://www.revestimientoschillan.cl/#website',
       name: 'Revestimientos Chillán',
-      url: 'https://revestimientoschillan.cl',
+      url: 'https://www.revestimientoschillan.cl',
       inLanguage: 'es-CL',
       publisher: {
-        '@id': 'https://revestimientoschillan.cl/#localbusiness',
+        '@id': 'https://www.revestimientoschillan.cl/#localbusiness',
       },
     },
   ],

@@ -24,12 +24,12 @@ export async function generateMetadata({ params }: { params: { categoria: string
     openGraph: {
       title,
       description,
-      url: `https://revestimientoschillan.cl/${categoria.slug}`,
+      url: `https://www.revestimientoschillan.cl/${categoria.slug}`,
       type: 'website',
       images: [{ url: '/Logo.png', width: 400, height: 400, alt: categoria.nombre }],
     },
     alternates: {
-      canonical: `https://revestimientoschillan.cl/${categoria.slug}`,
+      canonical: `https://www.revestimientoschillan.cl/${categoria.slug}`,
     },
   };
 }
@@ -61,14 +61,14 @@ export default async function CategoriaPage({ params }: { params: { categoria: s
     '@type': 'CollectionPage',
     name: `${categoria.nombre} en Chillán`,
     description: categoria.descripcion || `Explora nuestra línea de ${categoria.nombre.toLowerCase()} en Chillán.`,
-    url: `https://revestimientoschillan.cl/${categoria.slug}`,
+    url: `https://www.revestimientoschillan.cl/${categoria.slug}`,
   };
 
   const breadcrumbLd = {
     '@context': 'https://schema.org',
     '@type': 'BreadcrumbList',
     itemListElement: [
-      { '@type': 'ListItem', position: 1, name: 'Inicio', item: 'https://revestimientoschillan.cl' },
+      { '@type': 'ListItem', position: 1, name: 'Inicio', item: 'https://www.revestimientoschillan.cl' },
       { '@type': 'ListItem', position: 2, name: categoria.nombre },
     ],
   };

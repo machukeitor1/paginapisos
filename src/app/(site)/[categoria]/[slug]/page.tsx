@@ -36,12 +36,12 @@ export async function generateMetadata({ params }: { params: { categoria: string
     openGraph: {
       title,
       description: `${description} — Desde ${precioFmt}`,
-      url: `https://revestimientoschillan.cl/${producto.categoria.slug}/${producto.slug}`,
+      url: `https://www.revestimientoschillan.cl/${producto.categoria.slug}/${producto.slug}`,
       type: 'website',
       images: [{ url: firstImage, width: 800, height: 600, alt: producto.nombre }],
     },
     alternates: {
-      canonical: `https://revestimientoschillan.cl/${producto.categoria.slug}/${producto.slug}`,
+      canonical: `https://www.revestimientoschillan.cl/${producto.categoria.slug}/${producto.slug}`,
     },
   };
 }
@@ -75,13 +75,13 @@ export default async function ProductoPage({ params }: { params: { categoria: st
     sku: producto.sku,
     brand: { '@type': 'Brand', name: producto.marca || 'Grupo Cubico' },
     image: firstImage,
-    url: `https://revestimientoschillan.cl/${producto.categoria.slug}/${producto.slug}`,
+    url: `https://www.revestimientoschillan.cl/${producto.categoria.slug}/${producto.slug}`,
     offers: {
       '@type': 'Offer',
       price: producto.precio,
       priceCurrency: 'CLP',
       availability: 'https://schema.org/InStock',
-      url: `https://revestimientoschillan.cl/${producto.categoria.slug}/${producto.slug}`,
+      url: `https://www.revestimientoschillan.cl/${producto.categoria.slug}/${producto.slug}`,
     },
     category: producto.categoria.nombre,
   };
@@ -90,8 +90,8 @@ export default async function ProductoPage({ params }: { params: { categoria: st
     '@context': 'https://schema.org',
     '@type': 'BreadcrumbList',
     itemListElement: [
-      { '@type': 'ListItem', position: 1, name: 'Inicio', item: 'https://revestimientoschillan.cl' },
-      { '@type': 'ListItem', position: 2, name: producto.categoria.nombre, item: `https://revestimientoschillan.cl/${producto.categoria.slug}` },
+      { '@type': 'ListItem', position: 1, name: 'Inicio', item: 'https://www.revestimientoschillan.cl' },
+      { '@type': 'ListItem', position: 2, name: producto.categoria.nombre, item: `https://www.revestimientoschillan.cl/${producto.categoria.slug}` },
       { '@type': 'ListItem', position: 3, name: producto.nombre },
     ],
   };

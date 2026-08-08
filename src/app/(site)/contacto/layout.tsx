@@ -4,7 +4,7 @@ export const metadata: Metadata = {
   title: 'Contacto',
   description: 'Contacta con Revestimientos Chillán. Alcántara 1080-A, Villa Barcelona, Chillán.',
   alternates: {
-    canonical: 'https://revestimientoschillan.cl/contacto',
+    canonical: 'https://www.revestimientoschillan.cl/contacto',
   },
 };
 
