@@ -52,7 +52,7 @@ export default function Hero({ banners }: { banners: Banner[] }) {
     return (
       <div className="w-full h-[350px] md:h-[500px] bg-primary flex items-center justify-center">
         <div className="text-center text-white">
-          <h1 className="text-3xl md:text-5xl font-bold mb-4">Revestimientos y Pisos</h1>
+          <h1 className="text-3xl md:text-5xl font-bold mb-4">Revestimientos de primera en Chillán</h1>
           <p className="text-lg md:text-xl text-gray-300">Materiales de construcción de primera calidad</p>
         </div>
       </div>
@@ -61,7 +61,7 @@ export default function Hero({ banners }: { banners: Banner[] }) {
 
   return (
     <div className="relative w-full h-[350px] md:h-[500px] overflow-hidden bg-gray-900">
-      <h1 className="sr-only">Revestimientos y pisos en Chillán</h1>
+      <h1 className="sr-only">Revestimientos de primera en Chillán</h1>
       {banners.map((b, i) => (
         <div
           key={b.id}
@@ -85,7 +85,7 @@ export default function Hero({ banners }: { banners: Banner[] }) {
           ) : (
             <div className="w-full h-full bg-primary flex items-center justify-center">
               <div className="text-center text-white">
-                <h1 className="text-3xl md:text-5xl font-bold mb-4">Revestimientos y Pisos</h1>
+                <h1 className="text-3xl md:text-5xl font-bold mb-4">Revestimientos de primera en Chillán</h1>
                 <p className="text-lg md:text-xl text-gray-300">Materiales de construcción de primera calidad</p>
               </div>
             </div>

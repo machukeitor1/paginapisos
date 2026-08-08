@@ -5,10 +5,10 @@ import "./globals.css";
 export const metadata: Metadata = {
   metadataBase: new URL('https://revestimientoschillan.cl'),
   title: {
-    default: "Revestimientos y Pisos en Chillán",
+    default: "Revestimientos de primera en Chillán | Revestimientos Chillán",
     template: "%s | Revestimientos Chillán",
   },
-  description: "Pisos SPC, flotantes, WPC, deck, siding granito y revestimientos metálicos en Chillán. Asesoría personalizada. Visítanos en Alcántara 1080-A villa Barcelona.",
+  description: "Revestimientos de primera en Chillán. Pisos SPC, pisos flotantes, WPC, deck, siding granito y revestimientos metálicos. Asesoría personalizada.",
   keywords: ["revestimientos chillan", "pisos chillan", "pisos vinilicos spc", "deck wpc", "siding granito", "piso flotante", "revestimientos metalicos"],
   authors: [{ name: "Revestimientos Chillán" }],
   creator: "Revestimientos Chillán",
@@ -35,8 +35,8 @@ export const metadata: Metadata = {
     locale: 'es_CL',
     url: 'https://revestimientoschillan.cl',
     siteName: 'Revestimientos Chillán',
-    title: 'Revestimientos y Pisos en Chillán',
-    description: 'Pisos SPC, flotantes, WPC, deck, siding granito y revestimientos metálicos en Chillán. Asesoría personalizada. Visítanos en Alcántara 1080-A villa Barcelona.',
+    title: 'Revestimientos de primera en Chillán | Revestimientos Chillán',
+    description: 'Revestimientos de primera en Chillán. Pisos SPC, pisos flotantes, WPC, deck, siding granito y revestimientos metálicos. Asesoría personalizada.',
     images: [
       {
         url: 'https://revestimientoschillan.cl/redondo.png',
@@ -48,8 +48,8 @@ export const metadata: Metadata = {
   },
   twitter: {
     card: 'summary_large_image',
-    title: 'Revestimientos y Pisos en Chillán',
-    description: 'Pisos SPC, flotantes, WPC, deck, siding granito y revestimientos metálicos en Chillán. Asesoría personalizada. Visítanos en Alcántara 1080-A villa Barcelona.',
+    title: 'Revestimientos de primera en Chillán | Revestimientos Chillán',
+    description: 'Revestimientos de primera en Chillán. Pisos SPC, pisos flotantes, WPC, deck, siding granito y revestimientos metálicos. Asesoría personalizada.',
     images: ['https://revestimientoschillan.cl/redondo.png'],
   },
   robots: {
@@ -67,45 +67,64 @@ export const metadata: Metadata = {
 
 const jsonLd = {
   '@context': 'https://schema.org',
-  '@type': 'LocalBusiness',
-  name: 'Revestimientos Chillán',
-  url: 'https://revestimientoschillan.cl',
-  logo: 'https://revestimientoschillan.cl/redondo.png',
-  image: 'https://revestimientoschillan.cl/redondo.png',
-  description: 'Pisos SPC, flotantes, WPC, deck, siding granito y revestimientos metálicos en Chillán. Asesoría personalizada. Visítanos en Alcántara 1080-A villa Barcelona.',
-  telephone: '+56958603702',
-  email: 'contacto@revestimientoschillan.cl',
-  priceRange: '$$',
-  address: {
-    '@type': 'PostalAddress',
-    streetAddress: 'Alcántara 1080-A',
-    addressLocality: 'Villa Barcelona, Chillán',
-    addressRegion: 'Ñuble',
-    postalCode: '3780000',
-    addressCountry: 'CL',
-  },
-  geo: {
-    '@type': 'GeoCoordinates',
-    latitude: -36.594282,
-    longitude: -72.069158,
-  },
-  openingHoursSpecification: [
+  '@graph': [
     {
-      '@type': 'OpeningHoursSpecification',
-      dayOfWeek: ['Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday'],
-      opens: '08:30',
-      closes: '18:30',
+      '@type': 'LocalBusiness',
+      '@id': 'https://revestimientoschillan.cl/#localbusiness',
+      name: 'Revestimientos Chillán',
+      url: 'https://revestimientoschillan.cl',
+      logo: 'https://revestimientoschillan.cl/redondo.png',
+      image: 'https://revestimientoschillan.cl/redondo.png',
+      description: 'Revestimientos de primera en Chillán. Pisos SPC, pisos flotantes, WPC, deck, siding granito y revestimientos metálicos. Asesoría personalizada.',
+      telephone: '+56958603702',
+      email: 'ventas@revestimientoschillan.cl',
+      priceRange: '$$',
+      address: {
+        '@type': 'PostalAddress',
+        streetAddress: 'Alcántara 1080-A',
+        addressLocality: 'Villa Barcelona, Chillán',
+        addressRegion: 'Ñuble',
+        postalCode: '3780000',
+        addressCountry: 'CL',
+      },
+      geo: {
+        '@type': 'GeoCoordinates',
+        latitude: -36.594282,
+        longitude: -72.069158,
+      },
+      areaServed: [
+        { '@type': 'City', name: 'Chillán' },
+        { '@type': 'City', name: 'Chillán Viejo' },
+      ],
+      openingHoursSpecification: [
+        {
+          '@type': 'OpeningHoursSpecification',
+          dayOfWeek: ['Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday'],
+          opens: '08:30',
+          closes: '18:30',
+        },
+        {
+          '@type': 'OpeningHoursSpecification',
+          dayOfWeek: 'Saturday',
+          opens: '09:00',
+          closes: '14:00',
+        },
+      ],
+      sameAs: [
+        'https://www.facebook.com/profile.php?id=61591438604989',
+        'https://www.instagram.com/revestimientoschillan',
+      ],
     },
     {
-      '@type': 'OpeningHoursSpecification',
-      dayOfWeek: 'Saturday',
-      opens: '09:00',
-      closes: '14:00',
+      '@type': 'WebSite',
+      '@id': 'https://revestimientoschillan.cl/#website',
+      name: 'Revestimientos Chillán',
+      url: 'https://revestimientoschillan.cl',
+      inLanguage: 'es-CL',
+      publisher: {
+        '@id': 'https://revestimientoschillan.cl/#localbusiness',
+      },
     },
-  ],
-  sameAs: [
-    'https://www.facebook.com/revestimientoschillan',
-    'https://www.instagram.com/revestimientoschillan',
   ],
 };
 

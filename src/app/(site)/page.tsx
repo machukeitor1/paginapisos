@@ -2,6 +2,7 @@ import { prisma } from "@/lib/prisma";
 import Hero from "@/components/site/Hero";
 import ProductosDestacados from "@/components/site/ProductosDestacados";
 import CategoriasGrid from "@/components/site/CategoriasGrid";
+import SeoContent from "@/components/site/SeoContent";
 import Sucursales from "@/components/site/Sucursales";
 import type { Metadata } from "next";
 
@@ -35,6 +36,7 @@ export default async function HomePage() {
       <Hero banners={banners} />
       <CategoriasGrid categorias={categorias} />
       <ProductosDestacados productos={productos} />
+      <SeoContent />
       <Sucursales />
     </>
   );
