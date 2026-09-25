@@ -2,6 +2,7 @@
 
 import { useState, useEffect, useMemo } from 'react';
 import ImageUploader from '@/components/admin/ImageUploader';
+import { getDisplayLabel } from '@/lib/producto-labels';
 
 export default function ProductosPage() {
   const [productos, setProductos] = useState<any[]>([]);
@@ -119,6 +120,11 @@ export default function ProductosPage() {
     cargar();
   };
 
+  const calcularPrecioUnitario = () => {
+    const label = getDisplayLabel(form.sku, form.unidad, form.displayLabel || null, form.unidadVenta);
+    return label === 'm²' ? Math.round(form.precio * form.rendimiento) : Math.round(form.precio);
+  };
+
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
     const method = editando ? 'PUT' : 'POST';
@@ -128,7 +134,7 @@ export default function ProductosPage() {
     const body = {
       ...form,
       descuento: tieneDescuento ? form.descuento : null,
-      precioUnitario: Math.round(form.precio * form.rendimiento),
+      precioUnitario: calcularPrecioUnitario(),
       medidas: form.medidas ? toJsonArr(form.medidas) : null,
       accesorios: form.accesorios ? toJsonArr(form.accesorios) : null,
       displayLabel: form.displayLabel || null,
@@ -199,7 +205,9 @@ export default function ProductosPage() {
             <label className="block text-sm font-medium text-text mb-1">Precio Base</label>
             <input type="number" step="0.01" required value={form.precio} onChange={(e) => {
               const base = parseFloat(e.target.value) || 0;
-              setForm({ ...form, precio: base, precioUnitario: Math.round(base * form.rendimiento) });
+              const label = getDisplayLabel(form.sku, form.unidad, form.displayLabel || null, form.unidadVenta);
+              const nuevoPu = label === 'm²' ? Math.round(base * form.rendimiento) : Math.round(base);
+              setForm({ ...form, precio: base, precioUnitario: nuevoPu });
             }} className="w-full border border-gray-300 rounded-lg px-4 py-2 text-sm" />
           </div>
           <div>
@@ -276,7 +284,9 @@ export default function ProductosPage() {
             <label className="block text-sm font-medium text-text mb-1">Rendimiento (m²/unidad)</label>
             <input type="number" step="0.0001" min="0.0001" value={form.rendimiento} onChange={(e) => {
               const r = parseFloat(e.target.value) || 1;
-              setForm({ ...form, rendimiento: r, precioUnitario: Math.round(form.precio * r) });
+              const label = getDisplayLabel(form.sku, form.unidad, form.displayLabel || null, form.unidadVenta);
+              const nuevoPu = label === 'm²' ? Math.round(form.precio * r) : Math.round(form.precio);
+              setForm({ ...form, rendimiento: r, precioUnitario: nuevoPu });
             }} className="w-full border border-gray-300 rounded-lg px-4 py-2 text-sm" />
           </div>
           <div>

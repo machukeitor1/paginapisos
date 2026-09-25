@@ -117,7 +117,7 @@ export default function EditarCotizacionPage() {
         if (field === 'cantidad') {
           // unidad: cantidad se edita directamente
         } else if (field === 'proyectoM2') {
-          updated.cantidad = Math.round(value / i.rendimiento) || 1;
+          updated.cantidad = Math.ceil(value / i.rendimiento) || 1;
         } else if (field === 'precioUnitario') {
           updated.precioM2 = i.proyectoM2 != null ? Math.ceil(value / i.rendimiento) : value;
         }
