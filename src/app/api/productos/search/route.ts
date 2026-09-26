@@ -28,6 +28,8 @@ export async function GET(request: Request) {
         unidadVenta: true,
         dimensiones: true,
         displayLabel: true,
+        stock: true,
+        stockMinimo: true,
         categoria: { select: { nombre: true } },
       },
       take: 20,

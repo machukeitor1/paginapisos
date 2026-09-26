@@ -62,6 +62,7 @@ export default function EditarCotizacionPage() {
           proyectoM2: item.proyectoM2 ?? null,
           precioM2: Math.ceil(item.precioUnitario / (item.rendimiento || 1)),
           modo: item.modo || 'unidad',
+          stock: item.producto?.stock ?? undefined,
         }));
         setItems(loaded);
         setNextKey(loaded.length + 1);
@@ -154,6 +155,11 @@ export default function EditarCotizacionPage() {
     }
     if (items.length === 0) {
       setError('Debe agregar al menos un producto');
+      return;
+    }
+    const sinStockItem = items.find((i) => i.stock !== undefined && i.stock !== null && i.cantidad > i.stock);
+    if (sinStockItem) {
+      setError(`Stock insuficiente para ${sinStockItem.descripcion}: disponible ${sinStockItem.stock}, solicitado ${sinStockItem.cantidad}`);
       return;
     }
 

@@ -540,6 +540,7 @@ export default function ProductosPage() {
               <th className="text-left p-3 font-semibold text-text">Categoria</th>
               <th className="text-right p-3 font-semibold text-text">Precio</th>
               <th className="text-center p-3 font-semibold text-text">Desc.</th>
+              <th className="text-center p-3 font-semibold text-text">Stock</th>
               <th className="text-center p-3 font-semibold text-text">Dest.</th>
               <th className="text-center p-3 font-semibold text-text">Act.</th>
               <th className="text-right p-3 font-semibold text-text">Acciones</th>
@@ -575,6 +576,11 @@ export default function ProductosPage() {
                   {prod.descuento ? (
                     <span className="text-orange-500 font-semibold text-xs">-{prod.descuento}%</span>
                   ) : '-'}
+                </td>
+                <td className="p-3 text-center">
+                  <span className={`text-sm font-medium ${prod.stock <= 0 ? 'text-red-600' : prod.stock <= prod.stockMinimo ? 'text-orange-600' : 'text-text'}`}>
+                    {prod.stock}
+                  </span>
                 </td>
                 <td className="p-3 text-center">
                   <button

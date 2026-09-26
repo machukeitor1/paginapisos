@@ -45,7 +45,27 @@ model Producto {
   accesorios      String?
   esAccesorio     Boolean   @default(false)
   displayLabel    String?
+  stock           Float     @default(0)
+  stockMinimo     Float     @default(0)
+  movimientos     StockMovimiento[]
+  itemsCotizacion  CotizacionItem[]
   categoria   Categoria @relation(fields: [categoriaId], references: [id])
+}
+
+model StockMovimiento {
+  id            Int       @id @default(autoincrement())
+  productoId    Int
+  tipo          String
+  cantidad      Float
+  saldoTras     Float
+  motivo        String?
+  cotizacionId  Int?
+  vendedorId    Int?
+  importe       Float?
+  createdAt     DateTime  @default(now())
+  producto      Producto  @relation(fields: [productoId], references: [id])
+  vendedor      Vendedor? @relation(fields: [vendedorId], references: [id])
+  cotizacion    Cotizacion? @relation(fields: [cotizacionId], references: [id])
 }
 
 model Banner {
@@ -107,6 +127,7 @@ model Vendedor {
   password     String
   activo       Boolean      @default(true)
   cotizaciones Cotizacion[]
+  movimientosStock StockMovimiento[]
 }
 
 model Cliente {
@@ -136,6 +157,7 @@ model Cotizacion {
   vendedor    Vendedor         @relation(fields: [vendedorId], references: [id])
   cliente     Cliente          @relation(fields: [clienteId], references: [id])
   items       CotizacionItem[]
+  movimientosStock StockMovimiento[]
 }
 
 model CotizacionItem {
@@ -152,4 +174,5 @@ model CotizacionItem {
   unidadVenta    String     @default("un")
   modo           String     @default("unidad")
   cotizacion     Cotizacion @relation(fields: [cotizacionId], references: [id], onDelete: Cascade)
+  producto       Producto?  @relation(fields: [productoId], references: [id])
 }

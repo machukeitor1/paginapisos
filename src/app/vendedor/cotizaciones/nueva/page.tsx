@@ -119,6 +119,11 @@ export default function NuevaCotizacionPage() {
       setError('Debe agregar al menos un producto');
       return;
     }
+    const sinStockItem = items.find((i) => i.stock !== undefined && i.stock !== null && i.cantidad > i.stock);
+    if (sinStockItem) {
+      setError(`Stock insuficiente para ${sinStockItem.descripcion}: disponible ${sinStockItem.stock}, solicitado ${sinStockItem.cantidad}`);
+      return;
+    }
 
     setSaving(true);
     setError('');

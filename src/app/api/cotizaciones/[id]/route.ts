@@ -3,6 +3,63 @@ import { prisma } from "@/lib/prisma";
 import { getVendedorSession } from "@/lib/auth-vendedor";
 import { getSession } from "@/lib/auth";
 
+async function aplicarMovimientoStock(
+  items: { productoId: number | null; cantidad: number; importe: number }[],
+  tipo: "venta" | "devolucion",
+  cotizacionId: number,
+  vendedorId: number | null
+) {
+  const porProducto = new Map<number, { cantidad: number; importe: number }>();
+  for (const item of items) {
+    if (!item.productoId) continue;
+    const prev = porProducto.get(item.productoId) || { cantidad: 0, importe: 0 };
+    prev.cantidad += item.cantidad;
+    prev.importe += item.importe;
+    porProducto.set(item.productoId, prev);
+  }
+
+  const ids = Array.from(porProducto.keys());
+  if (ids.length === 0) return;
+
+  await prisma.$transaction(async (tx) => {
+    const productos = await tx.producto.findMany({ where: { id: { in: ids } } });
+    const porId = new Map(productos.map((p) => [p.id, p]));
+
+    if (tipo === "venta") {
+      for (const [productoId, agg] of porProducto) {
+        const prod = porId.get(productoId);
+        if (!prod) continue;
+        if (prod.stock < agg.cantidad) {
+          throw new Error(
+            `Stock insuficiente para ${prod.sku}: quedan ${prod.stock} y se requieren ${agg.cantidad}`
+          );
+        }
+      }
+    }
+
+    for (const [productoId, agg] of porProducto) {
+      const prod = porId.get(productoId);
+      if (!prod) continue;
+      const nuevoStock = tipo === "venta" ? prod.stock - agg.cantidad : prod.stock + agg.cantidad;
+      await tx.stockMovimiento.create({
+        data: {
+          productoId,
+          tipo,
+          cantidad: agg.cantidad,
+          saldoTras: nuevoStock,
+          cotizacionId,
+          vendedorId,
+          importe: tipo === "venta" ? agg.importe : null,
+        },
+      });
+      await tx.producto.update({
+        where: { id: productoId },
+        data: { stock: nuevoStock },
+      });
+    }
+  });
+}
+
 export async function GET(request: Request, { params }: { params: { id: string } }) {
   try {
     const cotizacion = await prisma.cotizacion.findUnique({
@@ -10,7 +67,7 @@ export async function GET(request: Request, { params }: { params: { id: string }
       include: {
         cliente: true,
         vendedor: { select: { id: true, nombre: true } },
-        items: true,
+        items: { include: { producto: { select: { stock: true, stockMinimo: true } } } },
       },
     });
     if (!cotizacion) {
@@ -31,7 +88,10 @@ export async function DELETE(request: Request, { params }: { params: { id: strin
     }
 
     const id = parseInt(params.id);
-    const cotizacion = await prisma.cotizacion.findUnique({ where: { id } });
+    const cotizacion = await prisma.cotizacion.findUnique({
+      where: { id },
+      include: { items: true },
+    });
     if (!cotizacion) {
       return NextResponse.json({ error: "Cotización no encontrada" }, { status: 404 });
     }
@@ -40,10 +100,19 @@ export async function DELETE(request: Request, { params }: { params: { id: strin
       return NextResponse.json({ error: "No autorizado" }, { status: 403 });
     }
 
+    if (cotizacion.estado === "VENDIDO") {
+      await aplicarMovimientoStock(
+        cotizacion.items.map((i) => ({ productoId: i.productoId, cantidad: i.cantidad, importe: i.importe })),
+        "devolucion",
+        id,
+        vendedorSession?.id ?? null
+      );
+    }
+
     await prisma.cotizacion.delete({ where: { id } });
     return NextResponse.json({ success: true });
-  } catch {
-    return NextResponse.json({ error: "Error al eliminar cotización" }, { status: 500 });
+  } catch (error: any) {
+    return NextResponse.json({ error: error.message || "Error al eliminar cotización" }, { status: 500 });
   }
 }
 
@@ -56,7 +125,10 @@ export async function PUT(request: Request, { params }: { params: { id: string }
     }
 
     const id = parseInt(params.id);
-    const existing = await prisma.cotizacion.findUnique({ where: { id } });
+    const existing = await prisma.cotizacion.findUnique({
+      where: { id },
+      include: { items: true },
+    });
     if (!existing) {
       return NextResponse.json({ error: "Cotización no encontrada" }, { status: 404 });
     }
@@ -68,8 +140,38 @@ export async function PUT(request: Request, { params }: { params: { id: string }
     const data = await request.json();
     const { cliente, items, notas, estado } = data;
 
-    // Simple estado update
+    // Estado update: maneja descuento/restitución de stock
     if (estado && !cliente && !items) {
+      if (!["PENDIENTE", "VENDIDO", "PERDIDO"].includes(estado)) {
+        return NextResponse.json({ error: "Estado inválido" }, { status: 400 });
+      }
+
+      const antes = existing.estado;
+      const vendedorId = vendedorSession?.id ?? null;
+
+      if (antes === "PENDIENTE" && estado === "VENDIDO") {
+        try {
+          await aplicarMovimientoStock(
+            existing.items.map((i) => ({ productoId: i.productoId, cantidad: i.cantidad, importe: i.importe })),
+            "venta",
+            id,
+            vendedorId
+          );
+        } catch (error: any) {
+          if (error?.message?.startsWith("Stock insuficiente")) {
+            return NextResponse.json({ error: error.message }, { status: 400 });
+          }
+          throw error;
+        }
+      } else if (antes === "VENDIDO" && estado === "PENDIENTE") {
+        await aplicarMovimientoStock(
+          existing.items.map((i) => ({ productoId: i.productoId, cantidad: i.cantidad, importe: i.importe })),
+          "devolucion",
+          id,
+          vendedorId
+        );
+      }
+
       const cotizacion = await prisma.cotizacion.update({
         where: { id },
         data: { estado },

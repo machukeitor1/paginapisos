@@ -44,6 +44,7 @@ export default function CotizacionDetailPage() {
   const [loading, setLoading] = useState(true);
   const [generating, setGenerating] = useState(false);
   const [updating, setUpdating] = useState(false);
+  const [estadoError, setEstadoError] = useState('');
   const [logoBase64, setLogoBase64] = useState<string | null>(null);
 
   const cargar = useCallback(() => {
@@ -69,14 +70,22 @@ export default function CotizacionDetailPage() {
 
   const cambiarEstado = async (estado: string) => {
     setUpdating(true);
+    setEstadoError('');
     try {
       const res = await fetch(`/api/cotizaciones/${params.id}`, {
         method: 'PUT',
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify({ estado }),
       });
-      if (res.ok) cargar();
-    } catch {}
+      const data = await res.json();
+      if (res.ok) {
+        cargar();
+      } else {
+        setEstadoError(data.error || 'Error al cambiar el estado');
+      }
+    } catch {
+      setEstadoError('Error de conexión');
+    }
     setUpdating(false);
   };
 
@@ -276,6 +285,8 @@ export default function CotizacionDetailPage() {
           </button>
         </div>
       </div>
+
+      {estadoError && <div className="bg-red-50 border border-red-200 text-red-700 text-sm rounded-lg px-4 py-3 mb-4">{estadoError}</div>}
 
       {/* Quote document for PDF capture */}
       <div ref={pdfRef} className="bg-white rounded-xl shadow-sm border border-gray-200 p-8 md:p-10" style={{ fontFamily: 'Inter, Arial, sans-serif' }}>
