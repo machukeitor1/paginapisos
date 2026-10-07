@@ -9,10 +9,13 @@ export async function GET(request: Request) {
     const activos = searchParams.get("activos");
 
     if (slug) {
-      const producto = await prisma.producto.findUnique({
-        where: { slug },
+      const producto = await prisma.producto.findFirst({
+        where: { slug, activo: true },
         include: { categoria: true },
       });
+      if (!producto) {
+        return NextResponse.json({ error: "No encontrado" }, { status: 404 });
+      }
       return NextResponse.json(producto);
     }
 

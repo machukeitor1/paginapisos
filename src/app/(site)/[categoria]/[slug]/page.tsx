@@ -6,8 +6,8 @@ import ProductoContent from "./ProductoContent";
 export const dynamic = 'force-dynamic';
 
 export async function generateMetadata({ params }: { params: { categoria: string; slug: string } }): Promise<Metadata> {
-  const producto = await prisma.producto.findUnique({
-    where: { slug: params.slug },
+  const producto = await prisma.producto.findFirst({
+    where: { slug: params.slug, activo: true },
     select: {
       nombre: true,
       descripcion: true,
@@ -47,8 +47,8 @@ export async function generateMetadata({ params }: { params: { categoria: string
 }
 
 export default async function ProductoPage({ params }: { params: { categoria: string; slug: string } }) {
-  const producto = await prisma.producto.findUnique({
-    where: { slug: params.slug },
+  const producto = await prisma.producto.findFirst({
+    where: { slug: params.slug, activo: true },
     select: {
       id: true,
       nombre: true,

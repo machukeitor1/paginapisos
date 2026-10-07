@@ -300,7 +300,7 @@ export default function ProductosPage() {
             </label>
             <label className="flex items-center gap-2">
               <input type="checkbox" checked={form.activo} onChange={(e) => setForm({ ...form, activo: e.target.checked })} className="rounded" />
-              <span className="text-sm">Activo</span>
+              <span className="text-sm">Visible en la web</span>
             </label>
             <label className="flex items-center gap-2">
               <input type="checkbox" checked={form.estado === 'a-pedido'} onChange={(e) => setForm({ ...form, estado: e.target.checked ? 'a-pedido' : 'disponible' })} className="rounded" />
@@ -426,14 +426,14 @@ export default function ProductosPage() {
               disabled={guardando}
               className="bg-green-600 hover:bg-green-700 text-white text-xs font-semibold py-1.5 px-3 rounded-lg"
             >
-              Activar
+              Mostrar en web
             </button>
             <button
               onClick={() => actualizarBatch('activo', false)}
               disabled={guardando}
               className="bg-gray-500 hover:bg-gray-600 text-white text-xs font-semibold py-1.5 px-3 rounded-lg"
             >
-              Desactivar
+              Ocultar de web
             </button>
             <button
               onClick={() => actualizarBatch('destacado', true)}
@@ -541,7 +541,7 @@ export default function ProductosPage() {
               <th className="text-right p-3 font-semibold text-text">Precio</th>
               <th className="text-center p-3 font-semibold text-text">Desc.</th>
               <th className="text-center p-3 font-semibold text-text">Dest.</th>
-              <th className="text-center p-3 font-semibold text-text">Act.</th>
+              <th className="text-center p-3 font-semibold text-text">Web</th>
               <th className="text-right p-3 font-semibold text-text">Acciones</th>
             </tr>
           </thead>
@@ -586,7 +586,7 @@ export default function ProductosPage() {
                     {prod.destacado ? '★' : '☆'}
                   </button>
                 </td>
-                <td className="p-3 text-center">
+                <td className="p-3 text-center" title={prod.activo ? 'Visible en la web' : 'Oculto en la web'}>
                   <span className={`inline-block w-2 h-2 rounded-full ${prod.activo ? 'bg-green-500' : 'bg-red-400'}`} />
                 </td>
                 <td className="p-3 text-right">

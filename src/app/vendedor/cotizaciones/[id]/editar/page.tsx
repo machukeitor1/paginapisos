@@ -279,6 +279,7 @@ export default function EditarCotizacionPage() {
                   <span className="text-gray-500 ml-2">${(p.precioUnitario || p.precio).toLocaleString('es-CL')}/{p.unidadVenta}</span>
                   <span className="text-gray-500 ml-1">| ${p.precio.toLocaleString('es-CL')}/{p.unidad}</span>
                   {p.descuento ? <span className="text-red-500 text-xs ml-1">{p.descuento}% OFF</span> : null}
+                  {!p.activo ? <span className="text-[10px] font-semibold ml-1 px-1.5 py-0.5 rounded bg-gray-200 text-gray-600">Oculto en web</span> : null}
                   <span className="text-xs text-gray-500 ml-2">{p.categoria.nombre}</span>
                 </button>
               ))}

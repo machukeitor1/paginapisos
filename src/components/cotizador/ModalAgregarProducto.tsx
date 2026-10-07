@@ -16,6 +16,7 @@ export interface ProductoSearch {
   unidadVenta: string;
   dimensiones: string | null;
   displayLabel: string | null;
+  activo: boolean;
   categoria: { nombre: string };
 }
 
