@@ -18,6 +18,7 @@ export interface ProductoSearch {
   displayLabel: string | null;
   stock: number;
   stockMinimo: number;
+  activo: boolean;
   categoria: { nombre: string };
 }
 

@@ -98,7 +98,7 @@ export default async function CategoriaPage({ params }: { params: { categoria: s
         ) : (
           <>
             {productosNormales.length > 0 && (
-              <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-6">
+              <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-6 auto-rows-fr">
                 {productosNormales.map((prod) => (
                   <ProductCard key={prod.id} producto={prod} />
                 ))}
@@ -107,7 +107,7 @@ export default async function CategoriaPage({ params }: { params: { categoria: s
             {accesorios.length > 0 && (
               <div className="mt-12">
                 <h2 className="text-2xl font-bold text-primary mb-6">Accesorios</h2>
-                <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-6">
+                <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-6 auto-rows-fr">
                   {accesorios.map((prod) => (
                     <ProductCard key={prod.id} producto={prod} />
                   ))}

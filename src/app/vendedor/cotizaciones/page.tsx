@@ -11,8 +11,9 @@ interface CotizacionResumen {
   total: number;
   estado: string;
   cliente: { nombre: string; rut: string };
-  items: any[];
 }
+
+const POR_PAGINA = 20;
 
 const ESTILOS_ESTADO: Record<string, string> = {
   PENDIENTE: 'bg-yellow-100 text-yellow-800',
@@ -24,42 +25,105 @@ export default function MisCotizacionesPage() {
   const [cotizaciones, setCotizaciones] = useState<CotizacionResumen[]>([]);
   const [loading, setLoading] = useState(true);
   const [search, setSearch] = useState('');
+  const [searchDebounced, setSearchDebounced] = useState('');
   const [desde, setDesde] = useState('');
   const [hasta, setHasta] = useState('');
   const [estadoFiltro, setEstadoFiltro] = useState('');
+  const [pagina, setPagina] = useState(1);
+  const [total, setTotal] = useState(0);
+  const [totalPaginas, setTotalPaginas] = useState(1);
   const [deleting, setDeleting] = useState<number | null>(null);
+
+  useEffect(() => {
+    const timer = setTimeout(() => setSearchDebounced(search), 300);
+    return () => clearTimeout(timer);
+  }, [search]);
 
   const fetchData = useCallback(async () => {
     setLoading(true);
     const params = new URLSearchParams();
-    if (search) params.set('q', search);
+    if (searchDebounced) params.set('q', searchDebounced);
     if (desde) params.set('desde', desde);
     if (hasta) params.set('hasta', hasta);
     if (estadoFiltro) params.set('estado', estadoFiltro);
+    params.set('pagina', String(pagina));
+    params.set('porPagina', String(POR_PAGINA));
     try {
       const res = await fetch(`/api/cotizaciones?${params.toString()}`);
       const data = await res.json();
-      setCotizaciones(Array.isArray(data) ? data : []);
+      const items = Array.isArray(data?.items) ? data.items : [];
+      if (items.length === 0 && pagina > 1) {
+        setPagina(pagina - 1);
+        return;
+      }
+      setCotizaciones(items);
+      setTotal(data?.total ?? 0);
+      setTotalPaginas(data?.totalPaginas ?? 1);
     } catch {
       setCotizaciones([]);
+      setTotal(0);
     } finally {
       setLoading(false);
     }
-  }, [search, desde, hasta, estadoFiltro]);
+  }, [searchDebounced, desde, hasta, estadoFiltro, pagina]);
 
-  useEffect(() => { fetchData(); }, [fetchData]);
+  useEffect(() => {
+    if (search !== searchDebounced) return;
+    fetchData();
+  }, [fetchData, search, searchDebounced]);
 
   const eliminar = async (id: number) => {
     if (!confirm('¿Eliminar esta cotización?')) return;
     setDeleting(id);
     try {
       const res = await fetch(`/api/cotizaciones/${id}`, { method: 'DELETE' });
-      if (res.ok) fetchData();
+      if (res.ok) {
+        if (cotizaciones.length === 1 && pagina > 1) {
+          setPagina(pagina - 1);
+        } else {
+          fetchData();
+        }
+      }
     } catch {}
     setDeleting(null);
   };
 
-  const limpiar = () => { setSearch(''); setDesde(''); setHasta(''); setEstadoFiltro(''); };
+  const limpiar = () => {
+    setSearch('');
+    setSearchDebounced('');
+    setDesde('');
+    setHasta('');
+    setEstadoFiltro('');
+    setPagina(1);
+  };
+
+  const cambiarFiltro = (setter: (v: string) => void) => (v: string) => {
+    setter(v);
+    setPagina(1);
+  };
+
+  const irAPagina = (p: number) => {
+    if (p < 1 || p > totalPaginas || p === pagina) return;
+    setPagina(p);
+    window.scrollTo({ top: 0, behavior: 'smooth' });
+  };
+
+  const paginasVisibles = (): (number | '...')[] => {
+    if (totalPaginas <= 7) {
+      return Array.from({ length: totalPaginas }, (_, i) => i + 1);
+    }
+    const lista: (number | '...')[] = [1];
+    const ini = Math.max(2, pagina - 1);
+    const fin = Math.min(totalPaginas - 1, pagina + 1);
+    if (ini > 2) lista.push('...');
+    for (let i = ini; i <= fin; i++) lista.push(i);
+    if (fin < totalPaginas - 1) lista.push('...');
+    lista.push(totalPaginas);
+    return lista;
+  };
+
+  const primerRegistro = total === 0 ? 0 : (pagina - 1) * POR_PAGINA + 1;
+  const ultimoRegistro = Math.min(pagina * POR_PAGINA, total);
 
   return (
     <div className="p-6 max-w-5xl mx-auto">
@@ -68,7 +132,7 @@ export default function MisCotizacionesPage() {
         <div className="flex items-center gap-2">
           <div className="relative group">
             <button className="bg-white border border-gray-300 hover:bg-gray-50 text-gray-600 px-3 py-2 rounded-lg text-sm font-medium transition-colors flex items-center gap-1">
-              <svg className="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M12 10v6m0 0l-3-3m3 3l3-3m2 8H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z" /></svg>
+              <svg className="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M12 10v6m0 0l-3-3m3 3l3-3m2 8H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a2 2 0 01.707.293l5.414 5.414a2 2 0 01.293.707V19a2 2 0 01-2 2z" /></svg>
               Plantilla Word
             </button>
             <div className="hidden group-hover:block absolute right-0 top-full mt-1 bg-white border border-gray-200 rounded-lg shadow-lg z-20 min-w-[200px]">
@@ -89,11 +153,11 @@ export default function MisCotizacionesPage() {
       <div className="bg-white rounded-xl shadow-sm border border-gray-200 p-4 mb-4 flex flex-wrap gap-3 items-end">
         <div className="flex-1 min-w-[180px]">
           <label className="block text-xs text-gray-500 mb-1">Buscar por RUT o Nombre</label>
-          <input value={search} onChange={(e) => setSearch(e.target.value)} placeholder="RUT o nombre del cliente..." className="w-full border border-gray-300 rounded-lg px-3 py-2 text-sm focus:outline-none focus:ring-2 focus:ring-blue-500/50" />
+          <input value={search} onChange={(e) => cambiarFiltro(setSearch)(e.target.value)} placeholder="RUT o nombre del cliente..." className="w-full border border-gray-300 rounded-lg px-3 py-2 text-sm focus:outline-none focus:ring-2 focus:ring-blue-500/50" />
         </div>
         <div>
           <label className="block text-xs text-gray-500 mb-1">Estado</label>
-          <select value={estadoFiltro} onChange={(e) => setEstadoFiltro(e.target.value)} className="border border-gray-300 rounded-lg px-3 py-2 text-sm focus:outline-none focus:ring-2 focus:ring-blue-500/50">
+          <select value={estadoFiltro} onChange={(e) => cambiarFiltro(setEstadoFiltro)(e.target.value)} className="border border-gray-300 rounded-lg px-3 py-2 text-sm focus:outline-none focus:ring-2 focus:ring-blue-500/50">
             <option value="">Todos</option>
             <option value="PENDIENTE">Pendiente</option>
             <option value="VENDIDO">Vendido</option>
@@ -102,11 +166,11 @@ export default function MisCotizacionesPage() {
         </div>
         <div>
           <label className="block text-xs text-gray-500 mb-1">Desde</label>
-          <input type="date" value={desde} onChange={(e) => setDesde(e.target.value)} className="border border-gray-300 rounded-lg px-3 py-2 text-sm focus:outline-none focus:ring-2 focus:ring-blue-500/50" />
+          <input type="date" value={desde} onChange={(e) => cambiarFiltro(setDesde)(e.target.value)} className="border border-gray-300 rounded-lg px-3 py-2 text-sm focus:outline-none focus:ring-2 focus:ring-blue-500/50" />
         </div>
         <div>
           <label className="block text-xs text-gray-500 mb-1">Hasta</label>
-          <input type="date" value={hasta} onChange={(e) => setHasta(e.target.value)} className="border border-gray-300 rounded-lg px-3 py-2 text-sm focus:outline-none focus:ring-2 focus:ring-blue-500/50" />
+          <input type="date" value={hasta} onChange={(e) => cambiarFiltro(setHasta)(e.target.value)} className="border border-gray-300 rounded-lg px-3 py-2 text-sm focus:outline-none focus:ring-2 focus:ring-blue-500/50" />
         </div>
         {(search || desde || hasta || estadoFiltro) && (
           <button onClick={limpiar} className="px-3 py-2 text-sm text-gray-500 hover:text-gray-700 border border-gray-300 rounded-lg">Limpiar</button>
@@ -121,48 +185,90 @@ export default function MisCotizacionesPage() {
           <Link href="/vendedor/cotizaciones/nueva" className="text-blue-600 hover:text-blue-700 text-sm font-medium">Crear primera cotización</Link>
         </div>
       ) : (
-        <div className="bg-white rounded-xl shadow-sm border border-gray-200 overflow-hidden">
-          <table className="w-full text-sm">
-            <thead>
-              <tr className="border-b border-gray-200 bg-gray-50 text-xs text-gray-500 uppercase">
-                <th className="text-left py-3 px-4">N°</th>
-                <th className="text-left py-3 px-4">Cliente</th>
-                <th className="text-left py-3 px-4">RUT</th>
-                <th className="text-center py-3 px-4">Estado</th>
-                <th className="text-center py-3 px-4">Fecha</th>
-                <th className="text-right py-3 px-4">Total</th>
-                <th className="py-3 px-4 text-center">Acciones</th>
-              </tr>
-            </thead>
-            <tbody>
-              {cotizaciones.map((c) => (
-                <tr key={c.id} className="border-b border-gray-100 hover:bg-gray-50">
-                  <td className="py-3 px-4 font-medium text-gray-800">{c.numero}</td>
-                  <td className="py-3 px-4 text-gray-700">{c.cliente.nombre}</td>
-                  <td className="py-3 px-4 text-gray-500">{c.cliente.rut}</td>
-                  <td className="py-3 px-4 text-center">
-                    <span className={`text-xs font-semibold px-2 py-0.5 rounded-full ${ESTILOS_ESTADO[c.estado] || 'bg-gray-100 text-gray-600'}`}>{c.estado}</span>
-                  </td>
-                  <td className="py-3 px-4 text-center text-gray-500">{new Date(c.createdAt).toLocaleDateString('es-CL')}</td>
-                  <td className="py-3 px-4 text-right font-medium">${c.total.toLocaleString('es-CL', { minimumFractionDigits: 0 })}</td>
-                  <td className="py-3 px-4">
-                    <div className="flex items-center justify-center gap-2">
-                      <Link href={`/vendedor/cotizaciones/${c.id}`} title="Ver" className="text-blue-600 hover:text-blue-700">
-                        <svg className="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M15 12a3 3 0 11-6 0 3 3 0 016 0z" /><path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M2.458 12C3.732 7.943 7.523 5 12 5c4.478 0 8.268 2.943 9.542 7-1.274 4.057-5.064 7-9.542 7-4.477 0-8.268-2.943-9.542-7z" /></svg>
-                      </Link>
-                      <Link href={`/vendedor/cotizaciones/${c.id}/editar`} title="Editar" className="text-amber-600 hover:text-amber-700">
-                        <svg className="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M11 5H6a2 2 0 00-2 2v11a2 2 0 002 2h11a2 2 0 002-2v-5m-1.414-9.414a2 2 0 112.828 2.828L11.828 15H9v-2.828l8.586-8.586z" /></svg>
-                      </Link>
-                      <button onClick={() => eliminar(c.id)} disabled={deleting === c.id} title="Eliminar" className="text-red-500 hover:text-red-700 disabled:opacity-50">
-                        <svg className="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M19 7l-.867 12.142A2 2 0 0116.138 21H7.862a2 2 0 01-1.995-1.858L5 7m5 4v6m4-6v6m1-10V4a1 1 0 00-1-1h-4a1 1 0 00-1 1v3M4 7h16" /></svg>
-                      </button>
-                    </div>
-                  </td>
+        <>
+          <div className="bg-white rounded-xl shadow-sm border border-gray-200 overflow-hidden">
+            <table className="w-full text-sm">
+              <thead>
+                <tr className="border-b border-gray-200 bg-gray-50 text-xs text-gray-500 uppercase">
+                  <th className="text-left py-3 px-4">N°</th>
+                  <th className="text-left py-3 px-4">Cliente</th>
+                  <th className="text-left py-3 px-4">RUT</th>
+                  <th className="text-center py-3 px-4">Estado</th>
+                  <th className="text-center py-3 px-4">Fecha</th>
+                  <th className="text-right py-3 px-4">Total</th>
+                  <th className="py-3 px-4 text-center">Acciones</th>
                 </tr>
-              ))}
-            </tbody>
-          </table>
-        </div>
+              </thead>
+              <tbody>
+                {cotizaciones.map((c) => (
+                  <tr key={c.id} className="border-b border-gray-100 hover:bg-gray-50">
+                    <td className="py-3 px-4 font-medium text-gray-800">{c.numero}</td>
+                    <td className="py-3 px-4 text-gray-700">{c.cliente.nombre}</td>
+                    <td className="py-3 px-4 text-gray-500">{c.cliente.rut}</td>
+                    <td className="py-3 px-4 text-center">
+                      <span className={`text-xs font-semibold px-2 py-0.5 rounded-full ${ESTILOS_ESTADO[c.estado] || 'bg-gray-100 text-gray-600'}`}>{c.estado}</span>
+                    </td>
+                    <td className="py-3 px-4 text-center text-gray-500">{new Date(c.createdAt).toLocaleDateString('es-CL')}</td>
+                    <td className="py-3 px-4 text-right font-medium">${c.total.toLocaleString('es-CL', { minimumFractionDigits: 0 })}</td>
+                    <td className="py-3 px-4">
+                      <div className="flex items-center justify-center gap-2">
+                        <Link href={`/vendedor/cotizaciones/${c.id}`} title="Ver" className="text-blue-600 hover:text-blue-700">
+                          <svg className="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M15 12a3 3 0 11-6 0 3 3 0 016 0z" /><path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M2.458 12C3.732 7.943 7.523 5 12 5c4.478 0 8.268 2.943 9.542 7-1.274 4.057-5.064 7-9.542 7-4.477 0-8.268-2.943-9.542-7z" /></svg>
+                        </Link>
+                        <Link href={`/vendedor/cotizaciones/${c.id}/editar`} title="Editar" className="text-amber-600 hover:text-amber-700">
+                          <svg className="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M11 5H6a2 2 0 00-2 2v11a2 2 0 002 2h11a2 2 0 002-2v-5m-1.414-9.414a2 2 0 112.828 2.828L11.828 15H9v-2.828l8.586-8.586z" /></svg>
+                        </Link>
+                        <button onClick={() => eliminar(c.id)} disabled={deleting === c.id} title="Eliminar" className="text-red-500 hover:text-red-700 disabled:opacity-50">
+                          <svg className="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M19 7l-.867 12.142A2 2 0 0116.138 21H7.862a2 2 0 01-1.995-1.858L5 7m5 4v6m4-6v6m1-10V4a2 2 0 00-1-1h-4a2 2 0 00-1 1v3M4 7h16" /></svg>
+                        </button>
+                      </div>
+                    </td>
+                  </tr>
+                ))}
+              </tbody>
+            </table>
+          </div>
+
+          <div className="mt-4 flex flex-col sm:flex-row items-center justify-between gap-3">
+            <p className="text-sm text-gray-500">
+              Mostrando {primerRegistro}–{ultimoRegistro} de {total} cotización{total === 1 ? '' : 'es'}
+            </p>
+            <div className="flex items-center gap-1">
+              <button
+                onClick={() => irAPagina(pagina - 1)}
+                disabled={pagina <= 1 || loading}
+                className="px-3 py-1.5 text-sm border border-gray-300 rounded-lg text-gray-600 hover:bg-gray-50 disabled:opacity-40 disabled:hover:bg-transparent transition-colors"
+              >
+                Anterior
+              </button>
+              {paginasVisibles().map((p, i) =>
+                p === '...' ? (
+                  <span key={`e${i}`} className="px-2 text-sm text-gray-400">…</span>
+                ) : (
+                  <button
+                    key={p}
+                    onClick={() => irAPagina(p)}
+                    disabled={loading}
+                    className={`min-w-[34px] px-2.5 py-1.5 text-sm rounded-lg border transition-colors ${
+                      p === pagina
+                        ? 'bg-blue-600 border-blue-600 text-white font-medium'
+                        : 'border-gray-300 text-gray-600 hover:bg-gray-50'
+                    }`}
+                  >
+                    {p}
+                  </button>
+                )
+              )}
+              <button
+                onClick={() => irAPagina(pagina + 1)}
+                disabled={pagina >= totalPaginas || loading}
+                className="px-3 py-1.5 text-sm border border-gray-300 rounded-lg text-gray-600 hover:bg-gray-50 disabled:opacity-40 disabled:hover:bg-transparent transition-colors"
+              >
+                Siguiente
+              </button>
+            </div>
+          </div>
+        </>
       )}
     </div>
   );
