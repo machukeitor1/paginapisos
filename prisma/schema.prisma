@@ -19,33 +19,79 @@ model Categoria {
 }
 
 model Producto {
-  id          Int       @id @default(autoincrement())
-  nombre      String
-  slug        String    @unique
-  sku         String    @unique
-  descripcion String?
-  dimensiones String?
-  unidad      String    @default("m2")
-  precio      Float
-  descuento   Int?
-  marca       String    @default("")
-  imagenes    String    @default("[]")
-  estado      String    @default("disponible")
-  destacado   Boolean   @default(false)
-  activo      Boolean   @default(true)
-  orden       Int       @default(0)
-  categoriaId Int
-  rendimiento   Float?
-  unidadVenta   String    @default("un")
-  precioUnitario Float    @default(0)
-  createdAt     DateTime  @default(now())
-  medidas         String?
-  presentacion    String?
+  id               Int               @id @default(autoincrement())
+  nombre           String
+  slug             String            @unique
+  sku              String            @unique
+  descripcion      String?
+  dimensiones      String?
+  unidad           String            @default("m2")
+  precio           Float
+  descuento        Int?
+  marca            String            @default("")
+  imagenes         String            @default("[]")
+  estado           String            @default("disponible")
+  destacado        Boolean           @default(false)
+  activo           Boolean           @default(true)
+  orden            Int               @default(0)
+  categoriaId      Int
+  rendimiento      Float?
+  unidadVenta      String            @default("un")
+  precioUnitario   Float             @default(0)
+  createdAt        DateTime          @default(now())
+  medidas          String?
+  presentacion     String?
   rendimientoTexto String?
-  accesorios      String?
-  esAccesorio     Boolean   @default(false)
-  displayLabel    String?
-  categoria   Categoria @relation(fields: [categoriaId], references: [id])
+  accesorios       String?
+  esAccesorio      Boolean           @default(false)
+  displayLabel     String?
+  stock            Float             @default(0)
+  stockMinimo      Float             @default(0)
+  movimientos      StockMovimiento[]
+  itemsCotizacion  CotizacionItem[]
+  categoria        Categoria         @relation(fields: [categoriaId], references: [id])
+}
+
+model StockMovimiento {
+  id            Int             @id @default(autoincrement())
+  productoId    Int
+  tipo          String
+  cantidad      Float
+  saldoTras     Float
+  motivo        String?
+  cotizacionId  Int?
+  vendedorId    Int?
+  importe       Float?
+  faltante      Float?
+  ingresoId     Int?
+  usuarioTipo   String?
+  usuarioId     Int?
+  usuarioNombre String?
+  createdAt     DateTime        @default(now())
+  producto      Producto        @relation(fields: [productoId], references: [id])
+  vendedor      Vendedor?       @relation(fields: [vendedorId], references: [id])
+  cotizacion    Cotizacion?     @relation(fields: [cotizacionId], references: [id])
+  ingreso       IngresoFactura? @relation(fields: [ingresoId], references: [id])
+
+  @@index([productoId, createdAt])
+  @@index([createdAt])
+  @@index([cotizacionId])
+}
+
+model IngresoFactura {
+  id            Int               @id @default(autoincrement())
+  numeroFactura String
+  fecha         DateTime
+  proveedor     String?
+  notas         String?
+  usuarioTipo   String?
+  usuarioId     Int?
+  usuarioNombre String?
+  createdAt     DateTime          @default(now())
+  movimientos   StockMovimiento[]
+
+  @@index([fecha])
+  @@index([numeroFactura])
 }
 
 model Banner {
@@ -99,14 +145,15 @@ model Admin {
 }
 
 model Vendedor {
-  id           Int          @id @default(autoincrement())
-  nombre       String
-  rut          String       @unique
-  telefono     String?
-  email        String?
-  password     String
-  activo       Boolean      @default(true)
-  cotizaciones Cotizacion[]
+  id               Int               @id @default(autoincrement())
+  nombre           String
+  rut              String            @unique
+  telefono         String?
+  email            String?
+  password         String
+  activo           Boolean           @default(true)
+  cotizaciones     Cotizacion[]
+  movimientosStock StockMovimiento[]
 }
 
 model Cliente {
@@ -122,20 +169,39 @@ model Cliente {
 }
 
 model Cotizacion {
-  id          Int              @id @default(autoincrement())
-  numero      String           @unique
-  createdAt   DateTime         @default(now())
-  vencimiento DateTime
-  subtotal    Float
-  iva         Float
-  total       Float
-  notas       String?
-  estado      String           @default("Pendiente")
-  clienteId   Int
-  vendedorId  Int
-  vendedor    Vendedor         @relation(fields: [vendedorId], references: [id])
-  cliente     Cliente          @relation(fields: [clienteId], references: [id])
-  items       CotizacionItem[]
+  id               Int                @id @default(autoincrement())
+  numero           String             @unique
+  createdAt        DateTime           @default(now())
+  vencimiento      DateTime
+  subtotal         Float
+  iva              Float
+  total            Float
+  notas            String?
+  estado           String             @default("Pendiente")
+  fechaVenta       DateTime?
+  clienteId        Int
+  vendedorId       Int
+  vendedor         Vendedor           @relation(fields: [vendedorId], references: [id])
+  cliente          Cliente            @relation(fields: [clienteId], references: [id])
+  items            CotizacionItem[]
+  movimientosStock StockMovimiento[]
+  eventos          CotizacionEvento[]
+}
+
+model CotizacionEvento {
+  id             Int        @id @default(autoincrement())
+  cotizacionId   Int
+  estadoAnterior String?
+  estadoNuevo    String
+  motivo         String?
+  usuarioTipo    String
+  usuarioId      Int?
+  usuarioNombre  String
+  createdAt      DateTime   @default(now())
+  cotizacion     Cotizacion @relation(fields: [cotizacionId], references: [id], onDelete: Cascade)
+
+  @@index([cotizacionId, createdAt])
+  @@index([createdAt])
 }
 
 model CotizacionItem {
@@ -152,4 +218,5 @@ model CotizacionItem {
   unidadVenta    String     @default("un")
   modo           String     @default("unidad")
   cotizacion     Cotizacion @relation(fields: [cotizacionId], references: [id], onDelete: Cascade)
+  producto       Producto?  @relation(fields: [productoId], references: [id])
 }

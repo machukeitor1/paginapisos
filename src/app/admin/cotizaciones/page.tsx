@@ -25,9 +25,9 @@ export default function AdminCotizacionesPage() {
   const [loading, setLoading] = useState(true);
 
   useEffect(() => {
-    fetch('/api/cotizaciones')
+    fetch('/api/cotizaciones?porPagina=200')
       .then((r) => r.json())
-      .then((data) => setItems(Array.isArray(data) ? data : []))
+      .then((data) => setItems(data?.items || []))
       .catch(() => {})
       .finally(() => setLoading(false));
   }, []);

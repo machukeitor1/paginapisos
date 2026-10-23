@@ -9,7 +9,6 @@ export async function GET(request: Request) {
 
     const productos = await prisma.producto.findMany({
       where: {
-        activo: true,
         OR: [
           { sku: { contains: q, mode: "insensitive" } },
           { nombre: { contains: q, mode: "insensitive" } },
@@ -28,6 +27,9 @@ export async function GET(request: Request) {
         unidadVenta: true,
         dimensiones: true,
         displayLabel: true,
+        stock: true,
+        stockMinimo: true,
+        activo: true,
         categoria: { select: { nombre: true } },
       },
       take: 20,

@@ -6,6 +6,7 @@ import Link from 'next/link';
 
 export default function VendedorLayout({ children }: { children: React.ReactNode }) {
   const [vendedor, setVendedor] = useState<{ id: number; nombre: string } | null>(null);
+  const [adminEmail, setAdminEmail] = useState<string | null>(null);
   const [loading, setLoading] = useState(true);
   const router = useRouter();
   const pathname = usePathname();
@@ -16,13 +17,21 @@ export default function VendedorLayout({ children }: { children: React.ReactNode
       return;
     }
     fetch('/api/auth/vendedor')
-      .then((res) => (res.ok ? res.json() : null))
-      .then((data) => {
-        if (data?.id) {
-          setVendedor(data);
-        } else {
-          router.push('/vendedor/login');
+      .then(async (res) => {
+        if (res.ok) {
+          const data = await res.json();
+          if (data?.id) {
+            setVendedor(data);
+            return;
+          }
         }
+        const adminRes = await fetch('/api/auth');
+        if (adminRes.ok) {
+          const admin = await adminRes.json();
+          setAdminEmail(admin.email || 'admin');
+          return;
+        }
+        router.push('/vendedor/login');
       })
       .catch(() => router.push('/vendedor/login'))
       .finally(() => setLoading(false));
@@ -40,9 +49,14 @@ export default function VendedorLayout({ children }: { children: React.ReactNode
     );
   }
 
-  if (!vendedor) return null;
+  if (!vendedor && !adminEmail) return null;
 
   const handleLogout = async () => {
+    if (adminEmail) {
+      await fetch('/api/auth', { method: 'DELETE' });
+      router.push('/admin/login');
+      return;
+    }
     await fetch('/api/auth/vendedor', { method: 'DELETE' });
     router.push('/vendedor/login');
   };
@@ -55,7 +69,14 @@ export default function VendedorLayout({ children }: { children: React.ReactNode
       <aside className="w-64 bg-white border-r border-gray-200 flex flex-col shrink-0">
         <div className="p-4 border-b border-gray-200">
           <h2 className="text-sm font-bold text-gray-800">Revestimientos Chillán</h2>
-          <p className="text-xs text-gray-500 mt-0.5">{vendedor.nombre}</p>
+          <p className="text-xs text-gray-500 mt-0.5">
+            {vendedor ? vendedor.nombre : `Admin · ${adminEmail}`}
+          </p>
+          {adminEmail && (
+            <Link href="/admin/dashboard" className="text-[11px] text-blue-600 hover:text-blue-700 mt-1 inline-block">
+              Ir al panel admin
+            </Link>
+          )}
         </div>
         <nav className="flex-1 p-2 space-y-1">
           <Link href="/vendedor/cotizaciones/nueva" className={`flex items-center gap-2 px-3 py-2.5 rounded-lg text-sm transition-colors ${isActive('/vendedor/cotizaciones/nueva')}`}>

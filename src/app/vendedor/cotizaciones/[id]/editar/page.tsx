@@ -4,6 +4,7 @@ import { useState, useEffect, useRef, useCallback } from 'react';
 import { useRouter, useParams } from 'next/navigation';
 import Link from 'next/link';
 import ModalAgregarProducto, { type ProductoSearch, type CotizacionItem } from '@/components/cotizador/ModalAgregarProducto';
+import PanelStock from '@/components/cotizador/PanelStock';
 import { formatUnidad, getUnidadLabel } from '@/lib/format-unidad';
 
 export default function EditarCotizacionPage() {
@@ -62,6 +63,7 @@ export default function EditarCotizacionPage() {
           proyectoM2: item.proyectoM2 ?? null,
           precioM2: Math.ceil(item.precioUnitario / (item.rendimiento || 1)),
           modo: item.modo || 'unidad',
+          stock: item.producto?.stock ?? undefined,
         }));
         setItems(loaded);
         setNextKey(loaded.length + 1);
@@ -156,7 +158,6 @@ export default function EditarCotizacionPage() {
       setError('Debe agregar al menos un producto');
       return;
     }
-
     setSaving(true);
     setError('');
     setSuccess('');
@@ -279,6 +280,7 @@ export default function EditarCotizacionPage() {
                   <span className="text-gray-500 ml-2">${(p.precioUnitario || p.precio).toLocaleString('es-CL')}/{p.unidadVenta}</span>
                   <span className="text-gray-500 ml-1">| ${p.precio.toLocaleString('es-CL')}/{p.unidad}</span>
                   {p.descuento ? <span className="text-red-500 text-xs ml-1">{p.descuento}% OFF</span> : null}
+                  {!p.activo ? <span className="text-[10px] font-semibold ml-1 px-1.5 py-0.5 rounded bg-gray-200 text-gray-600">Oculto en web</span> : null}
                   <span className="text-xs text-gray-500 ml-2">{p.categoria.nombre}</span>
                 </button>
               ))}
@@ -377,6 +379,8 @@ export default function EditarCotizacionPage() {
         {items.length === 0 && (
           <p className="text-sm text-gray-500 text-center py-6">Busque productos por SKU para agregarlos a la cotización</p>
         )}
+
+        <PanelStock items={items} />
 
         {items.length > 0 && (
           <div className="border-t border-gray-200 mt-4 pt-4 flex flex-col items-end text-sm">

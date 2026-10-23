@@ -17,6 +17,8 @@ export async function GET(request: Request) {
     const desde = searchParams.get("desde");
     const hasta = searchParams.get("hasta");
     const estado = searchParams.get("estado");
+    const pagina = Math.max(1, parseInt(searchParams.get("pagina") || "1") || 1);
+    const porPagina = Math.min(200, Math.max(1, parseInt(searchParams.get("porPagina") || "20") || 20));
 
     const where: any = {};
     if (vendedorId) {
@@ -47,18 +49,27 @@ export async function GET(request: Request) {
       where.createdAt = { ...where.createdAt, lt: hastaDate };
     }
 
-    const cotizaciones = await prisma.cotizacion.findMany({
-      where,
-      include: {
-        cliente: { select: { nombre: true, rut: true } },
-        vendedor: { select: { nombre: true } },
-        items: true,
-      },
-      orderBy: { createdAt: "desc" },
-      take: 100,
-    });
+    const [total, cotizaciones] = await Promise.all([
+      prisma.cotizacion.count({ where }),
+      prisma.cotizacion.findMany({
+        where,
+        include: {
+          cliente: { select: { nombre: true, rut: true } },
+          vendedor: { select: { nombre: true } },
+        },
+        orderBy: [{ createdAt: "desc" }, { id: "desc" }],
+        skip: (pagina - 1) * porPagina,
+        take: porPagina,
+      }),
+    ]);
 
-    return NextResponse.json(cotizaciones);
+    return NextResponse.json({
+      items: cotizaciones,
+      total,
+      pagina,
+      porPagina,
+      totalPaginas: Math.max(1, Math.ceil(total / porPagina)),
+    });
   } catch {
     return NextResponse.json({ error: "Error al obtener cotizaciones" }, { status: 500 });
   }

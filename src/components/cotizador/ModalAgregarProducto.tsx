@@ -16,6 +16,9 @@ export interface ProductoSearch {
   unidadVenta: string;
   dimensiones: string | null;
   displayLabel: string | null;
+  stock: number;
+  stockMinimo: number;
+  activo: boolean;
   categoria: { nombre: string };
 }
 
@@ -32,6 +35,7 @@ export interface CotizacionItem {
   proyectoM2: number | null;
   precioM2: number;
   modo: string;
+  stock?: number;
 }
 
 interface Props {
@@ -44,12 +48,14 @@ export default function ModalAgregarProducto({ product, onAdd, onClose }: Props)
   const rend = product.rendimiento || 1;
   const isM2 = product.unidad === 'm2';
   const physicalLabel = getDisplayLabel(product.sku, product.unidad, product.displayLabel, product.unidadVenta);
+  const stock = product.stock ?? 0;
 
   const [modo, setModo] = useState<'unidad' | 'm2'>(isM2 ? 'unidad' : 'unidad');
   const [cantidad, setCantidad] = useState(1);
   const [proyectoM2, setProyectoM2] = useState(isM2 ? Math.ceil(rend) : 0);
   const [precioUnitario, setPrecioUnitario] = useState(product.precioUnitario || 0);
   const [descuento, setDescuento] = useState(product.descuento || 0);
+  const [confirmoFaltante, setConfirmoFaltante] = useState(false);
 
   useEffect(() => {
     if (modo === 'unidad') {
@@ -63,6 +69,9 @@ export default function ModalAgregarProducto({ product, onAdd, onClose }: Props)
     setPrecioUnitario(product.precioUnitario || 0);
   }, [modo, product.precioUnitario]);
 
+  const requerido = modo === 'm2' ? (Math.ceil(proyectoM2 / rend) || 1) : cantidad;
+  const faltante = Math.max(0, requerido - Math.max(stock, 0));
+
   const calcImporte = () => {
     if (modo === 'm2') {
       const cajas = Math.ceil(proyectoM2 / rend) || 1;
@@ -72,11 +81,16 @@ export default function ModalAgregarProducto({ product, onAdd, onClose }: Props)
   };
 
   const handleM2Change = (val: number) => {
-    setProyectoM2(val);
-    setCantidad(Math.ceil(val / rend) || 1);
+    setProyectoM2(Math.max(0, val));
+    setCantidad(Math.ceil(Math.max(0, val) / rend) || 1);
+  };
+
+  const handleCantidadChange = (val: number) => {
+    setCantidad(Math.max(1, val));
   };
 
   const handleAdd = () => {
+    if (faltante > 0 && !confirmoFaltante) return;
     const finalCant = modo === 'm2' ? (Math.ceil(proyectoM2 / rend) || 1) : cantidad;
     const finalM2 = modo === 'm2' ? proyectoM2 : (isM2 ? rend : null);
     const importe = Math.ceil(finalCant * precioUnitario * (1 - descuento / 100));
@@ -94,6 +108,7 @@ export default function ModalAgregarProducto({ product, onAdd, onClose }: Props)
       proyectoM2: finalM2,
       precioM2: isM2 ? Math.ceil(precioUnitario / rend) : precioUnitario,
       modo,
+      stock,
     });
   };
 
@@ -104,11 +119,27 @@ export default function ModalAgregarProducto({ product, onAdd, onClose }: Props)
           <div>
             <h3 className="font-semibold text-gray-800 text-sm">{product.sku}</h3>
             <p className="text-xs text-gray-500 mt-0.5">{product.nombre}</p>
+            <span className={`text-xs font-semibold px-2 py-0.5 rounded-full mt-1 inline-block ${stock <= 0 ? 'bg-red-100 text-red-700' : stock <= (product.stockMinimo ?? 0) ? 'bg-orange-100 text-orange-700' : 'bg-green-100 text-green-700'}`}>
+              Stock: {stock}
+            </span>
           </div>
           <button onClick={onClose} className="text-gray-500 hover:text-gray-600">
             <svg className="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M6 18L18 6M6 6l12 12" /></svg>
           </button>
         </div>
+
+        {faltante > 0 && (
+          <div className="mb-4 rounded-lg border border-orange-200 bg-orange-50 p-3 text-xs text-orange-800">
+            <p className="font-semibold">Stock insuficiente</p>
+            <p className="mt-0.5">
+              Solicitas {requerido} y hay {Math.max(stock, 0)} disponibles. Se registrará un faltante de {faltante} al marcar la cotización como VENDIDA.
+            </p>
+            <label className="flex items-center gap-2 mt-2 cursor-pointer">
+              <input type="checkbox" checked={confirmoFaltante} onChange={(e) => setConfirmoFaltante(e.target.checked)} className="accent-orange-600" />
+              Continuar de todos modos
+            </label>
+          </div>
+        )}
 
         {isM2 && (
           <div className="flex rounded-lg border border-gray-200 overflow-hidden mb-4">
@@ -136,7 +167,7 @@ export default function ModalAgregarProducto({ product, onAdd, onClose }: Props)
                 min={1}
                 step={1}
                 value={cantidad}
-                onChange={(e) => setCantidad(parseInt(e.target.value) || 1)}
+                onChange={(e) => handleCantidadChange(parseInt(e.target.value) || 1)}
                 className="w-full border border-gray-300 rounded-lg px-3 py-2 text-sm focus:outline-none focus:ring-2 focus:ring-blue-500/50"
               />
               {isM2 && (
@@ -201,7 +232,8 @@ export default function ModalAgregarProducto({ product, onAdd, onClose }: Props)
         <div className="flex gap-3">
           <button
             onClick={handleAdd}
-            className="flex-1 bg-blue-600 hover:bg-blue-700 text-white font-semibold py-2.5 rounded-lg transition-colors text-sm"
+            disabled={faltante > 0 && !confirmoFaltante}
+            className="flex-1 bg-blue-600 hover:bg-blue-700 disabled:bg-blue-300 text-white font-semibold py-2.5 rounded-lg transition-colors text-sm"
           >
             Agregar
           </button>
