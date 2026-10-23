@@ -37,7 +37,7 @@ export default function ProductCard({ producto }: { producto: Producto }) {
   const imgSrc = imagenes[0] ? getImageSrcSet(imagenes[0]) : null;
 
   return (
-    <div className="bg-card rounded-xl shadow-md overflow-hidden hover:shadow-lg transition-shadow group relative">
+    <div className="bg-card rounded-xl shadow-md overflow-hidden hover:shadow-lg transition-shadow group relative flex flex-col h-full">
       <Link {...linkProps}>
         <div className="relative h-48 bg-gray-100 overflow-hidden">
           {imgSrc ? (
@@ -69,7 +69,7 @@ export default function ProductCard({ producto }: { producto: Producto }) {
         </div>
       </Link>
 
-      <div className="p-4">
+      <div className="p-4 flex flex-col flex-1">
         <div className="text-xs text-muted mb-1">{producto.categoria.nombre}</div>
         <Link {...linkProps}>
           <h3 className="font-semibold text-text mb-1 hover:text-accent transition-colors line-clamp-2">{producto.nombre}</h3>
@@ -93,7 +93,7 @@ export default function ProductCard({ producto }: { producto: Producto }) {
 
         <Link
           {...linkProps}
-          className="block w-full text-center bg-accent hover:bg-accent/90 text-white text-sm font-medium py-2 rounded-lg transition-colors"
+          className="block w-full text-center bg-accent hover:bg-accent/90 text-white text-sm font-medium py-2 rounded-lg transition-colors mt-auto"
         >
           Ver detalle
         </Link>
