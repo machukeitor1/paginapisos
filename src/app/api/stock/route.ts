@@ -42,13 +42,19 @@ export async function POST(request: Request) {
     if (!session) return NextResponse.json({ error: "No autenticado" }, { status: 401 });
 
     const body = await request.json();
-    const { productoId, tipo, cantidad, motivo } = body;
+    const { productoId, tipo, cantidad, motivo, confirmarNegativo } = body;
 
-    if (!productoId || !tipo || typeof cantidad !== "number" || cantidad <= 0) {
+    if (!productoId || !tipo || typeof cantidad !== "number") {
       return NextResponse.json({ error: "Datos inválidos" }, { status: 400 });
     }
     if (!["entrada", "egreso", "ajuste"].includes(tipo)) {
       return NextResponse.json({ error: "Tipo de movimiento inválido" }, { status: 400 });
+    }
+    if (tipo === "ajuste" ? cantidad < 0 : cantidad <= 0) {
+      return NextResponse.json({ error: "Datos inválidos" }, { status: 400 });
+    }
+    if (tipo === "ajuste" && (!motivo || String(motivo).trim().length < 3)) {
+      return NextResponse.json({ error: "El ajuste requiere un motivo (mínimo 3 caracteres)" }, { status: 400 });
     }
 
     const producto = await prisma.producto.findUnique({ where: { id: parseInt(productoId) } });
@@ -65,8 +71,15 @@ export async function POST(request: Request) {
       nuevoStock = cantidad;
     }
 
-    if (nuevoStock < 0) {
-      return NextResponse.json({ error: `Stock insuficiente (quedan ${producto.stock})` }, { status: 400 });
+    if (nuevoStock < 0 && confirmarNegativo !== true) {
+      return NextResponse.json(
+        {
+          error: `El movimiento deja el stock en ${nuevoStock}. Confirma para continuar.`,
+          requiereConfirmacion: true,
+          stockResultante: nuevoStock,
+        },
+        { status: 409 }
+      );
     }
 
     const [movimiento, updated] = await prisma.$transaction([
@@ -76,7 +89,9 @@ export async function POST(request: Request) {
           tipo,
           cantidad,
           saldoTras: nuevoStock,
-          motivo: motivo || null,
+          motivo: motivo ? String(motivo).trim() : null,
+          usuarioTipo: "admin",
+          usuarioNombre: session.email,
         },
       }),
       prisma.producto.update({

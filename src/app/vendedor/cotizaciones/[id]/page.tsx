@@ -14,9 +14,19 @@ interface CotizacionData {
   iva: number;
   total: number;
   estado: string;
+  fechaVenta: string | null;
   notas: string | null;
   cliente: { nombre: string; rut: string | null; direccion: string | null; comuna: string | null; telefono: string | null };
   vendedor: { id: number; nombre: string };
+  eventos?: Array<{
+    id: number;
+    estadoAnterior: string | null;
+    estadoNuevo: string;
+    motivo: string | null;
+    usuarioTipo: string;
+    usuarioNombre: string;
+    createdAt: string;
+  }>;
   items: Array<{
     id: number;
     descripcion: string;
@@ -46,6 +56,8 @@ export default function CotizacionDetailPage() {
   const [updating, setUpdating] = useState(false);
   const [estadoError, setEstadoError] = useState('');
   const [logoBase64, setLogoBase64] = useState<string | null>(null);
+  const [motivoModal, setMotivoModal] = useState(false);
+  const [motivoReapertura, setMotivoReapertura] = useState('');
 
   const cargar = useCallback(() => {
     fetch(`/api/cotizaciones/${params.id}`)
@@ -68,25 +80,63 @@ export default function CotizacionDetailPage() {
       .catch(() => {});
   }, []);
 
-  const cambiarEstado = async (estado: string) => {
+  const cambiarEstado = async (
+    estado: string,
+    opciones?: { motivo?: string; confirmarFaltante?: boolean }
+  ) => {
     setUpdating(true);
     setEstadoError('');
     try {
       const res = await fetch(`/api/cotizaciones/${params.id}`, {
         method: 'PUT',
         headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify({ estado }),
+        body: JSON.stringify({ estado, ...opciones }),
       });
       const data = await res.json();
+
       if (res.ok) {
+        setMotivoModal(false);
+        setMotivoReapertura('');
         cargar();
-      } else {
-        setEstadoError(data.error || 'Error al cambiar el estado');
+        return;
       }
+
+      if (res.status === 409 && data?.faltantes?.length) {
+        const detalle = data.faltantes
+          .map(
+            (f: any) =>
+              `${f.sku}: requiere ${f.requerido}, hay ${f.disponible} (faltan ${f.faltante})`
+          )
+          .join('\n');
+        if (window.confirm(`Stock insuficiente:\n\n${detalle}\n\n¿Registrar la venta con faltante?`)) {
+          await cambiarEstado(estado, { ...opciones, confirmarFaltante: true });
+          return;
+        }
+        setEstadoError('Venta cancelada: no hay stock suficiente.');
+        return;
+      }
+
+      setEstadoError(data.error || 'Error al cambiar el estado');
     } catch {
       setEstadoError('Error de conexión');
+    } finally {
+      setUpdating(false);
     }
-    setUpdating(false);
+  };
+
+  const ETIQUETA_ESTADO: Record<string, string> = {
+    PENDIENTE: 'Pendiente',
+    VENDIDO: 'Vendido',
+    PERDIDO: 'Perdido',
+  };
+
+  const confirmarReapertura = () => {
+    if (motivoReapertura.trim().length < 3) {
+      setEstadoError('Debes indicar el motivo de la reapertura (mínimo 3 caracteres)');
+      return;
+    }
+    setEstadoError('');
+    cambiarEstado('PENDIENTE', { motivo: motivoReapertura.trim() });
   };
 
   const formatCLP = (n: number) => '$' + Math.round(n).toLocaleString('es-CL');
@@ -261,24 +311,24 @@ export default function CotizacionDetailPage() {
         <div className="flex items-center gap-2">
           {/* Estado badge + buttons */}
           <span className={`text-xs font-semibold px-3 py-1 rounded-full ${ESTILOS_ESTADO[cot.estado] || 'bg-gray-100 text-gray-600'}`}>{cot.estado}</span>
-          {cot.estado !== 'VENDIDO' && (
-            <button onClick={() => cambiarEstado('VENDIDO')} disabled={updating} className="text-xs bg-green-600 hover:bg-green-700 disabled:bg-green-400 text-white px-3 py-1.5 rounded-lg transition-colors">
-              Marcar Vendido
-            </button>
-          )}
-          {cot.estado !== 'PERDIDO' && (
-            <button onClick={() => cambiarEstado('PERDIDO')} disabled={updating} className="text-xs bg-red-500 hover:bg-red-600 disabled:bg-red-300 text-white px-3 py-1.5 rounded-lg transition-colors">
-              Marcar Perdido
-            </button>
+          {cot.estado === 'PENDIENTE' && (
+            <>
+              <button onClick={() => cambiarEstado('VENDIDO')} disabled={updating} className="text-xs bg-green-600 hover:bg-green-700 disabled:bg-green-400 text-white px-3 py-1.5 rounded-lg transition-colors">
+                Marcar Vendido
+              </button>
+              <button onClick={() => cambiarEstado('PERDIDO')} disabled={updating} className="text-xs bg-red-500 hover:bg-red-600 disabled:bg-red-300 text-white px-3 py-1.5 rounded-lg transition-colors">
+                Marcar Perdido
+              </button>
+              <Link href={`/vendedor/cotizaciones/${cot.id}/editar`} className="text-xs bg-amber-600 hover:bg-amber-700 text-white px-3 py-1.5 rounded-lg transition-colors">
+                Editar
+              </Link>
+            </>
           )}
           {cot.estado !== 'PENDIENTE' && (
-            <button onClick={() => cambiarEstado('PENDIENTE')} disabled={updating} className="text-xs bg-gray-500 hover:bg-gray-600 disabled:bg-gray-300 text-white px-3 py-1.5 rounded-lg transition-colors">
+            <button onClick={() => { setMotivoModal(true); setMotivoReapertura(''); setEstadoError(''); }} disabled={updating} className="text-xs bg-gray-600 hover:bg-gray-700 disabled:bg-gray-300 text-white px-3 py-1.5 rounded-lg transition-colors">
               Reabrir
             </button>
           )}
-          <Link href={`/vendedor/cotizaciones/${cot.id}/editar`} className="text-xs bg-amber-600 hover:bg-amber-700 text-white px-3 py-1.5 rounded-lg transition-colors">
-            Editar
-          </Link>
           <button onClick={generatePDF} disabled={generating} className="bg-blue-600 hover:bg-blue-700 disabled:bg-blue-400 text-white px-5 py-2 rounded-lg text-sm font-medium transition-colors flex items-center gap-2">
             <svg className="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M12 10v6m0 0l-3-3m3 3l3-3m2 8H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z" /></svg>
             {generating ? 'Generando...' : 'Descargar PDF'}
@@ -355,6 +405,70 @@ export default function CotizacionDetailPage() {
           <p className="mt-2 font-medium text-gray-500">Visítanos en www.revestimientoschillan.cl</p>
         </div>
       </div>
+
+      <div className="mt-6 bg-white rounded-xl shadow-sm border border-gray-200 p-6">
+        <h2 className="text-sm font-semibold text-gray-700 mb-4">Historial de estados</h2>
+        {cot.eventos && cot.eventos.length > 0 ? (
+          <ol className="relative border-l border-gray-200 ml-2 space-y-4">
+            {cot.eventos.map((evento) => (
+              <li key={evento.id} className="ml-5">
+                <span className="absolute -left-[7px] mt-1.5 w-3 h-3 rounded-full bg-blue-500 border-2 border-white" />
+                <div className="flex flex-wrap items-center gap-2 text-sm">
+                  <span className="font-medium text-gray-800">
+                    {evento.estadoAnterior ? ETIQUETA_ESTADO[evento.estadoAnterior] || evento.estadoAnterior : 'Inicio'}
+                    {' → '}
+                    {ETIQUETA_ESTADO[evento.estadoNuevo] || evento.estadoNuevo}
+                  </span>
+                  <span className="text-xs text-gray-500">
+                    {new Date(evento.createdAt).toLocaleString('es-CL')}
+                  </span>
+                  <span className="text-xs text-gray-500">
+                    · {evento.usuarioNombre} ({evento.usuarioTipo})
+                  </span>
+                </div>
+                {evento.motivo && (
+                  <p className="text-xs text-gray-600 mt-1">Motivo: {evento.motivo}</p>
+                )}
+              </li>
+            ))}
+          </ol>
+        ) : (
+          <p className="text-sm text-gray-500">Sin cambios de estado registrados.</p>
+        )}
+      </div>
+
+      {motivoModal && (
+        <div className="fixed inset-0 bg-black/40 flex items-center justify-center z-50 p-4">
+          <div className="bg-white rounded-xl shadow-xl w-full max-w-md p-6">
+            <h2 className="text-lg font-bold text-primary mb-1">Reabrir cotización</h2>
+            <p className="text-sm text-gray-500 mb-4">
+              La cotización {cot.numero} volverá a estado PENDIENTE. Indica el motivo (obligatorio).
+            </p>
+            <textarea
+              value={motivoReapertura}
+              onChange={(e) => setMotivoReapertura(e.target.value)}
+              rows={3}
+              placeholder="Ej: el cliente confirmó la compra / se corrigió el estado por error"
+              className="w-full border border-gray-300 rounded-lg px-3 py-2 text-sm focus:outline-none focus:ring-2 focus:ring-blue-500/50"
+            />
+            <div className="flex justify-end gap-2 mt-4">
+              <button
+                onClick={() => { setMotivoModal(false); setMotivoReapertura(''); }}
+                className="px-4 py-2 text-sm text-gray-600 hover:bg-gray-100 rounded-lg"
+              >
+                Cancelar
+              </button>
+              <button
+                onClick={confirmarReapertura}
+                disabled={updating || motivoReapertura.trim().length < 3}
+                className="px-4 py-2 text-sm bg-blue-600 hover:bg-blue-700 disabled:bg-blue-300 text-white rounded-lg font-medium"
+              >
+                {updating ? 'Reabriendo…' : 'Reabrir'}
+              </button>
+            </div>
+          </div>
+        </div>
+      )}
     </div>
   );
 }

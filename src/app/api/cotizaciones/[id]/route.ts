@@ -1,14 +1,10 @@
 import { NextResponse } from "next/server";
 import { prisma } from "@/lib/prisma";
-import { getVendedorSession } from "@/lib/auth-vendedor";
-import { getSession } from "@/lib/auth";
+import { getActor, type Actor } from "@/lib/actor";
 
-async function aplicarMovimientoStock(
-  items: { productoId: number | null; cantidad: number; importe: number }[],
-  tipo: "venta" | "devolucion",
-  cotizacionId: number,
-  vendedorId: number | null
-) {
+type ItemLike = { productoId: number | null; cantidad: number; importe: number };
+
+function agregarPorProducto(items: ItemLike[]) {
   const porProducto = new Map<number, { cantidad: number; importe: number }>();
   for (const item of items) {
     if (!item.productoId) continue;
@@ -17,62 +13,38 @@ async function aplicarMovimientoStock(
     prev.importe += item.importe;
     porProducto.set(item.productoId, prev);
   }
+  return porProducto;
+}
 
-  const ids = Array.from(porProducto.keys());
-  if (ids.length === 0) return;
-
-  await prisma.$transaction(async (tx) => {
-    const productos = await tx.producto.findMany({ where: { id: { in: ids } } });
-    const porId = new Map(productos.map((p) => [p.id, p]));
-
-    if (tipo === "venta") {
-      for (const [productoId, agg] of porProducto) {
-        const prod = porId.get(productoId);
-        if (!prod) continue;
-        if (prod.stock < agg.cantidad) {
-          throw new Error(
-            `Stock insuficiente para ${prod.sku}: quedan ${prod.stock} y se requieren ${agg.cantidad}`
-          );
-        }
-      }
-    }
-
-    for (const [productoId, agg] of porProducto) {
-      const prod = porId.get(productoId);
-      if (!prod) continue;
-      const nuevoStock = tipo === "venta" ? prod.stock - agg.cantidad : prod.stock + agg.cantidad;
-      await tx.stockMovimiento.create({
-        data: {
-          productoId,
-          tipo,
-          cantidad: agg.cantidad,
-          saldoTras: nuevoStock,
-          cotizacionId,
-          vendedorId,
-          importe: tipo === "venta" ? agg.importe : null,
-        },
-      });
-      await tx.producto.update({
-        where: { id: productoId },
-        data: { stock: nuevoStock },
-      });
-    }
-  });
+function actorFields(actor: Actor) {
+  return {
+    usuarioTipo: actor.tipo,
+    usuarioId: actor.id,
+    usuarioNombre: actor.nombre,
+  };
 }
 
 export async function GET(request: Request, { params }: { params: { id: string } }) {
   try {
+    const actor = await getActor();
+    if (!actor) return NextResponse.json({ error: "No autenticado" }, { status: 401 });
+
     const cotizacion = await prisma.cotizacion.findUnique({
       where: { id: parseInt(params.id) },
       include: {
         cliente: true,
         vendedor: { select: { id: true, nombre: true } },
         items: { include: { producto: { select: { stock: true, stockMinimo: true } } } },
+        eventos: { orderBy: { createdAt: "asc" } },
       },
     });
     if (!cotizacion) {
       return NextResponse.json({ error: "Cotización no encontrada" }, { status: 404 });
     }
+    if (actor.tipo === "vendedor" && cotizacion.vendedorId !== actor.id) {
+      return NextResponse.json({ error: "No autorizado" }, { status: 403 });
+    }
+
     return NextResponse.json(cotizacion);
   } catch {
     return NextResponse.json({ error: "Error al obtener cotización" }, { status: 500 });
@@ -81,31 +53,22 @@ export async function GET(request: Request, { params }: { params: { id: string }
 
 export async function DELETE(request: Request, { params }: { params: { id: string } }) {
   try {
-    const vendedorSession = await getVendedorSession();
-    const adminSession = await getSession();
-    if (!vendedorSession && !adminSession) {
-      return NextResponse.json({ error: "No autenticado" }, { status: 401 });
-    }
+    const actor = await getActor();
+    if (!actor) return NextResponse.json({ error: "No autenticado" }, { status: 401 });
 
     const id = parseInt(params.id);
-    const cotizacion = await prisma.cotizacion.findUnique({
-      where: { id },
-      include: { items: true },
-    });
+    const cotizacion = await prisma.cotizacion.findUnique({ where: { id } });
     if (!cotizacion) {
       return NextResponse.json({ error: "Cotización no encontrada" }, { status: 404 });
     }
 
-    if (vendedorSession && !adminSession && cotizacion.vendedorId !== vendedorSession.id) {
+    if (actor.tipo === "vendedor" && cotizacion.vendedorId !== actor.id) {
       return NextResponse.json({ error: "No autorizado" }, { status: 403 });
     }
-
-    if (cotizacion.estado === "VENDIDO") {
-      await aplicarMovimientoStock(
-        cotizacion.items.map((i) => ({ productoId: i.productoId, cantidad: i.cantidad, importe: i.importe })),
-        "devolucion",
-        id,
-        vendedorSession?.id ?? null
+    if (cotizacion.estado !== "PENDIENTE") {
+      return NextResponse.json(
+        { error: "Solo se pueden eliminar cotizaciones en estado PENDIENTE" },
+        { status: 400 }
       );
     }
 
@@ -118,66 +81,169 @@ export async function DELETE(request: Request, { params }: { params: { id: strin
 
 export async function PUT(request: Request, { params }: { params: { id: string } }) {
   try {
-    const vendedorSession = await getVendedorSession();
-    const adminSession = await getSession();
-    if (!vendedorSession && !adminSession) {
-      return NextResponse.json({ error: "No autenticado" }, { status: 401 });
-    }
+    const actor = await getActor();
+    if (!actor) return NextResponse.json({ error: "No autenticado" }, { status: 401 });
 
     const id = parseInt(params.id);
     const existing = await prisma.cotizacion.findUnique({
       where: { id },
-      include: { items: true },
+      include: { items: true, vendedor: { select: { nombre: true } }, cliente: true },
     });
     if (!existing) {
       return NextResponse.json({ error: "Cotización no encontrada" }, { status: 404 });
     }
-
-    if (vendedorSession && !adminSession && existing.vendedorId !== vendedorSession.id) {
+    if (actor.tipo === "vendedor" && existing.vendedorId !== actor.id) {
       return NextResponse.json({ error: "No autorizado" }, { status: 403 });
     }
 
     const data = await request.json();
-    const { cliente, items, notas, estado } = data;
+    const { cliente, items, notas, estado, motivo, confirmarFaltante } = data;
 
-    // Estado update: maneja descuento/restitución de stock
     if (estado && !cliente && !items) {
       if (!["PENDIENTE", "VENDIDO", "PERDIDO"].includes(estado)) {
         return NextResponse.json({ error: "Estado inválido" }, { status: 400 });
       }
 
-      const antes = existing.estado;
-      const vendedorId = vendedorSession?.id ?? null;
+      const resultado = await prisma.$transaction(async (tx) => {
+        const actual = await tx.cotizacion.findUnique({
+          where: { id },
+          include: { items: true, eventos: { orderBy: { createdAt: "desc" }, take: 1 } },
+        });
+        if (!actual) return { status: 404, body: { error: "Cotización no encontrada" } };
 
-      if (antes === "PENDIENTE" && estado === "VENDIDO") {
-        try {
-          await aplicarMovimientoStock(
-            existing.items.map((i) => ({ productoId: i.productoId, cantidad: i.cantidad, importe: i.importe })),
-            "venta",
-            id,
-            vendedorId
-          );
-        } catch (error: any) {
-          if (error?.message?.startsWith("Stock insuficiente")) {
-            return NextResponse.json({ error: error.message }, { status: 400 });
-          }
-          throw error;
+        const antes = actual.estado;
+        if (antes === estado) {
+          return { status: 400, body: { error: `La cotización ya está en estado ${estado}` } };
         }
-      } else if (antes === "VENDIDO" && estado === "PENDIENTE") {
-        await aplicarMovimientoStock(
-          existing.items.map((i) => ({ productoId: i.productoId, cantidad: i.cantidad, importe: i.importe })),
-          "devolucion",
-          id,
-          vendedorId
-        );
-      }
+        if ((antes === "VENDIDO" && estado === "PERDIDO") || (antes === "PERDIDO" && estado === "VENDIDO")) {
+          return {
+            status: 400,
+            body: { error: "Primero reabre la cotización a PENDIENTE para cambiar su resultado" },
+          };
+        }
 
-      const cotizacion = await prisma.cotizacion.update({
-        where: { id },
-        data: { estado },
-        include: { cliente: true, vendedor: { select: { nombre: true } }, items: true },
+        const cerrada = antes === "VENDIDO" || antes === "PERDIDO";
+        const motivoLimpio = motivo ? String(motivo).trim() : "";
+        if (cerrada && motivoLimpio.length < 3) {
+          return { status: 400, body: { error: "Debes indicar el motivo de la reapertura" } };
+        }
+
+        const porProducto = agregarPorProducto(
+          actual.items.map((i) => ({ productoId: i.productoId, cantidad: i.cantidad, importe: i.importe }))
+        );
+        const ids = Array.from(porProducto.keys());
+        const productos = ids.length
+          ? await tx.producto.findMany({ where: { id: { in: ids } } })
+          : [];
+        const porId = new Map(productos.map((p) => [p.id, p]));
+
+        if (antes === "PENDIENTE" && estado === "VENDIDO") {
+          const faltantes = [] as {
+            productoId: number;
+            sku: string;
+            nombre: string;
+            requerido: number;
+            disponible: number;
+            faltante: number;
+          }[];
+          for (const [productoId, agg] of porProducto) {
+            const prod = porId.get(productoId);
+            if (!prod) continue;
+            if (prod.stock < agg.cantidad) {
+              faltantes.push({
+                productoId,
+                sku: prod.sku,
+                nombre: prod.nombre,
+                requerido: agg.cantidad,
+                disponible: prod.stock,
+                faltante: agg.cantidad - Math.max(prod.stock, 0),
+              });
+            }
+          }
+
+          if (faltantes.length > 0 && confirmarFaltante !== true) {
+            return { status: 409, body: { requiereConfirmacion: true, faltantes } };
+          }
+
+          for (const [productoId, agg] of porProducto) {
+            const prod = porId.get(productoId);
+            if (!prod) continue;
+            const nuevoStock = prod.stock - agg.cantidad;
+            const faltante = Math.max(0, agg.cantidad - Math.max(prod.stock, 0));
+            await tx.stockMovimiento.create({
+              data: {
+                productoId,
+                tipo: "venta",
+                cantidad: agg.cantidad,
+                saldoTras: nuevoStock,
+                faltante: faltante > 0 ? faltante : null,
+                motivo: faltante > 0 ? "Venta con faltante de stock" : null,
+                cotizacionId: id,
+                vendedorId: actor.tipo === "vendedor" ? actor.id : null,
+                importe: agg.importe,
+                ...actorFields(actor),
+              },
+            });
+            await tx.producto.update({ where: { id: productoId }, data: { stock: nuevoStock } });
+          }
+        }
+
+        if (antes === "VENDIDO" && estado === "PENDIENTE") {
+          for (const [productoId, agg] of porProducto) {
+            const prod = porId.get(productoId);
+            if (!prod) continue;
+            const nuevoStock = prod.stock + agg.cantidad;
+            await tx.stockMovimiento.create({
+              data: {
+                productoId,
+                tipo: "devolucion",
+                cantidad: agg.cantidad,
+                saldoTras: nuevoStock,
+                motivo: `Reapertura: ${motivoLimpio}`,
+                cotizacionId: id,
+                vendedorId: actor.tipo === "vendedor" ? actor.id : null,
+                ...actorFields(actor),
+              },
+            });
+            await tx.producto.update({ where: { id: productoId }, data: { stock: nuevoStock } });
+          }
+        }
+
+        await tx.cotizacionEvento.create({
+          data: {
+            cotizacionId: id,
+            estadoAnterior: antes,
+            estadoNuevo: estado,
+            motivo: motivoLimpio || null,
+            ...actorFields(actor),
+          },
+        });
+
+        const cotizacion = await tx.cotizacion.update({
+          where: { id },
+          data: {
+            estado,
+            fechaVenta: estado === "VENDIDO" ? new Date() : null,
+          },
+          include: {
+            cliente: true,
+            vendedor: { select: { nombre: true } },
+            items: true,
+            eventos: { orderBy: { createdAt: "asc" } },
+          },
+        });
+
+        return { status: 200, body: cotizacion };
       });
-      return NextResponse.json(cotizacion);
+
+      return NextResponse.json(resultado.body, { status: resultado.status });
+    }
+
+    if (existing.estado !== "PENDIENTE") {
+      return NextResponse.json(
+        { error: "Solo se pueden editar cotizaciones en estado PENDIENTE. Reábrela primero." },
+        { status: 400 }
+      );
     }
 
     if (!cliente?.nombre) {
@@ -189,10 +255,10 @@ export async function PUT(request: Request, { params }: { params: { id: string }
 
     let clienteDb;
     if (cliente.rut) {
-      const existing = await prisma.cliente.findFirst({ where: { rut: cliente.rut } });
-      if (existing) {
+      const clienteExistente = await prisma.cliente.findFirst({ where: { rut: cliente.rut } });
+      if (clienteExistente) {
         clienteDb = await prisma.cliente.update({
-          where: { id: existing.id },
+          where: { id: clienteExistente.id },
           data: {
             nombre: cliente.nombre,
             direccion: cliente.direccion || null,
@@ -230,8 +296,8 @@ export async function PUT(request: Request, { params }: { params: { id: string }
       descripcion: item.descripcion,
       cantidad: item.cantidad,
       rendimiento: item.rendimiento || 1,
-      unidadVenta: item.unidadVenta || 'un',
-      modo: item.modo || 'unidad',
+      unidadVenta: item.unidadVenta || "un",
+      modo: item.modo || "unidad",
       precioUnitario: item.precioUnitario,
       descuentoPorc: item.descuentoPorc || 0,
       importe: item.importe,
@@ -243,22 +309,28 @@ export async function PUT(request: Request, { params }: { params: { id: string }
     const iva = subtotal - neto;
     const total = subtotal;
 
-    await prisma.cotizacionItem.deleteMany({ where: { cotizacionId: id } });
+    await prisma.$transaction([
+      prisma.cotizacionItem.deleteMany({ where: { cotizacionId: id } }),
+      prisma.cotizacion.update({
+        where: { id },
+        data: {
+          subtotal,
+          iva,
+          total,
+          notas: notas || null,
+          clienteId: clienteDb.id,
+          items: { create: itemsData },
+        },
+      }),
+    ]);
 
-    const cotizacion = await prisma.cotizacion.update({
+    const cotizacion = await prisma.cotizacion.findUnique({
       where: { id },
-      data: {
-        subtotal,
-        iva,
-        total,
-        notas: notas || null,
-        clienteId: clienteDb.id,
-        items: { create: itemsData },
-      },
       include: {
         cliente: true,
         vendedor: { select: { nombre: true } },
         items: true,
+        eventos: { orderBy: { createdAt: "asc" } },
       },
     });
 

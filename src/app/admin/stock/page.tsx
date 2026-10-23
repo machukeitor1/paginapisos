@@ -1,6 +1,9 @@
 'use client';
 
-import { useState, useEffect, useCallback } from 'react';
+import { useState, useEffect, useCallback, Fragment } from 'react';
+import Link from 'next/link';
+import ModalIngresoFactura from '@/components/admin/stock/ModalIngresoFactura';
+import ModalImportarStock from '@/components/admin/stock/ModalImportarStock';
 
 interface ProductoStock {
   id: number;
@@ -20,8 +23,32 @@ interface Movimiento {
   saldoTras: number;
   motivo: string | null;
   importe: number | null;
+  faltante: number | null;
+  usuarioNombre: string | null;
   createdAt: string;
   vendedor: { nombre: string } | null;
+  producto?: { sku: string; nombre: string };
+  ingreso?: { id: number; numeroFactura: string } | null;
+}
+
+interface Ingreso {
+  id: number;
+  numeroFactura: string;
+  fecha: string;
+  proveedor: string | null;
+  usuarioNombre: string | null;
+  movimientos: {
+    id: number;
+    cantidad: number;
+    producto: { sku: string; nombre: string };
+  }[];
+}
+
+interface Resumen {
+  periodo: string;
+  stock: { productos: number; unidades: number; valor: number; bajos: number; sinStock: number; negativos: number };
+  ventas: { cantidad: number; total: number; unidades: number; ticketPromedio: number };
+  faltantes: { unidades: number; movimientos: number };
 }
 
 const TIPO_LABEL: Record<string, string> = {
@@ -30,6 +57,7 @@ const TIPO_LABEL: Record<string, string> = {
   ajuste: 'Ajuste',
   venta: 'Venta',
   devolucion: 'Devolución',
+  carga_inicial: 'Carga inicial',
 };
 
 const TIPO_COLOR: Record<string, string> = {
@@ -38,6 +66,7 @@ const TIPO_COLOR: Record<string, string> = {
   ajuste: 'bg-blue-100 text-blue-700',
   venta: 'bg-red-100 text-red-700',
   devolucion: 'bg-green-100 text-green-700',
+  carga_inicial: 'bg-purple-100 text-purple-700',
 };
 
 const formatCLP = (n: number) => '$' + Math.round(n).toLocaleString('es-CL');
@@ -61,6 +90,16 @@ export default function StockPage() {
   const [historialProducto, setHistorialProducto] = useState<ProductoStock | null>(null);
   const [movimientos, setMovimientos] = useState<Movimiento[]>([]);
   const [cargandoHistorial, setCargandoHistorial] = useState(false);
+  const [errorAjuste, setErrorAjuste] = useState('');
+
+  const [showIngreso, setShowIngreso] = useState(false);
+  const [showImportar, setShowImportar] = useState(false);
+  const [resumen, setResumen] = useState<Resumen | null>(null);
+  const [ingresos, setIngresos] = useState<Ingreso[]>([]);
+  const [ingresoAbierto, setIngresoAbierto] = useState<number | null>(null);
+  const [movGlobal, setMovGlobal] = useState<Movimiento[]>([]);
+  const [movBusqueda, setMovBusqueda] = useState('');
+  const [movTipo, setMovTipo] = useState('todos');
 
   const cargar = useCallback(async () => {
     setCargando(true);
@@ -74,35 +113,101 @@ export default function StockPage() {
     setCargando(false);
   }, [busqueda, filtroCat]);
 
+  const cargarResumen = useCallback(async () => {
+    try {
+      const res = await fetch('/api/stock/resumen?periodo=mes_actual');
+      if (res.ok) setResumen(await res.json());
+    } catch {}
+  }, []);
+
+  const cargarIngresos = useCallback(async () => {
+    try {
+      const res = await fetch('/api/stock/ingresos?porPagina=10');
+      if (res.ok) {
+        const data = await res.json();
+        setIngresos(data.items || []);
+      }
+    } catch {}
+  }, []);
+
+  const cargarMovimientosGlobal = useCallback(async () => {
+    try {
+      const params = new URLSearchParams({ limite: '50' });
+      if (movBusqueda) params.set('q', movBusqueda);
+      if (movTipo !== 'todos') params.set('tipo', movTipo);
+      const res = await fetch(`/api/stock/movimientos?${params.toString()}`);
+      if (res.ok) setMovGlobal(await res.json());
+    } catch {}
+  }, [movBusqueda, movTipo]);
+
+  const refrescarTodo = useCallback(() => {
+    cargar();
+    cargarResumen();
+    cargarIngresos();
+    cargarMovimientosGlobal();
+  }, [cargar, cargarResumen, cargarIngresos, cargarMovimientosGlobal]);
+
   useEffect(() => {
     fetch('/api/categorias').then((r) => r.json()).then(setCategorias).catch(() => {});
-  }, []);
+    cargarResumen();
+    cargarIngresos();
+  }, [cargarResumen, cargarIngresos]);
 
   useEffect(() => {
     const t = setTimeout(cargar, 300);
     return () => clearTimeout(t);
   }, [cargar]);
 
-  const enviarAjuste = async () => {
+  useEffect(() => {
+    const t = setTimeout(cargarMovimientosGlobal, 300);
+    return () => clearTimeout(t);
+  }, [cargarMovimientosGlobal]);
+
+  const enviarAjuste = async (confirmarNegativo = false) => {
     const cantidad = parseFloat(cantAjuste);
-    if (!ajusteProducto || isNaN(cantidad) || cantidad <= 0) return;
+    setErrorAjuste('');
+    if (!ajusteProducto || isNaN(cantidad) || (tipoAjuste === 'ajuste' ? cantidad < 0 : cantidad <= 0)) {
+      setErrorAjuste(tipoAjuste === 'ajuste' ? 'Ingresa el nuevo stock (0 o más)' : 'Ingresa una cantidad mayor a 0');
+      return;
+    }
+    if (tipoAjuste === 'ajuste' && motivoAjuste.trim().length < 3) {
+      setErrorAjuste('El ajuste requiere un motivo (mínimo 3 caracteres)');
+      return;
+    }
     setGuardandoMutable(true);
     try {
       const res = await fetch('/api/stock', {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify({ productoId: ajusteProducto.id, tipo: tipoAjuste, cantidad, motivo: motivoAjuste }),
+        body: JSON.stringify({
+          productoId: ajusteProducto.id,
+          tipo: tipoAjuste,
+          cantidad,
+          motivo: motivoAjuste,
+          confirmarNegativo,
+        }),
       });
       if (res.ok) {
         setAjusteProducto(null);
         setCantAjuste('');
         setMotivoAjuste('');
-        cargar();
+        refrescarTodo();
       } else {
         const err = await res.json();
-        alert(err.error || 'Error al ajustar stock');
+        if (res.status === 409 && err.requiereConfirmacion) {
+          if (confirm(err.error)) {
+            setGuardandoMutable(false);
+            await enviarAjuste(true);
+            return;
+          }
+          setErrorAjuste('Operación cancelada.');
+        } else {
+          setErrorAjuste(err.error || 'Error al ajustar stock');
+        }
       }
-    } catch {}
+    } catch {
+      setErrorAjuste('Error de conexión');
+    }
     setGuardandoMutable(false);
   };
 
@@ -161,24 +266,85 @@ export default function StockPage() {
 
   return (
     <div>
-      <div className="flex items-center justify-between mb-6 flex-wrap gap-3">
+      <div className="flex items-center justify-between mb-4 flex-wrap gap-3">
         <div>
           <h1 className="text-2xl font-bold text-primary">Stock</h1>
           <p className="text-sm text-muted mt-1">
             {conStockBajo.length} con stock bajo · {sinStock.length} sin stock
           </p>
         </div>
-        <div className="flex items-center gap-2">
+        <div className="flex items-center gap-2 flex-wrap">
+          <button
+            onClick={() => setShowIngreso(true)}
+            className="text-sm bg-blue-600 hover:bg-blue-700 text-white px-3 py-2 rounded-lg font-medium transition-colors"
+          >
+            Registrar factura
+          </button>
+          <button
+            onClick={() => setShowImportar(true)}
+            className="text-sm bg-gray-200 hover:bg-gray-300 text-gray-700 px-3 py-2 rounded-lg font-medium transition-colors"
+          >
+            Importar Excel
+          </button>
+          <Link
+            href="/admin/stock/revision"
+            className="text-sm bg-amber-100 hover:bg-amber-200 text-amber-800 px-3 py-2 rounded-lg font-medium transition-colors"
+          >
+            Revisión física
+          </Link>
+          <Link
+            href="/admin/reportes"
+            className="text-sm bg-purple-100 hover:bg-purple-200 text-purple-800 px-3 py-2 rounded-lg font-medium transition-colors"
+          >
+            Reportes
+          </Link>
+          <Link
+            href="/admin/auditoria"
+            className="text-sm bg-gray-100 hover:bg-gray-200 text-gray-700 px-3 py-2 rounded-lg font-medium transition-colors"
+          >
+            Auditoría
+          </Link>
           <select
             onChange={(e) => exportar(e.target.value)}
             defaultValue=""
             className="border border-gray-300 rounded-lg px-3 py-2 text-sm bg-white text-gray-600"
           >
             <option value="" disabled>Exportar Excel…</option>
-            <option value="diario">Diario</option>
-            <option value="semanal">Semanal</option>
-            <option value="mensual">Mensual</option>
+            <option value="diario">Hoy</option>
+            <option value="semana_actual">Semana actual</option>
+            <option value="semana_anterior">Semana anterior</option>
+            <option value="mes_actual">Mes actual</option>
+            <option value="mes_anterior">Mes anterior</option>
           </select>
+        </div>
+      </div>
+
+      <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-5 gap-3 mb-6">
+        <div className="bg-white border border-gray-200 rounded-xl p-4">
+          <p className="text-xs text-gray-500">Unidades en stock</p>
+          <p className="text-xl font-bold text-gray-800 mt-1">{resumen ? resumen.stock.unidades.toLocaleString('es-CL') : '—'}</p>
+        </div>
+        <div className="bg-white border border-gray-200 rounded-xl p-4">
+          <p className="text-xs text-gray-500">Valor stock</p>
+          <p className="text-xl font-bold text-gray-800 mt-1">{resumen ? formatCLP(resumen.stock.valor) : '—'}</p>
+        </div>
+        <div className="bg-white border border-gray-200 rounded-xl p-4">
+          <p className="text-xs text-gray-500">Bajo mínimo</p>
+          <p className="text-xl font-bold text-orange-600 mt-1">{resumen ? resumen.stock.bajos : '—'}</p>
+        </div>
+        <div className="bg-white border border-gray-200 rounded-xl p-4">
+          <p className="text-xs text-gray-500">Sin stock</p>
+          <p className="text-xl font-bold text-red-600 mt-1">{resumen ? resumen.stock.sinStock : '—'}</p>
+        </div>
+        <div className="bg-white border border-gray-200 rounded-xl p-4">
+          <p className="text-xs text-gray-500">Ventas del mes</p>
+          <p className="text-xl font-bold text-green-700 mt-1">{resumen ? formatCLP(resumen.ventas.total) : '—'}</p>
+          <p className="text-[11px] text-gray-500">{resumen ? `${resumen.ventas.cantidad} cotizaciones` : ''}</p>
+        </div>
+        <div className="bg-white border border-gray-200 rounded-xl p-4">
+          <p className="text-xs text-gray-500">Faltantes del mes</p>
+          <p className="text-xl font-bold text-orange-700 mt-1">{resumen ? resumen.faltantes.unidades : '—'}</p>
+          <p className="text-[11px] text-gray-500">unidades</p>
         </div>
       </div>
 
@@ -240,7 +406,7 @@ export default function StockPage() {
                     <td className="px-4 py-3">
                       <div className="flex items-center justify-end gap-1">
                         <button
-                          onClick={() => { setAjusteProducto(p); setTipoAjuste('entrada'); setCantAjuste(''); }}
+                          onClick={() => { setAjusteProducto(p); setTipoAjuste('entrada'); setCantAjuste(''); setMotivoAjuste(''); setErrorAjuste(''); }}
                           className="text-xs bg-blue-600 hover:bg-blue-700 text-white px-2 py-1 rounded"
                         >
                           Ajustar
@@ -267,12 +433,159 @@ export default function StockPage() {
         </div>
       </div>
 
+      <div className="mt-6 bg-white rounded-xl shadow-sm border border-gray-200 overflow-hidden">
+        <div className="px-4 py-3 border-b border-gray-200 flex items-center justify-between">
+          <div>
+            <h2 className="text-sm font-semibold text-gray-700">Últimas facturas ingresadas</h2>
+            <p className="text-xs text-gray-500">Haz clic en una factura para ver su detalle.</p>
+          </div>
+          <button
+            onClick={() => setShowIngreso(true)}
+            className="text-xs bg-blue-600 hover:bg-blue-700 text-white px-3 py-1.5 rounded-lg font-medium"
+          >
+            + Nueva factura
+          </button>
+        </div>
+        <div className="overflow-x-auto">
+          <table className="w-full text-sm">
+            <thead>
+              <tr className="border-b border-gray-200 bg-gray-50 text-left text-xs uppercase tracking-wide text-gray-500">
+                <th className="px-4 py-2">Factura</th>
+                <th className="px-4 py-2">Fecha</th>
+                <th className="px-4 py-2">Proveedor</th>
+                <th className="px-4 py-2 text-right">Ítems</th>
+                <th className="px-4 py-2 text-right">Unidades</th>
+                <th className="px-4 py-2">Responsable</th>
+              </tr>
+            </thead>
+            <tbody>
+              {ingresos.length === 0 ? (
+                <tr><td colSpan={6} className="px-4 py-6 text-center text-gray-400">Sin ingresos registrados</td></tr>
+              ) : (
+                ingresos.map((ing) => (
+                  <Fragment key={ing.id}>
+                    <tr
+                      onClick={() => setIngresoAbierto(ingresoAbierto === ing.id ? null : ing.id)}
+                      className="border-b border-gray-100 hover:bg-gray-50 cursor-pointer"
+                    >
+                      <td className="px-4 py-2 font-mono text-xs">{ing.numeroFactura}</td>
+                      <td className="px-4 py-2">{new Date(ing.fecha).toLocaleDateString('es-CL')}</td>
+                      <td className="px-4 py-2 text-gray-600">{ing.proveedor || '—'}</td>
+                      <td className="px-4 py-2 text-right">{ing.movimientos.length}</td>
+                      <td className="px-4 py-2 text-right">{ing.movimientos.reduce((s, m) => s + m.cantidad, 0)}</td>
+                      <td className="px-4 py-2 text-gray-600">{ing.usuarioNombre || '—'}</td>
+                    </tr>
+                    {ingresoAbierto === ing.id && (
+                      <tr className="bg-gray-50">
+                        <td colSpan={6} className="px-4 py-3">
+                          <table className="w-full text-xs">
+                            <thead>
+                              <tr className="text-left text-gray-500">
+                                <th className="py-1 font-medium">SKU</th>
+                                <th className="py-1 font-medium">Producto</th>
+                                <th className="py-1 font-medium text-right">Cantidad</th>
+                              </tr>
+                            </thead>
+                            <tbody>
+                              {ing.movimientos.map((m) => (
+                                <tr key={m.id} className="border-t border-gray-200">
+                                  <td className="py-1 font-mono">{m.producto.sku}</td>
+                                  <td className="py-1">{m.producto.nombre}</td>
+                                  <td className="py-1 text-right">{m.cantidad}</td>
+                                </tr>
+                              ))}
+                            </tbody>
+                          </table>
+                        </td>
+                      </tr>
+                    )}
+                  </Fragment>
+                ))
+              )}
+            </tbody>
+          </table>
+        </div>
+      </div>
+
+      <div className="mt-6 bg-white rounded-xl shadow-sm border border-gray-200 overflow-hidden">
+        <div className="px-4 py-3 border-b border-gray-200 flex items-center justify-between flex-wrap gap-2">
+          <h2 className="text-sm font-semibold text-gray-700">Movimientos recientes</h2>
+          <div className="flex gap-2">
+            <input
+              value={movBusqueda}
+              onChange={(e) => setMovBusqueda(e.target.value)}
+              placeholder="Buscar producto, factura, usuario…"
+              className="border border-gray-300 rounded-lg px-3 py-1.5 text-xs w-64"
+            />
+            <select
+              value={movTipo}
+              onChange={(e) => setMovTipo(e.target.value)}
+              className="border border-gray-300 rounded-lg px-2 py-1.5 text-xs bg-white"
+            >
+              <option value="todos">Todos</option>
+              <option value="entrada">Entradas</option>
+              <option value="egreso">Egresos</option>
+              <option value="ajuste">Ajustes</option>
+              <option value="venta">Ventas</option>
+              <option value="devolucion">Devoluciones</option>
+              <option value="carga_inicial">Carga inicial</option>
+            </select>
+          </div>
+        </div>
+        <div className="overflow-x-auto max-h-96">
+          <table className="w-full text-sm">
+            <thead className="bg-gray-50 sticky top-0">
+              <tr className="text-left text-xs uppercase tracking-wide text-gray-500 border-b border-gray-200">
+                <th className="px-4 py-2">Fecha</th>
+                <th className="px-4 py-2">Producto</th>
+                <th className="px-4 py-2">Tipo</th>
+                <th className="px-4 py-2 text-right">Cantidad</th>
+                <th className="px-4 py-2 text-right">Saldo</th>
+                <th className="px-4 py-2 text-right">Faltante</th>
+                <th className="px-4 py-2">Factura</th>
+                <th className="px-4 py-2">Usuario</th>
+                <th className="px-4 py-2">Motivo</th>
+              </tr>
+            </thead>
+            <tbody>
+              {movGlobal.length === 0 ? (
+                <tr><td colSpan={9} className="px-4 py-6 text-center text-gray-400">Sin movimientos</td></tr>
+              ) : (
+                movGlobal.map((m) => (
+                  <tr key={m.id} className="border-b border-gray-100">
+                    <td className="px-4 py-2 text-xs whitespace-nowrap">{new Date(m.createdAt).toLocaleString('es-CL')}</td>
+                    <td className="px-4 py-2">
+                      <span className="font-mono text-xs text-gray-500">{m.producto?.sku}</span>
+                      <span className="ml-2">{m.producto?.nombre}</span>
+                    </td>
+                    <td className="px-4 py-2">
+                      <span className={`text-xs font-medium px-2 py-0.5 rounded-full whitespace-nowrap ${TIPO_COLOR[m.tipo] || 'bg-gray-100'}`}>
+                        {TIPO_LABEL[m.tipo] || m.tipo}
+                      </span>
+                    </td>
+                    <td className="px-4 py-2 text-right">{m.tipo === 'egreso' || m.tipo === 'venta' ? -m.cantidad : m.cantidad}</td>
+                    <td className="px-4 py-2 text-right text-gray-500">{m.saldoTras}</td>
+                    <td className="px-4 py-2 text-right text-orange-600 font-medium">{m.faltante || '—'}</td>
+                    <td className="px-4 py-2 text-xs">{m.ingreso?.numeroFactura || '—'}</td>
+                    <td className="px-4 py-2 text-xs text-gray-600">{m.usuarioNombre || m.vendedor?.nombre || '—'}</td>
+                    <td className="px-4 py-2 text-xs text-gray-500">{m.motivo || '—'}</td>
+                  </tr>
+                ))
+              )}
+            </tbody>
+          </table>
+        </div>
+      </div>
+
       {ajusteProducto && (
         <div className="fixed inset-0 bg-black/40 flex items-center justify-center z-50 p-4">
           <div className="bg-white rounded-xl shadow-xl w-full max-w-md p-6">
             <h2 className="text-lg font-bold text-primary mb-1">Ajustar stock</h2>
             <p className="text-sm text-gray-500 mb-4">{ajusteProducto.sku} · {ajusteProducto.nombre}</p>
             <div className="space-y-3">
+              {errorAjuste && (
+                <div className="bg-red-50 border border-red-200 text-red-700 text-xs rounded-lg px-3 py-2">{errorAjuste}</div>
+              )}
               <div className="flex gap-2">
                 {(['entrada', 'egreso', 'ajuste'] as const).map((t) => (
                   <button
@@ -289,7 +602,7 @@ export default function StockPage() {
               <input
                 type="number"
                 step="any"
-                min="0"
+                min={tipoAjuste === 'ajuste' ? '0' : '1'}
                 value={cantAjuste}
                 onChange={(e) => setCantAjuste(e.target.value)}
                 placeholder={tipoAjuste === 'ajuste' ? 'Nuevo stock' : 'Cantidad'}
@@ -298,7 +611,7 @@ export default function StockPage() {
               <input
                 value={motivoAjuste}
                 onChange={(e) => setMotivoAjuste(e.target.value)}
-                placeholder="Motivo (opcional)"
+                placeholder={tipoAjuste === 'ajuste' ? 'Motivo (obligatorio)' : 'Motivo (opcional)'}
                 className="w-full border border-gray-300 rounded-lg px-4 py-2 text-sm"
               />
               <p className="text-xs text-gray-400">Stock actual: {ajusteProducto.stock}</p>
@@ -308,7 +621,7 @@ export default function StockPage() {
                 Cancelar
               </button>
               <button
-                onClick={enviarAjuste}
+                onClick={() => enviarAjuste()}
                 disabled={guardandoMutable}
                 className="px-4 py-2 text-sm bg-blue-600 hover:bg-blue-700 disabled:bg-blue-300 text-white rounded-lg font-medium"
               >
@@ -399,6 +712,26 @@ export default function StockPage() {
             </div>
           </div>
         </div>
+      )}
+
+      {showIngreso && (
+        <ModalIngresoFactura
+          onClose={() => setShowIngreso(false)}
+          onSaved={() => {
+            setShowIngreso(false);
+            refrescarTodo();
+          }}
+        />
+      )}
+
+      {showImportar && (
+        <ModalImportarStock
+          onClose={() => setShowImportar(false)}
+          onSaved={() => {
+            setShowImportar(false);
+            refrescarTodo();
+          }}
+        />
       )}
     </div>
   );

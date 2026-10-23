@@ -4,6 +4,7 @@ import { useState, useEffect, useRef, useCallback } from 'react';
 import { useRouter } from 'next/navigation';
 import Link from 'next/link';
 import ModalAgregarProducto, { type ProductoSearch, type CotizacionItem } from '@/components/cotizador/ModalAgregarProducto';
+import PanelStock from '@/components/cotizador/PanelStock';
 import { formatUnidad, getUnidadLabel } from '@/lib/format-unidad';
 
 export default function NuevaCotizacionPage() {
@@ -119,12 +120,6 @@ export default function NuevaCotizacionPage() {
       setError('Debe agregar al menos un producto');
       return;
     }
-    const sinStockItem = items.find((i) => i.stock !== undefined && i.stock !== null && i.cantidad > i.stock);
-    if (sinStockItem) {
-      setError(`Stock insuficiente para ${sinStockItem.descripcion}: disponible ${sinStockItem.stock}, solicitado ${sinStockItem.cantidad}`);
-      return;
-    }
-
     setSaving(true);
     setError('');
     setSuccess('');
@@ -337,6 +332,8 @@ export default function NuevaCotizacionPage() {
         {items.length === 0 && (
           <p className="text-sm text-gray-500 text-center py-6">Busque productos por SKU para agregarlos a la cotización</p>
         )}
+
+        <PanelStock items={items} />
 
         {items.length > 0 && (
           <div className="border-t border-gray-200 mt-4 pt-4 flex flex-col items-end text-sm">
