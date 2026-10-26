@@ -100,6 +100,9 @@ export default function StockPage() {
 
   const [showIngreso, setShowIngreso] = useState(false);
   const [showImportar, setShowImportar] = useState(false);
+  const [listaModal, setListaModal] = useState<'bajos' | 'sin' | null>(null);
+  const [listaProductos, setListaProductos] = useState<ProductoStock[]>([]);
+  const [cargandoLista, setCargandoLista] = useState(false);
   const [resumen, setResumen] = useState<Resumen | null>(null);
   const [ingresos, setIngresos] = useState<Ingreso[]>([]);
   const [ingresoAbierto, setIngresoAbierto] = useState<number | null>(null);
@@ -309,6 +312,27 @@ export default function StockPage() {
     } catch {}
   };
 
+  // Se consulta todo el stock: la tabla puede estar filtrada por búsqueda o categoría.
+  const abrirLista = async (modo: 'bajos' | 'sin') => {
+    setListaModal(modo);
+    setListaProductos([]);
+    setCargandoLista(true);
+    try {
+      const res = await fetch('/api/stock');
+      if (res.ok) {
+        const todos: ProductoStock[] = await res.json();
+        setListaProductos(
+          todos
+            .filter((p) =>
+              p.activo && (modo === 'bajos' ? p.stock > 0 && p.stock <= p.stockMinimo : p.stock <= 0)
+            )
+            .sort((a, b) => a.stock - b.stock || a.sku.localeCompare(b.sku))
+        );
+      }
+    } catch {}
+    setCargandoLista(false);
+  };
+
   const conStockBajo = productos.filter((p) => p.activo && p.stock <= p.stockMinimo && p.stock > 0);
   const sinStock = productos.filter((p) => p.activo && p.stock <= 0);
 
@@ -382,14 +406,24 @@ export default function StockPage() {
           <p className="text-xs text-gray-500">Valor stock</p>
           <p className="text-xl font-bold text-gray-800 mt-1">{resumen ? formatCLP(resumen.stock.valor) : '—'}</p>
         </div>
-        <div className="bg-white border border-gray-200 rounded-xl p-4">
+        <button
+          onClick={() => abrirLista('bajos')}
+          className="text-left bg-white border border-gray-200 hover:border-orange-300 hover:bg-orange-50 rounded-xl p-4 transition-colors"
+          title="Ver productos bajo mínimo"
+        >
           <p className="text-xs text-gray-500">Bajo mínimo</p>
           <p className="text-xl font-bold text-orange-600 mt-1">{resumen ? resumen.stock.bajos : '—'}</p>
-        </div>
-        <div className="bg-white border border-gray-200 rounded-xl p-4">
+          <p className="text-[11px] text-orange-600 mt-1">Ver productos →</p>
+        </button>
+        <button
+          onClick={() => abrirLista('sin')}
+          className="text-left bg-white border border-gray-200 hover:border-red-300 hover:bg-red-50 rounded-xl p-4 transition-colors"
+          title="Ver productos sin stock"
+        >
           <p className="text-xs text-gray-500">Sin stock</p>
           <p className="text-xl font-bold text-red-600 mt-1">{resumen ? resumen.stock.sinStock : '—'}</p>
-        </div>
+          <p className="text-[11px] text-red-600 mt-1">Ver productos →</p>
+        </button>
         <div className="bg-white border border-gray-200 rounded-xl p-4">
           <p className="text-xs text-gray-500">Ventas del mes</p>
           <p className="text-xl font-bold text-green-700 mt-1">{resumen ? formatCLP(resumen.ventas.total) : '—'}</p>
@@ -828,6 +862,68 @@ export default function StockPage() {
             refrescarTodo();
           }}
         />
+      )}
+
+      {listaModal && (
+        <div className="fixed inset-0 bg-black/40 flex items-center justify-center z-50 p-4" onClick={() => setListaModal(null)}>
+          <div className="bg-white rounded-xl shadow-xl w-full max-w-3xl max-h-[85vh] flex flex-col" onClick={(e) => e.stopPropagation()}>
+            <div className="p-6 border-b border-gray-200 flex items-start justify-between">
+              <div>
+                <h2 className="text-lg font-bold text-primary">
+                  {listaModal === 'bajos' ? 'Productos bajo mínimo' : 'Productos sin stock'}
+                </h2>
+                <p className="text-sm text-gray-500 mt-0.5">
+                  {listaModal === 'bajos'
+                    ? 'Stock mayor a 0 e igual o menor a su stock mínimo'
+                    : 'Stock en 0 o negativo'}
+                  {!cargandoLista && ` · ${listaProductos.length} producto(s)`}
+                </p>
+              </div>
+              <button onClick={() => setListaModal(null)} className="text-gray-400 hover:text-gray-600 text-2xl leading-none">×</button>
+            </div>
+            <div className="p-6 overflow-auto">
+              {cargandoLista ? (
+                <p className="text-gray-400 text-sm">Cargando…</p>
+              ) : listaProductos.length === 0 ? (
+                <p className="text-gray-400 text-sm">
+                  {listaModal === 'bajos' ? 'No hay productos bajo mínimo.' : 'No hay productos sin stock.'}
+                </p>
+              ) : (
+                <table className="w-full text-sm">
+                  <thead>
+                    <tr className="text-left text-xs uppercase tracking-wide text-gray-500 border-b border-gray-200">
+                      <th className="px-2 py-2">SKU</th>
+                      <th className="px-2 py-2">Producto</th>
+                      <th className="px-2 py-2">Categoría</th>
+                      <th className="px-2 py-2 text-right">Stock</th>
+                      <th className="px-2 py-2 text-right">Mínimo</th>
+                      <th className="px-2 py-2 text-right">Para mínimo</th>
+                    </tr>
+                  </thead>
+                  <tbody>
+                    {listaProductos.map((p) => (
+                      <tr key={p.id} className="border-t border-gray-100">
+                        <td className="px-2 py-2 font-mono text-xs">{p.sku}</td>
+                        <td className="px-2 py-2 text-gray-700">{p.nombre}</td>
+                        <td className="px-2 py-2 text-xs text-gray-500">{p.categoria?.nombre}</td>
+                        <td className={`px-2 py-2 text-right font-semibold ${listaModal === 'bajos' ? 'text-orange-600' : 'text-red-600'}`}>
+                          {p.stock} {p.unidadVenta}
+                        </td>
+                        <td className="px-2 py-2 text-right text-gray-500">{p.stockMinimo}</td>
+                        <td className="px-2 py-2 text-right text-gray-700">{p.stockMinimo - p.stock}</td>
+                      </tr>
+                    ))}
+                  </tbody>
+                </table>
+              )}
+            </div>
+            <div className="p-4 border-t border-gray-200 flex justify-end">
+              <button onClick={() => setListaModal(null)} className="px-4 py-2 text-sm text-gray-600 hover:bg-gray-100 rounded-lg">
+                Cerrar
+              </button>
+            </div>
+          </div>
+        </div>
       )}
 
       {showImportar && (
