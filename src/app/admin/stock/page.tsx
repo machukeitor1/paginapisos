@@ -87,6 +87,12 @@ export default function StockPage() {
   const [umbralProducto, setUmbralProducto] = useState<ProductoStock | null>(null);
   const [umbralValor, setUmbralValor] = useState<string>('');
 
+  const [showUmbralCat, setShowUmbralCat] = useState(false);
+  const [umbralCatId, setUmbralCatId] = useState(0);
+  const [umbralCatValor, setUmbralCatValor] = useState('');
+  const [umbralCatSoloSin, setUmbralCatSoloSin] = useState(false);
+  const [errorUmbralCat, setErrorUmbralCat] = useState('');
+
   const [historialProducto, setHistorialProducto] = useState<ProductoStock | null>(null);
   const [movimientos, setMovimientos] = useState<Movimiento[]>([]);
   const [cargandoHistorial, setCargandoHistorial] = useState(false);
@@ -233,6 +239,48 @@ export default function StockPage() {
     setGuardandoMutable(false);
   };
 
+  const abrirUmbralCategoria = () => {
+    setUmbralCatId(filtroCat || categorias[0]?.id || 0);
+    setUmbralCatValor('');
+    setUmbralCatSoloSin(false);
+    setErrorUmbralCat('');
+    setShowUmbralCat(true);
+  };
+
+  const guardarUmbralCategoria = async () => {
+    const valor = parseFloat(umbralCatValor);
+    setErrorUmbralCat('');
+    if (!umbralCatId) {
+      setErrorUmbralCat('Selecciona una categoría');
+      return;
+    }
+    if (isNaN(valor) || valor < 0) {
+      setErrorUmbralCat('Ingresa un stock mínimo de 0 o más');
+      return;
+    }
+    const cat = categorias.find((c) => c.id === umbralCatId);
+    if (!confirm(`¿Aplicar stock mínimo ${valor} a ${umbralCatSoloSin ? 'los productos sin umbral de' : 'todos los productos de'} "${cat?.nombre}"?`)) return;
+    setGuardandoMutable(true);
+    try {
+      const res = await fetch('/api/stock/umbral', {
+        method: 'PUT',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({ categoriaId: umbralCatId, stockMinimo: valor, soloSinUmbral: umbralCatSoloSin }),
+      });
+      const data = await res.json();
+      if (res.ok) {
+        setShowUmbralCat(false);
+        alert(`Umbral actualizado en ${data.actualizados} producto(s).`);
+        refrescarTodo();
+      } else {
+        setErrorUmbralCat(data.error || 'Error al guardar umbral');
+      }
+    } catch {
+      setErrorUmbralCat('Error de conexión');
+    }
+    setGuardandoMutable(false);
+  };
+
   const verHistorial = async (prod: ProductoStock) => {
     setHistorialProducto(prod);
     setCargandoHistorial(true);
@@ -285,6 +333,12 @@ export default function StockPage() {
             className="text-sm bg-gray-200 hover:bg-gray-300 text-gray-700 px-3 py-2 rounded-lg font-medium transition-colors"
           >
             Importar Excel
+          </button>
+          <button
+            onClick={abrirUmbralCategoria}
+            className="text-sm bg-gray-200 hover:bg-gray-300 text-gray-700 px-3 py-2 rounded-lg font-medium transition-colors"
+          >
+            Umbral por categoría
           </button>
           <Link
             href="/admin/stock/revision"
@@ -656,6 +710,58 @@ export default function StockPage() {
                 className="px-4 py-2 text-sm bg-blue-600 hover:bg-blue-700 disabled:bg-blue-300 text-white rounded-lg font-medium"
               >
                 Guardar
+              </button>
+            </div>
+          </div>
+        </div>
+      )}
+
+      {showUmbralCat && (
+        <div className="fixed inset-0 bg-black/40 flex items-center justify-center z-50 p-4">
+          <div className="bg-white rounded-xl shadow-xl w-full max-w-md p-6">
+            <h2 className="text-lg font-bold text-primary mb-1">Stock mínimo por categoría</h2>
+            <p className="text-sm text-gray-500 mb-4">Aplica el mismo umbral de alerta a los productos de una categoría.</p>
+            {errorUmbralCat && (
+              <div className="bg-red-50 border border-red-200 text-red-700 text-sm rounded-lg px-4 py-2 mb-4">{errorUmbralCat}</div>
+            )}
+            <p className="text-xs text-gray-500 mb-1">Categoría</p>
+            <select
+              value={umbralCatId}
+              onChange={(e) => setUmbralCatId(parseInt(e.target.value))}
+              className="w-full border border-gray-300 rounded-lg px-4 py-2 text-sm mb-4 bg-white"
+            >
+              <option value={0} disabled>— Seleccionar categoría —</option>
+              {categorias.map((c) => (
+                <option key={c.id} value={c.id}>{c.nombre}</option>
+              ))}
+            </select>
+            <p className="text-xs text-gray-500 mb-1">Alertar cuando el stock esté por debajo de:</p>
+            <input
+              type="number"
+              step="any"
+              min="0"
+              value={umbralCatValor}
+              onChange={(e) => setUmbralCatValor(e.target.value)}
+              className="w-full border border-gray-300 rounded-lg px-4 py-2 text-sm"
+            />
+            <label className="flex items-center gap-2 mt-4 text-sm text-gray-600">
+              <input
+                type="checkbox"
+                checked={umbralCatSoloSin}
+                onChange={(e) => setUmbralCatSoloSin(e.target.checked)}
+              />
+              Solo productos sin umbral (en 0), sin pisar los ya ajustados
+            </label>
+            <div className="flex justify-end gap-2 mt-6">
+              <button onClick={() => setShowUmbralCat(false)} className="px-4 py-2 text-sm text-gray-600 hover:bg-gray-100 rounded-lg">
+                Cancelar
+              </button>
+              <button
+                onClick={guardarUmbralCategoria}
+                disabled={guardandoMutable}
+                className="px-4 py-2 text-sm bg-blue-600 hover:bg-blue-700 disabled:bg-blue-300 text-white rounded-lg font-medium"
+              >
+                Aplicar
               </button>
             </div>
           </div>
