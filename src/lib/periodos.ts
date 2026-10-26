@@ -107,6 +107,28 @@ export function fechaChile(date: Date, withTime = false): string {
   });
 }
 
+/** Fecha YYYY-MM-DD de un instante, en hora de Chile. */
+export function ymdChile(date: Date): string {
+  const { y, m, d } = ymdInTz(date);
+  return `${y}-${String(m).padStart(2, "0")}-${String(d).padStart(2, "0")}`;
+}
+
+/**
+ * Convierte un día YYYY-MM-DD (hora de Chile) en un instante para guardar como fecha de venta.
+ * Si es hoy se usa la hora actual; si es otro día, el mediodía de Chile de ese día.
+ */
+export function fechaVentaDesdeYmd(ymd: string): Date | null {
+  const match = /^(\d{4})-(\d{2})-(\d{2})$/.exec(ymd);
+  if (!match) return null;
+  const [y, m, d] = [Number(match[1]), Number(match[2]), Number(match[3])];
+  // Mediodía local directo (no 00:00 + 12h): el día del cambio de hora la medianoche no existe.
+  const middayUtc = new Date(Date.UTC(y, m - 1, d, 12, 0, 0));
+  const mediodia = new Date(middayUtc.getTime() - offsetMinutes(middayUtc) * 60000);
+  if (ymdChile(mediodia) !== ymd) return null;
+  if (ymd === ymdChile(new Date())) return new Date();
+  return mediodia;
+}
+
 export function archivoPeriodoSufijo(desde: Date, hastaExclusiva: Date): string {
   const fin = new Date(hastaExclusiva.getTime() - 86400000);
   return `${desde.toISOString().slice(0, 10)}_${fin.toISOString().slice(0, 10)}`;

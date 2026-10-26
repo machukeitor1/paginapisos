@@ -1,6 +1,7 @@
 import { NextResponse } from "next/server";
 import { prisma } from "@/lib/prisma";
 import { getActor, type Actor } from "@/lib/actor";
+import { fechaChile, fechaVentaDesdeYmd, ymdChile } from "@/lib/periodos";
 
 type ItemLike = { productoId: number | null; cantidad: number; importe: number };
 
@@ -22,6 +23,18 @@ function actorFields(actor: Actor) {
     usuarioId: actor.id,
     usuarioNombre: actor.nombre,
   };
+}
+
+// Valida la fecha de venta (YYYY-MM-DD, hora de Chile): no futura ni anterior a la cotización.
+function resolverFechaVenta(valor: unknown, creada: Date): { fecha: Date } | { error: string } {
+  const ymd = String(valor ?? "").trim();
+  const fecha = fechaVentaDesdeYmd(ymd);
+  if (!fecha) return { error: "Fecha de venta inválida" };
+  if (ymd > ymdChile(new Date())) return { error: "La fecha de venta no puede ser futura" };
+  if (ymd < ymdChile(creada)) {
+    return { error: `La fecha de venta no puede ser anterior a la cotización (${fechaChile(creada)})` };
+  }
+  return { fecha };
 }
 
 export async function GET(request: Request, { params }: { params: { id: string } }) {
@@ -97,11 +110,56 @@ export async function PUT(request: Request, { params }: { params: { id: string }
     }
 
     const data = await request.json();
-    const { cliente, items, notas, estado, motivo, confirmarFaltante } = data;
+    const { cliente, items, notas, estado, motivo, confirmarFaltante, fechaVenta } = data;
+
+    if (fechaVenta !== undefined && !estado && !cliente && !items) {
+      if (existing.estado !== "VENDIDO" || !existing.fechaVenta) {
+        return NextResponse.json({ error: "Solo se puede cambiar la fecha de una cotización vendida" }, { status: 400 });
+      }
+      const resuelta = resolverFechaVenta(fechaVenta, existing.createdAt);
+      if ("error" in resuelta) return NextResponse.json({ error: resuelta.error }, { status: 400 });
+      if (ymdChile(resuelta.fecha) === ymdChile(existing.fechaVenta)) {
+        return NextResponse.json({ error: "La fecha de venta no cambió" }, { status: 400 });
+      }
+
+      const cotizacion = await prisma.$transaction(async (tx) => {
+        await tx.cotizacionEvento.create({
+          data: {
+            cotizacionId: id,
+            estadoAnterior: "VENDIDO",
+            estadoNuevo: "VENDIDO",
+            motivo: `Fecha de venta: ${fechaChile(existing.fechaVenta!)} → ${fechaChile(resuelta.fecha)}`,
+            ...actorFields(actor),
+          },
+        });
+        return tx.cotizacion.update({
+          where: { id },
+          data: { fechaVenta: resuelta.fecha },
+          include: {
+            cliente: true,
+            vendedor: { select: { nombre: true } },
+            items: true,
+            eventos: { orderBy: { createdAt: "asc" } },
+          },
+        });
+      });
+      return NextResponse.json(cotizacion);
+    }
 
     if (estado && !cliente && !items) {
       if (!["PENDIENTE", "VENDIDO", "PERDIDO"].includes(estado)) {
         return NextResponse.json({ error: "Estado inválido" }, { status: 400 });
+      }
+
+      let fechaNuevaVenta: Date | null = null;
+      if (estado === "VENDIDO") {
+        if (fechaVenta) {
+          const resuelta = resolverFechaVenta(fechaVenta, existing.createdAt);
+          if ("error" in resuelta) return NextResponse.json({ error: resuelta.error }, { status: 400 });
+          fechaNuevaVenta = resuelta.fecha;
+        } else {
+          fechaNuevaVenta = new Date();
+        }
       }
 
       const resultado = await prisma.$transaction(async (tx) => {
@@ -223,7 +281,7 @@ export async function PUT(request: Request, { params }: { params: { id: string }
           where: { id },
           data: {
             estado,
-            fechaVenta: estado === "VENDIDO" ? new Date() : null,
+            fechaVenta: fechaNuevaVenta,
           },
           include: {
             cliente: true,

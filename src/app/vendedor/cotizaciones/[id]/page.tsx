@@ -5,6 +5,12 @@ import { useParams } from 'next/navigation';
 import Link from 'next/link';
 import { formatUnidad } from '@/lib/format-unidad';
 
+const TZ_CHILE = 'America/Santiago';
+
+// YYYY-MM-DD en hora de Chile, para el selector de fecha de venta.
+const ymdChile = (fecha: string | Date) =>
+  new Intl.DateTimeFormat('en-CA', { timeZone: TZ_CHILE, year: 'numeric', month: '2-digit', day: '2-digit' }).format(new Date(fecha));
+
 interface CotizacionData {
   id: number;
   numero: string;
@@ -58,6 +64,8 @@ export default function CotizacionDetailPage() {
   const [logoBase64, setLogoBase64] = useState<string | null>(null);
   const [motivoModal, setMotivoModal] = useState(false);
   const [motivoReapertura, setMotivoReapertura] = useState('');
+  const [fechaModal, setFechaModal] = useState<'vender' | 'editar' | null>(null);
+  const [fechaVentaInput, setFechaVentaInput] = useState('');
 
   const cargar = useCallback(() => {
     fetch(`/api/cotizaciones/${params.id}`)
@@ -82,7 +90,7 @@ export default function CotizacionDetailPage() {
 
   const cambiarEstado = async (
     estado: string,
-    opciones?: { motivo?: string; confirmarFaltante?: boolean }
+    opciones?: { motivo?: string; confirmarFaltante?: boolean; fechaVenta?: string }
   ) => {
     setUpdating(true);
     setEstadoError('');
@@ -97,6 +105,7 @@ export default function CotizacionDetailPage() {
       if (res.ok) {
         setMotivoModal(false);
         setMotivoReapertura('');
+        setFechaModal(null);
         cargar();
         return;
       }
@@ -128,6 +137,43 @@ export default function CotizacionDetailPage() {
     PENDIENTE: 'Pendiente',
     VENDIDO: 'Vendido',
     PERDIDO: 'Perdido',
+  };
+
+  const abrirFechaModal = (modo: 'vender' | 'editar') => {
+    setEstadoError('');
+    setFechaVentaInput(modo === 'editar' && cot?.fechaVenta ? ymdChile(cot.fechaVenta) : ymdChile(new Date()));
+    setFechaModal(modo);
+  };
+
+  const guardarFechaVenta = async () => {
+    if (!fechaVentaInput) {
+      setEstadoError('Indica la fecha de venta');
+      return;
+    }
+    if (fechaModal === 'vender') {
+      await cambiarEstado('VENDIDO', { fechaVenta: fechaVentaInput });
+      return;
+    }
+    setUpdating(true);
+    setEstadoError('');
+    try {
+      const res = await fetch(`/api/cotizaciones/${params.id}`, {
+        method: 'PUT',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({ fechaVenta: fechaVentaInput }),
+      });
+      const data = await res.json();
+      if (res.ok) {
+        setFechaModal(null);
+        cargar();
+      } else {
+        setEstadoError(data.error || 'Error al cambiar la fecha de venta');
+      }
+    } catch {
+      setEstadoError('Error de conexión');
+    } finally {
+      setUpdating(false);
+    }
   };
 
   const confirmarReapertura = () => {
@@ -313,7 +359,7 @@ export default function CotizacionDetailPage() {
           <span className={`text-xs font-semibold px-3 py-1 rounded-full ${ESTILOS_ESTADO[cot.estado] || 'bg-gray-100 text-gray-600'}`}>{cot.estado}</span>
           {cot.estado === 'PENDIENTE' && (
             <>
-              <button onClick={() => cambiarEstado('VENDIDO')} disabled={updating} className="text-xs bg-green-600 hover:bg-green-700 disabled:bg-green-400 text-white px-3 py-1.5 rounded-lg transition-colors">
+              <button onClick={() => abrirFechaModal('vender')} disabled={updating} className="text-xs bg-green-600 hover:bg-green-700 disabled:bg-green-400 text-white px-3 py-1.5 rounded-lg transition-colors">
                 Marcar Vendido
               </button>
               <button onClick={() => cambiarEstado('PERDIDO')} disabled={updating} className="text-xs bg-red-500 hover:bg-red-600 disabled:bg-red-300 text-white px-3 py-1.5 rounded-lg transition-colors">
@@ -336,7 +382,21 @@ export default function CotizacionDetailPage() {
         </div>
       </div>
 
-      {estadoError && <div className="bg-red-50 border border-red-200 text-red-700 text-sm rounded-lg px-4 py-3 mb-4">{estadoError}</div>}
+      {estadoError && !fechaModal && <div className="bg-red-50 border border-red-200 text-red-700 text-sm rounded-lg px-4 py-3 mb-4">{estadoError}</div>}
+
+      {cot.estado === 'VENDIDO' && cot.fechaVenta && (
+        <div className="flex items-center justify-end gap-2 mb-4 text-sm text-gray-600">
+          <span>
+            Vendida el{' '}
+            <span className="font-medium text-gray-800">
+              {new Date(cot.fechaVenta).toLocaleDateString('es-CL', { timeZone: TZ_CHILE, year: 'numeric', month: 'long', day: 'numeric' })}
+            </span>
+          </span>
+          <button onClick={() => abrirFechaModal('editar')} disabled={updating} className="text-xs text-blue-600 hover:text-blue-800 underline">
+            Cambiar fecha de venta
+          </button>
+        </div>
+      )}
 
       {/* Quote document for PDF capture */}
       <div ref={pdfRef} className="bg-white rounded-xl shadow-sm border border-gray-200 p-8 md:p-10" style={{ fontFamily: 'Inter, Arial, sans-serif' }}>
@@ -436,6 +496,46 @@ export default function CotizacionDetailPage() {
           <p className="text-sm text-gray-500">Sin cambios de estado registrados.</p>
         )}
       </div>
+
+      {fechaModal && (
+        <div className="fixed inset-0 bg-black/40 flex items-center justify-center z-50 p-4">
+          <div className="bg-white rounded-xl shadow-xl w-full max-w-md p-6">
+            <h2 className="text-lg font-bold text-primary mb-1">
+              {fechaModal === 'vender' ? 'Marcar como vendida' : 'Cambiar fecha de venta'}
+            </h2>
+            <p className="text-sm text-gray-500 mb-4">
+              La venta de {cot.numero} se contabilizará en el mes de esta fecha.
+            </p>
+            {estadoError && (
+              <div className="bg-red-50 border border-red-200 text-red-700 text-sm rounded-lg px-4 py-2 mb-4">{estadoError}</div>
+            )}
+            <p className="text-xs text-gray-500 mb-1">Fecha de venta</p>
+            <input
+              type="date"
+              value={fechaVentaInput}
+              min={ymdChile(cot.createdAt)}
+              max={ymdChile(new Date())}
+              onChange={(e) => setFechaVentaInput(e.target.value)}
+              className="w-full border border-gray-300 rounded-lg px-4 py-2 text-sm"
+            />
+            <div className="flex justify-end gap-2 mt-6">
+              <button
+                onClick={() => { setFechaModal(null); setEstadoError(''); }}
+                className="px-4 py-2 text-sm text-gray-600 hover:bg-gray-100 rounded-lg"
+              >
+                Cancelar
+              </button>
+              <button
+                onClick={guardarFechaVenta}
+                disabled={updating || !fechaVentaInput}
+                className="px-4 py-2 text-sm bg-green-600 hover:bg-green-700 disabled:bg-green-300 text-white rounded-lg font-medium"
+              >
+                {updating ? 'Guardando…' : fechaModal === 'vender' ? 'Marcar vendida' : 'Guardar fecha'}
+              </button>
+            </div>
+          </div>
+        </div>
+      )}
 
       {motivoModal && (
         <div className="fixed inset-0 bg-black/40 flex items-center justify-center z-50 p-4">
