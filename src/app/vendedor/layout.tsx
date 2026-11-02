@@ -8,6 +8,7 @@ export default function VendedorLayout({ children }: { children: React.ReactNode
   const [vendedor, setVendedor] = useState<{ id: number; nombre: string } | null>(null);
   const [adminEmail, setAdminEmail] = useState<string | null>(null);
   const [loading, setLoading] = useState(true);
+  const [bienvenida, setBienvenida] = useState(false);
   const router = useRouter();
   const pathname = usePathname();
 
@@ -36,6 +37,19 @@ export default function VendedorLayout({ children }: { children: React.ReactNode
       .catch(() => router.push('/vendedor/login'))
       .finally(() => setLoading(false));
   }, [pathname, router]);
+
+  useEffect(() => {
+    if (!vendedor) return;
+    try {
+      if (sessionStorage.getItem('vendedor-bienvenida') !== '1') return;
+      sessionStorage.removeItem('vendedor-bienvenida');
+    } catch {
+      return;
+    }
+    setBienvenida(true);
+    const t = setTimeout(() => setBienvenida(false), 5000);
+    return () => clearTimeout(t);
+  }, [vendedor]);
 
   if (pathname === '/vendedor/login' || pathname === '/vendedor') {
     return <>{children}</>;
@@ -98,6 +112,18 @@ export default function VendedorLayout({ children }: { children: React.ReactNode
       <main className="flex-1 overflow-auto">
         {children}
       </main>
+      {bienvenida && vendedor && (
+        <div className="fixed inset-0 z-50 flex items-center justify-center bg-black/40 p-4" onClick={() => setBienvenida(false)}>
+          <div className="bg-white rounded-xl shadow-xl px-10 py-8 text-center max-w-sm w-full" onClick={(e) => e.stopPropagation()}>
+            <p className="text-sm text-gray-500">Revestimientos Chillán</p>
+            <h2 className="text-2xl font-bold text-gray-800 mt-2">Bienvenido, {vendedor.nombre}</h2>
+            <div className="mt-6 h-1 bg-gray-100 rounded-full overflow-hidden">
+              <div className="h-full bg-blue-600 animate-[bienvenida_5s_linear_forwards]" />
+            </div>
+          </div>
+          <style>{`@keyframes bienvenida { from { width: 100%; } to { width: 0%; } }`}</style>
+        </div>
+      )}
     </div>
   );
 }

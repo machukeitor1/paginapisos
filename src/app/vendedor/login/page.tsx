@@ -19,6 +19,8 @@ export default function VendedorLoginPage() {
         body: JSON.stringify({ email, password }),
       });
       if (res.ok) {
+        // El layout muestra el modal de bienvenida solo tras un login real
+        try { sessionStorage.setItem('vendedor-bienvenida', '1'); } catch {}
         router.push('/vendedor/cotizaciones/nueva');
       } else {
         const data = await res.json();
