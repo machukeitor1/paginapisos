@@ -3,6 +3,7 @@ import * as XLSX from "xlsx";
 import { prisma } from "@/lib/prisma";
 import { getSession } from "@/lib/auth";
 import { PERIODO_LABEL, archivoPeriodoSufijo, fechaChile, rangoPeriodo } from "@/lib/periodos";
+import { etiquetaFormaPago } from "@/lib/forma-pago";
 
 const TIPO_LABEL: Record<string, string> = {
   entrada: "Entrada",
@@ -112,6 +113,7 @@ export async function GET(request: Request) {
       "N° Cotización": v.numero,
       Cliente: v.cliente.nombre,
       Vendedor: v.vendedor.nombre,
+      "Forma de pago": etiquetaFormaPago(v.formaPago),
       "N° ítems": v.items.length,
       Unidades: v.items.reduce((s, i) => s + i.cantidad, 0),
       Subtotal: v.subtotal,

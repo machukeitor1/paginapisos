@@ -4,6 +4,7 @@ import { useEffect, useState, useRef, useCallback } from 'react';
 import { useParams } from 'next/navigation';
 import Link from 'next/link';
 import { formatUnidad } from '@/lib/format-unidad';
+import { FORMAS_PAGO, etiquetaFormaPago } from '@/lib/forma-pago';
 
 const TZ_CHILE = 'America/Santiago';
 
@@ -21,6 +22,7 @@ interface CotizacionData {
   total: number;
   estado: string;
   fechaVenta: string | null;
+  formaPago: string | null;
   notas: string | null;
   cliente: { nombre: string; rut: string | null; direccion: string | null; comuna: string | null; telefono: string | null };
   vendedor: { id: number; nombre: string };
@@ -66,6 +68,7 @@ export default function CotizacionDetailPage() {
   const [motivoReapertura, setMotivoReapertura] = useState('');
   const [fechaModal, setFechaModal] = useState<'vender' | 'editar' | null>(null);
   const [fechaVentaInput, setFechaVentaInput] = useState('');
+  const [formaPagoInput, setFormaPagoInput] = useState('');
 
   const cargar = useCallback(() => {
     fetch(`/api/cotizaciones/${params.id}`)
@@ -90,7 +93,7 @@ export default function CotizacionDetailPage() {
 
   const cambiarEstado = async (
     estado: string,
-    opciones?: { motivo?: string; confirmarFaltante?: boolean; fechaVenta?: string }
+    opciones?: { motivo?: string; confirmarFaltante?: boolean; fechaVenta?: string; formaPago?: string }
   ) => {
     setUpdating(true);
     setEstadoError('');
@@ -142,6 +145,7 @@ export default function CotizacionDetailPage() {
   const abrirFechaModal = (modo: 'vender' | 'editar') => {
     setEstadoError('');
     setFechaVentaInput(modo === 'editar' && cot?.fechaVenta ? ymdChile(cot.fechaVenta) : ymdChile(new Date()));
+    setFormaPagoInput(modo === 'editar' ? cot?.formaPago || '' : '');
     setFechaModal(modo);
   };
 
@@ -151,7 +155,11 @@ export default function CotizacionDetailPage() {
       return;
     }
     if (fechaModal === 'vender') {
-      await cambiarEstado('VENDIDO', { fechaVenta: fechaVentaInput });
+      if (!formaPagoInput) {
+        setEstadoError('Selecciona la forma de pago');
+        return;
+      }
+      await cambiarEstado('VENDIDO', { fechaVenta: fechaVentaInput, formaPago: formaPagoInput });
       return;
     }
     setUpdating(true);
@@ -160,14 +168,17 @@ export default function CotizacionDetailPage() {
       const res = await fetch(`/api/cotizaciones/${params.id}`, {
         method: 'PUT',
         headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify({ fechaVenta: fechaVentaInput }),
+        body: JSON.stringify({
+          fechaVenta: fechaVentaInput,
+          ...(formaPagoInput ? { formaPago: formaPagoInput } : {}),
+        }),
       });
       const data = await res.json();
       if (res.ok) {
         setFechaModal(null);
         cargar();
       } else {
-        setEstadoError(data.error || 'Error al cambiar la fecha de venta');
+        setEstadoError(data.error || 'Error al editar la venta');
       }
     } catch {
       setEstadoError('Error de conexión');
@@ -340,7 +351,7 @@ export default function CotizacionDetailPage() {
   }
 
   if (!cot) {
-    return <div className="p-6 max-w-5xl mx-auto"><p className="text-gray-500 text-sm">Cotización no encontrada</p><Link href="/vendedor/cotizaciones" className="text-blue-600 text-sm mt-2 inline-block">Volver a mis cotizaciones</Link></div>;
+    return <div className="p-6 max-w-5xl mx-auto"><p className="text-gray-500 text-sm">Cotización no encontrada</p><Link href="/vendedor/cotizaciones" className="text-blue-600 text-sm mt-2 inline-block">Volver a cotizaciones</Link></div>;
   }
 
   const fecha = new Date(cot.createdAt).toLocaleDateString('es-CL', { year: 'numeric', month: 'long', day: 'numeric' });
@@ -391,9 +402,11 @@ export default function CotizacionDetailPage() {
             <span className="font-medium text-gray-800">
               {new Date(cot.fechaVenta).toLocaleDateString('es-CL', { timeZone: TZ_CHILE, year: 'numeric', month: 'long', day: 'numeric' })}
             </span>
+            {' · '}Forma de pago:{' '}
+            <span className="font-medium text-gray-800">{etiquetaFormaPago(cot.formaPago) || 'sin dato'}</span>
           </span>
           <button onClick={() => abrirFechaModal('editar')} disabled={updating} className="text-xs text-blue-600 hover:text-blue-800 underline">
-            Cambiar fecha de venta
+            Editar venta
           </button>
         </div>
       )}
@@ -501,7 +514,7 @@ export default function CotizacionDetailPage() {
         <div className="fixed inset-0 bg-black/40 flex items-center justify-center z-50 p-4">
           <div className="bg-white rounded-xl shadow-xl w-full max-w-md p-6">
             <h2 className="text-lg font-bold text-primary mb-1">
-              {fechaModal === 'vender' ? 'Marcar como vendida' : 'Cambiar fecha de venta'}
+              {fechaModal === 'vender' ? 'Marcar como vendida' : 'Editar venta'}
             </h2>
             <p className="text-sm text-gray-500 mb-4">
               La venta de {cot.numero} se contabilizará en el mes de esta fecha.
@@ -518,6 +531,17 @@ export default function CotizacionDetailPage() {
               onChange={(e) => setFechaVentaInput(e.target.value)}
               className="w-full border border-gray-300 rounded-lg px-4 py-2 text-sm"
             />
+            <p className="text-xs text-gray-500 mb-1 mt-4">Forma de pago</p>
+            <select
+              value={formaPagoInput}
+              onChange={(e) => setFormaPagoInput(e.target.value)}
+              className="w-full border border-gray-300 rounded-lg px-4 py-2 text-sm bg-white"
+            >
+              <option value="" disabled>— Seleccionar forma de pago —</option>
+              {Object.entries(FORMAS_PAGO).map(([codigo, etiqueta]) => (
+                <option key={codigo} value={codigo}>{etiqueta}</option>
+              ))}
+            </select>
             <div className="flex justify-end gap-2 mt-6">
               <button
                 onClick={() => { setFechaModal(null); setEstadoError(''); }}
@@ -527,10 +551,10 @@ export default function CotizacionDetailPage() {
               </button>
               <button
                 onClick={guardarFechaVenta}
-                disabled={updating || !fechaVentaInput}
+                disabled={updating || !fechaVentaInput || (fechaModal === 'vender' && !formaPagoInput)}
                 className="px-4 py-2 text-sm bg-green-600 hover:bg-green-700 disabled:bg-green-300 text-white rounded-lg font-medium"
               >
-                {updating ? 'Guardando…' : fechaModal === 'vender' ? 'Marcar vendida' : 'Guardar fecha'}
+                {updating ? 'Guardando…' : fechaModal === 'vender' ? 'Marcar vendida' : 'Guardar cambios'}
               </button>
             </div>
           </div>

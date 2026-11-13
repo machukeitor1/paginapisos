@@ -20,10 +20,11 @@ export async function GET(request: Request) {
     const pagina = Math.max(1, parseInt(searchParams.get("pagina") || "1") || 1);
     const porPagina = Math.min(200, Math.max(1, parseInt(searchParams.get("porPagina") || "20") || 20));
 
+    // Todas las cotizaciones son visibles para todo el equipo; ?mias=1 filtra las del vendedor en sesión.
     const where: any = {};
     if (vendedorId) {
       where.vendedorId = parseInt(vendedorId);
-    } else if (vendedorSession && !adminSession) {
+    } else if (searchParams.get("mias") === "1" && vendedorSession) {
       where.vendedorId = vendedorSession.id;
     }
 

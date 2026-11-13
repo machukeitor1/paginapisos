@@ -179,6 +179,7 @@ model Cotizacion {
   notas            String?
   estado           String             @default("Pendiente")
   fechaVenta       DateTime?
+  formaPago        String?
   clienteId        Int
   vendedorId       Int
   vendedor         Vendedor           @relation(fields: [vendedorId], references: [id])

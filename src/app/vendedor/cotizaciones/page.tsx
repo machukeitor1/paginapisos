@@ -11,6 +11,7 @@ interface CotizacionResumen {
   total: number;
   estado: string;
   cliente: { nombre: string; rut: string };
+  vendedor: { nombre: string };
 }
 
 const POR_PAGINA = 20;
@@ -21,7 +22,7 @@ const ESTILOS_ESTADO: Record<string, string> = {
   PERDIDO: 'bg-red-100 text-red-800',
 };
 
-export default function MisCotizacionesPage() {
+export default function CotizacionesPage() {
   const [cotizaciones, setCotizaciones] = useState<CotizacionResumen[]>([]);
   const [loading, setLoading] = useState(true);
   const [search, setSearch] = useState('');
@@ -29,6 +30,7 @@ export default function MisCotizacionesPage() {
   const [desde, setDesde] = useState('');
   const [hasta, setHasta] = useState('');
   const [estadoFiltro, setEstadoFiltro] = useState('');
+  const [alcance, setAlcance] = useState('');
   const [pagina, setPagina] = useState(1);
   const [total, setTotal] = useState(0);
   const [totalPaginas, setTotalPaginas] = useState(1);
@@ -46,6 +48,7 @@ export default function MisCotizacionesPage() {
     if (desde) params.set('desde', desde);
     if (hasta) params.set('hasta', hasta);
     if (estadoFiltro) params.set('estado', estadoFiltro);
+    if (alcance === 'mias') params.set('mias', '1');
     params.set('pagina', String(pagina));
     params.set('porPagina', String(POR_PAGINA));
     try {
@@ -65,7 +68,7 @@ export default function MisCotizacionesPage() {
     } finally {
       setLoading(false);
     }
-  }, [searchDebounced, desde, hasta, estadoFiltro, pagina]);
+  }, [searchDebounced, desde, hasta, estadoFiltro, alcance, pagina]);
 
   useEffect(() => {
     if (search !== searchDebounced) return;
@@ -94,6 +97,7 @@ export default function MisCotizacionesPage() {
     setDesde('');
     setHasta('');
     setEstadoFiltro('');
+    setAlcance('');
     setPagina(1);
   };
 
@@ -128,7 +132,7 @@ export default function MisCotizacionesPage() {
   return (
     <div className="p-6 max-w-5xl mx-auto">
       <div className="flex items-center justify-between mb-6">
-        <h1 className="text-lg font-semibold text-gray-800">Mis Cotizaciones</h1>
+        <h1 className="text-lg font-semibold text-gray-800">Cotizaciones</h1>
         <div className="flex items-center gap-2">
           <div className="relative group">
             <button className="bg-white border border-gray-300 hover:bg-gray-50 text-gray-600 px-3 py-2 rounded-lg text-sm font-medium transition-colors flex items-center gap-1">
@@ -156,6 +160,13 @@ export default function MisCotizacionesPage() {
           <input value={search} onChange={(e) => cambiarFiltro(setSearch)(e.target.value)} placeholder="RUT o nombre del cliente..." className="w-full border border-gray-300 rounded-lg px-3 py-2 text-sm focus:outline-none focus:ring-2 focus:ring-blue-500/50" />
         </div>
         <div>
+          <label className="block text-xs text-gray-500 mb-1">Vendedor</label>
+          <select value={alcance} onChange={(e) => cambiarFiltro(setAlcance)(e.target.value)} className="border border-gray-300 rounded-lg px-3 py-2 text-sm focus:outline-none focus:ring-2 focus:ring-blue-500/50">
+            <option value="">Todas</option>
+            <option value="mias">Solo mías</option>
+          </select>
+        </div>
+        <div>
           <label className="block text-xs text-gray-500 mb-1">Estado</label>
           <select value={estadoFiltro} onChange={(e) => cambiarFiltro(setEstadoFiltro)(e.target.value)} className="border border-gray-300 rounded-lg px-3 py-2 text-sm focus:outline-none focus:ring-2 focus:ring-blue-500/50">
             <option value="">Todos</option>
@@ -172,7 +183,7 @@ export default function MisCotizacionesPage() {
           <label className="block text-xs text-gray-500 mb-1">Hasta</label>
           <input type="date" value={hasta} onChange={(e) => cambiarFiltro(setHasta)(e.target.value)} className="border border-gray-300 rounded-lg px-3 py-2 text-sm focus:outline-none focus:ring-2 focus:ring-blue-500/50" />
         </div>
-        {(search || desde || hasta || estadoFiltro) && (
+        {(search || desde || hasta || estadoFiltro || alcance) && (
           <button onClick={limpiar} className="px-3 py-2 text-sm text-gray-500 hover:text-gray-700 border border-gray-300 rounded-lg">Limpiar</button>
         )}
       </div>
@@ -193,6 +204,7 @@ export default function MisCotizacionesPage() {
                   <th className="text-left py-3 px-4">N°</th>
                   <th className="text-left py-3 px-4">Cliente</th>
                   <th className="text-left py-3 px-4">RUT</th>
+                  <th className="text-left py-3 px-4">Vendedor</th>
                   <th className="text-center py-3 px-4">Estado</th>
                   <th className="text-center py-3 px-4">Fecha</th>
                   <th className="text-right py-3 px-4">Total</th>
@@ -205,6 +217,7 @@ export default function MisCotizacionesPage() {
                     <td className="py-3 px-4 font-medium text-gray-800">{c.numero}</td>
                     <td className="py-3 px-4 text-gray-700">{c.cliente.nombre}</td>
                     <td className="py-3 px-4 text-gray-500">{c.cliente.rut}</td>
+                    <td className="py-3 px-4 text-gray-600">{c.vendedor.nombre}</td>
                     <td className="py-3 px-4 text-center">
                       <span className={`text-xs font-semibold px-2 py-0.5 rounded-full ${ESTILOS_ESTADO[c.estado] || 'bg-gray-100 text-gray-600'}`}>{c.estado}</span>
                     </td>

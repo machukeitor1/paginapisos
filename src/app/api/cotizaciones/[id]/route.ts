@@ -2,6 +2,7 @@ import { NextResponse } from "next/server";
 import { prisma } from "@/lib/prisma";
 import { getActor, type Actor } from "@/lib/actor";
 import { fechaChile, fechaVentaDesdeYmd, ymdChile } from "@/lib/periodos";
+import { esFormaPago, etiquetaFormaPago } from "@/lib/forma-pago";
 
 type ItemLike = { productoId: number | null; cantidad: number; importe: number };
 
@@ -54,9 +55,6 @@ export async function GET(request: Request, { params }: { params: { id: string }
     if (!cotizacion) {
       return NextResponse.json({ error: "Cotización no encontrada" }, { status: 404 });
     }
-    if (actor.tipo === "vendedor" && cotizacion.vendedorId !== actor.id) {
-      return NextResponse.json({ error: "No autorizado" }, { status: 403 });
-    }
 
     return NextResponse.json(cotizacion);
   } catch {
@@ -75,9 +73,6 @@ export async function DELETE(request: Request, { params }: { params: { id: strin
       return NextResponse.json({ error: "Cotización no encontrada" }, { status: 404 });
     }
 
-    if (actor.tipo === "vendedor" && cotizacion.vendedorId !== actor.id) {
-      return NextResponse.json({ error: "No autorizado" }, { status: 403 });
-    }
     if (cotizacion.estado !== "PENDIENTE") {
       return NextResponse.json(
         { error: "Solo se pueden eliminar cotizaciones en estado PENDIENTE" },
@@ -105,21 +100,37 @@ export async function PUT(request: Request, { params }: { params: { id: string }
     if (!existing) {
       return NextResponse.json({ error: "Cotización no encontrada" }, { status: 404 });
     }
-    if (actor.tipo === "vendedor" && existing.vendedorId !== actor.id) {
-      return NextResponse.json({ error: "No autorizado" }, { status: 403 });
-    }
-
     const data = await request.json();
-    const { cliente, items, notas, estado, motivo, confirmarFaltante, fechaVenta } = data;
+    const { cliente, items, notas, estado, motivo, confirmarFaltante, fechaVenta, formaPago } = data;
 
-    if (fechaVenta !== undefined && !estado && !cliente && !items) {
+    // Corrección de una venta ya cerrada: fecha y/o forma de pago.
+    if ((fechaVenta !== undefined || formaPago !== undefined) && !estado && !cliente && !items) {
       if (existing.estado !== "VENDIDO" || !existing.fechaVenta) {
-        return NextResponse.json({ error: "Solo se puede cambiar la fecha de una cotización vendida" }, { status: 400 });
+        return NextResponse.json({ error: "Solo se puede editar la venta de una cotización vendida" }, { status: 400 });
       }
-      const resuelta = resolverFechaVenta(fechaVenta, existing.createdAt);
-      if ("error" in resuelta) return NextResponse.json({ error: resuelta.error }, { status: 400 });
-      if (ymdChile(resuelta.fecha) === ymdChile(existing.fechaVenta)) {
-        return NextResponse.json({ error: "La fecha de venta no cambió" }, { status: 400 });
+
+      const cambios: string[] = [];
+      const update: { fechaVenta?: Date; formaPago?: string } = {};
+
+      if (fechaVenta !== undefined) {
+        const resuelta = resolverFechaVenta(fechaVenta, existing.createdAt);
+        if ("error" in resuelta) return NextResponse.json({ error: resuelta.error }, { status: 400 });
+        if (ymdChile(resuelta.fecha) !== ymdChile(existing.fechaVenta)) {
+          update.fechaVenta = resuelta.fecha;
+          cambios.push(`Fecha de venta: ${fechaChile(existing.fechaVenta)} → ${fechaChile(resuelta.fecha)}`);
+        }
+      }
+      if (formaPago !== undefined) {
+        if (!esFormaPago(formaPago)) {
+          return NextResponse.json({ error: "Forma de pago inválida" }, { status: 400 });
+        }
+        if (formaPago !== existing.formaPago) {
+          update.formaPago = formaPago;
+          cambios.push(`Forma de pago: ${etiquetaFormaPago(existing.formaPago) || "sin dato"} → ${etiquetaFormaPago(formaPago)}`);
+        }
+      }
+      if (cambios.length === 0) {
+        return NextResponse.json({ error: "No hay cambios en la venta" }, { status: 400 });
       }
 
       const cotizacion = await prisma.$transaction(async (tx) => {
@@ -128,13 +139,13 @@ export async function PUT(request: Request, { params }: { params: { id: string }
             cotizacionId: id,
             estadoAnterior: "VENDIDO",
             estadoNuevo: "VENDIDO",
-            motivo: `Fecha de venta: ${fechaChile(existing.fechaVenta!)} → ${fechaChile(resuelta.fecha)}`,
+            motivo: cambios.join(" · "),
             ...actorFields(actor),
           },
         });
         return tx.cotizacion.update({
           where: { id },
-          data: { fechaVenta: resuelta.fecha },
+          data: update,
           include: {
             cliente: true,
             vendedor: { select: { nombre: true } },
@@ -153,6 +164,9 @@ export async function PUT(request: Request, { params }: { params: { id: string }
 
       let fechaNuevaVenta: Date | null = null;
       if (estado === "VENDIDO") {
+        if (!esFormaPago(formaPago)) {
+          return NextResponse.json({ error: "Selecciona la forma de pago" }, { status: 400 });
+        }
         if (fechaVenta) {
           const resuelta = resolverFechaVenta(fechaVenta, existing.createdAt);
           if ("error" in resuelta) return NextResponse.json({ error: resuelta.error }, { status: 400 });
@@ -282,6 +296,7 @@ export async function PUT(request: Request, { params }: { params: { id: string }
           data: {
             estado,
             fechaVenta: fechaNuevaVenta,
+            formaPago: estado === "VENDIDO" ? formaPago : null,
           },
           include: {
             cliente: true,
